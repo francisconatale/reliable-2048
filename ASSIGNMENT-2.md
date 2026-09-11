@@ -80,3 +80,23 @@ Run Randoop for all the relevant classes.
 6. Record the results, including, potentially, bugs found. Commit to repository with appropriate tag.
 
 
+
+## Phase 4: Automated Test Generation with EvoSuite
+
+1. Run EvoSuite using Maven:
+```bash
+mvn -Dsearch_budget=60 -DcutsFile=cutsFile.txt -Dtest_dir=src/test/java evosuite:generate evosuite:export
+```
+Alternatively, you can use the provided bash script to run EvoSuite directly (without Maven):
+```bash
+./runEvosuite.sh
+```
+
+### Important Note: Java 8 vs Java 21 (Installation)
+
+To avoid issues when using EvoSuite, you need to install both JDKs and use them for their specific purposes:
+
+1. **Install JDK 21 for the main project (Maven):** Use Java 21 for your general development (compiling the game, running it, and running tests with `mvn test`). Your `pom.xml` is already configured to compile your code into Java 8 format automatically.
+2. **Install JDK 8 specifically for EvoSuite:** You **must strictly use Java 8** when running the test generator (`runEvosuite.sh` or the Maven evosuite command). The EvoSuite program itself will crash if you try to execute it using a Java 21 JVM.
+
+**Crucial Limitation:** Even though you are using Java 21 to run Maven, because it compiles down to Java 8 format, you **cannot use Java-21-exclusive syntax** in your source code (like `List.reversed()`). Your code must only use Java 8 features.

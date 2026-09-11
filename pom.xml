@@ -16,6 +16,7 @@
         <junit.jupiter.version>5.9.2</junit.jupiter.version>
         <junit.vintage.version>5.9.2</junit.vintage.version>
         <evosuiteVersion>1.0.6</evosuiteVersion>
+        <mockito.version>4.11.0</mockito.version>
     </properties>
 
     <build>
@@ -132,6 +133,20 @@
             <groupId>org.evosuite</groupId>
             <artifactId>evosuite-standalone-runtime</artifactId>
             <version>${evosuiteVersion}</version>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Mockito (Usamos mockito-core en lugar de mockito-inline para evitar conflictos con el agente de EvoSuite) -->
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-core</artifactId>
+            <version>${mockito.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.mockito</groupId>
+            <artifactId>mockito-junit-jupiter</artifactId>
+            <version>${mockito.version}</version>
             <scope>test</scope>
         </dependency>
 

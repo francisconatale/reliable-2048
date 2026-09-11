@@ -1,0 +1,10 @@
+/home/francisco/reliable-2048/src/main/java/ar/edu/unrc/game2048/Board.java
+/home/francisco/reliable-2048/src/main/java/ar/edu/unrc/game2048/Cell.java
+/home/francisco/reliable-2048/src/main/java/ar/edu/unrc/game2048/MainCLI.java
+/home/francisco/reliable-2048/src/main/java/ar/edu/unrc/game2048/Score.java
+/home/francisco/reliable-2048/src/main/java/ar/edu/unrc/game2048/strategy/Move.java
+/home/francisco/reliable-2048/src/main/java/ar/edu/unrc/game2048/strategy/MoveDown.java
+/home/francisco/reliable-2048/src/main/java/ar/edu/unrc/game2048/strategy/MoveLeft.java
+/home/francisco/reliable-2048/src/main/java/ar/edu/unrc/game2048/strategy/MoveProvider.java
+/home/francisco/reliable-2048/src/main/java/ar/edu/unrc/game2048/strategy/MoveRight.java
+/home/francisco/reliable-2048/src/main/java/ar/edu/unrc/game2048/strategy/MoveUp.java
