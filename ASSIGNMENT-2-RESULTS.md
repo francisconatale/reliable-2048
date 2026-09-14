@@ -44,12 +44,12 @@ La suite manual alcanza el objetivo del README de al menos 90% de cobertura de r
 
 ## Randoop despues de repOK()
 
-Randoop se ejecuto sobre `Cell` y `Board` con un límite de 10 segundos. Genero un archivo de tests de regresion con 87 metodos:
+Randoop se ejecuto sobre `Cell` y `Board` con un limite de 10 segundos. Genero un archivo de tests de regresion con 87 metodos:
 
 - `src/test/java/randoopTests/RegressionTest0.java`
 - Tests ejecutados: 87
-- Tests exitosos: 68
-- Tests fallidos: 19
+- Tests exitosos: 67
+- Tests fallidos: 20
 - Errores: 0
 
 La ejecucion aislada de JaCoCo usando unicamente la suite de Randoop produjo:
@@ -62,7 +62,16 @@ La ejecucion aislada de JaCoCo usando unicamente la suite de Randoop produjo:
 
 ### Interpretacion de los fallos de Randoop
 
-Los 19 fallos no son bugs confirmados, son posibles fallos que deben revisarse individualmente porque Randoop genera secuencias y aserciones automaticamente. Un fallo se considera un bug confirmado unicamente cuando:
+Los 20 fallos fueron analizados y no constituyen bugs confirmados. Randoop genera secuencias y aserciones automaticamente, y en este caso los fallos dependen del estado aleatorio inicial de `Board()`
+
+La clasificacion es:
+
+- 19 fallos son `ComparisonFailure`: los tests comparan el resultado de `Board.toString()` con una distribucion exacta de fichas generada en otra ejecucion. Como `Board()` coloca las fichas aleatoriamente, la posicion esperada cambia entre ejecuciones
+- 1 fallo es una asercion sobre el valor `true` devuelto por `Board.move()`. El resultado depende de si las fichas aleatorias iniciales pueden moverse en la direccion elegida; por lo tanto, el oraculo no es determinista
+
+Estos tests no demuestran un bug del codigo. Para convertirlos en tests validos habria que construir boards deterministas (`new Board(4, true)`), fijar un `Random` controlado o verificar propiedades estables en lugar de comparar una distribucion aleatoria exacta
+
+Un fallo se considera un bug confirmado unicamente cuando:
 
 1. La entrada generada es valida segun el contrato del juego o de la API
 2. El resultado esperado es consistente con el contrato documentado
