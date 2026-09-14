@@ -37,6 +37,23 @@ public void testCellIsNotEmpty(){
 }
 
 @Test
+public void negativeCellValueThrowsException(){
+    assertThrows(IllegalArgumentException.class, () -> new Cell(-1));
+}
+
+@Test
+public void validCellValuesSatisfyRepOk(){
+    assertTrue(new Cell(0).repOK());
+    assertTrue(new Cell(2).repOK());
+    assertTrue(new Cell(2048).repOK());
+}
+
+@Test
+public void nonPowerOfTwoCellFailsRepOk(){
+    assertFalse(new Cell(3).repOK());
+}
+
+@Test
 public void testCellEquals(){
     Cell cell = new Cell(4);
     Cell otherCell = new Cell(4);
@@ -49,6 +66,24 @@ public void testCellNotEquals(){
     Cell otherCell = new Cell(8);
     boolean result = cell.equals(otherCell);
     assertFalse(result);
+}
+
+@Test
+public void testCellEqualsSameReference(){
+    Cell cell = new Cell(4);
+    assertTrue(cell.equals(cell));
+}
+
+@Test
+public void testCellEqualsNull(){
+    Cell cell = new Cell(4);
+    assertFalse(cell.equals(null));
+}
+
+@Test
+public void testCellEqualsDifferentClass(){
+    Cell cell = new Cell(4);
+    assertFalse(cell.equals("4"));
 }
     @Test
     public void testCellNotEqualsByHash(){
@@ -71,5 +106,15 @@ public void testCellNotEquals(){
     Cell cell = new Cell(0);
     Cell otherCell = new Cell(0);
     assertFalse(cell.canMergeWith(otherCell));
+    }
+
+    @Test
+    public void testEmptyCellToString() {
+        assertEquals(".", Cell.EMPTY.toString());
+    }
+
+    @Test
+    public void testNonEmptyCellToString() {
+        assertEquals("4", new Cell(4).toString());
     }
 }

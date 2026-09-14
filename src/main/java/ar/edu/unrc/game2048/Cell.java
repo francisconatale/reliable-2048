@@ -54,6 +54,10 @@ public final class Cell {
     public int getValue() {
         return value;
     }
+
+    public boolean repOK() {
+        return value == 0 || Integer.bitCount(value) == 1;
+    }
     
     /**
      * Checks if this cell can merge with another cell.

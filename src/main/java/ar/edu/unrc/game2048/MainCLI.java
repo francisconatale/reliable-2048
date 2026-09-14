@@ -10,11 +10,19 @@ import java.util.Scanner;
  */
 public class MainCLI {
     private final Board board;
-    private final Scanner scanner;
+    private final InputReader inputReader;
     
     public MainCLI() {
-        this.board = new Board();
-        this.scanner = new Scanner(System.in);
+        this(new Board(), new Scanner(System.in));
+    }
+
+    public MainCLI(Board board, Scanner scanner) {
+        this(board, new ScannerInputReader(scanner));
+    }
+
+    public MainCLI(Board board, InputReader inputReader) {
+        this.board = board;
+        this.inputReader = inputReader;
     }
     
     /**
@@ -40,7 +48,7 @@ public class MainCLI {
             }
             
             System.out.print("Enter move: ");
-            String input = scanner.nextLine().trim().toUpperCase();
+            String input = inputReader.nextLine().trim().toUpperCase();
             
             if (input.equals("Q")) {
                 System.out.println("Thanks for playing! Final score: " + board.getScore());
@@ -67,7 +75,7 @@ public class MainCLI {
             System.out.println();
         }
         
-        scanner.close();
+        inputReader.close();
     }
     
     /**

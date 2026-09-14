@@ -4,6 +4,8 @@ import java.util.Set;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
+import static org.junit.jupiter.api.Assertions.assertSame;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 import org.junit.jupiter.api.Test;
@@ -182,6 +184,66 @@ public class BoardTest {
     assertEquals(board.equals(cell), false);
     }
 
+    @Test
+    public void testBoardEqualsSameBoard() {
+        Board board = new Board(4, true);
+        assertTrue(board.equals(board));
+    }
+
+    @Test
+    public void testBoardEqualsDifferentBoardState() {
+        Board first = new Board(4, true);
+        Board second = new Board(4, true);
+        second.setCell(0, 0, new Cell(2));
+        assertFalse(first.equals(second));
+    }
+
+    @Test
+    public void testBoardEqualsDifferentScore() {
+        Board first = new Board(4, true);
+        Board second = new Board(4, true);
+        second.setScore(4);
+        assertFalse(first.equals(second));
+    }
+
+    @Test
+    public void testBoardGetGrid() {
+        Board board = new Board(4, true);
+        assertSame(board.getCell(0, 0), board.getGrid()[0][0]);
+        assertEquals(4, board.getGrid().length);
+    }
+
+    @Test
+    public void testBoardAllowsNullRandomByCreatingDefaultRandom() {
+        Board board = new Board(4, false, null);
+        assertTrue(board.hasEmptyCells());
+    }
+
+    @Test
+    public void validBoardSatisfiesRepOk() {
+        assertTrue(new Board(4, true).repOK());
+    }
+
+    @Test
+    public void boardWithNullCellFailsRepOk() {
+        Board board = new Board(4, true);
+        board.getGrid()[0][0] = null;
+        assertFalse(board.repOK());
+    }
+
+    @Test
+    public void boardWithInvalidCellFailsRepOk() {
+        Board board = new Board(4, true);
+        board.getGrid()[0][0] = new Cell(3);
+        assertFalse(board.repOK());
+    }
+
+    @Test
+    public void testBoardEqualsNull() {
+        Board board = new Board(4, true);
+        assertFalse(board.equals(null));
+    }
+
 
     @Test
     public void testBoardGetEmptyPositions() {
@@ -255,6 +317,71 @@ public class BoardTest {
         board.setCell(0,1, new Cell(2));
         int hashCode = board.hashCode();
         assertNotNull(hashCode);
+    }
+
+    @Test
+    public void testMoveReturnsTrueWhenBoardChanges() {
+        Board board = new Board(4, true);
+        board.setCell(0, 0, new Cell(2));
+        assertTrue(board.move(Direction.RIGHT));
+    }
+
+    @Test
+    public void testMoveReturnsFalseWhenBoardDoesNotChange() {
+        Board board = new Board(4, true);
+        board.setCell(0, 3, new Cell(2));
+        assertFalse(board.move(Direction.RIGHT));
+    }
+
+    @Test
+    public void testAddRandomTileOnFullBoardDoesNothing() throws Exception {
+        Board board = new Board(4, false, new Random(1));
+        int[] values = {2, 4, 8, 16};
+        for (int row = 0; row < board.getSize(); row++) {
+            for (int column = 0; column < board.getSize(); column++) {
+                board.setCell(row, column, new Cell(values[column]));
+            }
+        }
+
+            java.lang.reflect.Method addRandomTile = Board.class
+                .getDeclaredMethod("addRandomTile");
+            addRandomTile.setAccessible(true);
+            addRandomTile.invoke(board);
+
+        assertFalse(board.hasEmptyCells());
+    }
+
+    @Test
+    public void testBoardHashCodeChangesWithBoardState() {
+        Board first = new Board(4, true);
+        Board second = new Board(4, true);
+        second.setCell(0, 0, new Cell(2));
+        assertNotEquals(first.hashCode(), second.hashCode());
+    }
+
+    @Test
+    public void testAddRandomTileSelectsPositionUsingRandomIndex() {
+        Position expectedPosition = new Board(4, true).getEmptyPositions().stream()
+                .skip(12)
+                .findFirst()
+                .get();
+        Random controlledRandom = new ControlledRandom(0.75, 0.1, 0.0, 0.1);
+        Board board = new Board(4, false, controlledRandom);
+        assertEquals(2, board.getCell(expectedPosition.row, expectedPosition.col).getValue());
+    }
+
+    private static class ControlledRandom extends Random {
+        private final double[] values;
+        private int index;
+
+        ControlledRandom(double... values) {
+            this.values = values;
+        }
+
+        @Override
+        public double nextDouble() {
+            return values[index++];
+        }
     }
 
     @Test

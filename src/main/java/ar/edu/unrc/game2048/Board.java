@@ -101,6 +101,24 @@ public class Board {
 
     public Cell[][] getGrid(){ return grid; }
 
+    public boolean repOK() {
+        if (size <= 0 || grid == null || grid.length != size
+                || score == null || random == null || moveProvider == null) {
+            return false;
+        }
+        for (int row = 0; row < size; row++) {
+            if (grid[row] == null || grid[row].length != size) {
+                return false;
+            }
+            for (int column = 0; column < size; column++) {
+                if (grid[row][column] == null || !grid[row][column].repOK()) {
+                    return false;
+                }
+            }
+        }
+        return true;
+    }
+
 
 
     /**
