@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?><!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd"><html xmlns="http://www.w3.org/1999/xhtml" lang="es"><head><meta http-equiv="Content-Type" content="text/html;charset=UTF-8"/><link rel="stylesheet" href="../jacoco-resources/report.css" type="text/css"/><link rel="shortcut icon" href="../jacoco-resources/report.gif" type="image/gif"/><title>Move.java</title><link rel="stylesheet" href="../jacoco-resources/prettify.css" type="text/css"/><script type="text/javascript" src="../jacoco-resources/prettify.js"></script></head><body onload="window['PR_TAB_WIDTH']=4;prettyPrint()"><div class="breadcrumb" id="breadcrumb"><span class="info"><a href="../jacoco-sessions.html" class="el_session">Sessions</a></span><a href="../index.html" class="el_report">2048-game</a> &gt; <a href="index.source.html" class="el_package">ar.edu.unrc.game2048.strategy</a> &gt; <span class="el_source">Move.java</span></div><h1>Move.java</h1><pre class="source lang-java linenums">package ar.edu.unrc.game2048.strategy;
+
+import ar.edu.unrc.game2048.Board;
+import ar.edu.unrc.game2048.Cell;
+import ar.edu.unrc.game2048.Score;
+
+import javax.swing.*;
+import java.util.*;
+
+<span class="fc" id="L10">public abstract class Move {</span>
+
+public abstract void execute(Board board, Cell[][] grid, Score score);
+
+public List&lt;Cell&gt; getColumn(int column, Cell[][] grid) {
+<span class="fc" id="L15">    List&lt;Cell&gt; result = new ArrayList&lt;&gt;();</span>
+<span class="fc" id="L16">    int size = grid.length;</span>
+<span class="fc bfc" id="L17" title="All 2 branches covered.">    for (int row = 0; row &lt; size; row++) {</span>
+<span class="fc" id="L18">        result.add(grid[row][column]);</span>
+    }
+<span class="fc" id="L20">    return result;</span>
+}
+
+public List&lt;Cell&gt; getRow(int row, Cell[][] grid){
+<span class="fc" id="L24">    List&lt;Cell&gt; result = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L25">    Collections.addAll(result, grid[row].clone());</span>
+<span class="fc" id="L26">    return result;</span>
+}
+    public void fillRow(int rowIndex, List&lt;Cell&gt; cells, Cell[][] grid) {
+<span class="fc bfc" id="L29" title="All 2 branches covered.">        for (int columnIndex = 0; columnIndex &lt; grid.length; columnIndex++) {</span>
+<span class="fc" id="L30">            grid[rowIndex][columnIndex] = cells.get(columnIndex);</span>
+        }
+<span class="fc" id="L32">    }</span>
+
+    public void fillColumn(int columnIndex, List&lt;Cell&gt; cells, Cell[][] grid) {
+<span class="fc bfc" id="L35" title="All 2 branches covered.">        for (int rowIndex = 0; rowIndex &lt; grid.length; rowIndex++) {</span>
+<span class="fc" id="L36">            grid[rowIndex][columnIndex] = cells.get(rowIndex);</span>
+        }
+<span class="fc" id="L38">    }</span>
+
+    public List&lt;Cell&gt; mergeCells(List&lt;Cell&gt; cellsToMerge, Score score) {
+<span class="fc" id="L41">        List&lt;Cell&gt; merged = new LinkedList&lt;&gt;();</span>
+<span class="fc" id="L42">        int i = 0;</span>
+<span class="fc bfc" id="L43" title="All 2 branches covered.">        while (i &lt; cellsToMerge.size()) {</span>
+<span class="fc bfc" id="L44" title="All 4 branches covered.">            if (i + 1 &lt; cellsToMerge.size() &amp;&amp; cellsToMerge.get(i).canMergeWith(cellsToMerge.get(i + 1))) {</span>
+<span class="fc" id="L45">                Cell mergedCell = cellsToMerge.get(i).mergeWith(cellsToMerge.get(i + 1));</span>
+<span class="fc" id="L46">                merged.add(mergedCell);</span>
+<span class="fc" id="L47">                score.increaseScore(mergedCell.getValue());</span>
+<span class="fc" id="L48">                i += 2;</span>
+<span class="fc" id="L49">            } else {</span>
+<span class="fc" id="L50">                merged.add(cellsToMerge.get(i));</span>
+<span class="fc" id="L51">                i++;</span>
+            }
+        }
+<span class="fc" id="L54">        return merged;</span>
+    }
+
+public List&lt;Cell&gt; removeEmptyCells(List&lt;Cell&gt; cells){
+<span class="fc bfc" id="L58" title="All 2 branches covered.">    return cells.stream().filter(c -&gt; !c.isEmpty()).collect(java.util.stream.Collectors.toList());</span>
+}
+
+}
+</pre><div class="footer"><span class="right">Created with <a href="http://www.jacoco.org/jacoco">JaCoCo</a> 0.8.10.202304240956</span></div></body></html>
