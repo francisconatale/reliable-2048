@@ -1,6 +1,11 @@
+ar/edu/unrc/game2048/MainCLITest.class
 ar/edu/unrc/game2048/CellTest.class
+ar/edu/unrc/game2048/BoardTest$ControlledRandom.class
+ar/edu/unrc/game2048/MoveStrategyTest.class
+ar/edu/unrc/game2048/ScannerInputReaderTest.class
+ar/edu/unrc/game2048/BoardTest.class
+randoopTests/RegressionTest0.class
 ar/edu/unrc/game2048/utils/BoardParser.class
 ar/edu/unrc/game2048/PositionTest.class
 ar/edu/unrc/game2048/RegressionGameTest.class
-ar/edu/unrc/game2048/BoardTest.class
 ar/edu/unrc/game2048/utils/Seeder.class
