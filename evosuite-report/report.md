@@ -44,3 +44,14 @@ EvoSuite permitió explorar automáticamente casos que no estaban cubiertos por 
 Sin embargo, sus pruebas deben analizarse antes de considerarlas útiles, ya que algunas aserciones simplemente reproducen el comportamiento observado y pueden incluso preservar comportamientos incorrectos.
 
 Por lo tanto, EvoSuite se utiliza como complemento de las pruebas funcionales, principalmente para **exploración, detección de casos inesperados y regresión**.
+
+## 5. Resultados de Cobertura (JaCoCo)
+
+Los resultados generales obtenidos del reporte de JaCoCo reflejan una alta cobertura global del código:
+
+* **Cobertura de Instrucciones:** 97% (38 instrucciones no cubiertas de un total de 1.478).
+* **Cobertura de Ramas (Branches):** 90% (18 ramas no cubiertas de un total de 181).
+
+**Desglose por paquetes:**
+* `ar.edu.unrc.game2048`: 96% de instrucciones, 88% de ramas.
+* `ar.edu.unrc.game2048.strategy`: 100% de instrucciones, 100% de ramas.
