@@ -25,7 +25,7 @@ UNRESOLVED = "UNRESOLVED"  # e.g. timeout or unexpected error in the runner
 # Valid input alphabet
 # ---------------------------------------------------------------------------
 
-KEYS = ['a', 's', 'w', 'd']   # left, down, up, right
+KEYS = ['A', 'S', 'W', 'D']   # left, down, up, right
 QUIT = 'q'                     # graceful exit
 
 # ---------------------------------------------------------------------------
@@ -113,7 +113,7 @@ class RandomFuzzer(Fuzzer):
         out = ""
         for i in range (0,string_length):
             index_random = random.randrange(0, len(KEYS))
-            out += f"{KEYS[index_random]}\\n"
+            out += f"{KEYS[index_random]}\n"
         return out
 
 # ---------------------------------------------------------------------------
