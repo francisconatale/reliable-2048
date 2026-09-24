@@ -114,6 +114,7 @@ class RandomFuzzer(Fuzzer):
         for i in range (0,string_length):
             index_random = random.randrange(0, len(KEYS))
             out += f"{KEYS[index_random]}\n"
+        out += f"{QUIT}\n"
         return out
 
 # ---------------------------------------------------------------------------
