@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: ar.edu.unrc.game2048.BoardTest
 -------------------------------------------------------------------------------
-Tests run: 30, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.501 s - in ar.edu.unrc.game2048.BoardTest
+Tests run: 44, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.101 s - in ar.edu.unrc.game2048.BoardTest

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ar.edu.unrc.game2048.PositionTest" time="0.004" tests="7" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ar.edu.unrc.game2048.MainCLITest" time="0.606" tests="11" errors="0" skipped="0" failures="0">
   <properties>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
     <property name="file.encoding.pkg" value="sun.io"/>
@@ -58,11 +58,135 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="positionEqualsForReferenceTest" classname="ar.edu.unrc.game2048.PositionTest" time="0"/>
-  <testcase name="testDifferentPositionsHaveDifferentHashCode" classname="ar.edu.unrc.game2048.PositionTest" time="0"/>
-  <testcase name="testEqualPositionsHaveSameHashCode" classname="ar.edu.unrc.game2048.PositionTest" time="0.001"/>
-  <testcase name="testEqualsPositionWithDifferentReferences" classname="ar.edu.unrc.game2048.PositionTest" time="0"/>
-  <testcase name="testNotEqualsPositionWithDifferentReferences" classname="ar.edu.unrc.game2048.PositionTest" time="0"/>
-  <testcase name="positionNotEqualsADifferentClass" classname="ar.edu.unrc.game2048.PositionTest" time="0"/>
-  <testcase name="testPositionToString" classname="ar.edu.unrc.game2048.PositionTest" time="0"/>
+  <testcase name="testInputMovesRight" classname="ar.edu.unrc.game2048.MainCLITest" time="0.491">
+    <system-out><![CDATA[=== 2048 Game ===
+Controls: W(up), S(down), A(left), D(right), Q(quit)
+
+Score: 0
++-----+-----+-----+-----+
+|    2|    2|     |     |
++-----+-----+-----+-----+
+|     |     |     |     |
++-----+-----+-----+-----+
+|     |     |     |     |
++-----+-----+-----+-----+
+|     |     |     |     |
++-----+-----+-----+-----+
+
+Enter move: Tile moved!
+
+Score: 4
++-----+-----+-----+-----+
+|     |     |     |    4|
++-----+-----+-----+-----+
+|     |     |     |     |
++-----+-----+-----+-----+
+|     |     |     |     |
++-----+-----+-----+-----+
+|     |     |     |     |
++-----+-----+-----+-----+
+
+Enter move: Thanks for playing! Final score: 4
+]]></system-out>
+  </testcase>
+  <testcase name="testCliReportsInvalidInput" classname="ar.edu.unrc.game2048.MainCLITest" time="0.002"/>
+  <testcase name="testCliReportsLosingBoardUsingMockedBoard" classname="ar.edu.unrc.game2048.MainCLITest" time="0.069"/>
+  <testcase name="testInputMovesDown" classname="ar.edu.unrc.game2048.MainCLITest" time="0.002">
+    <system-out><![CDATA[=== 2048 Game ===
+Controls: W(up), S(down), A(left), D(right), Q(quit)
+
+Score: 0
++-----+-----+-----+-----+
+|    2|     |     |     |
++-----+-----+-----+-----+
+|    2|     |     |     |
++-----+-----+-----+-----+
+|     |     |     |     |
++-----+-----+-----+-----+
+|     |     |     |     |
++-----+-----+-----+-----+
+
+Enter move: Tile moved!
+
+Score: 4
++-----+-----+-----+-----+
+|     |     |     |     |
++-----+-----+-----+-----+
+|     |     |     |     |
++-----+-----+-----+-----+
+|     |     |     |     |
++-----+-----+-----+-----+
+|    4|     |     |     |
++-----+-----+-----+-----+
+
+Enter move: Thanks for playing! Final score: 4
+]]></system-out>
+  </testcase>
+  <testcase name="testInputMovesLeft" classname="ar.edu.unrc.game2048.MainCLITest" time="0.002">
+    <system-out><![CDATA[=== 2048 Game ===
+Controls: W(up), S(down), A(left), D(right), Q(quit)
+
+Score: 0
++-----+-----+-----+-----+
+|    2|    2|     |     |
++-----+-----+-----+-----+
+|     |     |     |     |
++-----+-----+-----+-----+
+|     |     |     |     |
++-----+-----+-----+-----+
+|     |     |     |     |
++-----+-----+-----+-----+
+
+Enter move: Tile moved!
+
+Score: 4
++-----+-----+-----+-----+
+|    4|     |     |     |
++-----+-----+-----+-----+
+|     |     |     |     |
++-----+-----+-----+-----+
+|     |     |     |     |
++-----+-----+-----+-----+
+|     |     |     |     |
++-----+-----+-----+-----+
+
+Enter move: Thanks for playing! Final score: 4
+]]></system-out>
+  </testcase>
+  <testcase name="testInputMovesUp" classname="ar.edu.unrc.game2048.MainCLITest" time="0.001">
+    <system-out><![CDATA[=== 2048 Game ===
+Controls: W(up), S(down), A(left), D(right), Q(quit)
+
+Score: 0
++-----+-----+-----+-----+
+|    2|     |     |     |
++-----+-----+-----+-----+
+|    2|     |     |     |
++-----+-----+-----+-----+
+|     |     |     |     |
++-----+-----+-----+-----+
+|     |     |     |     |
++-----+-----+-----+-----+
+
+Enter move: Tile moved!
+
+Score: 4
++-----+-----+-----+-----+
+|    4|     |     |     |
++-----+-----+-----+-----+
+|     |     |     |     |
++-----+-----+-----+-----+
+|     |     |     |     |
++-----+-----+-----+-----+
+|     |     |     |     |
++-----+-----+-----+-----+
+
+Enter move: Thanks for playing! Final score: 4
+]]></system-out>
+  </testcase>
+  <testcase name="testCliReportsWinningBoard" classname="ar.edu.unrc.game2048.MainCLITest" time="0.001"/>
+  <testcase name="testMainStartsCliAndProcessesQuit" classname="ar.edu.unrc.game2048.MainCLITest" time="0.005"/>
+  <testcase name="testCliReportsNoMovement" classname="ar.edu.unrc.game2048.MainCLITest" time="0.001"/>
+  <testcase name="testCliReportsMovedBoardAndClosesInput" classname="ar.edu.unrc.game2048.MainCLITest" time="0.001"/>
+  <testcase name="testCliReportsWinningBoardUsingMockedBoard" classname="ar.edu.unrc.game2048.MainCLITest" time="0.002"/>
 </testsuite>

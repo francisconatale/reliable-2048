@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ar.edu.unrc.game2048.BoardTest" time="0.501" tests="30" errors="0" skipped="0" failures="0">
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ar.edu.unrc.game2048.BoardTest" time="0.101" tests="44" errors="0" skipped="0" failures="0">
   <properties>
     <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
     <property name="file.encoding.pkg" value="sun.io"/>
@@ -16,7 +16,7 @@
     <property name="user.country" value="AR"/>
     <property name="sun.java.launcher" value="SUN_STANDARD"/>
     <property name="sun.boot.library.path" value="/home/francisco/.sdkman/candidates/java/8.0.504-amzn/jre/lib/amd64"/>
-    <property name="sun.java.command" value="/home/francisco/reliable-2048/target/surefire/surefirebooter-20260910214538420_3.jar /home/francisco/reliable-2048/target/surefire 2026-09-10T21-45-38_274-jvmRun1 surefire-20260910214538420_1tmp surefire_0-20260910214538420_2tmp"/>
+    <property name="sun.java.command" value="/home/francisco/reliable-2048/target/surefire/surefirebooter-20260922141352043_3.jar /home/francisco/reliable-2048/target/surefire 2026-09-22T14-13-51_868-jvmRun1 surefire-20260922141352043_1tmp surefire_0-20260922141352043_2tmp"/>
     <property name="surefire.test.class.path" value="/home/francisco/reliable-2048/target/test-classes:/home/francisco/reliable-2048/target/classes:/home/francisco/reliable-2048/lib/randoop-all-4.3.4.jar:/home/francisco/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/home/francisco/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/francisco/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/home/francisco/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/francisco/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:/home/francisco/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:/home/francisco/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.jar:/home/francisco/.m2/repository/org/evosuite/evosuite-standalone-runtime/1.0.6/evosuite-standalone-runtime-1.0.6.jar:/home/francisco/.m2/repository/org/mockito/mockito-core/4.11.0/mockito-core-4.11.0.jar:/home/francisco/.m2/repository/net/bytebuddy/byte-buddy/1.12.19/byte-buddy-1.12.19.jar:/home/francisco/.m2/repository/net/bytebuddy/byte-buddy-agent/1.12.19/byte-buddy-agent-1.12.19.jar:/home/francisco/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/home/francisco/.m2/repository/org/mockito/mockito-junit-jupiter/4.11.0/mockito-junit-jupiter-4.11.0.jar:/home/francisco/.m2/repository/org/junit/vintage/junit-vintage-engine/5.9.2/junit-vintage-engine-5.9.2.jar:/home/francisco/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/home/francisco/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:"/>
     <property name="sun.cpu.endian" value="little"/>
     <property name="user.home" value="/home/francisco"/>
@@ -29,7 +29,7 @@
     <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
     <property name="java.specification.name" value="Java Platform API Specification"/>
     <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
-    <property name="surefire.real.class.path" value="/home/francisco/reliable-2048/target/surefire/surefirebooter-20260910214538420_3.jar:/home/francisco/.m2/repository/org/jacoco/org.jacoco.agent/0.8.10/org.jacoco.agent-0.8.10-runtime.jar"/>
+    <property name="surefire.real.class.path" value="/home/francisco/reliable-2048/target/surefire/surefirebooter-20260922141352043_3.jar:/home/francisco/.m2/repository/org/jacoco/org.jacoco.agent/0.8.10/org.jacoco.agent-0.8.10-runtime.jar"/>
     <property name="sun.boot.class.path" value="/home/francisco/.sdkman/candidates/java/8.0.504-amzn/jre/lib/resources.jar:/home/francisco/.sdkman/candidates/java/8.0.504-amzn/jre/lib/rt.jar:/home/francisco/.sdkman/candidates/java/8.0.504-amzn/jre/lib/sunrsasign.jar:/home/francisco/.sdkman/candidates/java/8.0.504-amzn/jre/lib/jsse.jar:/home/francisco/.sdkman/candidates/java/8.0.504-amzn/jre/lib/jce.jar:/home/francisco/.sdkman/candidates/java/8.0.504-amzn/jre/lib/charsets.jar:/home/francisco/.sdkman/candidates/java/8.0.504-amzn/jre/lib/jfr.jar:/home/francisco/.sdkman/candidates/java/8.0.504-amzn/jre/classes"/>
     <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
     <property name="java.runtime.version" value="1.8.0_504-b01"/>
@@ -58,47 +58,61 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="java.class.version" value="52.0"/>
   </properties>
-  <testcase name="testAddRandomTileNegatedConditional" classname="ar.edu.unrc.game2048.BoardTest" time="0.473"/>
+  <testcase name="testMoveReturnsTrueWhenBoardChanges" classname="ar.edu.unrc.game2048.BoardTest" time="0.001"/>
+  <testcase name="testAddRandomTileNegatedConditional" classname="ar.edu.unrc.game2048.BoardTest" time="0.062"/>
   <testcase name="copyABoardTest" classname="ar.edu.unrc.game2048.BoardTest" time="0.001"/>
   <testcase name="testBoardIsWinningBoard" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
   <testcase name="lostBoardTest" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
   <testcase name="maximumScoreOfBoardTest" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
-  <testcase name="setCellFirstValidPositionTest" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
+  <testcase name="setCellFirstValidPositionTest" classname="ar.edu.unrc.game2048.BoardTest" time="0.001"/>
+  <testcase name="testBoardEqualsDifferentBoardState" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
   <testcase name="testBoardGetEmptyPositions" classname="ar.edu.unrc.game2048.BoardTest" time="0.001"/>
   <testcase name="setCellRowOutOfBoundsTest" classname="ar.edu.unrc.game2048.BoardTest" time="0.001"/>
+  <testcase name="testBoardEqualsNull" classname="ar.edu.unrc.game2048.BoardTest" time="0.001"/>
+  <testcase name="testBoardEqualsDifferentScore" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
   <testcase name="testBoardIndexOutOfBoundsException" classname="ar.edu.unrc.game2048.BoardTest" time="0.001"/>
+  <testcase name="testBoardAllowsNullRandomByCreatingDefaultRandom" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
   <testcase name="testBoardMmoveRight" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
+  <testcase name="testAddRandomTileOnFullBoardDoesNothing" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
   <testcase name="setCellNegativeRowTest" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
   <testcase name="setCellLastValidPositionTest" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
   <testcase name="setCellNegativeColumnTest" classname="ar.edu.unrc.game2048.BoardTest" time="0.001"/>
-  <testcase name="testBoardIsNotFull" classname="ar.edu.unrc.game2048.BoardTest" time="0.001"/>
+  <testcase name="testBoardEqualsSameBoard" classname="ar.edu.unrc.game2048.BoardTest" time="0.001"/>
+  <testcase name="testBoardIsNotFull" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
   <testcase name="trySetCellNullAndGetThrows" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
+  <testcase name="testMoveReturnsFalseWhenBoardDoesNotChange" classname="ar.edu.unrc.game2048.BoardTest" time="0.001"/>
   <testcase name="notEqualsClass" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
   <testcase name="toStringTest" classname="ar.edu.unrc.game2048.BoardTest" time="0.001"/>
-  <testcase name="testBoardMoveDown" classname="ar.edu.unrc.game2048.BoardTest" time="0.001"/>
+  <testcase name="testBoardMoveDown" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
   <testcase name="setCellColumnOutOfBoundsTest" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
-  <testcase name="testBoardIsNotWinningBoard" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
+  <testcase name="testBoardIsNotWinningBoard" classname="ar.edu.unrc.game2048.BoardTest" time="0.001"/>
+  <testcase name="boardWithNullCellFailsRepOk" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
   <testcase name="testAddRandomTileEdgeCaseValue4" classname="ar.edu.unrc.game2048.BoardTest" time="0.001"/>
+  <testcase name="boardWithInvalidCellFailsRepOk" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
+  <testcase name="testAddRandomTileSelectsPositionUsingRandomIndex" classname="ar.edu.unrc.game2048.BoardTest" time="0.001"/>
   <testcase name="testBoardHashCode" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
+  <testcase name="validBoardSatisfiesRepOk" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
   <testcase name="testBoardGetCell" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
-  <testcase name="notHasEmptyCellsInBoardTest" classname="ar.edu.unrc.game2048.BoardTest" time="0.001"/>
-  <testcase name="testMoveUpInGame" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
-  <testcase name="testAddRandomTileBoundary" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
-  <testcase name="testBoardIsFull" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
+  <testcase name="testBoardGetGrid" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
+  <testcase name="notHasEmptyCellsInBoardTest" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
+  <testcase name="testMoveUpInGame" classname="ar.edu.unrc.game2048.BoardTest" time="0.001"/>
+  <testcase name="testAddRandomTileBoundary" classname="ar.edu.unrc.game2048.BoardTest" time="0.001"/>
+  <testcase name="testBoardIsFull" classname="ar.edu.unrc.game2048.BoardTest" time="0.003"/>
   <testcase name="invalidBoardTest" classname="ar.edu.unrc.game2048.BoardTest" time="0.001"/>
-  <testcase name="testMoveLeftInGame" classname="ar.edu.unrc.game2048.BoardTest" time="0.001"/>
+  <testcase name="testMoveLeftInGame" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
   <testcase name="hasEmptyCellsInBoardTest" classname="ar.edu.unrc.game2048.BoardTest" time="0.001">
     <system-out><![CDATA[Score: 0
 +-----+-----+-----+-----+
 |     |     |     |     |
 +-----+-----+-----+-----+
-|     |     |     |     |
+|     | 1024|     |     |
 +-----+-----+-----+-----+
 |     |     |     |     |
 +-----+-----+-----+-----+
-|     |   16|     |     |
+|     |     |     |     |
 +-----+-----+-----+-----+
 
 ]]></system-out>
   </testcase>
+  <testcase name="testBoardHashCodeChangesWithBoardState" classname="ar.edu.unrc.game2048.BoardTest" time="0"/>
 </testsuite>
