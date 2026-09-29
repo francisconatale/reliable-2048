@@ -4,7 +4,7 @@ import ar.edu.unrc.game2048.strategy.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import org.junit.jupiter.api.Test;
 
-import ar.edu.unrc.game2048.utils.BoardParser;
+import ar.edu.unrc.game2048.manual.utils.BoardParser;
 public class RegressionGameTest {
     @Test
     public void regressionTestInMoveDownWithBoardNotTrivial(){

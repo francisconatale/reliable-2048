@@ -16,7 +16,7 @@ import java.util.Random;
 
 import ar.edu.unrc.game2048.Board.Direction;
 import ar.edu.unrc.game2048.Board.Position;
-import ar.edu.unrc.game2048.utils.Seeder;
+import ar.edu.unrc.game2048.manual.utils.Seeder;
 public class BoardTest {
     Seeder seeder = new Seeder();
     @Test
