@@ -24,18 +24,14 @@ In this assignment, you will continue working with the *Reliable 2048* project f
 3. Verify the setup:
 ```bash
 mvn clean compile
-mvn test
+# for run all tests
+mvn test 
 
-### Perfiles de Testing (NUEVO)
+# for run specify tests
+mvn test -P manual-tests
+mvn test -P evosuite-tests
+mvn test -P randoop-tests
 
-El proyecto ahora cuenta con los tests organizados en sus respectivos paquetes y separados mediante perfiles de Maven. Para ejecutarlos de forma individual, podés usar:
-
-- **Tests Manuales:** `mvn test -P manual-tests`
-- **Tests EvoSuite:** `mvn test -P evosuite-tests`
-- **Tests Randoop:** `mvn test -P randoop-tests`
-- **Todos los tests:** `mvn test` (o usando `-P all-tests`)
-
-*Nota:* Podés combinar estos comandos con JaCoCo y Pitest para ver la cobertura específica de cada grupo, por ejemplo: `mvn test jacoco:report -P manual-tests`.
 ```
 
 ---
