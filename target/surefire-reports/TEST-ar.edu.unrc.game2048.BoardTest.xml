@@ -103,7 +103,7 @@
   <testcase name="hasEmptyCellsInBoardTest" classname="ar.edu.unrc.game2048.BoardTest" time="0.001">
     <system-out><![CDATA[Score: 0
 +-----+-----+-----+-----+
-|     |     |     |     |
+|     |     |     |   32|
 +-----+-----+-----+-----+
 |     | 1024|     |     |
 +-----+-----+-----+-----+

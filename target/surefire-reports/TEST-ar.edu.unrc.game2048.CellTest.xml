@@ -64,7 +64,7 @@
   <testcase name="nonPowerOfTwoCellFailsRepOk" classname="ar.edu.unrc.game2048.CellTest" time="0.001"/>
   <testcase name="testCellIsNotEmpty" classname="ar.edu.unrc.game2048.CellTest" time="0"/>
   <testcase name="testEmptyCellCannotMerge" classname="ar.edu.unrc.game2048.CellTest" time="0"/>
-  <testcase name="differentCellsCannotMerge" classname="ar.edu.unrc.game2048.CellTest" time="0.001"/>
+  <testcase name="differentCellsCannotMerge" classname="ar.edu.unrc.game2048.CellTest" time="0"/>
   <testcase name="testCellNotEqualsByHash" classname="ar.edu.unrc.game2048.CellTest" time="0.001"/>
   <testcase name="testNonEmptyCellToString" classname="ar.edu.unrc.game2048.CellTest" time="0.001"/>
   <testcase name="validCellValuesSatisfyRepOk" classname="ar.edu.unrc.game2048.CellTest" time="0"/>
