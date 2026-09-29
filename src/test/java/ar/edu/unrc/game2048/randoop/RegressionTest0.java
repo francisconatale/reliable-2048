@@ -1,4 +1,6 @@
-package randoopTests;
+package ar.edu.unrc.game2048.randoop;
+import ar.edu.unrc.game2048.*;
+import ar.edu.unrc.game2048.strategy.*;
 
 import org.junit.FixMethodOrder;
 import org.junit.Test;

@@ -1,4 +1,6 @@
-package ar.edu.unrc.game2048;
+package ar.edu.unrc.game2048.manual;
+import ar.edu.unrc.game2048.*;
+import ar.edu.unrc.game2048.strategy.*;
 import org.junit.jupiter.api.Test;
 import static org.junit.jupiter.api.Assertions.*;
 public class CellTest{

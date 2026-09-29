@@ -1,4 +1,6 @@
-package ar.edu.unrc.game2048.utils;
+package ar.edu.unrc.game2048.manual.utils;
+import ar.edu.unrc.game2048.*;
+import ar.edu.unrc.game2048.strategy.*;
 import ar.edu.unrc.game2048.Board;
 import ar.edu.unrc.game2048.Cell;
 public class BoardParser {
