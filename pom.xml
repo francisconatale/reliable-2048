@@ -42,12 +42,6 @@
                 </executions>
             </plugin>
             <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0</version>
-            </plugin>
-
-            <plugin>
                 <groupId>org.pitest</groupId>
                 <artifactId>pitest-maven</artifactId>
                 <version>1.15.0</version>
@@ -63,11 +57,11 @@
                         <param>ar.edu.unrc.game2048.*</param>
                     </targetClasses>
                     <targetTests>
-                        <param>ar.edu.unrc.game2048.*Test</param>
-                        <param>ar.edu.unrc.game2048.*Tests</param>
-                        <param>randoopTests.*Tests</param>
-                        <param>randoopTests.*Test</param>
-                        <param>evosuite.*Test</param>
+                        <param>ar.edu.unrc.game2048.manual.*Test</param>
+                        <param>ar.edu.unrc.game2048.manual.*Tests</param>
+                        <param>ar.edu.unrc.game2048.randoop.*Tests</param>
+                        <param>ar.edu.unrc.game2048.randoop.*Test</param>
+                        <param>ar.edu.unrc.game2048.evosuite.*Test</param>
                     </targetTests>
                     <threads>4</threads>
                     <timestampedReports>false</timestampedReports>
@@ -75,18 +69,6 @@
                         <format>HTML</format>
                         <format>XML</format>
                     </outputFormats>
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>3.0.0-M9</version>
-                <configuration>
-                    <includes>
-                        <include>**/RegressionTest*.java</include>
-                        <include>**/ErrorTest*.java</include>
-                        <include>**/*Test.java</include>
-                    </includes>
                 </configuration>
             </plugin>
             <plugin>
@@ -102,6 +84,90 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <!-- Profile for running only manual tests -->
+        <profile>
+            <id>manual-tests</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>3.0.0-M9</version>
+                        <configuration>
+                            <includes>
+                                <include>**/manual/**/*Test.java</include>
+                                <include>**/manual/**/*Tests.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- Profile for running only EvoSuite tests -->
+        <profile>
+            <id>evosuite-tests</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>3.0.0-M9</version>
+                        <configuration>
+                            <includes>
+                                <include>**/evosuite/**/*_ESTest.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- Profile for running only Randoop tests -->
+        <profile>
+            <id>randoop-tests</id>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>3.0.0-M9</version>
+                        <configuration>
+                            <includes>
+                                <include>**/randoop/**/*Test*.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <!-- Default profile to run all tests -->
+        <profile>
+            <id>all-tests</id>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-surefire-plugin</artifactId>
+                        <version>3.0.0-M9</version>
+                        <configuration>
+                            <includes>
+                                <include>**/manual/**/*Test.java</include>
+                                <include>**/evosuite/**/*_ESTest.java</include>
+                                <include>**/randoop/**/*Test*.java</include>
+                            </includes>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 
     <dependencies>
         <dependency>
@@ -136,7 +202,7 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Mockito (Usamos mockito-core en lugar de mockito-inline para evitar conflictos con el agente de EvoSuite) -->
+        <!-- Mockito -->
         <dependency>
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>

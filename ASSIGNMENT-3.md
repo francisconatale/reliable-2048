@@ -24,7 +24,14 @@ In this assignment, you will continue working with the *Reliable 2048* project f
 3. Verify the setup:
 ```bash
 mvn clean compile
-mvn test
+# for run all tests
+mvn test 
+
+# for run specify tests
+mvn test -P manual-tests
+mvn test -P evosuite-tests
+mvn test -P randoop-tests
+
 ```
 
 ---

@@ -4,7 +4,9 @@
  * Tue Sep 22 20:10:11 GMT 2026
  */
 
-package ar.edu.unrc.game2048;
+package ar.edu.unrc.game2048.evosuite;
+import ar.edu.unrc.game2048.*;
+import ar.edu.unrc.game2048.strategy.*;
 
 import org.evosuite.runtime.annotation.EvoSuiteClassExclude;
 import org.junit.BeforeClass;
