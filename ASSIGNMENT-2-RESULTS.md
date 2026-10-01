@@ -34,6 +34,21 @@ La suite de tests manuales contiene actualmente 96 tests y finaliza sin fallos
 
 El reporte se genera en `target/site/jacoco/index.html`
 
+### Mutation testing con PITest (Test manuales)
+
+**Project Summary**
+
+| Number of Classes | Line Coverage | Mutation Coverage | Test Strength |
+| :--- | :---: | :---: | :---: |
+| 11 | 99%<br>273/274 | 99%<br>214/215 | 100%<br>214/214 |
+
+**Breakdown by Package**
+
+| Name | Number of Classes | Line Coverage | Mutation Coverage | Test Strength |
+| :--- | :---: | :---: | :---: | :---: |
+| `ar.edu.unrc.game2048` | 5 | 99%<br>197/198 | 99%<br>167/168 | 100%<br>167/167 |
+| `ar.edu.unrc.game2048.strategy` | 6 | 100%<br>76/76 | 100%<br>47/47 | 100%<br>47/47 |
+
 ### Mejora respecto de los primeros resultados
 
 - Instrucciones: 85.48% -> 99.73% (`+14.25%`)

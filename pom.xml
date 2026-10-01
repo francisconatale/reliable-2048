@@ -56,13 +56,6 @@
                     <targetClasses>
                         <param>ar.edu.unrc.game2048.*</param>
                     </targetClasses>
-                    <targetTests>
-                        <param>ar.edu.unrc.game2048.manual.*Test</param>
-                        <param>ar.edu.unrc.game2048.manual.*Tests</param>
-                        <param>ar.edu.unrc.game2048.randoop.*Tests</param>
-                        <param>ar.edu.unrc.game2048.randoop.*Test</param>
-                        <param>ar.edu.unrc.game2048.evosuite.*Test</param>
-                    </targetTests>
                     <threads>4</threads>
                     <timestampedReports>false</timestampedReports>
                     <outputFormats>
@@ -102,6 +95,16 @@
                             </includes>
                         </configuration>
                     </plugin>
+                    <plugin>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-maven</artifactId>
+                        <configuration>
+                            <targetTests>
+                                <param>ar.edu.unrc.game2048.manual.*Test</param>
+                                <param>ar.edu.unrc.game2048.manual.*Tests</param>
+                            </targetTests>
+                        </configuration>
+                    </plugin>
                 </plugins>
             </build>
         </profile>
@@ -121,6 +124,15 @@
                             </includes>
                         </configuration>
                     </plugin>
+                    <plugin>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-maven</artifactId>
+                        <configuration>
+                            <targetTests>
+                                <param>ar.edu.unrc.game2048.evosuite.*Test</param>
+                            </targetTests>
+                        </configuration>
+                    </plugin>
                 </plugins>
             </build>
         </profile>
@@ -138,6 +150,15 @@
                             <includes>
                                 <include>**/randoop/**/*Test*.java</include>
                             </includes>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-maven</artifactId>
+                        <configuration>
+                            <targetTests>
+                                <param>ar.edu.unrc.game2048.randoop.*Test*</param>
+                            </targetTests>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -162,6 +183,18 @@
                                 <include>**/evosuite/**/*_ESTest.java</include>
                                 <include>**/randoop/**/*Test*.java</include>
                             </includes>
+                        </configuration>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.pitest</groupId>
+                        <artifactId>pitest-maven</artifactId>
+                        <configuration>
+                            <targetTests>
+                                <param>ar.edu.unrc.game2048.manual.*Test</param>
+                                <param>ar.edu.unrc.game2048.manual.*Tests</param>
+                                <param>ar.edu.unrc.game2048.randoop.*Test*</param>
+                                <param>ar.edu.unrc.game2048.evosuite.*Test</param>
+                            </targetTests>
                         </configuration>
                     </plugin>
                 </plugins>
