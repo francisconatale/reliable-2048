@@ -22,7 +22,7 @@ import org.evosuite.runtime.Random;
 import org.evosuite.runtime.mock.java.util.MockRandom;
 import org.junit.runner.RunWith;
 
-@RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = true, useVNET = true, resetStaticState = true, separateClassLoader = false, useJEE = true) 
+@RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = false, useVNET = false, resetStaticState = false, separateClassLoader = false, useJEE = false) 
 public class Board_ESTest extends Board_ESTest_scaffolding {
 
   @Test(timeout = 4000)
