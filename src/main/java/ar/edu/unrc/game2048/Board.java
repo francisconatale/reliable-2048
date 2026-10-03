@@ -8,6 +8,7 @@ import java.util.Set;
 
 import ar.edu.unrc.game2048.strategy.Move;
 import ar.edu.unrc.game2048.strategy.MoveProvider;
+import randoop.CheckRep;
 
 /**
  * Represents the 2048 game board.
@@ -22,7 +23,7 @@ import ar.edu.unrc.game2048.strategy.MoveProvider;
  * Thread-safety: This class is not thread-safe.
  */
 public class Board {
-    public MoveProvider moveProvider = new MoveProvider();
+    private MoveProvider moveProvider = new MoveProvider();
     /**
      * Board default number of rows/columns (4 x 4)
      */
@@ -68,6 +69,10 @@ public class Board {
         this(size, determinist, new java.util.Random());
     }
 
+    public static Board forTesting(int size) {
+        return new Board(size, true, new java.util.Random(42L));
+    }
+
     public Board(int size, boolean determinist, java.util.Random random) {
         if (size <= 0) {
             throw new IllegalArgumentException("Board size must be positive: " + size);
@@ -101,6 +106,7 @@ public class Board {
 
     public Cell[][] getGrid(){ return grid; }
 
+    @CheckRep
     public boolean repOK() {
         if (size <= 0 || grid == null || grid.length != size
                 || score == null || random == null || moveProvider == null) {
@@ -297,7 +303,7 @@ public class Board {
 
     @Override
     public int hashCode() {
-        return Objects.hash(size, Arrays.deepHashCode(grid), score);
+        return Objects.hash(size, Arrays.deepHashCode(grid), score.getScore());
     }
 
     /**
@@ -329,7 +335,20 @@ public class Board {
         return sb.toString();
     }
 
+    public void setMoveProvider(MoveProvider moveProvider) {
+        if (moveProvider == null) {
+            throw new IllegalArgumentException("moveProvider no puede ser null");
+        }
+        this.moveProvider = moveProvider;
+    }
+
     public boolean move(Direction direction) {
+        if (direction == null) {
+            throw new IllegalArgumentException("direction no puede ser null");
+        }
+        if (moveProvider == null) {
+            throw new IllegalStateException("moveProvider no puede ser null");
+        }
         Board previous = new Board(this);
         Move move = moveProvider.provide(direction);
         move.execute(this, grid, score);

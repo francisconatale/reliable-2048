@@ -2,6 +2,8 @@ package ar.edu.unrc.game2048;
 
 import java.util.Objects;
 
+import randoop.CheckRep;
+
 /**
  * Represents a single cell in the 2048 game board.
  * A cell is either empty (value = 0) or contains a power of two (2, 4, 8, ...).
@@ -34,6 +36,11 @@ public final class Cell {
         if (value < 0) {
             throw new IllegalArgumentException("Cell value cannot be negative: " + value);
         }
+
+        if (value != 0 && Integer.bitCount(value) != 1) {
+            throw new IllegalArgumentException("Cell value must be 0 or a power of two: " + value);
+        }
+        
         this.value = value;
     }
     
@@ -55,6 +62,7 @@ public final class Cell {
         return value;
     }
 
+    @CheckRep
     public boolean repOK() {
         return value == 0 || Integer.bitCount(value) == 1;
     }
@@ -67,7 +75,10 @@ public final class Cell {
      * @return true if the cells can merge, false otherwise
      */
     public boolean canMergeWith(Cell other) {
-        if (this.isEmpty() && other.isEmpty()) {
+        if (other == null) {
+            throw new IllegalArgumentException("other no puede ser null");
+        }
+        if (this.isEmpty() || other.isEmpty()) {
             return false;
         }
         return this.value == other.value;
@@ -82,6 +93,9 @@ public final class Cell {
      * @throws IllegalArgumentException if the cells cannot be merged
      */
     public Cell mergeWith(Cell other) {
+        if (other == null) {
+            throw new IllegalArgumentException("other no puede ser null");
+        }
         if (!canMergeWith(other)) {
             throw new IllegalArgumentException(
                 "Cannot merge cells: " + this + " and " + other
