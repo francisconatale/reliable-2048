@@ -65,6 +65,9 @@ public class MainCLI {
                     System.out.println("Invalid input! Use W, A, S, D, or Q.");
                     continue;
             }
+
+            // Para el fuzzer con -ea (assertions activadas), descomentar la siguiente linea
+            // assert board.repOK() : "repOK de Board violado despues de move(" + input + ")";
             
             if (moved) {
                 System.out.println("Tile moved!");

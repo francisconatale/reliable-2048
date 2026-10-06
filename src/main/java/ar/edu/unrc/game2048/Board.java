@@ -133,6 +133,9 @@ public class Board {
      * @param other the board to copy
      */
     public Board(Board other) {
+        if (other == null) {
+            throw new IllegalArgumentException("other no puede ser null");
+        }
         this.size = other.size;
         this.grid = new Cell[size][size];
         this.score = other.score;

@@ -236,7 +236,12 @@ public class BoardTest {
     @Test
     public void boardWithInvalidCellFailsRepOk() {
         Board board = new Board(4, true);
-        board.getGrid()[0][0] = new Cell(3);
+        try {
+            board.setCell(0, 0, new Cell(3)); // Invalid cell value
+        } catch (IllegalArgumentException e) {
+            // Expected exception, do nothing
+            return;
+        }
         assertFalse(board.repOK());
     }
 

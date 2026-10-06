@@ -48,6 +48,9 @@ class CLIRunner(Runner):
     """
 
     COMMAND = ['java', '-cp', './target/classes', 'ar.edu.unrc.game2048.MainCLI']
+    # Para ejecutar con assertions activadas, descomentar la siguiente linea y comentar la anterior
+    # COMMAND = ['java', '-ea', '-cp', './target/classes', 'ar.edu.unrc.game2048.MainCLI']
+
     TIMEOUT = 10  # seconds
 
     def run(self, inp: str) -> Tuple[subprocess.CompletedProcess, str]:

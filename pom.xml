@@ -85,6 +85,16 @@
             <build>
                 <plugins>
                     <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <version>0.8.10</version>
+                        <configuration>
+                            <outputDirectory>target/site/jacoco-manual</outputDirectory>
+                            <destFile>target/jacoco-manual.exec</destFile>
+                            <dataFile>target/jacoco-manual.exec</dataFile>
+                        </configuration>
+                    </plugin>
+                    <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
                         <version>3.0.0-M9</version>
@@ -103,6 +113,7 @@
                                 <param>ar.edu.unrc.game2048.manual.*Test</param>
                                 <param>ar.edu.unrc.game2048.manual.*Tests</param>
                             </targetTests>
+                            <reportsDirectory>${project.build.directory}/pit-reports-manual</reportsDirectory>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -114,6 +125,16 @@
             <id>evosuite-tests</id>
             <build>
                 <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <version>0.8.10</version>
+                        <configuration>
+                            <outputDirectory>target/site/jacoco-evosuite</outputDirectory>
+                            <destFile>target/jacoco-evosuite.exec</destFile>
+                            <dataFile>target/jacoco-evosuite.exec</dataFile>
+                        </configuration>
+                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
@@ -131,6 +152,7 @@
                             <targetTests>
                                 <param>ar.edu.unrc.game2048.evosuite.*Test</param>
                             </targetTests>
+                            <reportsDirectory>${project.build.directory}/pit-reports-evosuite</reportsDirectory>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -142,6 +164,16 @@
             <id>randoop-tests</id>
             <build>
                 <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <version>0.8.10</version>
+                        <configuration>
+                            <outputDirectory>target/site/jacoco-randoop</outputDirectory>
+                            <destFile>target/jacoco-randoop.exec</destFile>
+                            <dataFile>target/jacoco-randoop.exec</dataFile>
+                        </configuration>
+                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
@@ -159,6 +191,7 @@
                             <targetTests>
                                 <param>ar.edu.unrc.game2048.randoop.*Test*</param>
                             </targetTests>
+                            <reportsDirectory>${project.build.directory}/pit-reports-randoop</reportsDirectory>
                         </configuration>
                     </plugin>
                 </plugins>
@@ -173,6 +206,16 @@
             </activation>
             <build>
                 <plugins>
+                    <plugin>
+                        <groupId>org.jacoco</groupId>
+                        <artifactId>jacoco-maven-plugin</artifactId>
+                        <version>0.8.10</version>
+                        <configuration>
+                            <outputDirectory>target/site/jacoco-all</outputDirectory>
+                            <destFile>target/jacoco-all.exec</destFile>
+                            <dataFile>target/jacoco-all.exec</dataFile>
+                        </configuration>
+                    </plugin>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-surefire-plugin</artifactId>
@@ -195,6 +238,7 @@
                                 <param>ar.edu.unrc.game2048.randoop.*Test*</param>
                                 <param>ar.edu.unrc.game2048.evosuite.*Test</param>
                             </targetTests>
+                            <reportsDirectory>${project.build.directory}/pit-reports-all</reportsDirectory>
                         </configuration>
                     </plugin>
                 </plugins>

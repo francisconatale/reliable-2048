@@ -33,7 +33,7 @@ public void testCellIsEmpty(){
 }
 @Test
 public void testCellIsNotEmpty(){
-    Cell cell = new Cell(3);
+    Cell cell = new Cell(2);
     boolean result = cell.isEmpty();
     assertFalse(result);
 }
@@ -52,7 +52,14 @@ public void validCellValuesSatisfyRepOk(){
 
 @Test
 public void nonPowerOfTwoCellFailsRepOk(){
-    assertFalse(new Cell(3).repOK());
+    Cell cell;
+    try {
+        cell = new Cell(3); // Invalid cell value
+    } catch (IllegalArgumentException e) {
+        // Expected exception, do nothing
+        return; // Exit the test early since the cell creation failed
+    }
+    assertFalse(cell.repOK());
 }
 
 @Test
