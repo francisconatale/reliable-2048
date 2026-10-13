@@ -12,34 +12,34 @@ Proyecto de testing y verificación del juego **2048**, desarrollado a lo largo 
 
 ```text
 reliable-2048/
-├── docs/                               # Consignas originales y guías
+├── docs/                              
 │   ├── ASSIGNMENT-1.md
 │   ├── ASSIGNMENT-2.md
 │   ├── ASSIGNMENT-3.md
 │   ├── ASSIGNMENT-4.md
 │   └── Command-Guide.md
 │
-├── reports/                            # Informes y entregables de cada asignación
-│   ├── report-assignment-2.md          # Resultados de Randoop, PITest y repOK
-│   ├── report-assignment-3.md          # Comparativa integral (Manual vs Randoop vs EvoSuite vs Fuzzer)
-│   └── report-assignment-4.md          # Inferencia de invariantes con Daikon (en progreso)
+├── reports/                            # informes y entregables de cada asignación
+│   ├── report-assignment-2.md          # resultados de Randoop, PITest y repOK
+│   ├── report-assignment-3.md          # comparativa integral
+│   └── report-assignment-4.md          # inferencia de invariantes con Daikon (en progreso)
 │
-├── scripts/                            # Scripts de automatización y herramientas
-│   ├── run-evosuite.sh                 # Generación y adecuación de tests con EvoSuite
-│   ├── fuzzer.py                       # Fuzzer CLI (Fuzzing Book)
-│   └── cuts-file.txt                   # Clases objetivo (Classes Under Test)
+├── scripts/                            # 
+│   ├── run-evosuite.sh                 # generacion de tests con randoop
+│   ├── fuzzer.py                       # Fuzzer CLI 
+│   └── cuts-file.txt                   # clases para generar tests con evosuite
 │
-├── recordings/                         # Registros de ejecución, métricas y reportes HTML
-│   ├── assignment-1-baseline/          # Línea base de cobertura y mutación
-│   ├── assignment-3/                   # Reportes de JaCoCo, PITest y resultados de fuzzing
+├── recordings/                         # registros de ejecución, métricas y reportes HTML
+│   ├── assignment-1-baseline/          # línea base de cobertura y mutación
+│   ├── assignment-3/                   # reportes de JaCoCo, PITest y resultados de fuzzing
 │   │   ├── metrics/                    # CSVs de cobertura
-│   │   ├── pit-reports-*/              # Reportes de mutación (manual, randoop, evosuite)
-│   │   └── site/                       # Reportes HTML JaCoCo
-│   └── assignment-4/                   # Traces e invariantes de Daikon
+│   │   ├── pit-reports-*/              # reportes de mutación (manual, randoop, evosuite)
+│   │   └── site/                       # reportes HTML JaCoCo
+│   └── assignment-4/                   # traces e invariantes de Daikon
 │
-├── src/                                # Código fuente y suites de tests (manual, randoop, evosuite)
-├── lib/                                # Dependencias JAR externas (Randoop, Daikon)
-└── pom.xml                             # Configuración de Maven y perfiles de testing
+├── src/                                # código fuente y suites de tests
+├── lib/                                # dependencias JAR externas
+└── pom.xml                             # configuración de Maven y perfiles de testing
 ```
 
 ---
@@ -53,13 +53,11 @@ mvn clean compile
 
 ### Ejecución de Tests por Perfiles
 ```bash
-# tests manuales
+
 mvn test -P manual-tests
 
-# tests generados con Randoop
 mvn test -P randoop-tests
 
-# Tests generados con EvoSuite
 mvn test -P evosuite-tests
 ```
 
