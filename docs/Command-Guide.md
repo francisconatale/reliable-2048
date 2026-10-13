@@ -68,7 +68,7 @@ validación, pero no genera regression tests (por eso `--no-regression-tests=tru
 ## 3. Generar tests con EvoSuite
  
 ```bash
-./runEvosuite.sh
+./scripts/run-evosuite.sh
 ```
  
 El script:
@@ -169,10 +169,10 @@ El comando devuelve la salida en la terminal por lo que se agrega
 ` > fuzzer-results.txt` para generar la salida en ese archivo.
  
 ```bash
-python3 fuzzer.py > fuzzer-results.txt
+python3 scripts/fuzzer.py > recordings/assignment-3/fuzzer-results.txt
 ```
  
-Para la variante con `repOK()` activado vía assertions, editar `fuzzer.py`
+Para la variante con `repOK()` activado vía assertions, editar `scripts/fuzzer.py`
 (dentro del runner comentar y descomentar las lineas 50 y 52) para que invoque:
 
 ```python
@@ -182,5 +182,5 @@ Para la variante con `repOK()` activado vía assertions, editar `fuzzer.py`
 y dentro de `MainCLI.java` descomentar la linea 70 y luego correr con:
 
 ```bash
-python3 fuzzer.py > fuzzer-results-ea.txt
+python3 scripts/fuzzer.py > recordings/assignment-3/fuzzer-results-ea.txt
 ```
