@@ -1,8 +1,8 @@
 package ar.edu.unrc.game2048.manual;
 import ar.edu.unrc.game2048.*;
 import ar.edu.unrc.game2048.strategy.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import org.junit.jupiter.api.Test;
+import static org.junit.Assert.assertEquals;
+import org.junit.Test;
 
 import ar.edu.unrc.game2048.manual.utils.BoardParser;
 public class RegressionGameTest {

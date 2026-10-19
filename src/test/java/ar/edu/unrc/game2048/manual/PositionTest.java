@@ -2,10 +2,10 @@ package ar.edu.unrc.game2048.manual;
 import ar.edu.unrc.game2048.*;
 import ar.edu.unrc.game2048.strategy.*;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 import ar.edu.unrc.game2048.Board.Position;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.Assert.*;
 
 public class PositionTest {
     @Test

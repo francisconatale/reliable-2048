@@ -1,8 +1,8 @@
 package ar.edu.unrc.game2048.manual;
 import ar.edu.unrc.game2048.*;
 import ar.edu.unrc.game2048.strategy.*;
-import org.junit.jupiter.api.Test;
-import static org.junit.jupiter.api.Assertions.*;
+import org.junit.Test;
+import static org.junit.Assert.*;
 public class CellTest{
 @Test
 public void differentCellsCannotMerge(){

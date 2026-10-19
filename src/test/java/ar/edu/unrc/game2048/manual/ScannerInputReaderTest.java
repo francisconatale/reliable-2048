@@ -2,12 +2,12 @@ package ar.edu.unrc.game2048.manual;
 import ar.edu.unrc.game2048.*;
 import ar.edu.unrc.game2048.strategy.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertThrows;
 
 import java.util.Scanner;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 public class ScannerInputReaderTest {
 

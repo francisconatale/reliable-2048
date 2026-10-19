@@ -2,10 +2,10 @@ package ar.edu.unrc.game2048.manual;
 import ar.edu.unrc.game2048.*;
 import ar.edu.unrc.game2048.strategy.*;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertTrue;
 
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import ar.edu.unrc.game2048.Board.Direction;
 
