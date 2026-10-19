@@ -1,0 +1,9 @@
+1. comando para generar traza (corre chicory y dumpea la traza para las clases que le indiquemos)
+    ./run-daikon.sh {ar.edu.unrc.game2048.profile.class}
+ e.g = ./run-daikon.sh ar.edu.unrc.game2048.manual.BoardTest
+
+2. inferir los invariantes a partir de la traza 
+    java -cp lib/daikon.jar daikon.Daikon daikon-traces/JUnitCore.dtrace.gz > daikon-output.txt
+  
+3. ver que dedujo daikon
+    cat daikon-output.txt
