@@ -28,9 +28,11 @@ echo "Ejecutando Chicory para: ${TEST_CLASSES[*]}..."
 java -cp "$FULL_CP" \
     daikon.Chicory \
     --ppt-select-pattern="ar.edu.unrc.game2048.Board|ar.edu.unrc.game2048.Cell" \
+    --ppt-omit-pattern=".*Position.*" \
+    --sample-start=500 \
     --output-dir=daikon-traces \
     org.junit.runner.JUnitCore \
-    "${TEST_CLASSES[@]}"
+    "${TEST_CLASSES[@]}" || true
 
 echo ""
 echo "¡Traza generada con éxito en daikon-traces/JUnitCore.dtrace.gz!"

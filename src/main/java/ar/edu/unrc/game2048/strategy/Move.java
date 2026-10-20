@@ -4,7 +4,6 @@ import ar.edu.unrc.game2048.Board;
 import ar.edu.unrc.game2048.Cell;
 import ar.edu.unrc.game2048.Score;
 
-import javax.swing.*;
 import java.util.*;
 
 public abstract class Move {
