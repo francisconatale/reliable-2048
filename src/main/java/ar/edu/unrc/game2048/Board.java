@@ -112,13 +112,21 @@ public class Board {
                 || score == null || random == null || moveProvider == null) {
             return false;
         }
+
+        
         for (int row = 0; row < size; row++) {
             if (grid[row] == null || grid[row].length != size) {
                 return false;
             }
+
+            
             for (int column = 0; column < size; column++) {
                 if (grid[row][column] == null || !grid[row][column].repOK()) {
                     return false;
+                }
+
+                if (grid[row][column].isEmpty() && grid[row][column] != Cell.EMPTY) {
+                       return false; // Violación de unicidad de instancia vacía
                 }
             }
         }

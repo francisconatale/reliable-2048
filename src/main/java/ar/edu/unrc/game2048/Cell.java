@@ -64,7 +64,11 @@ public final class Cell {
 
     @CheckRep
     public boolean repOK() {
-        return value == 0 || Integer.bitCount(value) == 1;
+        if(value == 0){
+           return this == Cell.EMPTY; 
+        }
+        
+        return value > 0 && Integer.bitCount(value) == 1;
     }
     
     /**
