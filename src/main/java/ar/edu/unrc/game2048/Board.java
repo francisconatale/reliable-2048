@@ -44,7 +44,6 @@ public class Board {
      */
     private final Cell[][] grid;
 
-    private List<Position> emptyCells;
     /**
      * Game accumulated score.
      */
@@ -146,7 +145,7 @@ public class Board {
         }
         this.size = other.size;
         this.grid = new Cell[size][size];
-        this.score = other.score;
+        this.score = new Score(other.score.getScore());
         this.random = other.random;
         for (int r = 0; r < size; r++) {
             for (int c = 0; c < size; c++) {
