@@ -155,6 +155,7 @@ De acuerdo con las directrices de la Fase 3.2, cada invariante inferido se clasi
 - **Razonamiento y Justificación:**
   - *Significado en el dominio:* Falso invariante producido por sobreajuste (*overfitting*). Aparece porque en la traza específica capturada durante la prueba unitaria solo se ejercitaron fusiones elementales con fichas iniciales de valor 2.
   - *Contraejemplo que lo rompe:* Cualquier partida real donde se fusionen fichas de mayor denominación (por ejemplo, $4 + 4 \rightarrow 8$ o $1024 + 1024 \rightarrow 2048$) viola este invariante. La postcondición correcta y generalizada debería ser: `return.value == orig(this.value) * 2`.
+ - *Solucion*: se agregaron tests parametrizados incluyendo mas situaciones, asi logrando que daikon deduzca que formalmente nuestro mergeWith siempre devuelva el doble de lo hecho
 
 ---
 
@@ -250,6 +251,7 @@ De acuerdo con las directrices de la Fase 3.2, cada invariante inferido se clasi
 | **`Board`** | `Board.getSize:::EXIT` | `return == this.size` | **Correct but trivial** |
 | **`Board`** | `Board.isFull:::EXIT` | `(return == true) ==> (this.determinist == false)` | **Too strong / likely spurious** |
 
+Posteriormente a estos resultados, se fixearon los invariantes **Too strong / likely spurious** con mas casos de test
 ---
 
 ## 4. Comparación con `repOK()` y Especificaciones Previas
