@@ -376,18 +376,16 @@ A pesar de su exhaustividad, Daikon presentó limitaciones intrínsecas frente a
 
 ### Justificación y Conclusión: ¿Qué enfoque produjo los oráculos más útiles para la clase `Board`?
 
-En retrospectiva sobre la clase `Board`, **todos los enfoques fueron indispensables y aportaron un valor crucial en sus respectivas dimensiones**, complementándose entre sí:
+Todos los enfoques fueron importantes y complementarios en distintas etapas del desarrollo:
 
-1. **Los tests manuales** permitieron en la etapa inicial comprender el dominio, replicar partidas y corregir fallos lógicos elementales en el tablero.
-2. **`Board.repOK()`** estableció la barrera de defensa estructural continua más sólida: un oráculo universal activo antes y después de cada operación que garantizó que nunca existiesen matrices deformadas, filas nulas o valores corruptos.
-3. **Randoop y EvoSuite** aportaron la exploración automatizada y la cobertura masiva de caminos y ramas complejas (especialmente en `isLosingBoard` y `move`), generando las trazas ricas y variadas indispensables para alimentar a las herramientas dinámicas.
-4. **Haciendo especial hincapié en Daikon:** Su aporte diferencial no fue solo formalizar contratos matemáticos o precondiciones de entrada, sino que **fue la única herramienta que nos permitió ver problemas profundos de manejo de referencias y comportamientos incorrectos en el diseño de objetos**:
-   - **Aliasing crítico en el constructor de copia (`Board(Board other)`):** Daikon detectó que `this.score == other.score` y `this.random == other.random`. Reveló que la supuesta copia profunda estaba compartiendo exactamente las mismas instancias físicas de objetos mutables en memoria, haciendo que mutar el puntaje en la copia alterara silenciosamente el tablero original y falseara el chequeo de movimiento en `move()` (`!this.equals(previous)`).
-   - **Unicidad de referencias en celdas vacías (`Cell.EMPTY`):** Hizo evidente que todas las celdas vacías válidas comparten la misma identidad canónica en memoria (`== Cell.EMPTY`), lo que permitió extender `repOK()` para verificar integridad referencial (Flyweight).
-   - **Fuga de representación interna (*representation exposure*):** Evidenció mediante `return == this.grid` que `getGrid()` entregaba la referencia directa al arreglo mutable sin encapsulamiento ni copia defensiva.
-   - **Detección de atributos muertos:** Expuso que el campo `emptyCells` era un residuo inerte que siempre quedaba en `null`.
-
-En conclusión, la confiabilidad no provino de una técnica aislada, sino de la articulación de todas: la generación masiva (Randoop/EvoSuite) alimentó a la inferencia formal (Daikon), la cual descubrió fallas de referencias y contratos para perfeccionar los oráculos manuales y el invariante de representación (`repOK()`).
+1. **Tests manuales:** Clave en la etapa inicial para replicar partidas reales y corregir errores lógicos de negocio (como inconsistencias al reorganizar o compactar celdas).
+2. **`Board.repOK()`:** El oráculo estructural más sólido; garantizó continuamente la validez del estado interno (matrices cuadradas consistentes, sin filas nulas ni valores ilegales).
+3. **Randoop y EvoSuite:** Aportaron la cobertura de ramas y el volumen de trazas necesario para evitar sobreajustes en Daikon (especialmente en caminos complejos de `isLosingBoard` y `move`).
+4. **Daikon (hincapié en manejo de referencias):** Su gran aporte fue revelar problemas sutiles de referencias y defectos de diseño que los demás oráculos no detectaban:
+   - **Aliasing en copia (`Board(Board)`):** Descubrió que el constructor de copia compartía las mismas instancias en memoria de `score` y `random`.
+   - **Unicidad de `Cell.EMPTY`:** Reveló que toda celda vacía comparte la misma identidad canónica (Flyweight), permitiendo reforzar `repOK()`.
+   - **Fuga de representación:** Evidenció que `getGrid()` entregaba directamente la matriz interna mutable sin protección.
+   - **Código muerto:** Identificó que el campo `emptyCells` era un residuo zombi que siempre quedaba en `null`.
 
 ---
 
@@ -422,160 +420,3 @@ for (int row = 0; row < size; row++) {
 }
 ```
 Esto asegura que la optimización de memoria sea respetada por cualquier método que modifique o inicialice el tablero.
-
----
-
-## 7. Catálogo de Hallazgos y Defectos Detectados para Corrección (Actionable Findings & Fixes)
-
-Esta sección recopila los defectos concretos de diseño, bugs latentes y violaciones de encapsulamiento descubiertos a través de la inferencia de Daikon en la clase `Board`, proporcionando para cada uno el diagnóstico, la evidencia en la traza y el código exacto para corregirlo (*fix*).
-
----
-
-### Hallazgo 1: Aliasing de objeto mutable `score` en el constructor de copia
-- **Evidencia en Daikon:**
-  ```text
-  ar.edu.unrc.game2048.Board.Board(ar.edu.unrc.game2048.Board):::EXIT
-  this.score == other.score
-  this.score == orig(other.score)
-  ```
-- **Diagnóstico del problema:**
-  El constructor de copia declara realizar una copia profunda (*deep copy*), pero asigna directamente la referencia del objeto mutable `Score`: `this.score = other.score;`. 
-  Dado que `Score` posee métodos mutadores como `increaseScore` y `setScore`, ambas instancias de `Board` comparten la misma instancia física de puntaje en memoria.
-  Esto causa un bug sutil en `move()`:
-  ```java
-  Board previous = new Board(this);
-  Move move = moveProvider.provide(direction);
-  move.execute(this, grid, score); // ¡Al mutar score, también muta previous.score!
-  boolean moved = !this.equals(previous);
-  ```
-  Al comparar `this.equals(previous)`, `previous.score.getScore()` siempre coincidirá con `this.score.getScore()`, comprometiendo la verificación de igualdad.
-- **Fix propuesto en `Board.java` (Constructor de copia):**
-  ```java
-  // Reemplazar:
-  // this.score = other.score;
-  
-  // Por una copia independiente:
-  this.score = new Score(other.score.getScore());
-  ```
-
----
-
-### Hallazgo 2: Acoplamiento del generador de números aleatorios (`Random`) entre tableros
-- **Evidencia en Daikon:**
-  ```text
-  ar.edu.unrc.game2048.Board.Board(ar.edu.unrc.game2048.Board):::EXIT
-  this.random == other.random
-  this.random == orig(other.random)
-  ```
-- **Diagnóstico del problema:**
-  En el constructor de copia se comparte la referencia al generador pseudoaleatorio `this.random = other.random;`. Si el tablero original o la copia realizan llamadas a `addRandomTile()`, el estado interno de la semilla en `java.util.Random` avanza de manera compartida, provocando interferencia e impredecibilidad entre partidas o simulaciones que deberían ser independientes.
-- **Fix propuesto en `Board.java` (Constructor de copia):**
-  ```java
-  // Reemplazar:
-  // this.random = other.random;
-  
-  // Por una nueva instancia de Random:
-  this.random = new java.util.Random();
-  ```
-
----
-
-### Hallazgo 4: Fuga de encapsulamiento / Escape de representación mutable en `getGrid()`
-- **Evidencia en Daikon:**
-  ```text
-  ar.edu.unrc.game2048.Board.getGrid():::EXIT
-  return == this.grid
-  return != null
-  ```
-- **Diagnóstico del problema:**
-  El método público `getGrid()` retorna la referencia directa al arreglo bidimensional interno (`Cell[][]`). Esto permite a cualquier cliente externo o test eludir los métodos de control de `Board` y mutar directamente la grilla (`board.getGrid()[0][0] = new Cell(-99)`), violando tanto la inmutabilidad de la estructura como los invariantes chequeados por `repOK()`.
-- **Fix propuesto en `Board.java`:**
-  Retornar una copia defensiva profunda del arreglo bidimensional:
-  ```java
-  public Cell[][] getGrid() {
-      Cell[][] copy = new Cell[size][size];
-      for (int r = 0; r < size; r++) {
-          System.arraycopy(grid[r], 0, copy[r], 0, size);
-      }
-      return copy;
-  }
-  ```
-
----
-
-### Hallazgo 5: Ausencia de validación defensiva en `setScore(int value)`
-- **Evidencia en Daikon:**
-  ```text
-  ar.edu.unrc.game2048.Board.setScore(int):::ENTER
-  value >= 0
-  ```
-- **Diagnóstico del problema:**
-  Daikon observó que en ejecuciones normales el valor pasado a `setScore` siempre es no negativo. No obstante, `Board.java:373` carece de verificación defensiva:
-  ```java
-  public void setScore(int value) { score.setScore(value); }
-  ```
-  Si un llamador invoca `board.setScore(-500)`, el tablero entra en un estado corrupto con puntaje negativo.
-- **Fix propuesto en `Board.java`:**
-  ```java
-  public void setScore(int value) {
-      if (value < 0) {
-          throw new IllegalArgumentException("Score cannot be negative: " + value);
-      }
-      score.setScore(value);
-  }
-  ```
-
----
-
-### Hallazgo 6: Ausencia de validación defensiva explícita de límites en `getCell(int row, int col)`
-- **Evidencia en Daikon:**
-  ```text
-  ar.edu.unrc.game2048.Board.getCell(int, int):::ENTER
-  row >= 0 && col >= 0
-  row <= size(this.grid[]) - 1
-  col <= size(this.grid[]) - 1
-  ```
-- **Diagnóstico del problema:**
-  A pesar de que el Javadoc documenta `@throws IndexOutOfBoundsException`, la implementación delega ciegamente en `grid[row][col]`:
-  ```java
-  public Cell getCell(int row, int col) {
-      return grid[row][col];
-  }
-  ```
-  Lanzar la excepción cruda de Java `ArrayIndexOutOfBoundsException` sin comprobación previa impide proveer mensajes claros de error y difiere del estilo defensivo utilizado en otros componentes.
-- **Fix propuesto en `Board.java`:**
-  ```java
-  public Cell getCell(int row, int col) {
-      if (row < 0 || row >= size || col < 0 || col >= size) {
-          throw new IndexOutOfBoundsException("Coordinates out of bounds: (" + row + ", " + col + ")");
-      }
-      return grid[row][col];
-  }
-  ```
-
----
-
-### Hallazgo 7: Validación de rango de coordenadas en `setCell`
-- **Evidencia en Daikon:**
-  ```text
-  ar.edu.unrc.game2048.Board.setCell(int, int, Cell):::ENTER
-  row >= 0 && col >= 0
-  row <= size(this.grid[]) - 1
-  col <= size(this.grid[]) - 1
-  cell != null
-  ```
-- **Diagnóstico del problema:**
-  `setCell` verifica defensivamente `if (cell == null)`, pero no valida explícitamente los límites de fila y columna antes de indexar `grid[row][col] = cell;`, confiando en la excepción genérica de la JVM en lugar de lanzar la excepción documentada con mensaje de diagnóstico.
-- **Fix propuesto en `Board.java`:**
-  ```java
-  public void setCell(int row, int col, Cell cell) {
-      if (row < 0 || row >= size || col < 0 || col >= size) {
-          throw new IndexOutOfBoundsException("Coordinates out of bounds: (" + row + ", " + col + ")");
-      }
-      if (cell == null) {
-          throw new IllegalArgumentException("Cell cannot be null");
-      }
-      grid[row][col] = cell;
-  }
-  ```
-

@@ -245,30 +245,71 @@ De acuerdo con las directrices de la Fase 3.2, cada invariante inferido se clasi
   this.random == other.random
   this.random == orig(other.random)
   ```
-- **Clasificación:** **Incorrect** (detector de defecto / bug)
+- **Clasificación:** **Incorrect (Bug de diseño / Aliasing crítico)**
 - **Razonamiento y Justificación:**
   - *Significado en el dominio:* Daikon expone que el constructor de copia comparte la misma referencia física del objeto `Score` y del generador `Random` entre el tablero original y la copia.
-  - *Defecto descubierto (*Aliasing*):* Aunque el constructor documenta crear una copia profunda (*deep copy*), `Score` es mutable (`score.increaseScore(...)`). Al compartir la referencia, cualquier mutación en una copia modifica inmediatamente el puntaje del original. Esto compromete directamente la lógica de `move()`, que crea `Board previous = new Board(this);` para determinar si el estado cambió comparando `!this.equals(previous)`.
+  - *Defecto descubierto (*Aliasing*):* Aunque el constructor documenta realizar una copia profunda (*deep copy*), `Score` es mutable (`score.increaseScore(...)`). Al compartir la referencia, cualquier mutación en una copia altera inmediatamente el puntaje del original. Esto compromete directamente la lógica de `move()`, que crea `Board previous = new Board(this);` para determinar si el estado cambió comparando `!this.equals(previous)`.
   - *Relación con el código:* Refleja las asignaciones directas `this.score = other.score;` y `this.random = other.random;` en `Board.java:149-150`.
 
 ---
 
-#### Invariante 7: Falsa equivalencia bicondicional de derrota ligada a `DEFAULT_SIZE` en `isLosingBoard()`
+#### Invariante 7: Fuga de encapsulamiento / Escape de representación mutable en `getGrid()`
+- **Punto de programa:** `ar.edu.unrc.game2048.Board.getGrid():::EXIT`
+- **Invariante inferido:**
+  ```text
+  return == this.grid
+  this.size == size(return[])
+  return != null
+  ```
+- **Clasificación:** **Incorrect (Bug de diseño / Violación de encapsulamiento)**
+- **Razonamiento y Justificación:**
+  - *Significado en el dominio:* Daikon detecta que el getter `getGrid()` devuelve la referencia directa a la matriz interna (`Cell[][]`).
+  - *Defecto descubierto (*Representation Exposure*):* Cualquier cliente externo puede mutar directamente la grilla interna del tablero (`board.getGrid()[0][0] = new Cell(-1)`), saltándose todos los controles de `Board` y violando los invariantes chequeados por `repOK()`. El método debería retornar una copia defensiva profunda.
+
+---
+
+#### Invariante 8: Detección de atributo inerte / código muerto en `emptyCells`
+- **Punto de programa:** `ar.edu.unrc.game2048.Board:::OBJECT`
+- **Invariante inferido:**
+  ```text
+  this.emptyCells == null
+  ```
+- **Clasificación:** **Incorrect (Defecto de código muerto / residuo inerte)**
+- **Razonamiento y Justificación:**
+  - *Significado en el dominio:* Daikon deduce que `emptyCells` permanece en `null` a lo largo de toda la vida de cualquier tablero.
+  - *Defecto descubierto:* En `Board.java:47` se encuentra declarado `private List<Position> emptyCells;`, pero nunca es inicializado en ningún constructor ni actualizado durante los movimientos, dado que `getEmptyPositions()` calcula las posiciones vacías creando una colección local bajo demanda. Se trata de un residuo muerto de refactorización.
+
+---
+
+#### Invariante 9: Precondición de no-negatividad en `setScore(int)`
+- **Punto de programa:** `ar.edu.unrc.game2048.Board.setScore(int):::ENTER`
+- **Invariante inferido:**
+  ```text
+  value >= 0
+  ```
+- **Clasificación:** **Correct and useful (Revelador de omisión de validación defensiva)**
+- **Razonamiento y Justificación:**
+  - *Significado en el dominio:* Daikon descubrió que en partidas válidas el puntaje siempre es no negativo ($S \ge 0$).
+  - *Defecto descubierto:* El método `setScore` carece de guarda defensiva (`if (value < 0)`), permitiendo que llamadas externas asignen puntajes negativos que corrompan el estado contable del juego.
+
+---
+
+#### Invariante 10: Falsa equivalencia bicondicional de derrota ligada a `DEFAULT_SIZE` en `isLosingBoard()`
 - **Punto de programa:** `ar.edu.unrc.game2048.Board.isLosingBoard():::EXIT`
 - **Invariante inferido:**
   ```text
   (return == false)  <==>  (ar.edu.unrc.game2048.Board.DEFAULT_SIZE != this.size)
   (return == true)   <==>  (ar.edu.unrc.game2048.Board.DEFAULT_SIZE == this.size)
   ```
-- **Clasificación:** **Too strong / likely spurious**
+- **Clasificación:** **Too strong / likely spurious (Asume `DEFAULT_SIZE`)**
 - **Razonamiento y Justificación:**
   - *Significado en el dominio:* Daikon dedujo erróneamente que un tablero es perdedor (`game over`) **si y solo si** su tamaño es exactamente 4 (`DEFAULT_SIZE == 4`), y que un tablero de cualquier otra dimensión nunca puede perder.
-  - *Causa del sesgo (*overfitting*):* En las pruebas unitarias y suites automáticas ejecutadas, los tableros configurados en estado de bloqueo/derrota (sin casillas vacías ni fusiones contiguas) fueron todos de tamaño estándar 4x4. Los tableros de otros tamaños (e.g. 1x1, 2x2, 100x100) siempre se probaron con celdas vacías disponibles.
+  - *Causa del sesgo (*overfitting*):* En las pruebas unitarias y suites automáticas ejecutadas, los tableros configurados en estado de bloqueo/derrota fueron todos de tamaño estándar 4x4. Los tableros de otros tamaños (e.g. 1x1, 2x2, 100x100) siempre se probaron con celdas vacías disponibles.
   - *Contraejemplo que lo rompe:* Un tablero de 2x2 lleno y bloqueado $\begin{pmatrix} 2 & 4 \\ 8 & 16 \end{pmatrix}$ tiene `size == 2 != DEFAULT_SIZE`, pero `isLosingBoard()` devuelve `true`.
 
 ---
 
-#### Invariante 8: Asunción espuria de dimensión estándar `DEFAULT_SIZE` para ganar y llenar el tablero
+#### Invariante 11: Asunción espuria de dimensión estándar `DEFAULT_SIZE` para ganar y llenar el tablero
 - **Punto de programa:** `ar.edu.unrc.game2048.Board.isWinningBoard():::EXIT` y `isFull():::EXIT`
 - **Invariante inferido:**
   ```text
@@ -278,7 +319,7 @@ De acuerdo con las directrices de la Fase 3.2, cada invariante inferido se clasi
   // En isFull():::EXIT:
   (return == true)  ==>  (ar.edu.unrc.game2048.Board.DEFAULT_SIZE == this.size)
   ```
-- **Clasificación:** **Too strong / likely spurious**
+- **Clasificación:** **Too strong / likely spurious (Asume `DEFAULT_SIZE`)**
 - **Razonamiento y Justificación:**
   - *Significado en el dominio:* Daikon asume que es imposible ganar la partida o llenar completamente la grilla en tableros que no sean del tamaño por defecto (4x4).
   - *Causa del sesgo:* Los casos de prueba donde se alcanzó la ficha 2048 o se llenó la matriz fueron ejecutados únicamente sobre tableros de $4\times 4$.
@@ -286,14 +327,14 @@ De acuerdo con las directrices de la Fase 3.2, cada invariante inferido se clasi
 
 ---
 
-#### Invariante 9: Acotamiento espurio del puntaje observable por `DEFAULT_SIZE` en `getScore()`
+#### Invariante 12: Acotamiento espurio del puntaje observable por `DEFAULT_SIZE` en `getScore()`
 - **Punto de programa:** `ar.edu.unrc.game2048.Board.getScore():::EXIT`
 - **Invariante inferido:**
   ```text
   return one of { 0, 4 }
   ar.edu.unrc.game2048.Board.DEFAULT_SIZE >= return
   ```
-- **Clasificación:** **Too strong / likely spurious**
+- **Clasificación:** **Too strong / likely spurious (Asume `DEFAULT_SIZE`)**
 - **Razonamiento y Justificación:**
   - *Significado en el dominio:* Daikon concluye que el puntaje del juego nunca puede superar el tamaño por defecto del tablero (`return <= DEFAULT_SIZE`, es decir $\le 4$).
   - *Causa del sesgo:* En las trazas recolectadas no hubo simulaciones prolongadas de partidas con fusiones acumulativas de alto orden ($8, 16, 32, \dots, 2048$) que incrementaran masivamente el puntaje.
@@ -312,8 +353,11 @@ De acuerdo con las directrices de la Fase 3.2, cada invariante inferido se clasi
 | **`Cell`** | `Cell.mergeWith:::EXIT` | `this.value == 2 && return.value == 4` | **Too strong / likely spurious** |
 | **`Board`** | `Board:::OBJECT` | `this.size == size(this.grid[])` | **Correct and useful** |
 | **`Board`** | `Board:::OBJECT` | `this.grid[] elements != null` | **Correct and useful** |
-| **`Board`** | `Board.getCell:::ENTER` | `0 <= row < size && 0 <= col < size` | **Correct and useful** |
-| **`Board`** | `Board.Board(Board):::EXIT` | `this.score == other.score && this.random == other.random` | **Incorrect** (Bug detector) |
+| **`Board`** | `Board:::OBJECT` | `this.emptyCells == null` | **Incorrect (Código muerto / Atributo inerte)** |
+| **`Board`** | `Board.getCell:::ENTER` | `0 <= row < size && 0 <= col < size` | **Correct and useful** (Falta guarda explícita) |
+| **`Board`** | `Board.getGrid:::EXIT` | `return == this.grid` | **Incorrect (Fuga de encapsulamiento / Bug)** |
+| **`Board`** | `Board.setScore:::ENTER` | `value >= 0` | **Correct and useful** (Falta validación defensiva) |
+| **`Board`** | `Board.Board(Board):::EXIT` | `this.score == other.score && this.random == other.random` | **Incorrect (Bug de aliasing en copia)** |
 | **`Board`** | `Board.getSize:::EXIT` | `return == this.size` | **Correct but trivial** |
 | **`Board`** | `Board.isFull:::EXIT` | `(return == true) ==> (this.determinist == false)` | **Too strong / likely spurious** |
 | **`Board`** | `Board.isLosingBoard:::EXIT` | `(return == true) <=> (DEFAULT_SIZE == this.size)` | **Too strong / likely spurious** (Asume `DEFAULT_SIZE`) |
@@ -397,21 +441,16 @@ A lo largo de los cuatro assignments se utilizaron cinco enfoques complementario
 
 ### Justificación y Conclusión: ¿Qué enfoque produjo los oráculos más útiles para este programa?
 
-Para el proyecto *Reliable 2048*, **el oráculo más importante y fundamental de todo el sistema fue `repOK()`**, pero la combinación con **Daikon** aportó una capacidad de diagnóstico única que ninguno de los otros métodos pudo proporcionar por sí solo:
+Todos los enfoques fueron importantes y complementarios en distintas etapas del desarrollo:
 
-1. **`repOK()` como pilar fundamental de integridad estructural:**
-   Fue la herramienta más valiosa, robusta y reutilizable del proyecto. Mientras que los tests unitarios solo verifican escenarios puntuales de entrada/salida, `repOK()` actuó como un contrato universal omnipresente: garantizó en todo momento que ningún tablero pudiera existir con matrices rectangulares o rotas, filas nulas, celdas vacías desconectadas o valores numéricos ilegales. Representó la barrera de contención definitiva contra la corrupción silenciosa del estado interno tanto en desarrollo como durante las pruebas masivas.
-
-2. **Daikon como detector de problemas de referencias, aliasing y defectos ocultos:**
-   Daikon no solo dedujo reglas de negocio abstractas (como la postcondición bicondicional canónica de fusión `(return == false) <=> (this.value != other.value)`), sino que **fue el único enfoque capaz de hacernos ver problemas críticos de manejo de referencias y comportamientos incorrectos en la arquitectura**:
-   - **Aliasing de objetos mutables en el constructor de copia (`Board(Board other)`):** Daikon reveló que `this.score == other.score` y `this.random == other.random`. Se estaba utilizando exactamente la misma instancia en memoria para objetos mutables en lugar de realizar una copia profunda real, lo cual falseaba la comparación de cambio de estado en `move()` (`!this.equals(previous)`), provocando que mutaciones en la copia alteraran silenciosamente el tablero original.
-   - **Unicidad de referencias en celdas vacías (`Cell.EMPTY`):** Descubrió que todas las celdas vacías válidas comparten la misma identidad canónica en memoria (`== Cell.EMPTY`), lo que permitió fortalecer el propio `repOK()` para chequear identidad referencial (patrón Flyweight).
-   - **Fuga de representación (*representation exposure*):** Detectó mediante `return == this.grid` que el método `getGrid()` entregaba la referencia interna directa, exponiendo la matriz a mutaciones externas no controladas.
-   - **Detección de código muerto:** Evidenció que el atributo `emptyCells` era un residuo inerte de refactorizaciones previas que siempre quedaba en `null`.
-
-3. **Complementariedad del ecosistema de pruebas:**
-   - **Tests manuales:** Resultaron esenciales en la primera etapa para replicar escenarios ad-hoc y depurar bugs visuales y lógicos (como inconsistencias al reorganizar o compactar celdas).
-   - **Randoop, EvoSuite y Fuzzer:** Fueron determinantes para maximizar la cobertura de caminos y generar un volumen masivo y diverso de trazas de ejecución. Sin esta exploración automatizada exhaustiva, Daikon no habría dispuesto de la riqueza de datos necesaria para filtrar invariantes espurias (como las que asumían erróneamente `DEFAULT_SIZE`) y revelar los defectos reales del sistema.
+1. **Tests manuales:** Clave en la etapa inicial para replicar partidas reales y corregir errores lógicos de negocio (como inconsistencias al reorganizar o compactar celdas).
+2. **`repOK()`:** El oráculo estructural más sólido; garantizó en todo momento que el estado interno fuera válido (matrices cuadradas consistentes, sin filas nulas ni valores ilegales).
+3. **Randoop y EvoSuite:** Aportaron la cobertura de ramas y el volumen masivo de trazas necesario para evitar que Daikon sobreajustara en casos triviales (como los sesgos con `DEFAULT_SIZE`).
+4. **Daikon (hincapié en manejo de referencias):** Su valor distintivo fue revelar problemas sutiles de referencias y defectos de diseño que los demás oráculos no detectaban:
+   - **Aliasing en copia (`Board(Board)`):** Descubrió que el constructor de copia compartía las mismas instancias en memoria de `score` y `random`.
+   - **Unicidad de `Cell.EMPTY`:** Reveló que toda celda vacía comparte la misma identidad canónica, permitiendo reforzar `repOK()`.
+   - **Fuga de representación:** Evidenció que `getGrid()` entregaba directamente la matriz interna mutable sin protección.
+   - **Código muerto:** Identificó que el campo `emptyCells` era un residuo zombi que siempre quedaba en `null`.
 
 ---
 
@@ -424,7 +463,7 @@ Daikon descubrió la propiedad de unicidad referencial:
 ```text
 (this.value == 0) ==> (Cell.EMPTY == orig(this))
 ```
-En la versión original de `Cell.repOK()`, cualquier instancia con `value == 0` creada mediante `new Cell(0)` devolvía `true`, a pesar de que el diseño arquitectónico del proyecto exige que las celdas vacías utilicen la instancia canónica `Cell.EMPTY` (patrón Flyweight para ahorro de memoria).
+En la versión original de `Cell.repOK()`, cualquier instancia con `value == 0` creada mediante `new Cell(0)` devolvía `true`, a pesar de que el diseño arquitectónico del proyecto exige que las celdas vacías utilicen la instancia canónica `Cell.EMPTY`
 
 **Mejora implementada en `Cell.repOK()`:**
 ```java
@@ -447,143 +486,4 @@ if (grid[row][column].isEmpty() && grid[row][column] != Cell.EMPTY) {
 ```
 Esto refuerza la integridad del invariante de representación de todo el sistema.
 
----
-
-## 7. Catálogo de Hallazgos y Defectos de Diseño Descubiertos en `Board` (Actionable Findings & Fixes)
-
-A partir de la inferencia dinámica de invariantes realizada con Daikon sobre la clase `Board`, se detectaron defectos concretos de diseño, bugs latentes y violaciones de encapsulamiento que deben ser corregidos para robustecer el sistema:
-
----
-
-### Hallazgo 1 (Crítico): Aliasing de objeto mutable `score` y generador `random` en constructor de copia
-- **Evidencia en Daikon:**
-  ```text
-  ar.edu.unrc.game2048.Board.Board(ar.edu.unrc.game2048.Board):::EXIT
-  this.score == other.score
-  this.score == orig(other.score)
-  this.random == other.random
-  this.random == orig(other.random)
-  ```
-- **Diagnóstico del problema:**
-  El constructor de copia declara realizar una copia profunda (*deep copy*), pero asigna por referencia directa los objetos `score` y `random`:
-  ```java
-  this.score = other.score;
-  this.random = other.random;
-  ```
-  Como `Score` es mutable (`increaseScore`, `setScore`), ambas instancias de `Board` comparten la misma referencia en memoria. Esto introduce un bug directo en el método `move()`:
-  ```java
-  Board previous = new Board(this);
-  Move move = moveProvider.provide(direction);
-  move.execute(this, grid, score); // Al mutar score, también muta previous.score
-  boolean moved = !this.equals(previous);
-  ```
-  Al evaluar `this.equals(previous)`, los puntajes siempre coinciden (`score.getScore() == board.score.getScore()`), perdiendo la independencia requerida.
-- **Fix propuesto en `Board.java` (Constructor de copia):**
-  ```java
-  // Reemplazar:
-  // this.score = other.score;
-  // this.random = other.random;
-
-  // Por copias e instancias independientes:
-  this.score = new Score(other.score.getScore());
-  this.random = new java.util.Random();
-  ```
-
----
-
-### Hallazgo 2: Campo inerte / código muerto (`emptyCells`)
-- **Evidencia en Daikon:**
-  ```text
-  ar.edu.unrc.game2048.Board:::OBJECT
-  this.emptyCells == null
-  ```
-- **Diagnóstico del problema:**
-  Daikon infirió que `emptyCells` permanece en `null` durante todo el ciclo de vida de cualquier tablero. En `Board.java:47` se encuentra declarado:
-  ```java
-  private List<Position> emptyCells;
-  ```
-  Dicho atributo nunca se inicializa en ningún constructor ni se actualiza durante los movimientos. El método `getEmptyPositions()` calcula las posiciones vacías instanciando un `HashSet<Position>()` local en cada invocación, dejando a `emptyCells` como código muerto.
-- **Fix propuesto en `Board.java`:**
-  Eliminar la declaración de la línea 47:
-  ```java
-  // Eliminar:
-  // private List<Position> emptyCells;
-  ```
-
----
-
-### Hallazgo 3: Fuga de encapsulamiento / Escape de representación mutable en `getGrid()`
-- **Evidencia en Daikon:**
-  ```text
-  ar.edu.unrc.game2048.Board.getGrid():::EXIT
-  return == this.grid
-  ```
-- **Diagnóstico del problema:**
-  `getGrid()` retorna la referencia directa a la matriz interna (`Cell[][]`). Esto permite a cualquier llamador externo mutar directamente el arreglo bidimensional (`board.getGrid()[0][0] = new Cell(-1)`), eludiendo todas las validaciones de `Board` y violando los contratos de `repOK()`.
-- **Fix propuesto en `Board.java`:**
-  Retornar una copia defensiva profunda del arreglo bidimensional:
-  ```java
-  public Cell[][] getGrid() {
-      Cell[][] copy = new Cell[size][size];
-      for (int r = 0; r < size; r++) {
-          System.arraycopy(grid[r], 0, copy[r], 0, size);
-      }
-      return copy;
-  }
-  ```
-
----
-
-### Hallazgo 4: Ausencia de validación defensiva en `setScore(int value)`
-- **Evidencia en Daikon:**
-  ```text
-  ar.edu.unrc.game2048.Board.setScore(int):::ENTER
-  value >= 0
-  ```
-- **Diagnóstico del problema:**
-  Daikon descubrió que en partidas válidas el puntaje siempre es no negativo. Sin embargo, `Board.java:373` carece de guarda defensiva:
-  ```java
-  public void setScore(int value) { score.setScore(value); }
-  ```
-  Invocaciones con valores negativos (e.g. `board.setScore(-100)`) corrompen el estado del juego sin arrojar excepción.
-- **Fix propuesto en `Board.java`:**
-  ```java
-  public void setScore(int value) {
-      if (value < 0) {
-          throw new IllegalArgumentException("Score cannot be negative: " + value);
-      }
-      score.setScore(value);
-  }
-  ```
-
----
-
-### Hallazgo 5: Ausencia de validación defensiva explícita de límites en `getCell` y `setCell`
-- **Evidencia en Daikon:**
-  ```text
-  ar.edu.unrc.game2048.Board.getCell(int, int):::ENTER
-  ar.edu.unrc.game2048.Board.setCell(int, int, Cell):::ENTER
-  0 <= row < size(this.grid[]) && 0 <= col < size(this.grid[])
-  ```
-- **Diagnóstico del problema:**
-  Aunque el Javadoc de ambos métodos documenta `@throws IndexOutOfBoundsException`, la implementación delega directamente en la indexación de arreglos crudos de Java, lanzando `ArrayIndexOutOfBoundsException` no encapsulada y sin mensajes descriptivos de error.
-- **Fix propuesto en `Board.java`:**
-  ```java
-  public Cell getCell(int row, int col) {
-      if (row < 0 || row >= size || col < 0 || col >= size) {
-          throw new IndexOutOfBoundsException("Coordinates out of bounds: (" + row + ", " + col + ")");
-      }
-      return grid[row][col];
-  }
-
-  public void setCell(int row, int col, Cell cell) {
-      if (row < 0 || row >= size || col < 0 || col >= size) {
-          throw new IndexOutOfBoundsException("Coordinates out of bounds: (" + row + ", " + col + ")");
-      }
-      if (cell == null) {
-          throw new IllegalArgumentException("Cell cannot be null");
-      }
-      grid[row][col] = cell;
-  }
-  ```
 
