@@ -2,7 +2,7 @@
 
 ## Resultados antes de los cambios de Assignment 2
 
-Los archivos de los resultados se encuentran en `test_recordings/tests_before_assig_2/`
+Los archivos de los resultados se encuentran en `recordings/assignment-1-baseline/`
 
 ### JaCoCo
 
