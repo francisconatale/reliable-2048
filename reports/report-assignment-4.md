@@ -1,26 +1,11 @@
 # Reporte Assignment 4: Inferencia Dinámica de Invariantes y Generación de Oráculos con Daikon
 
-## 1. Comandos para Instrumentar y Recolectar Trazas
-
-Para la instrumentación y recolección de trazas de ejecución se utilizó **Chicory** (front-end de Daikon para Java) ejecutando la suite de pruebas unitarias sobre JUnit 4.
-
-### 1.1 Compilación previa
-Se verificó que el proyecto estuviera compilado con información de depuración habilitada:
-```bash
-mvn clean test-compile
-```
-
-### 1.2 Ejecución de Chicory (Instrumentación y Trace Collection)
+## 1. Recoleccion de trazas
 A fin de recolectar un conjunto de trazas rico, diverso y representativo del comportamiento real del sistema, **la ejecución de Chicory no se realizó sobre una sola suite de pruebas aislada**, sino sobre un **conjunto combinado exhaustivo de `Board` y `Cell` que integró pruebas manuales, pruebas generadas por Randoop y pruebas generadas por EvoSuite**:
-
-1. **Pruebas manuales:** `ar.edu.unrc.game2048.manual.BoardTest` y `ar.edu.unrc.game2048.manual.CellTest` (ejercitan la semántica de alto nivel del juego, inicializaciones y partidas completas con fusiones continuas).
-2. **Pruebas de Randoop:** `ar.edu.unrc.game2048.randoop.board.RegressionTest` y `ar.edu.unrc.game2048.randoop.cell.RegressionTest` (aportan diversidad mediante exploración aleatoria dirigida por feedback y secuencias inusuales de métodos).
-3. **Pruebas de EvoSuite:** `ar.edu.unrc.game2048.evosuite.Board_ESTest` y `ar.edu.unrc.game2048.evosuite.Cell_ESTest` (maximizan la cobertura de ramas y exploran casos de borde difíciles de alcanzar).
 
 Se utilizó el script `run-daikon.sh`, restringiendo la instrumentación de Chicory a las clases del modelo (`Board` y `Cell`), omitiendo clases auxiliares como `Position`:
 
 ```bash
-# Ejecución integral sobre el conjunto combinado (Manual + Randoop + EvoSuite) para Board y Cell
 ./run-daikon.sh \
     ar.edu.unrc.game2048.manual.BoardTest \
     ar.edu.unrc.game2048.manual.CellTest \
@@ -30,44 +15,8 @@ Se utilizó el script `run-daikon.sh`, restringiendo la instrumentación de Chic
     ar.edu.unrc.game2048.evosuite.Cell_ESTest
 ```
 
-El comando subyacente que ejecuta dicho script es:
-```bash
-java -cp "lib/daikon.jar:target/classes:target/test-classes:$(mvn dependency:build-classpath -Dmdep.outputFile=/dev/stdout -q)" \
-    daikon.Chicory \
-    --ppt-select-pattern="ar.edu.unrc.game2048.Board|ar.edu.unrc.game2048.Cell" \
-    --ppt-omit-pattern=".*Position.*" \
-    --sample-start=500 \
-    --output-dir=daikon-traces \
-    org.junit.runner.JUnitCore \
-    ar.edu.unrc.game2048.manual.BoardTest \
-    ar.edu.unrc.game2048.manual.CellTest \
-    ar.edu.unrc.game2048.randoop.board.RegressionTest \
-    ar.edu.unrc.game2048.randoop.cell.RegressionTest \
-    ar.edu.unrc.game2048.evosuite.Board_ESTest \
-    ar.edu.unrc.game2048.evosuite.Cell_ESTest
-```
-Esto generó el archivo de trazas comprimido: `daikon-traces/JUnitCore.dtrace.gz`.
-
-### 1.3 Inferencia de Invariantes con Daikon
-Una vez obtenidas las trazas, se invocó a Daikon para contrastar los valores observados contra su catálogo de plantillas de invariantes, redirigiendo la salida cruda a `daikon-output.txt` y guardando el modelo binario en `.inv`:
-
-```bash
-# Inferencia de invariantes y generación de la salida de texto plano
-java -cp lib/daikon.jar daikon.Daikon daikon-traces/JUnitCore.dtrace.gz > daikon-output.txt
-
-# Guardado en formato binario .inv para inspección posterior
-java -cp lib/daikon.jar daikon.Daikon --save_inv_to daikon-traces/JUnitCore.inv daikon-traces/JUnitCore.dtrace.gz
-```
-
----
-
-## 2. Metodología de Evaluación y Selección de Trazas
-
-> **Nota metodológica sobre la recolección de trazas:**
-> La calidad de los invariantes inferidos dinámicamente depende de forma crítica de la diversidad de las trazas recolectadas. Si se ejecuta Daikon sobre una única suite unitaria aislada (por ejemplo, evaluando `Cell` únicamente con tests unitarios directos), se produce un sobreajuste severo (*overfitting*) que da lugar a invariantes espurias (como restringir falsamente valores numéricos válidos a pequeños conjuntos arbitrarios como `{0, 1, 2}` o `{1, 2, 4}`).
-> 
-> Por este motivo, **la recolección definitiva de trazas se realizó sobre el conjunto integrado de `Board` y `Cell`, combinando tests manuales, Randoop y EvoSuite**. Al conjugar la lógica de alto nivel de las partidas manuales con la exploración aleatoria de Randoop y la cobertura exhaustiva de ramas de EvoSuite para ambas clases simultáneamente, las celdas y el tablero fueron ejercitados en todo su espectro operativo: inicialización, inserciones aleatorias, corrimientos en todas las direcciones, fusiones continuas de fichas y estados límite (tablero lleno o partidas perdidas/ganadas). Esto permitió a Daikon descartar sobreajustes accidentales y redescubrir las verdaderas propiedades invariantes y contratos del sistema.
-
+### 2 Inferencia de Invariantes con Daikon
+Una vez obtenidas las trazas, se invocó a Daikon para contrastar los valores observados contra su catálogo de plantillas de invariantes
 ---
 
 ## 3. Discusión y Clasificación de Invariantes Inferidos
@@ -268,19 +217,6 @@ De acuerdo con las directrices de la Fase 3.2, cada invariante inferido se clasi
 
 ---
 
-#### Invariante 8: Detección de atributo inerte / código muerto en `emptyCells`
-- **Punto de programa:** `ar.edu.unrc.game2048.Board:::OBJECT`
-- **Invariante inferido:**
-  ```text
-  this.emptyCells == null
-  ```
-- **Clasificación:** **Incorrect (Defecto de código muerto / residuo inerte)**
-- **Razonamiento y Justificación:**
-  - *Significado en el dominio:* Daikon deduce que `emptyCells` permanece en `null` a lo largo de toda la vida de cualquier tablero.
-  - *Defecto descubierto:* En `Board.java:47` se encuentra declarado `private List<Position> emptyCells;`, pero nunca es inicializado en ningún constructor ni actualizado durante los movimientos, dado que `getEmptyPositions()` calcula las posiciones vacías creando una colección local bajo demanda. Se trata de un residuo muerto de refactorización.
-
----
-
 #### Invariante 9: Precondición de no-negatividad en `setScore(int)`
 - **Punto de programa:** `ar.edu.unrc.game2048.Board.setScore(int):::ENTER`
 - **Invariante inferido:**
@@ -364,8 +300,9 @@ De acuerdo con las directrices de la Fase 3.2, cada invariante inferido se clasi
 | **`Board`** | `Board.isWinningBoard:::EXIT` | `(return == true) ==> (DEFAULT_SIZE == this.size)` | **Too strong / likely spurious** (Asume `DEFAULT_SIZE`) |
 | **`Board`** | `Board.getScore:::EXIT` | `DEFAULT_SIZE >= return && return one of {0, 4}` | **Too strong / likely spurious** (Asume `DEFAULT_SIZE`) |
 
-Posteriormente a estos resultados, se fixearon los invariantes **Too strong / likely spurious** con mas casos de test
 ---
+Posteriormente a estos resultados, se fixearon los invariantes **Too strong / likely spurious** con mas casos de test
+La mayoria de invariantes invalidos que se encontraron fue por **falta de tests**
 
 ## 4. Comparación con `repOK()` y Especificaciones Previas
 
@@ -469,10 +406,8 @@ En la versión original de `Cell.repOK()`, cualquier instancia con `value == 0` 
 ```java
 public boolean repOK() {
     if (value == 0) {
-        // Enforce referential integrity: empty cells must be the canonical singleton
         return this == Cell.EMPTY;
     }
-    // Active cells must be strictly positive powers of two
     return value > 0 && Integer.bitCount(value) == 1;
 }
 ```
@@ -481,7 +416,7 @@ public boolean repOK() {
 Inspirado por la deducción de Daikon sobre la coherencia de celdas vacías y la no-nulidad de elementos, `Board.repOK()` verifica ahora no solo que cada celda satisfaga individualmente `cell.repOK()`, sino que si `cell.isEmpty()` es verdadero, la referencia en la matriz sea exactamente la referencia canónica:
 ```java
 if (grid[row][column].isEmpty() && grid[row][column] != Cell.EMPTY) {
-    return false; // Violación de unicidad de instancia vacía
+    return false; // instancia unica violada
 }
 ```
 Esto refuerza la integridad del invariante de representación de todo el sistema.
