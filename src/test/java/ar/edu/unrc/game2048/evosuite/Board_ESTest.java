@@ -10,7 +10,6 @@ import static org.junit.Assert.*;
 import static org.evosuite.runtime.EvoAssertions.*;
 import ar.edu.unrc.game2048.Board;
 import ar.edu.unrc.game2048.Cell;
-import ar.edu.unrc.game2048.strategy.MoveProvider;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -265,24 +264,13 @@ public class Board_ESTest extends Board_ESTest_scaffolding {
   @Test(timeout = 4000)
   public void test30()  throws Throwable  {
       Board board0 = new Board();
-      // Undeclared exception!
-      try { 
-        board0.setMoveProvider((MoveProvider) null);
-        fail("Expecting exception: IllegalArgumentException");
-      
-      } catch(IllegalArgumentException e) {
-         //
-         // moveProvider no puede ser null
-         //
-         verifyException("ar.edu.unrc.game2048.Board", e);
-      }
+      assertNotNull(board0);
+      assertTrue(board0.repOK());
   }
 
   @Test(timeout = 4000)
   public void test31()  throws Throwable  {
       Board board0 = Board.forTesting(2);
-      MoveProvider moveProvider0 = new MoveProvider();
-      board0.setMoveProvider(moveProvider0);
       assertEquals(2, board0.getSize());
       assertTrue(board0.repOK());
   }

@@ -15,7 +15,7 @@ public class MoveProvider {
         providers.put(Direction.RIGHT, new MoveRight());
     }
 
-    public Move provide(Direction direction) {
+    public static Move provide(Direction direction) {
         return providers.get(direction);
     }
 }

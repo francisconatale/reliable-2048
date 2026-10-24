@@ -4,26 +4,10 @@ import java.util.Objects;
 
 import randoop.CheckRep;
 
-/**
- * Represents a single cell in the 2048 game board.
- * A cell is either empty (value = 0) or contains a power of two (2, 4, 8, ...).
- * 
- * Representation Invariant:
- * - value >= 0
- * - if value > 0, then value is a power of two 
- * 
- * Immutable class - once created, a Cell cannot change its value.
- */
+
 public final class Cell {
 
-    /**
-     * Cell value (0 for empty, or a power of two).
-     */
     private final int value;
-    
-    /**
-     * The empty cell singleton (value = 0).
-     */
     public static final Cell EMPTY = new Cell(0);
     
     /**

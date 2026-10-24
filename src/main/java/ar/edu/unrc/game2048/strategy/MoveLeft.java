@@ -4,7 +4,6 @@ import ar.edu.unrc.game2048.Board;
 import ar.edu.unrc.game2048.Cell;
 import ar.edu.unrc.game2048.Score;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class MoveLeft extends Move {

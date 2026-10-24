@@ -4,7 +4,10 @@ import ar.edu.unrc.game2048.Board;
 import ar.edu.unrc.game2048.Cell;
 import ar.edu.unrc.game2048.Score;
 
-import java.util.*;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.Collections;
 
 public abstract class Move {
 

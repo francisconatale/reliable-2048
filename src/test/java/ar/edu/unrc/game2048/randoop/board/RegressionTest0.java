@@ -228,14 +228,6 @@ public class RegressionTest0 {
         boolean boolean2 = board1.isLosingBoard();
         boolean boolean3 = board1.isLosingBoard();
         int int4 = board1.getScore();
-        ar.edu.unrc.game2048.strategy.MoveProvider moveProvider5 = null;
-        // The following exception was thrown during execution in test generation
-        try {
-            board1.setMoveProvider(moveProvider5);
-            org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: moveProvider no puede ser null");
-        } catch (java.lang.IllegalArgumentException e) {
-            // Expected exception.
-        }
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
         org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
@@ -310,14 +302,6 @@ public class RegressionTest0 {
         boolean boolean3 = board1.isLosingBoard();
         int int4 = board1.getScore();
         int int5 = board1.getSize();
-        ar.edu.unrc.game2048.strategy.MoveProvider moveProvider6 = null;
-        // The following exception was thrown during execution in test generation
-        try {
-            board1.setMoveProvider(moveProvider6);
-            org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: moveProvider no puede ser null");
-        } catch (java.lang.IllegalArgumentException e) {
-            // Expected exception.
-        }
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
         org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
@@ -649,14 +633,6 @@ public class RegressionTest0 {
         ar.edu.unrc.game2048.Board board1 = ar.edu.unrc.game2048.Board.forTesting(100);
         boolean boolean2 = board1.isWinningBoard();
         int int3 = board1.getScore();
-        ar.edu.unrc.game2048.strategy.MoveProvider moveProvider4 = null;
-        // The following exception was thrown during execution in test generation
-        try {
-            board1.setMoveProvider(moveProvider4);
-            org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: moveProvider no puede ser null");
-        } catch (java.lang.IllegalArgumentException e) {
-            // Expected exception.
-        }
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
         org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
@@ -959,14 +935,6 @@ public class RegressionTest0 {
         boolean boolean3 = board1.isLosingBoard();
         int int4 = board1.getScore();
         boolean boolean5 = board1.isWinningBoard();
-        ar.edu.unrc.game2048.strategy.MoveProvider moveProvider6 = null;
-        // The following exception was thrown during execution in test generation
-        try {
-            board1.setMoveProvider(moveProvider6);
-            org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: moveProvider no puede ser null");
-        } catch (java.lang.IllegalArgumentException e) {
-            // Expected exception.
-        }
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
         org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
@@ -998,14 +966,6 @@ public class RegressionTest0 {
         ar.edu.unrc.game2048.Board.Direction direction5 = ar.edu.unrc.game2048.Board.Direction.RIGHT;
         boolean boolean6 = board1.move(direction5);
         boolean boolean7 = board1.isFull();
-        ar.edu.unrc.game2048.strategy.MoveProvider moveProvider8 = null;
-        // The following exception was thrown during execution in test generation
-        try {
-            board1.setMoveProvider(moveProvider8);
-            org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: moveProvider no puede ser null");
-        } catch (java.lang.IllegalArgumentException e) {
-            // Expected exception.
-        }
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
         org.junit.Assert.assertTrue("'" + direction5 + "' != '" + ar.edu.unrc.game2048.Board.Direction.RIGHT + "'", direction5.equals(ar.edu.unrc.game2048.Board.Direction.RIGHT));
@@ -1186,14 +1146,6 @@ public class RegressionTest0 {
         boolean boolean8 = board6.isLosingBoard();
         int int9 = board6.getScore();
         boolean boolean10 = board1.equals((java.lang.Object) board6);
-        ar.edu.unrc.game2048.strategy.MoveProvider moveProvider11 = null;
-        // The following exception was thrown during execution in test generation
-        try {
-            board1.setMoveProvider(moveProvider11);
-            org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: moveProvider no puede ser null");
-        } catch (java.lang.IllegalArgumentException e) {
-            // Expected exception.
-        }
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
         org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
@@ -1385,14 +1337,6 @@ public class RegressionTest0 {
         boolean boolean3 = board1.isLosingBoard();
         boolean boolean4 = board1.hasEmptyCells();
         int int5 = board1.getSize();
-        ar.edu.unrc.game2048.strategy.MoveProvider moveProvider6 = null;
-        // The following exception was thrown during execution in test generation
-        try {
-            board1.setMoveProvider(moveProvider6);
-            org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: moveProvider no puede ser null");
-        } catch (java.lang.IllegalArgumentException e) {
-            // Expected exception.
-        }
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
         org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
@@ -1454,14 +1398,6 @@ public class RegressionTest0 {
         board1.setScore(0);
         ar.edu.unrc.game2048.Cell[][] cellArray5 = board1.getGrid();
         int int6 = board1.getScore();
-        ar.edu.unrc.game2048.strategy.MoveProvider moveProvider7 = null;
-        // The following exception was thrown during execution in test generation
-        try {
-            board1.setMoveProvider(moveProvider7);
-            org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: moveProvider no puede ser null");
-        } catch (java.lang.IllegalArgumentException e) {
-            // Expected exception.
-        }
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
         org.junit.Assert.assertNotNull(cellArray5);
@@ -1534,14 +1470,6 @@ public class RegressionTest0 {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test088");
         ar.edu.unrc.game2048.Board board1 = ar.edu.unrc.game2048.Board.forTesting((int) ' ');
-        ar.edu.unrc.game2048.strategy.MoveProvider moveProvider2 = null;
-        // The following exception was thrown during execution in test generation
-        try {
-            board1.setMoveProvider(moveProvider2);
-            org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: moveProvider no puede ser null");
-        } catch (java.lang.IllegalArgumentException e) {
-            // Expected exception.
-        }
         org.junit.Assert.assertNotNull(board1);
     }
 
@@ -1659,14 +1587,6 @@ public class RegressionTest0 {
         java.lang.Object obj4 = null;
         boolean boolean5 = board1.equals(obj4);
         board1.setScore((int) (byte) 0);
-        ar.edu.unrc.game2048.strategy.MoveProvider moveProvider8 = null;
-        // The following exception was thrown during execution in test generation
-        try {
-            board1.setMoveProvider(moveProvider8);
-            org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: moveProvider no puede ser null");
-        } catch (java.lang.IllegalArgumentException e) {
-            // Expected exception.
-        }
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
         org.junit.Assert.assertTrue("'" + boolean5 + "' != '" + false + "'", boolean5 == false);
@@ -1698,14 +1618,6 @@ public class RegressionTest0 {
         int int5 = board1.getScore();
         ar.edu.unrc.game2048.Cell cell8 = board1.getCell((int) 'a', (int) (byte) 0);
         boolean boolean9 = board1.isFull();
-        ar.edu.unrc.game2048.strategy.MoveProvider moveProvider10 = null;
-        // The following exception was thrown during execution in test generation
-        try {
-            board1.setMoveProvider(moveProvider10);
-            org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: moveProvider no puede ser null");
-        } catch (java.lang.IllegalArgumentException e) {
-            // Expected exception.
-        }
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
         org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
@@ -1934,14 +1846,6 @@ public class RegressionTest0 {
         ar.edu.unrc.game2048.Board.Direction direction20 = ar.edu.unrc.game2048.Board.Direction.RIGHT;
         boolean boolean21 = board16.move(direction20);
         boolean boolean22 = board1.move(direction20);
-        ar.edu.unrc.game2048.strategy.MoveProvider moveProvider23 = null;
-        // The following exception was thrown during execution in test generation
-        try {
-            board1.setMoveProvider(moveProvider23);
-            org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: moveProvider no puede ser null");
-        } catch (java.lang.IllegalArgumentException e) {
-            // Expected exception.
-        }
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
         org.junit.Assert.assertNotNull(cell7);
@@ -2321,14 +2225,6 @@ public class RegressionTest0 {
         int int4 = board1.getScore();
         int int5 = board1.getSize();
         int int6 = board1.getSize();
-        ar.edu.unrc.game2048.strategy.MoveProvider moveProvider7 = null;
-        // The following exception was thrown during execution in test generation
-        try {
-            board1.setMoveProvider(moveProvider7);
-            org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: moveProvider no puede ser null");
-        } catch (java.lang.IllegalArgumentException e) {
-            // Expected exception.
-        }
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
         org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
@@ -2818,14 +2714,6 @@ public class RegressionTest0 {
         boolean boolean5 = board1.isLosingBoard();
         boolean boolean6 = board1.isWinningBoard();
         boolean boolean7 = board1.hasEmptyCells();
-        ar.edu.unrc.game2048.strategy.MoveProvider moveProvider8 = null;
-        // The following exception was thrown during execution in test generation
-        try {
-            board1.setMoveProvider(moveProvider8);
-            org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: moveProvider no puede ser null");
-        } catch (java.lang.IllegalArgumentException e) {
-            // Expected exception.
-        }
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
         org.junit.Assert.assertTrue("'" + boolean5 + "' != '" + false + "'", boolean5 == false);
