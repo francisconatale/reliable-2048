@@ -1,8 +1,8 @@
 package ar.edu.unrc.game2048.manual.utils;
 import ar.edu.unrc.game2048.*;
-import ar.edu.unrc.game2048.strategy.*;
 import ar.edu.unrc.game2048.Board;
-import ar.edu.unrc.game2048.Board.Position;
+import ar.edu.unrc.game2048.Position;
+import ar.edu.unrc.game2048.move.*;
 import ar.edu.unrc.game2048.Cell;
 import java.util.*;
 public class Seeder {

@@ -3,12 +3,11 @@ package ar.edu.unrc.game2048;
 import java.util.Arrays;
 import java.util.HashSet;
 import java.util.Objects;
+import java.util.Random;
 import java.util.Set;
 
-import ar.edu.unrc.game2048.strategy.Move;
-import ar.edu.unrc.game2048.strategy.MoveProvider;
+import ar.edu.unrc.game2048.move.MoveProvider;
 import randoop.CheckRep;
-import java.util.Random;
 
 /**
  * Represents the 2048 game board.
@@ -343,8 +342,7 @@ public class Board {
             throw new IllegalArgumentException("direction no puede ser null");
         }
         Board previous = new Board(this);
-        Move move = MoveProvider.provide(direction);
-        move.execute(this, grid, score);
+        MoveProvider.provide(direction).execute(this, grid, score);
         boolean moved = !this.equals(previous);
         if (moved && !determinist) {
             addRandomTile();
@@ -353,43 +351,4 @@ public class Board {
     }
 
     public void setScore(int value){ score.setScore(value); }
-
-    /**
-     * Represents a direction on the board.
-     */
-    public enum Direction {
-        UP, DOWN, LEFT, RIGHT
-    }
-
-    /**
-     * Represents a position on the board.
-     */
-    public static class Position {
-        public final int row;
-        public final int col;
-
-        public Position(int row, int col) {
-            this.row = row;
-            this.col = col;
-        }
-
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Position position = (Position) o;
-            return row == position.row && col == position.col;
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(row, col);
-        }
-
-        @Override
-        public String toString() {
-            return "(" + row + ", " + col + ")";
-        }
-    }
 }

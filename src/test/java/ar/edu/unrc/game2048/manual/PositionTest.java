@@ -1,9 +1,9 @@
 package ar.edu.unrc.game2048.manual;
 import ar.edu.unrc.game2048.*;
-import ar.edu.unrc.game2048.strategy.*;
 
 import org.junit.Test;
-import ar.edu.unrc.game2048.Board.Position;
+import ar.edu.unrc.game2048.Position;
+import ar.edu.unrc.game2048.move.*;
 
 import static org.junit.Assert.*;
 

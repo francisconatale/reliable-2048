@@ -1,6 +1,6 @@
 package ar.edu.unrc.game2048.manual;
 import ar.edu.unrc.game2048.*;
-import ar.edu.unrc.game2048.strategy.*;
+
 import java.util.Set;
 
 import static org.junit.Assert.assertEquals;
@@ -13,9 +13,10 @@ import static org.junit.Assert.assertTrue;
 import org.junit.Test;
 import java.util.Random;
 
-import ar.edu.unrc.game2048.Board.Direction;
-import ar.edu.unrc.game2048.Board.Position;
+import ar.edu.unrc.game2048.Direction;
+import ar.edu.unrc.game2048.Position;
 import ar.edu.unrc.game2048.manual.utils.Seeder;
+import ar.edu.unrc.game2048.move.*;
 public class BoardTest {
     Seeder seeder = new Seeder();
     @Test

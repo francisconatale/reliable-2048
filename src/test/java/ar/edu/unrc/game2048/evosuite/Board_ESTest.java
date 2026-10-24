@@ -10,6 +10,8 @@ import static org.junit.Assert.*;
 import static org.evosuite.runtime.EvoAssertions.*;
 import ar.edu.unrc.game2048.Board;
 import ar.edu.unrc.game2048.Cell;
+import ar.edu.unrc.game2048.Direction;
+import ar.edu.unrc.game2048.Position;
 import java.util.Random;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
@@ -25,15 +27,15 @@ public class Board_ESTest extends Board_ESTest_scaffolding {
 
   @Test(timeout = 4000)
   public void test00()  throws Throwable  {
-      Board.Position board_Position0 = new Board.Position((-14), (-14));
-      Board.Position board_Position1 = new Board.Position((-14), 0);
+      Position board_Position0 = new Position((-14), (-14));
+      Position board_Position1 = new Position((-14), 0);
       board_Position0.equals(board_Position1);
   }
 
   @Test(timeout = 4000)
   public void test01()  throws Throwable  {
-      Board.Position board_Position0 = new Board.Position((-2059), (-2059));
-      Board.Position board_Position1 = new Board.Position(1794, 0);
+      Position board_Position0 = new Position((-2059), (-2059));
+      Position board_Position1 = new Position(1794, 0);
       board_Position0.equals(board_Position1);
   }
 
@@ -74,7 +76,7 @@ public class Board_ESTest extends Board_ESTest_scaffolding {
   @Test(timeout = 4000)
   public void test07()  throws Throwable  {
       Board board0 = new Board(2, false);
-      Board.Direction board_Direction0 = Board.Direction.UP;
+      Direction board_Direction0 = Direction.UP;
       board0.move(board_Direction0);
       board0.getScore();
   }
@@ -103,7 +105,7 @@ public class Board_ESTest extends Board_ESTest_scaffolding {
   @Test(timeout = 4000)
   public void test11()  throws Throwable  {
       Board board0 = new Board();
-      Board.Direction board_Direction0 = Board.Direction.UP;
+      Direction board_Direction0 = Direction.UP;
       board0.move(board_Direction0);
       board0.getCell(0, 0);
   }
@@ -195,8 +197,8 @@ public class Board_ESTest extends Board_ESTest_scaffolding {
 
   @Test(timeout = 4000)
   public void test23()  throws Throwable  {
-      Board.Position board_Position0 = new Board.Position(0, 0);
-      Board.Position board_Position1 = new Board.Position(0, 0);
+      Position board_Position0 = new Position(0, 0);
+      Position board_Position1 = new Position(0, 0);
       board_Position0.equals(board_Position1);
   }
 
@@ -214,7 +216,7 @@ public class Board_ESTest extends Board_ESTest_scaffolding {
 
   @Test(timeout = 4000)
   public void test25()  throws Throwable  {
-      Board.Position board_Position0 = new Board.Position((-2698), 2048);
+      Position board_Position0 = new Position((-2698), 2048);
       boolean boolean0 = board_Position0.equals("t3Qs5N5ZWZz");
       assertFalse(boolean0);
       assertEquals(2048, board_Position0.col);
@@ -223,22 +225,22 @@ public class Board_ESTest extends Board_ESTest_scaffolding {
 
   @Test(timeout = 4000)
   public void test26()  throws Throwable  {
-      Board.Position board_Position0 = new Board.Position(0, 0);
+      Position board_Position0 = new Position(0, 0);
       boolean boolean0 = board_Position0.equals((Object) null);
       assertFalse(boolean0);
   }
 
   @Test(timeout = 4000)
   public void test27()  throws Throwable  {
-      Board.Position board_Position0 = new Board.Position(0, 0);
+      Position board_Position0 = new Position(0, 0);
       boolean boolean0 = board_Position0.equals(board_Position0);
       assertTrue(boolean0);
   }
 
   @Test(timeout = 4000)
   public void test28()  throws Throwable  {
-      Board.Position board_Position0 = new Board.Position(14, 14);
-      Board.Position board_Position1 = new Board.Position(14, (-2));
+      Position board_Position0 = new Position(14, 14);
+      Position board_Position1 = new Position(14, (-2));
       boolean boolean0 = board_Position0.equals(board_Position1);
       assertFalse(board_Position1.equals((Object)board_Position0));
       assertEquals(14, board_Position1.row);
@@ -250,7 +252,7 @@ public class Board_ESTest extends Board_ESTest_scaffolding {
       Board board0 = new Board();
       // Undeclared exception!
       try { 
-        board0.move((Board.Direction) null);
+        board0.move((Direction) null);
         fail("Expecting exception: IllegalArgumentException");
       
       } catch(IllegalArgumentException e) {
@@ -289,7 +291,7 @@ public class Board_ESTest extends Board_ESTest_scaffolding {
       Board board1 = Board.forTesting(4);
       assertTrue(board1.repOK());
       
-      Board.Direction board_Direction0 = Board.Direction.LEFT;
+      Direction board_Direction0 = Direction.LEFT;
       boolean boolean0 = board0.move(board_Direction0);
       assertTrue(boolean0);
       
@@ -330,7 +332,7 @@ public class Board_ESTest extends Board_ESTest_scaffolding {
   @Test(timeout = 4000)
   public void test37()  throws Throwable  {
       Board board0 = Board.forTesting(4);
-      Board.Direction board_Direction0 = Board.Direction.DOWN;
+      Direction board_Direction0 = Direction.DOWN;
       boolean boolean0 = board0.move(board_Direction0);
       assertEquals(4, board0.getSize());
       assertFalse(boolean0);
@@ -433,7 +435,7 @@ public class Board_ESTest extends Board_ESTest_scaffolding {
       Board board0 = new Board();
       assertTrue(board0.repOK());
       
-      Board.Direction board_Direction0 = Board.Direction.LEFT;
+      Direction board_Direction0 = Direction.LEFT;
       boolean boolean0 = board0.move(board_Direction0);
       assertEquals(4, board0.getSize());
       assertTrue(boolean0);
@@ -515,7 +517,7 @@ public class Board_ESTest extends Board_ESTest_scaffolding {
 
   @Test(timeout = 4000)
   public void test54()  throws Throwable  {
-      Board.Position board_Position0 = new Board.Position((-1175), (-1));
+      Position board_Position0 = new Position((-1175), (-1));
       String string0 = board_Position0.toString();
       assertEquals("(-1175, -1)", string0);
   }

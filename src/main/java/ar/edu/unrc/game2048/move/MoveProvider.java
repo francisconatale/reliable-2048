@@ -1,6 +1,6 @@
-package ar.edu.unrc.game2048.strategy;
+package ar.edu.unrc.game2048.move;
 
-import ar.edu.unrc.game2048.Board.Direction;
+import ar.edu.unrc.game2048.Direction;
 import java.util.EnumMap;
 import java.util.Map;
 

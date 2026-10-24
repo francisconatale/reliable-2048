@@ -45,9 +45,9 @@ public class RegressionTest0 {
     public void test003() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test003");
-        ar.edu.unrc.game2048.Board.Direction direction0 = ar.edu.unrc.game2048.Board.Direction.RIGHT;
+        ar.edu.unrc.game2048.Direction direction0 = ar.edu.unrc.game2048.Direction.RIGHT;
         java.lang.Class<?> wildcardClass1 = direction0.getClass();
-        org.junit.Assert.assertTrue("'" + direction0 + "' != '" + ar.edu.unrc.game2048.Board.Direction.RIGHT + "'", direction0.equals(ar.edu.unrc.game2048.Board.Direction.RIGHT));
+        org.junit.Assert.assertTrue("'" + direction0 + "' != '" + ar.edu.unrc.game2048.Direction.RIGHT + "'", direction0.equals(ar.edu.unrc.game2048.Direction.RIGHT));
         org.junit.Assert.assertNotNull(wildcardClass1);
     }
 
@@ -112,7 +112,7 @@ public class RegressionTest0 {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test008");
         ar.edu.unrc.game2048.Board board1 = ar.edu.unrc.game2048.Board.forTesting(100);
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet2 = board1.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet2 = board1.getEmptyPositions();
         ar.edu.unrc.game2048.Cell cell5 = null;
         // The following exception was thrown during execution in test generation
         try {
@@ -129,9 +129,9 @@ public class RegressionTest0 {
     public void test009() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test009");
-        ar.edu.unrc.game2048.Board.Direction direction0 = ar.edu.unrc.game2048.Board.Direction.UP;
+        ar.edu.unrc.game2048.Direction direction0 = ar.edu.unrc.game2048.Direction.UP;
         java.lang.Class<?> wildcardClass1 = direction0.getClass();
-        org.junit.Assert.assertTrue("'" + direction0 + "' != '" + ar.edu.unrc.game2048.Board.Direction.UP + "'", direction0.equals(ar.edu.unrc.game2048.Board.Direction.UP));
+        org.junit.Assert.assertTrue("'" + direction0 + "' != '" + ar.edu.unrc.game2048.Direction.UP + "'", direction0.equals(ar.edu.unrc.game2048.Direction.UP));
         org.junit.Assert.assertNotNull(wildcardClass1);
     }
 
@@ -238,7 +238,7 @@ public class RegressionTest0 {
     public void test016() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test016");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position((int) (byte) 100, (int) (byte) 0);
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position((int) (byte) 100, (int) (byte) 0);
         boolean boolean4 = position2.equals((java.lang.Object) 2048);
         org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
     }
@@ -247,7 +247,7 @@ public class RegressionTest0 {
     public void test017() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test017");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position((int) (byte) 100, (int) (byte) 0);
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position((int) (byte) 100, (int) (byte) 0);
         int int3 = position2.col;
         org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
     }
@@ -375,7 +375,7 @@ public class RegressionTest0 {
             System.out.format("%n%s%n", "RegressionTest0.test024");
         ar.edu.unrc.game2048.Board board1 = ar.edu.unrc.game2048.Board.forTesting(100);
         board1.setScore((int) 'a');
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet4 = board1.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet4 = board1.getEmptyPositions();
         int int5 = board1.getSize();
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertNotNull(positionSet4);
@@ -410,7 +410,7 @@ public class RegressionTest0 {
     public void test026() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test026");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position((int) (short) 100, (int) (short) 1);
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position((int) (short) 100, (int) (short) 1);
         java.lang.String str3 = position2.toString();
         int int4 = position2.row;
         int int5 = position2.row;
@@ -582,7 +582,7 @@ public class RegressionTest0 {
         boolean boolean8 = board1.hasEmptyCells();
         ar.edu.unrc.game2048.Board board10 = ar.edu.unrc.game2048.Board.forTesting(100);
         board10.setScore((int) 'a');
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet13 = board10.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet13 = board10.getEmptyPositions();
         boolean boolean14 = board1.equals((java.lang.Object) positionSet13);
         // The following exception was thrown during execution in test generation
         try {
@@ -609,7 +609,7 @@ public class RegressionTest0 {
         java.lang.Object obj4 = null;
         boolean boolean5 = board1.equals(obj4);
         boolean boolean6 = board1.isWinningBoard();
-        ar.edu.unrc.game2048.Board.Direction direction7 = ar.edu.unrc.game2048.Board.Direction.DOWN;
+        ar.edu.unrc.game2048.Direction direction7 = ar.edu.unrc.game2048.Direction.DOWN;
         boolean boolean8 = board1.move(direction7);
         // The following exception was thrown during execution in test generation
         try {
@@ -622,7 +622,7 @@ public class RegressionTest0 {
         org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
         org.junit.Assert.assertTrue("'" + boolean5 + "' != '" + false + "'", boolean5 == false);
         org.junit.Assert.assertTrue("'" + boolean6 + "' != '" + false + "'", boolean6 == false);
-        org.junit.Assert.assertTrue("'" + direction7 + "' != '" + ar.edu.unrc.game2048.Board.Direction.DOWN + "'", direction7.equals(ar.edu.unrc.game2048.Board.Direction.DOWN));
+        org.junit.Assert.assertTrue("'" + direction7 + "' != '" + ar.edu.unrc.game2048.Direction.DOWN + "'", direction7.equals(ar.edu.unrc.game2048.Direction.DOWN));
         org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
     }
 
@@ -642,7 +642,7 @@ public class RegressionTest0 {
     public void test039() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test039");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position((int) (short) 100, (int) (short) 1);
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position((int) (short) 100, (int) (short) 1);
         int int3 = position2.row;
         java.lang.String str4 = position2.toString();
         org.junit.Assert.assertTrue("'" + int3 + "' != '" + 100 + "'", int3 == 100);
@@ -690,14 +690,14 @@ public class RegressionTest0 {
         ar.edu.unrc.game2048.Board board1 = ar.edu.unrc.game2048.Board.forTesting(100);
         boolean boolean2 = board1.isLosingBoard();
         boolean boolean3 = board1.isLosingBoard();
-        ar.edu.unrc.game2048.Board.Direction direction4 = ar.edu.unrc.game2048.Board.Direction.LEFT;
+        ar.edu.unrc.game2048.Direction direction4 = ar.edu.unrc.game2048.Direction.LEFT;
         boolean boolean5 = board1.move(direction4);
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet6 = board1.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet6 = board1.getEmptyPositions();
         ar.edu.unrc.game2048.Cell[][] cellArray7 = board1.getGrid();
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
         org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
-        org.junit.Assert.assertTrue("'" + direction4 + "' != '" + ar.edu.unrc.game2048.Board.Direction.LEFT + "'", direction4.equals(ar.edu.unrc.game2048.Board.Direction.LEFT));
+        org.junit.Assert.assertTrue("'" + direction4 + "' != '" + ar.edu.unrc.game2048.Direction.LEFT + "'", direction4.equals(ar.edu.unrc.game2048.Direction.LEFT));
         org.junit.Assert.assertTrue("'" + boolean5 + "' != '" + false + "'", boolean5 == false);
         org.junit.Assert.assertNotNull(positionSet6);
         org.junit.Assert.assertNotNull(cellArray7);
@@ -726,11 +726,11 @@ public class RegressionTest0 {
             System.out.format("%n%s%n", "RegressionTest0.test045");
         ar.edu.unrc.game2048.Board board1 = ar.edu.unrc.game2048.Board.forTesting((int) (short) 1);
         ar.edu.unrc.game2048.Cell[][] cellArray2 = board1.getGrid();
-        ar.edu.unrc.game2048.Board.Direction direction3 = ar.edu.unrc.game2048.Board.Direction.UP;
+        ar.edu.unrc.game2048.Direction direction3 = ar.edu.unrc.game2048.Direction.UP;
         boolean boolean4 = board1.move(direction3);
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertNotNull(cellArray2);
-        org.junit.Assert.assertTrue("'" + direction3 + "' != '" + ar.edu.unrc.game2048.Board.Direction.UP + "'", direction3.equals(ar.edu.unrc.game2048.Board.Direction.UP));
+        org.junit.Assert.assertTrue("'" + direction3 + "' != '" + ar.edu.unrc.game2048.Direction.UP + "'", direction3.equals(ar.edu.unrc.game2048.Direction.UP));
         org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
     }
 
@@ -743,7 +743,7 @@ public class RegressionTest0 {
         boolean boolean3 = board1.isLosingBoard();
         int int4 = board1.getScore();
         boolean boolean5 = board1.isWinningBoard();
-        ar.edu.unrc.game2048.Board.Position position8 = new ar.edu.unrc.game2048.Board.Position((int) (short) 100, (int) (short) 1);
+        ar.edu.unrc.game2048.Position position8 = new ar.edu.unrc.game2048.Position((int) (short) 100, (int) (short) 1);
         java.lang.String str9 = position8.toString();
         java.lang.Object obj10 = null;
         boolean boolean11 = position8.equals(obj10);
@@ -769,12 +769,12 @@ public class RegressionTest0 {
         ar.edu.unrc.game2048.Board board1 = ar.edu.unrc.game2048.Board.forTesting(100);
         boolean boolean2 = board1.isWinningBoard();
         board1.setScore(4);
-        ar.edu.unrc.game2048.Board.Direction direction5 = ar.edu.unrc.game2048.Board.Direction.RIGHT;
+        ar.edu.unrc.game2048.Direction direction5 = ar.edu.unrc.game2048.Direction.RIGHT;
         boolean boolean6 = board1.move(direction5);
         boolean boolean7 = board1.hasEmptyCells();
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
-        org.junit.Assert.assertTrue("'" + direction5 + "' != '" + ar.edu.unrc.game2048.Board.Direction.RIGHT + "'", direction5.equals(ar.edu.unrc.game2048.Board.Direction.RIGHT));
+        org.junit.Assert.assertTrue("'" + direction5 + "' != '" + ar.edu.unrc.game2048.Direction.RIGHT + "'", direction5.equals(ar.edu.unrc.game2048.Direction.RIGHT));
         org.junit.Assert.assertTrue("'" + boolean6 + "' != '" + false + "'", boolean6 == false);
         org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + true + "'", boolean7 == true);
     }
@@ -892,14 +892,14 @@ public class RegressionTest0 {
         ar.edu.unrc.game2048.Board board1 = ar.edu.unrc.game2048.Board.forTesting(100);
         boolean boolean2 = board1.isLosingBoard();
         boolean boolean3 = board1.isLosingBoard();
-        ar.edu.unrc.game2048.Board.Direction direction4 = ar.edu.unrc.game2048.Board.Direction.LEFT;
+        ar.edu.unrc.game2048.Direction direction4 = ar.edu.unrc.game2048.Direction.LEFT;
         boolean boolean5 = board1.move(direction4);
         int int6 = board1.getSize();
         boolean boolean7 = board1.hasEmptyCells();
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
         org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
-        org.junit.Assert.assertTrue("'" + direction4 + "' != '" + ar.edu.unrc.game2048.Board.Direction.LEFT + "'", direction4.equals(ar.edu.unrc.game2048.Board.Direction.LEFT));
+        org.junit.Assert.assertTrue("'" + direction4 + "' != '" + ar.edu.unrc.game2048.Direction.LEFT + "'", direction4.equals(ar.edu.unrc.game2048.Direction.LEFT));
         org.junit.Assert.assertTrue("'" + boolean5 + "' != '" + false + "'", boolean5 == false);
         org.junit.Assert.assertTrue("'" + int6 + "' != '" + 100 + "'", int6 == 100);
         org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + true + "'", boolean7 == true);
@@ -909,7 +909,7 @@ public class RegressionTest0 {
     public void test055() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test055");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position((int) (short) 1, 0);
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position((int) (short) 1, 0);
         java.lang.Class<?> wildcardClass3 = position2.getClass();
         org.junit.Assert.assertNotNull(wildcardClass3);
     }
@@ -948,11 +948,11 @@ public class RegressionTest0 {
             System.out.format("%n%s%n", "RegressionTest0.test058");
         ar.edu.unrc.game2048.Board board1 = ar.edu.unrc.game2048.Board.forTesting(100);
         int int2 = board1.getScore();
-        ar.edu.unrc.game2048.Board.Direction direction3 = ar.edu.unrc.game2048.Board.Direction.RIGHT;
+        ar.edu.unrc.game2048.Direction direction3 = ar.edu.unrc.game2048.Direction.RIGHT;
         boolean boolean4 = board1.move(direction3);
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + int2 + "' != '" + 0 + "'", int2 == 0);
-        org.junit.Assert.assertTrue("'" + direction3 + "' != '" + ar.edu.unrc.game2048.Board.Direction.RIGHT + "'", direction3.equals(ar.edu.unrc.game2048.Board.Direction.RIGHT));
+        org.junit.Assert.assertTrue("'" + direction3 + "' != '" + ar.edu.unrc.game2048.Direction.RIGHT + "'", direction3.equals(ar.edu.unrc.game2048.Direction.RIGHT));
         org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
     }
 
@@ -963,12 +963,12 @@ public class RegressionTest0 {
         ar.edu.unrc.game2048.Board board1 = ar.edu.unrc.game2048.Board.forTesting(100);
         boolean boolean2 = board1.isWinningBoard();
         board1.setScore(4);
-        ar.edu.unrc.game2048.Board.Direction direction5 = ar.edu.unrc.game2048.Board.Direction.RIGHT;
+        ar.edu.unrc.game2048.Direction direction5 = ar.edu.unrc.game2048.Direction.RIGHT;
         boolean boolean6 = board1.move(direction5);
         boolean boolean7 = board1.isFull();
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
-        org.junit.Assert.assertTrue("'" + direction5 + "' != '" + ar.edu.unrc.game2048.Board.Direction.RIGHT + "'", direction5.equals(ar.edu.unrc.game2048.Board.Direction.RIGHT));
+        org.junit.Assert.assertTrue("'" + direction5 + "' != '" + ar.edu.unrc.game2048.Direction.RIGHT + "'", direction5.equals(ar.edu.unrc.game2048.Direction.RIGHT));
         org.junit.Assert.assertTrue("'" + boolean6 + "' != '" + false + "'", boolean6 == false);
         org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + false + "'", boolean7 == false);
     }
@@ -985,10 +985,10 @@ public class RegressionTest0 {
         ar.edu.unrc.game2048.Board board7 = ar.edu.unrc.game2048.Board.forTesting(100);
         boolean boolean8 = board7.isWinningBoard();
         board7.setScore(4);
-        ar.edu.unrc.game2048.Board.Direction direction11 = ar.edu.unrc.game2048.Board.Direction.RIGHT;
+        ar.edu.unrc.game2048.Direction direction11 = ar.edu.unrc.game2048.Direction.RIGHT;
         boolean boolean12 = board7.move(direction11);
         boolean boolean13 = board1.move(direction11);
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet14 = board1.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet14 = board1.getEmptyPositions();
         java.lang.Class<?> wildcardClass15 = positionSet14.getClass();
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
@@ -997,7 +997,7 @@ public class RegressionTest0 {
         org.junit.Assert.assertTrue("'" + int5 + "' != '" + 100 + "'", int5 == 100);
         org.junit.Assert.assertNotNull(board7);
         org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
-        org.junit.Assert.assertTrue("'" + direction11 + "' != '" + ar.edu.unrc.game2048.Board.Direction.RIGHT + "'", direction11.equals(ar.edu.unrc.game2048.Board.Direction.RIGHT));
+        org.junit.Assert.assertTrue("'" + direction11 + "' != '" + ar.edu.unrc.game2048.Direction.RIGHT + "'", direction11.equals(ar.edu.unrc.game2048.Direction.RIGHT));
         org.junit.Assert.assertTrue("'" + boolean12 + "' != '" + false + "'", boolean12 == false);
         org.junit.Assert.assertTrue("'" + boolean13 + "' != '" + false + "'", boolean13 == false);
         org.junit.Assert.assertNotNull(positionSet14);
@@ -1048,14 +1048,14 @@ public class RegressionTest0 {
         ar.edu.unrc.game2048.Board board1 = ar.edu.unrc.game2048.Board.forTesting(100);
         boolean boolean2 = board1.isLosingBoard();
         boolean boolean3 = board1.isLosingBoard();
-        ar.edu.unrc.game2048.Board.Direction direction4 = ar.edu.unrc.game2048.Board.Direction.LEFT;
+        ar.edu.unrc.game2048.Direction direction4 = ar.edu.unrc.game2048.Direction.LEFT;
         boolean boolean5 = board1.move(direction4);
         int int6 = board1.getSize();
         boolean boolean7 = board1.isWinningBoard();
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
         org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
-        org.junit.Assert.assertTrue("'" + direction4 + "' != '" + ar.edu.unrc.game2048.Board.Direction.LEFT + "'", direction4.equals(ar.edu.unrc.game2048.Board.Direction.LEFT));
+        org.junit.Assert.assertTrue("'" + direction4 + "' != '" + ar.edu.unrc.game2048.Direction.LEFT + "'", direction4.equals(ar.edu.unrc.game2048.Direction.LEFT));
         org.junit.Assert.assertTrue("'" + boolean5 + "' != '" + false + "'", boolean5 == false);
         org.junit.Assert.assertTrue("'" + int6 + "' != '" + 100 + "'", int6 == 100);
         org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + false + "'", boolean7 == false);
@@ -1104,7 +1104,7 @@ public class RegressionTest0 {
         boolean boolean3 = board1.equals((java.lang.Object) "hi!");
         java.lang.Object obj4 = null;
         boolean boolean5 = board1.equals(obj4);
-        ar.edu.unrc.game2048.Board.Direction direction6 = null;
+        ar.edu.unrc.game2048.Direction direction6 = null;
         // The following exception was thrown during execution in test generation
         try {
             boolean boolean7 = board1.move(direction6);
@@ -1160,7 +1160,7 @@ public class RegressionTest0 {
     public void test069() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test069");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position((int) (short) 100, (int) (short) 1);
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position((int) (short) 100, (int) (short) 1);
         java.lang.String str3 = position2.toString();
         java.lang.Object obj4 = null;
         boolean boolean5 = position2.equals(obj4);
@@ -1197,7 +1197,7 @@ public class RegressionTest0 {
         ar.edu.unrc.game2048.Board board1 = ar.edu.unrc.game2048.Board.forTesting(100);
         boolean boolean2 = board1.isWinningBoard();
         board1.setScore(4);
-        ar.edu.unrc.game2048.Board.Direction direction5 = ar.edu.unrc.game2048.Board.Direction.RIGHT;
+        ar.edu.unrc.game2048.Direction direction5 = ar.edu.unrc.game2048.Direction.RIGHT;
         boolean boolean6 = board1.move(direction5);
         boolean boolean7 = board1.isFull();
         ar.edu.unrc.game2048.Board board11 = ar.edu.unrc.game2048.Board.forTesting(100);
@@ -1213,7 +1213,7 @@ public class RegressionTest0 {
         }
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
-        org.junit.Assert.assertTrue("'" + direction5 + "' != '" + ar.edu.unrc.game2048.Board.Direction.RIGHT + "'", direction5.equals(ar.edu.unrc.game2048.Board.Direction.RIGHT));
+        org.junit.Assert.assertTrue("'" + direction5 + "' != '" + ar.edu.unrc.game2048.Direction.RIGHT + "'", direction5.equals(ar.edu.unrc.game2048.Direction.RIGHT));
         org.junit.Assert.assertTrue("'" + boolean6 + "' != '" + false + "'", boolean6 == false);
         org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + false + "'", boolean7 == false);
         org.junit.Assert.assertNotNull(board11);
@@ -1252,21 +1252,21 @@ public class RegressionTest0 {
     public void test073() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test073");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position(4, (int) (byte) 0);
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position(4, (int) (byte) 0);
     }
 
     @Test
     public void test074() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test074");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position((int) 'a', (int) (short) -1);
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position((int) 'a', (int) (short) -1);
     }
 
     @Test
     public void test075() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test075");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position((int) (byte) 10, (int) 'a');
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position((int) (byte) 10, (int) 'a');
         int int3 = position2.col;
         int int4 = position2.col;
         org.junit.Assert.assertTrue("'" + int3 + "' != '" + 97 + "'", int3 == 97);
@@ -1279,7 +1279,7 @@ public class RegressionTest0 {
             System.out.format("%n%s%n", "RegressionTest0.test076");
         ar.edu.unrc.game2048.Board board1 = ar.edu.unrc.game2048.Board.forTesting(100);
         boolean boolean2 = board1.isWinningBoard();
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet3 = board1.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet3 = board1.getEmptyPositions();
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
         org.junit.Assert.assertNotNull(positionSet3);
@@ -1289,7 +1289,7 @@ public class RegressionTest0 {
     public void test077() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test077");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position((int) (byte) 10, (int) 'a');
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position((int) (byte) 10, (int) 'a');
         java.lang.String str3 = position2.toString();
         java.lang.Object obj4 = null;
         boolean boolean5 = position2.equals(obj4);
@@ -1305,12 +1305,12 @@ public class RegressionTest0 {
         boolean boolean3 = board1.equals((java.lang.Object) "hi!");
         boolean boolean4 = board1.isLosingBoard();
         int int5 = board1.getSize();
-        ar.edu.unrc.game2048.Board.Direction direction6 = ar.edu.unrc.game2048.Board.Direction.LEFT;
+        ar.edu.unrc.game2048.Direction direction6 = ar.edu.unrc.game2048.Direction.LEFT;
         boolean boolean7 = board1.move(direction6);
         ar.edu.unrc.game2048.Board board9 = ar.edu.unrc.game2048.Board.forTesting(100);
         boolean boolean10 = board9.isWinningBoard();
         board9.setScore(4);
-        ar.edu.unrc.game2048.Board.Direction direction13 = ar.edu.unrc.game2048.Board.Direction.RIGHT;
+        ar.edu.unrc.game2048.Direction direction13 = ar.edu.unrc.game2048.Direction.RIGHT;
         boolean boolean14 = board9.move(direction13);
         boolean boolean15 = board1.move(direction13);
         boolean boolean16 = board1.isWinningBoard();
@@ -1318,11 +1318,11 @@ public class RegressionTest0 {
         org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
         org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
         org.junit.Assert.assertTrue("'" + int5 + "' != '" + 100 + "'", int5 == 100);
-        org.junit.Assert.assertTrue("'" + direction6 + "' != '" + ar.edu.unrc.game2048.Board.Direction.LEFT + "'", direction6.equals(ar.edu.unrc.game2048.Board.Direction.LEFT));
+        org.junit.Assert.assertTrue("'" + direction6 + "' != '" + ar.edu.unrc.game2048.Direction.LEFT + "'", direction6.equals(ar.edu.unrc.game2048.Direction.LEFT));
         org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + false + "'", boolean7 == false);
         org.junit.Assert.assertNotNull(board9);
         org.junit.Assert.assertTrue("'" + boolean10 + "' != '" + false + "'", boolean10 == false);
-        org.junit.Assert.assertTrue("'" + direction13 + "' != '" + ar.edu.unrc.game2048.Board.Direction.RIGHT + "'", direction13.equals(ar.edu.unrc.game2048.Board.Direction.RIGHT));
+        org.junit.Assert.assertTrue("'" + direction13 + "' != '" + ar.edu.unrc.game2048.Direction.RIGHT + "'", direction13.equals(ar.edu.unrc.game2048.Direction.RIGHT));
         org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
         org.junit.Assert.assertTrue("'" + boolean15 + "' != '" + false + "'", boolean15 == false);
         org.junit.Assert.assertTrue("'" + boolean16 + "' != '" + false + "'", boolean16 == false);
@@ -1355,7 +1355,7 @@ public class RegressionTest0 {
         boolean boolean8 = board1.hasEmptyCells();
         ar.edu.unrc.game2048.Board board10 = ar.edu.unrc.game2048.Board.forTesting(100);
         board10.setScore((int) 'a');
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet13 = board10.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet13 = board10.getEmptyPositions();
         boolean boolean14 = board1.equals((java.lang.Object) positionSet13);
         boolean boolean15 = board1.isWinningBoard();
         boolean boolean16 = board1.hasEmptyCells();
@@ -1384,7 +1384,7 @@ public class RegressionTest0 {
     public void test082() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test082");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position((int) (short) 100, (int) (short) 1);
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position((int) (short) 100, (int) (short) 1);
         java.lang.Class<?> wildcardClass3 = position2.getClass();
         org.junit.Assert.assertNotNull(wildcardClass3);
     }
@@ -1424,7 +1424,7 @@ public class RegressionTest0 {
     public void test085() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test085");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position(100, 4);
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position(100, 4);
         java.lang.String str3 = position2.toString();
         org.junit.Assert.assertEquals("'" + str3 + "' != '" + "(100, 4)" + "'", str3, "(100, 4)");
     }
@@ -1433,7 +1433,7 @@ public class RegressionTest0 {
     public void test086() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test086");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position((int) (short) 100, (int) (short) 1);
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position((int) (short) 100, (int) (short) 1);
         java.lang.String str3 = position2.toString();
         java.lang.Object obj4 = null;
         boolean boolean5 = position2.equals(obj4);
@@ -1481,7 +1481,7 @@ public class RegressionTest0 {
         boolean boolean3 = board1.equals((java.lang.Object) "hi!");
         boolean boolean4 = board1.isLosingBoard();
         int int5 = board1.getSize();
-        ar.edu.unrc.game2048.Board.Direction direction6 = ar.edu.unrc.game2048.Board.Direction.LEFT;
+        ar.edu.unrc.game2048.Direction direction6 = ar.edu.unrc.game2048.Direction.LEFT;
         boolean boolean7 = board1.move(direction6);
         // The following exception was thrown during execution in test generation
         try {
@@ -1494,7 +1494,7 @@ public class RegressionTest0 {
         org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
         org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
         org.junit.Assert.assertTrue("'" + int5 + "' != '" + 100 + "'", int5 == 100);
-        org.junit.Assert.assertTrue("'" + direction6 + "' != '" + ar.edu.unrc.game2048.Board.Direction.LEFT + "'", direction6.equals(ar.edu.unrc.game2048.Board.Direction.LEFT));
+        org.junit.Assert.assertTrue("'" + direction6 + "' != '" + ar.edu.unrc.game2048.Direction.LEFT + "'", direction6.equals(ar.edu.unrc.game2048.Direction.LEFT));
         org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + false + "'", boolean7 == false);
     }
 
@@ -1552,7 +1552,7 @@ public class RegressionTest0 {
     public void test092() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test092");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position((int) (short) 1, 0);
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position((int) (short) 1, 0);
         int int3 = position2.row;
         java.lang.String str4 = position2.toString();
         org.junit.Assert.assertTrue("'" + int3 + "' != '" + 1 + "'", int3 == 1);
@@ -1596,7 +1596,7 @@ public class RegressionTest0 {
     public void test095() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test095");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position((int) (short) 100, (int) (short) 1);
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position((int) (short) 100, (int) (short) 1);
         java.lang.String str3 = position2.toString();
         java.lang.Object obj4 = null;
         boolean boolean5 = position2.equals(obj4);
@@ -1707,7 +1707,7 @@ public class RegressionTest0 {
         boolean boolean3 = board1.equals((java.lang.Object) "hi!");
         java.lang.Object obj4 = null;
         boolean boolean5 = board1.equals(obj4);
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet6 = board1.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet6 = board1.getEmptyPositions();
         boolean boolean7 = board1.isLosingBoard();
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
@@ -1723,14 +1723,14 @@ public class RegressionTest0 {
         ar.edu.unrc.game2048.Board board1 = ar.edu.unrc.game2048.Board.forTesting(100);
         boolean boolean2 = board1.isWinningBoard();
         board1.setScore(4);
-        ar.edu.unrc.game2048.Board.Direction direction5 = ar.edu.unrc.game2048.Board.Direction.RIGHT;
+        ar.edu.unrc.game2048.Direction direction5 = ar.edu.unrc.game2048.Direction.RIGHT;
         boolean boolean6 = board1.move(direction5);
         boolean boolean7 = board1.isWinningBoard();
         boolean boolean8 = board1.isFull();
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet9 = board1.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet9 = board1.getEmptyPositions();
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
-        org.junit.Assert.assertTrue("'" + direction5 + "' != '" + ar.edu.unrc.game2048.Board.Direction.RIGHT + "'", direction5.equals(ar.edu.unrc.game2048.Board.Direction.RIGHT));
+        org.junit.Assert.assertTrue("'" + direction5 + "' != '" + ar.edu.unrc.game2048.Direction.RIGHT + "'", direction5.equals(ar.edu.unrc.game2048.Direction.RIGHT));
         org.junit.Assert.assertTrue("'" + boolean6 + "' != '" + false + "'", boolean6 == false);
         org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + false + "'", boolean7 == false);
         org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
@@ -1759,7 +1759,7 @@ public class RegressionTest0 {
     public void test103() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test103");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position((int) (short) 100, (int) (short) 1);
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position((int) (short) 100, (int) (short) 1);
         java.lang.String str3 = position2.toString();
         java.lang.Object obj4 = null;
         boolean boolean5 = position2.equals(obj4);
@@ -1773,7 +1773,7 @@ public class RegressionTest0 {
     public void test104() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test104");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position((int) (short) 1, 0);
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position((int) (short) 1, 0);
         int int3 = position2.row;
         int int4 = position2.row;
         java.lang.String str5 = position2.toString();
@@ -1789,14 +1789,14 @@ public class RegressionTest0 {
         ar.edu.unrc.game2048.Board board1 = ar.edu.unrc.game2048.Board.forTesting(100);
         boolean boolean2 = board1.isWinningBoard();
         board1.setScore(4);
-        ar.edu.unrc.game2048.Board.Direction direction5 = ar.edu.unrc.game2048.Board.Direction.RIGHT;
+        ar.edu.unrc.game2048.Direction direction5 = ar.edu.unrc.game2048.Direction.RIGHT;
         boolean boolean6 = board1.move(direction5);
         boolean boolean7 = board1.isFull();
         boolean boolean8 = board1.isFull();
         boolean boolean9 = board1.hasEmptyCells();
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
-        org.junit.Assert.assertTrue("'" + direction5 + "' != '" + ar.edu.unrc.game2048.Board.Direction.RIGHT + "'", direction5.equals(ar.edu.unrc.game2048.Board.Direction.RIGHT));
+        org.junit.Assert.assertTrue("'" + direction5 + "' != '" + ar.edu.unrc.game2048.Direction.RIGHT + "'", direction5.equals(ar.edu.unrc.game2048.Direction.RIGHT));
         org.junit.Assert.assertTrue("'" + boolean6 + "' != '" + false + "'", boolean6 == false);
         org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + false + "'", boolean7 == false);
         org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
@@ -1807,16 +1807,16 @@ public class RegressionTest0 {
     public void test106() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test106");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position((int) (short) 100, (int) (short) 1);
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position((int) (short) 100, (int) (short) 1);
         java.lang.String str3 = position2.toString();
         java.lang.String str4 = position2.toString();
         ar.edu.unrc.game2048.Board board6 = ar.edu.unrc.game2048.Board.forTesting(100);
         boolean boolean8 = board6.equals((java.lang.Object) "hi!");
         java.lang.Object obj9 = null;
         boolean boolean10 = board6.equals(obj9);
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet11 = board6.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet11 = board6.getEmptyPositions();
         boolean boolean12 = position2.equals((java.lang.Object) board6);
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet13 = board6.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet13 = board6.getEmptyPositions();
         org.junit.Assert.assertEquals("'" + str3 + "' != '" + "(100, 1)" + "'", str3, "(100, 1)");
         org.junit.Assert.assertEquals("'" + str4 + "' != '" + "(100, 1)" + "'", str4, "(100, 1)");
         org.junit.Assert.assertNotNull(board6);
@@ -1838,12 +1838,12 @@ public class RegressionTest0 {
         boolean boolean8 = board1.hasEmptyCells();
         ar.edu.unrc.game2048.Board board10 = ar.edu.unrc.game2048.Board.forTesting(100);
         board10.setScore((int) 'a');
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet13 = board10.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet13 = board10.getEmptyPositions();
         boolean boolean14 = board1.equals((java.lang.Object) positionSet13);
         ar.edu.unrc.game2048.Board board16 = ar.edu.unrc.game2048.Board.forTesting(100);
         boolean boolean17 = board16.isWinningBoard();
         board16.setScore(4);
-        ar.edu.unrc.game2048.Board.Direction direction20 = ar.edu.unrc.game2048.Board.Direction.RIGHT;
+        ar.edu.unrc.game2048.Direction direction20 = ar.edu.unrc.game2048.Direction.RIGHT;
         boolean boolean21 = board16.move(direction20);
         boolean boolean22 = board1.move(direction20);
         org.junit.Assert.assertNotNull(board1);
@@ -1855,7 +1855,7 @@ public class RegressionTest0 {
         org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
         org.junit.Assert.assertNotNull(board16);
         org.junit.Assert.assertTrue("'" + boolean17 + "' != '" + false + "'", boolean17 == false);
-        org.junit.Assert.assertTrue("'" + direction20 + "' != '" + ar.edu.unrc.game2048.Board.Direction.RIGHT + "'", direction20.equals(ar.edu.unrc.game2048.Board.Direction.RIGHT));
+        org.junit.Assert.assertTrue("'" + direction20 + "' != '" + ar.edu.unrc.game2048.Direction.RIGHT + "'", direction20.equals(ar.edu.unrc.game2048.Direction.RIGHT));
         org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + false + "'", boolean21 == false);
         org.junit.Assert.assertTrue("'" + boolean22 + "' != '" + false + "'", boolean22 == false);
     }
@@ -1867,13 +1867,13 @@ public class RegressionTest0 {
         ar.edu.unrc.game2048.Board board1 = ar.edu.unrc.game2048.Board.forTesting(100);
         boolean boolean2 = board1.isLosingBoard();
         boolean boolean3 = board1.isLosingBoard();
-        ar.edu.unrc.game2048.Board.Direction direction4 = ar.edu.unrc.game2048.Board.Direction.LEFT;
+        ar.edu.unrc.game2048.Direction direction4 = ar.edu.unrc.game2048.Direction.LEFT;
         boolean boolean5 = board1.move(direction4);
         board1.setScore((int) (byte) 100);
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
         org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
-        org.junit.Assert.assertTrue("'" + direction4 + "' != '" + ar.edu.unrc.game2048.Board.Direction.LEFT + "'", direction4.equals(ar.edu.unrc.game2048.Board.Direction.LEFT));
+        org.junit.Assert.assertTrue("'" + direction4 + "' != '" + ar.edu.unrc.game2048.Direction.LEFT + "'", direction4.equals(ar.edu.unrc.game2048.Direction.LEFT));
         org.junit.Assert.assertTrue("'" + boolean5 + "' != '" + false + "'", boolean5 == false);
     }
 
@@ -1927,10 +1927,10 @@ public class RegressionTest0 {
         ar.edu.unrc.game2048.Board board7 = ar.edu.unrc.game2048.Board.forTesting(100);
         boolean boolean8 = board7.isWinningBoard();
         board7.setScore(4);
-        ar.edu.unrc.game2048.Board.Direction direction11 = ar.edu.unrc.game2048.Board.Direction.RIGHT;
+        ar.edu.unrc.game2048.Direction direction11 = ar.edu.unrc.game2048.Direction.RIGHT;
         boolean boolean12 = board7.move(direction11);
         boolean boolean13 = board1.move(direction11);
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet14 = board1.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet14 = board1.getEmptyPositions();
         boolean boolean15 = board1.isFull();
         java.lang.Object obj16 = null;
         boolean boolean17 = board1.equals(obj16);
@@ -1941,7 +1941,7 @@ public class RegressionTest0 {
         org.junit.Assert.assertTrue("'" + int5 + "' != '" + 100 + "'", int5 == 100);
         org.junit.Assert.assertNotNull(board7);
         org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
-        org.junit.Assert.assertTrue("'" + direction11 + "' != '" + ar.edu.unrc.game2048.Board.Direction.RIGHT + "'", direction11.equals(ar.edu.unrc.game2048.Board.Direction.RIGHT));
+        org.junit.Assert.assertTrue("'" + direction11 + "' != '" + ar.edu.unrc.game2048.Direction.RIGHT + "'", direction11.equals(ar.edu.unrc.game2048.Direction.RIGHT));
         org.junit.Assert.assertTrue("'" + boolean12 + "' != '" + false + "'", boolean12 == false);
         org.junit.Assert.assertTrue("'" + boolean13 + "' != '" + false + "'", boolean13 == false);
         org.junit.Assert.assertNotNull(positionSet14);
@@ -1953,7 +1953,7 @@ public class RegressionTest0 {
     public void test112() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test112");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position((int) (short) 100, (int) (short) 1);
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position((int) (short) 100, (int) (short) 1);
         java.lang.String str3 = position2.toString();
         java.lang.Object obj4 = null;
         boolean boolean5 = position2.equals(obj4);
@@ -1961,7 +1961,7 @@ public class RegressionTest0 {
         boolean boolean8 = position2.equals((java.lang.Object) 100);
         java.lang.String str9 = position2.toString();
         ar.edu.unrc.game2048.Board board11 = ar.edu.unrc.game2048.Board.forTesting(100);
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet12 = board11.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet12 = board11.getEmptyPositions();
         java.lang.Class<?> wildcardClass13 = positionSet12.getClass();
         boolean boolean14 = position2.equals((java.lang.Object) positionSet12);
         int int15 = position2.row;
@@ -2034,7 +2034,7 @@ public class RegressionTest0 {
     public void test115() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test115");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position((int) (byte) 1, (-1));
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position((int) (byte) 1, (-1));
     }
 
     @Test
@@ -2049,12 +2049,12 @@ public class RegressionTest0 {
         boolean boolean10 = board3.hasEmptyCells();
         ar.edu.unrc.game2048.Board board12 = ar.edu.unrc.game2048.Board.forTesting(100);
         board12.setScore((int) 'a');
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet15 = board12.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet15 = board12.getEmptyPositions();
         boolean boolean16 = board3.equals((java.lang.Object) positionSet15);
         ar.edu.unrc.game2048.Board board18 = ar.edu.unrc.game2048.Board.forTesting(100);
         boolean boolean19 = board18.isWinningBoard();
         board18.setScore(4);
-        ar.edu.unrc.game2048.Board.Direction direction22 = ar.edu.unrc.game2048.Board.Direction.RIGHT;
+        ar.edu.unrc.game2048.Direction direction22 = ar.edu.unrc.game2048.Direction.RIGHT;
         boolean boolean23 = board18.move(direction22);
         boolean boolean24 = board3.move(direction22);
         boolean boolean25 = board1.equals((java.lang.Object) board3);
@@ -2068,7 +2068,7 @@ public class RegressionTest0 {
         org.junit.Assert.assertTrue("'" + boolean16 + "' != '" + false + "'", boolean16 == false);
         org.junit.Assert.assertNotNull(board18);
         org.junit.Assert.assertTrue("'" + boolean19 + "' != '" + false + "'", boolean19 == false);
-        org.junit.Assert.assertTrue("'" + direction22 + "' != '" + ar.edu.unrc.game2048.Board.Direction.RIGHT + "'", direction22.equals(ar.edu.unrc.game2048.Board.Direction.RIGHT));
+        org.junit.Assert.assertTrue("'" + direction22 + "' != '" + ar.edu.unrc.game2048.Direction.RIGHT + "'", direction22.equals(ar.edu.unrc.game2048.Direction.RIGHT));
         org.junit.Assert.assertTrue("'" + boolean23 + "' != '" + false + "'", boolean23 == false);
         org.junit.Assert.assertTrue("'" + boolean24 + "' != '" + false + "'", boolean24 == false);
         org.junit.Assert.assertTrue("'" + boolean25 + "' != '" + false + "'", boolean25 == false);
@@ -2078,7 +2078,7 @@ public class RegressionTest0 {
     public void test117() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test117");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position((int) 'a', (-1));
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position((int) 'a', (-1));
     }
 
     @Test
@@ -2091,7 +2091,7 @@ public class RegressionTest0 {
         ar.edu.unrc.game2048.Cell cell7 = board1.getCell((int) (byte) 1, 4);
         ar.edu.unrc.game2048.Board board9 = ar.edu.unrc.game2048.Board.forTesting(100);
         board9.setScore((int) 'a');
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet12 = board9.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet12 = board9.getEmptyPositions();
         boolean boolean13 = board1.equals((java.lang.Object) board9);
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
@@ -2143,7 +2143,7 @@ public class RegressionTest0 {
         java.lang.Object obj8 = null;
         boolean boolean9 = board5.equals(obj8);
         boolean boolean10 = board5.isWinningBoard();
-        ar.edu.unrc.game2048.Board.Direction direction11 = ar.edu.unrc.game2048.Board.Direction.DOWN;
+        ar.edu.unrc.game2048.Direction direction11 = ar.edu.unrc.game2048.Direction.DOWN;
         boolean boolean12 = board5.move(direction11);
         boolean boolean13 = board1.move(direction11);
         ar.edu.unrc.game2048.Cell[][] cellArray14 = board1.getGrid();
@@ -2155,7 +2155,7 @@ public class RegressionTest0 {
         org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + false + "'", boolean7 == false);
         org.junit.Assert.assertTrue("'" + boolean9 + "' != '" + false + "'", boolean9 == false);
         org.junit.Assert.assertTrue("'" + boolean10 + "' != '" + false + "'", boolean10 == false);
-        org.junit.Assert.assertTrue("'" + direction11 + "' != '" + ar.edu.unrc.game2048.Board.Direction.DOWN + "'", direction11.equals(ar.edu.unrc.game2048.Board.Direction.DOWN));
+        org.junit.Assert.assertTrue("'" + direction11 + "' != '" + ar.edu.unrc.game2048.Direction.DOWN + "'", direction11.equals(ar.edu.unrc.game2048.Direction.DOWN));
         org.junit.Assert.assertTrue("'" + boolean12 + "' != '" + false + "'", boolean12 == false);
         org.junit.Assert.assertTrue("'" + boolean13 + "' != '" + false + "'", boolean13 == false);
         org.junit.Assert.assertNotNull(cellArray14);
@@ -2185,7 +2185,7 @@ public class RegressionTest0 {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test122");
         ar.edu.unrc.game2048.Board board1 = ar.edu.unrc.game2048.Board.forTesting(100);
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet2 = board1.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet2 = board1.getEmptyPositions();
         ar.edu.unrc.game2048.Cell[][] cellArray3 = board1.getGrid();
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertNotNull(positionSet2);
@@ -2200,7 +2200,7 @@ public class RegressionTest0 {
         boolean boolean3 = board1.equals((java.lang.Object) "hi!");
         java.lang.Object obj4 = null;
         boolean boolean5 = board1.equals(obj4);
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet6 = board1.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet6 = board1.getEmptyPositions();
         ar.edu.unrc.game2048.Board board8 = ar.edu.unrc.game2048.Board.forTesting(100);
         boolean boolean9 = board8.hasEmptyCells();
         boolean boolean10 = board8.isFull();
@@ -2318,8 +2318,8 @@ public class RegressionTest0 {
     public void test129() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test129");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position(2048, (int) '#');
-        ar.edu.unrc.game2048.Board.Position position5 = new ar.edu.unrc.game2048.Board.Position((int) (short) 100, (int) (short) 1);
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position(2048, (int) '#');
+        ar.edu.unrc.game2048.Position position5 = new ar.edu.unrc.game2048.Position((int) (short) 100, (int) (short) 1);
         java.lang.String str6 = position5.toString();
         java.lang.String str7 = position5.toString();
         boolean boolean8 = position2.equals((java.lang.Object) position5);
@@ -2353,7 +2353,7 @@ public class RegressionTest0 {
         boolean boolean3 = board1.isLosingBoard();
         int int4 = board1.getScore();
         boolean boolean5 = board1.isFull();
-        ar.edu.unrc.game2048.Board.Position position8 = new ar.edu.unrc.game2048.Board.Position((int) (byte) 10, (int) 'a');
+        ar.edu.unrc.game2048.Position position8 = new ar.edu.unrc.game2048.Position((int) (byte) 10, (int) 'a');
         boolean boolean9 = board1.equals((java.lang.Object) position8);
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
@@ -2385,7 +2385,7 @@ public class RegressionTest0 {
     public void test133() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test133");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position((int) (byte) 1, (int) (short) 0);
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position((int) (byte) 1, (int) (short) 0);
     }
 
     @Test
@@ -2397,17 +2397,17 @@ public class RegressionTest0 {
         java.lang.Object obj4 = null;
         boolean boolean5 = board1.equals(obj4);
         boolean boolean6 = board1.isWinningBoard();
-        ar.edu.unrc.game2048.Board.Direction direction7 = ar.edu.unrc.game2048.Board.Direction.DOWN;
+        ar.edu.unrc.game2048.Direction direction7 = ar.edu.unrc.game2048.Direction.DOWN;
         boolean boolean8 = board1.move(direction7);
-        ar.edu.unrc.game2048.Board.Direction direction9 = ar.edu.unrc.game2048.Board.Direction.LEFT;
+        ar.edu.unrc.game2048.Direction direction9 = ar.edu.unrc.game2048.Direction.LEFT;
         boolean boolean10 = board1.move(direction9);
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
         org.junit.Assert.assertTrue("'" + boolean5 + "' != '" + false + "'", boolean5 == false);
         org.junit.Assert.assertTrue("'" + boolean6 + "' != '" + false + "'", boolean6 == false);
-        org.junit.Assert.assertTrue("'" + direction7 + "' != '" + ar.edu.unrc.game2048.Board.Direction.DOWN + "'", direction7.equals(ar.edu.unrc.game2048.Board.Direction.DOWN));
+        org.junit.Assert.assertTrue("'" + direction7 + "' != '" + ar.edu.unrc.game2048.Direction.DOWN + "'", direction7.equals(ar.edu.unrc.game2048.Direction.DOWN));
         org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
-        org.junit.Assert.assertTrue("'" + direction9 + "' != '" + ar.edu.unrc.game2048.Board.Direction.LEFT + "'", direction9.equals(ar.edu.unrc.game2048.Board.Direction.LEFT));
+        org.junit.Assert.assertTrue("'" + direction9 + "' != '" + ar.edu.unrc.game2048.Direction.LEFT + "'", direction9.equals(ar.edu.unrc.game2048.Direction.LEFT));
         org.junit.Assert.assertTrue("'" + boolean10 + "' != '" + false + "'", boolean10 == false);
     }
 
@@ -2443,12 +2443,12 @@ public class RegressionTest0 {
         boolean boolean11 = board4.hasEmptyCells();
         ar.edu.unrc.game2048.Board board13 = ar.edu.unrc.game2048.Board.forTesting(100);
         board13.setScore((int) 'a');
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet16 = board13.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet16 = board13.getEmptyPositions();
         boolean boolean17 = board4.equals((java.lang.Object) positionSet16);
         ar.edu.unrc.game2048.Board board19 = ar.edu.unrc.game2048.Board.forTesting(100);
         boolean boolean20 = board19.isWinningBoard();
         board19.setScore(4);
-        ar.edu.unrc.game2048.Board.Direction direction23 = ar.edu.unrc.game2048.Board.Direction.RIGHT;
+        ar.edu.unrc.game2048.Direction direction23 = ar.edu.unrc.game2048.Direction.RIGHT;
         boolean boolean24 = board19.move(direction23);
         boolean boolean25 = board4.move(direction23);
         boolean boolean26 = board1.move(direction23);
@@ -2463,7 +2463,7 @@ public class RegressionTest0 {
         org.junit.Assert.assertTrue("'" + boolean17 + "' != '" + false + "'", boolean17 == false);
         org.junit.Assert.assertNotNull(board19);
         org.junit.Assert.assertTrue("'" + boolean20 + "' != '" + false + "'", boolean20 == false);
-        org.junit.Assert.assertTrue("'" + direction23 + "' != '" + ar.edu.unrc.game2048.Board.Direction.RIGHT + "'", direction23.equals(ar.edu.unrc.game2048.Board.Direction.RIGHT));
+        org.junit.Assert.assertTrue("'" + direction23 + "' != '" + ar.edu.unrc.game2048.Direction.RIGHT + "'", direction23.equals(ar.edu.unrc.game2048.Direction.RIGHT));
         org.junit.Assert.assertTrue("'" + boolean24 + "' != '" + false + "'", boolean24 == false);
         org.junit.Assert.assertTrue("'" + boolean25 + "' != '" + false + "'", boolean25 == false);
         org.junit.Assert.assertTrue("'" + boolean26 + "' != '" + false + "'", boolean26 == false);
@@ -2481,14 +2481,14 @@ public class RegressionTest0 {
         java.lang.Object obj8 = null;
         boolean boolean9 = board5.equals(obj8);
         boolean boolean10 = board5.isWinningBoard();
-        ar.edu.unrc.game2048.Board.Direction direction11 = ar.edu.unrc.game2048.Board.Direction.DOWN;
+        ar.edu.unrc.game2048.Direction direction11 = ar.edu.unrc.game2048.Direction.DOWN;
         boolean boolean12 = board5.move(direction11);
         boolean boolean13 = board1.move(direction11);
         boolean boolean14 = board1.isLosingBoard();
         ar.edu.unrc.game2048.Board board16 = ar.edu.unrc.game2048.Board.forTesting(100);
         boolean boolean17 = board16.isLosingBoard();
         boolean boolean18 = board16.isLosingBoard();
-        ar.edu.unrc.game2048.Board.Direction direction19 = ar.edu.unrc.game2048.Board.Direction.LEFT;
+        ar.edu.unrc.game2048.Direction direction19 = ar.edu.unrc.game2048.Direction.LEFT;
         boolean boolean20 = board16.move(direction19);
         boolean boolean21 = board1.equals((java.lang.Object) board16);
         org.junit.Assert.assertNotNull(board1);
@@ -2498,14 +2498,14 @@ public class RegressionTest0 {
         org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + false + "'", boolean7 == false);
         org.junit.Assert.assertTrue("'" + boolean9 + "' != '" + false + "'", boolean9 == false);
         org.junit.Assert.assertTrue("'" + boolean10 + "' != '" + false + "'", boolean10 == false);
-        org.junit.Assert.assertTrue("'" + direction11 + "' != '" + ar.edu.unrc.game2048.Board.Direction.DOWN + "'", direction11.equals(ar.edu.unrc.game2048.Board.Direction.DOWN));
+        org.junit.Assert.assertTrue("'" + direction11 + "' != '" + ar.edu.unrc.game2048.Direction.DOWN + "'", direction11.equals(ar.edu.unrc.game2048.Direction.DOWN));
         org.junit.Assert.assertTrue("'" + boolean12 + "' != '" + false + "'", boolean12 == false);
         org.junit.Assert.assertTrue("'" + boolean13 + "' != '" + false + "'", boolean13 == false);
         org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
         org.junit.Assert.assertNotNull(board16);
         org.junit.Assert.assertTrue("'" + boolean17 + "' != '" + false + "'", boolean17 == false);
         org.junit.Assert.assertTrue("'" + boolean18 + "' != '" + false + "'", boolean18 == false);
-        org.junit.Assert.assertTrue("'" + direction19 + "' != '" + ar.edu.unrc.game2048.Board.Direction.LEFT + "'", direction19.equals(ar.edu.unrc.game2048.Board.Direction.LEFT));
+        org.junit.Assert.assertTrue("'" + direction19 + "' != '" + ar.edu.unrc.game2048.Direction.LEFT + "'", direction19.equals(ar.edu.unrc.game2048.Direction.LEFT));
         org.junit.Assert.assertTrue("'" + boolean20 + "' != '" + false + "'", boolean20 == false);
         org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + true + "'", boolean21 == true);
     }
@@ -2514,7 +2514,7 @@ public class RegressionTest0 {
     public void test138() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test138");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position(2048, (int) '#');
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position(2048, (int) '#');
         int int3 = position2.row;
         java.lang.String str4 = position2.toString();
         org.junit.Assert.assertTrue("'" + int3 + "' != '" + 2048 + "'", int3 == 2048);
@@ -2539,7 +2539,7 @@ public class RegressionTest0 {
             System.out.format("%n%s%n", "RegressionTest0.test140");
         ar.edu.unrc.game2048.Board board1 = ar.edu.unrc.game2048.Board.forTesting(100);
         boolean boolean2 = board1.isLosingBoard();
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet3 = board1.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet3 = board1.getEmptyPositions();
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
         org.junit.Assert.assertNotNull(positionSet3);
@@ -2554,7 +2554,7 @@ public class RegressionTest0 {
         boolean boolean5 = board3.equals((java.lang.Object) "hi!");
         java.lang.Object obj6 = null;
         boolean boolean7 = board3.equals(obj6);
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet8 = board3.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet8 = board3.getEmptyPositions();
         boolean boolean9 = board1.equals((java.lang.Object) positionSet8);
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertNotNull(board3);
@@ -2622,13 +2622,13 @@ public class RegressionTest0 {
         board1.setScore(4);
         ar.edu.unrc.game2048.Cell cell7 = board1.getCell((int) (byte) 1, 4);
         boolean boolean8 = board1.hasEmptyCells();
-        ar.edu.unrc.game2048.Board.Direction direction9 = ar.edu.unrc.game2048.Board.Direction.LEFT;
+        ar.edu.unrc.game2048.Direction direction9 = ar.edu.unrc.game2048.Direction.LEFT;
         boolean boolean10 = board1.move(direction9);
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
         org.junit.Assert.assertNotNull(cell7);
         org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + true + "'", boolean8 == true);
-        org.junit.Assert.assertTrue("'" + direction9 + "' != '" + ar.edu.unrc.game2048.Board.Direction.LEFT + "'", direction9.equals(ar.edu.unrc.game2048.Board.Direction.LEFT));
+        org.junit.Assert.assertTrue("'" + direction9 + "' != '" + ar.edu.unrc.game2048.Direction.LEFT + "'", direction9.equals(ar.edu.unrc.game2048.Direction.LEFT));
         org.junit.Assert.assertTrue("'" + boolean10 + "' != '" + false + "'", boolean10 == false);
     }
 
@@ -2654,10 +2654,10 @@ public class RegressionTest0 {
         ar.edu.unrc.game2048.Board board7 = ar.edu.unrc.game2048.Board.forTesting(100);
         boolean boolean8 = board7.isWinningBoard();
         board7.setScore(4);
-        ar.edu.unrc.game2048.Board.Direction direction11 = ar.edu.unrc.game2048.Board.Direction.RIGHT;
+        ar.edu.unrc.game2048.Direction direction11 = ar.edu.unrc.game2048.Direction.RIGHT;
         boolean boolean12 = board7.move(direction11);
         boolean boolean13 = board1.move(direction11);
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet14 = board1.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet14 = board1.getEmptyPositions();
         ar.edu.unrc.game2048.Cell cell17 = board1.getCell(97, (int) 'a');
         int int18 = board1.getSize();
         org.junit.Assert.assertNotNull(board1);
@@ -2667,7 +2667,7 @@ public class RegressionTest0 {
         org.junit.Assert.assertTrue("'" + int5 + "' != '" + 100 + "'", int5 == 100);
         org.junit.Assert.assertNotNull(board7);
         org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
-        org.junit.Assert.assertTrue("'" + direction11 + "' != '" + ar.edu.unrc.game2048.Board.Direction.RIGHT + "'", direction11.equals(ar.edu.unrc.game2048.Board.Direction.RIGHT));
+        org.junit.Assert.assertTrue("'" + direction11 + "' != '" + ar.edu.unrc.game2048.Direction.RIGHT + "'", direction11.equals(ar.edu.unrc.game2048.Direction.RIGHT));
         org.junit.Assert.assertTrue("'" + boolean12 + "' != '" + false + "'", boolean12 == false);
         org.junit.Assert.assertTrue("'" + boolean13 + "' != '" + false + "'", boolean13 == false);
         org.junit.Assert.assertNotNull(positionSet14);
@@ -2679,14 +2679,14 @@ public class RegressionTest0 {
     public void test148() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test148");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position((int) (short) 100, (int) (short) 1);
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position((int) (short) 100, (int) (short) 1);
         java.lang.String str3 = position2.toString();
         java.lang.String str4 = position2.toString();
         ar.edu.unrc.game2048.Board board6 = ar.edu.unrc.game2048.Board.forTesting(100);
         boolean boolean8 = board6.equals((java.lang.Object) "hi!");
         java.lang.Object obj9 = null;
         boolean boolean10 = board6.equals(obj9);
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet11 = board6.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet11 = board6.getEmptyPositions();
         boolean boolean12 = position2.equals((java.lang.Object) board6);
         // The following exception was thrown during execution in test generation
         try {
@@ -2729,7 +2729,7 @@ public class RegressionTest0 {
         boolean boolean3 = board1.equals((java.lang.Object) "hi!");
         boolean boolean4 = board1.isLosingBoard();
         boolean boolean5 = board1.isWinningBoard();
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet6 = board1.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet6 = board1.getEmptyPositions();
         board1.setScore(4);
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertTrue("'" + boolean3 + "' != '" + false + "'", boolean3 == false);
@@ -2742,8 +2742,8 @@ public class RegressionTest0 {
     public void test151() throws Throwable {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test151");
-        ar.edu.unrc.game2048.Board.Position position2 = new ar.edu.unrc.game2048.Board.Position((int) (short) 100, (int) (short) 1);
-        ar.edu.unrc.game2048.Board.Position position5 = new ar.edu.unrc.game2048.Board.Position((int) (short) 100, (int) (short) 1);
+        ar.edu.unrc.game2048.Position position2 = new ar.edu.unrc.game2048.Position((int) (short) 100, (int) (short) 1);
+        ar.edu.unrc.game2048.Position position5 = new ar.edu.unrc.game2048.Position((int) (short) 100, (int) (short) 1);
         java.lang.String str6 = position5.toString();
         int int7 = position5.row;
         int int8 = position5.col;
@@ -2839,7 +2839,7 @@ public class RegressionTest0 {
         if (debug)
             System.out.format("%n%s%n", "RegressionTest0.test155");
         ar.edu.unrc.game2048.Board board1 = ar.edu.unrc.game2048.Board.forTesting(2048);
-        java.util.Set<ar.edu.unrc.game2048.Board.Position> positionSet2 = board1.getEmptyPositions();
+        java.util.Set<ar.edu.unrc.game2048.Position> positionSet2 = board1.getEmptyPositions();
         org.junit.Assert.assertNotNull(board1);
         org.junit.Assert.assertNotNull(positionSet2);
     }

@@ -1,6 +1,7 @@
 package ar.edu.unrc.game2048.manual;
 import ar.edu.unrc.game2048.*;
-import ar.edu.unrc.game2048.strategy.*;
+import ar.edu.unrc.game2048.move.*;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
