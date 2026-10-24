@@ -10,7 +10,6 @@ import org.junit.Test;
 import org.mockito.Mockito;
 
 import ar.edu.unrc.game2048.Direction;
-import ar.edu.unrc.game2048.move.*;
 
 public class MainCLITest {
 
