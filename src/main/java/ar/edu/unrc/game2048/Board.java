@@ -2,13 +2,13 @@ package ar.edu.unrc.game2048;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
 import ar.edu.unrc.game2048.strategy.Move;
 import ar.edu.unrc.game2048.strategy.MoveProvider;
 import randoop.CheckRep;
+import java.util.Random;
 
 /**
  * Represents the 2048 game board.
@@ -55,8 +55,9 @@ public class Board {
     public Board() {
         this(DEFAULT_SIZE, false);
     }
+    
     private boolean determinist;
-    private java.util.Random random;
+    private Random random;
 
     /**
      * Creates a new board of the specified size with two random tiles.
@@ -112,13 +113,12 @@ public class Board {
             return false;
         }
 
-        
         for (int row = 0; row < size; row++) {
             if (grid[row] == null || grid[row].length != size) {
                 return false;
             }
 
-            
+        
             for (int column = 0; column < size; column++) {
                 if (grid[row][column] == null || !grid[row][column].repOK()) {
                     return false;
@@ -234,7 +234,14 @@ public class Board {
      * @return true if there is at least one empty cell
      */
     public boolean hasEmptyCells() {
-        return !getEmptyPositions().isEmpty();
+        for (int r = 0; r < size; r++) {
+            for (int c = 0; c < size; c++) {
+                if (grid[r][c].isEmpty()) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**
@@ -246,7 +253,7 @@ public class Board {
     public boolean isWinningBoard() {
         for (int r = 0; r < size; r++) {
             for (int c = 0; c < size; c++) {
-                if (grid[r][c].getValue() == WINNING_VALUE) {
+                if (getCell(r, c).getValue() == WINNING_VALUE) {
                     return true;
                 }
             }
@@ -266,21 +273,31 @@ public class Board {
             return false;
         }
 
-        // Check for possible merges
         for (int r = 0; r < size; r++) {
             for (int c = 0; c < size; c++) {
-                Cell current = grid[r][c];
-                // Check right neighbor
-                if (c + 1 < size && current.canMergeWith(grid[r][c + 1])) {
-                    return false;
-                }
-                // Check down neighbor
-                if (r + 1 < size && current.canMergeWith(grid[r + 1][c])) {
+                Cell current = getCell(r, c);
+                Cell right   = getNeighbor(r, c, 0, 1);
+                Cell down    = getNeighbor(r, c, 1, 0);
+
+                if (canMerge(current, right) || canMerge(current, down)) {
                     return false;
                 }
             }
         }
         return true;
+    }
+
+    private Cell getNeighbor(int row, int col, int rowOffset, int colOffset) {
+        int neighborRow = row + rowOffset;
+        int neighborCol = col + colOffset;
+        if (neighborRow >= size || neighborCol >= size) {
+            return null;
+        }
+        return getCell(neighborRow, neighborCol);
+    }
+
+    private boolean canMerge(Cell current, Cell neighbor) {
+        return neighbor != null && current.canMergeWith(neighbor);
     }
 
 
