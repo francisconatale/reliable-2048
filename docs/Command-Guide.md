@@ -162,8 +162,48 @@ así que cada corrida escribe en su propia carpeta sin pisar las demás:
 | `evosuite-tests` | `target/pit-reports-evosuite/index.html` |
  
 ---
- 
-## 8. Correr el fuzzer (Assignment 3, Fase 2)
+
+## 8. Automatización: Correr tests y mutación de los 3 perfiles
+
+Para correr automáticamente los tests unitarios y el análisis de mutación (PITest)
+de los 3 perfiles (`manual-tests`, `randoop-tests`, `evosuite-tests`) y consolidar
+todos los reportes en el directorio `test-reports/`:
+
+```bash
+./run-tests-and-mutation.sh
+# o:
+./scripts/run-tests-and-mutation.sh
+```
+
+### Opciones disponibles:
+```bash
+./scripts/run-tests-and-mutation.sh --help            # Ver ayuda
+./scripts/run-tests-and-mutation.sh manual-tests      # Correr sólo manual-tests
+./scripts/run-tests-and-mutation.sh --only-tests      # Correr sólo tests
+./scripts/run-tests-and-mutation.sh --only-mutation   # Correr sólo PITest
+./scripts/run-tests-and-mutation.sh --clean           # Limpiar antes de correr
+```
+
+Estructura de salida generada en `test-reports/`:
+```text
+test-reports/
+├── manual-tests/
+│   ├── surefire-reports/         # Reportes XML y TXT de JUnit
+│   ├── pit-reports/              # Reporte HTML y XML de mutación
+│   ├── jacoco/                   # Reporte HTML de cobertura
+│   ├── tests-execution.log       # Log de salida de tests
+│   └── mutation-execution.log    # Log de salida de PITest
+├── randoop-tests/
+│   └── ...
+├── evosuite-tests/
+│   └── ...
+├── summary.txt                   # Resumen en texto plano
+└── SUMMARY.md                    # Resumen y enlaces en Markdown
+```
+
+---
+
+## 9. Correr el fuzzer (Assignment 3, Fase 2)
  
 El comando devuelve la salida en la terminal por lo que se agrega
 ` > fuzzer-results.txt` para generar la salida en ese archivo.

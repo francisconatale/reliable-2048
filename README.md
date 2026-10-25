@@ -25,7 +25,8 @@ reliable-2048/
 │   └── report-assignment-4.md          # inferencia de invariantes con Daikon (en progreso)
 │
 ├── scripts/                            # 
-│   ├── run-evosuite.sh                 # generacion de tests con randoop
+│   ├── run-tests-and-mutation.sh       # ejecución de tests y mutación (3 perfiles)
+│   ├── run-evosuite.sh                 # generacion de tests con evosuite
 │   ├── fuzzer.py                       # Fuzzer CLI 
 │   └── cuts-file.txt                   # clases para generar tests con evosuite
 │
@@ -59,6 +60,12 @@ mvn test -P manual-tests
 mvn test -P randoop-tests
 
 mvn test -P evosuite-tests
+```
+
+### Ejecución Automatizada de Tests y Mutación (3 Perfiles)
+Para ejecutar automáticamente los tests unitarios y el análisis de mutación (PITest) de los 3 perfiles y consolidar los reportes en `test-reports/`:
+```bash
+./run-tests-and-mutation.sh
 ```
 
 Para ver la guía completa de comandos, generación de reportes y ejecución de herramientas, consultar [`docs/Command-Guide.md`](docs/Command-Guide.md).

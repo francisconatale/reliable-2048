@@ -294,8 +294,6 @@ public class BoardTest {
 
     @Test
     public void testAddRandomTileOnFullBoardDoesNothing() {
-        // A 1x1 non-deterministic board is full after the constructor's first tile,
-        // so the second addRandomTile call exercises the full-board branch.
         Board board = new Board(1, false, new Random(1));
 
         assertFalse(board.hasEmptyCells());
