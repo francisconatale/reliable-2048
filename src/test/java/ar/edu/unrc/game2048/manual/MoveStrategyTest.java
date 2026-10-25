@@ -5,9 +5,7 @@ import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertTrue;
 
 import org.junit.Test;
-
 import ar.edu.unrc.game2048.Direction;
-import ar.edu.unrc.game2048.move.*;
 
 public class MoveStrategyTest {
 

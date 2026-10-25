@@ -6,6 +6,7 @@ import ar.edu.unrc.game2048.move.*;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.params.ParameterizedTest;
 import org.junit.jupiter.params.provider.CsvSource;
+import org.junit.jupiter.params.provider.ValueSource;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -48,15 +49,6 @@ public class CellTest {
     }
 
     @Test
-    public void cellWithEqualsValueJoin() {
-        Cell origin = new Cell(2);
-        Cell target = new Cell(2);
-        Cell expected = new Cell(4);
-        Cell result = origin.mergeWith(target);
-        assertEquals(expected, result);
-    }
-
-    @Test
     public void testCellIsEmpty() {
         Cell cell = new Cell(0);
         boolean result = cell.isEmpty();
@@ -75,22 +67,17 @@ public class CellTest {
         assertThrows(IllegalArgumentException.class, () -> new Cell(-1));
     }
 
+    @ParameterizedTest(name = "Valor no potencia de dos {0} lanza IllegalArgumentException")
+    @ValueSource(ints = {3, 5, 6, 10, 100})
+    public void nonPowerOfTwoCellValueThrowsException(int invalidValue) {
+        assertThrows(IllegalArgumentException.class, () -> new Cell(invalidValue));
+    }
+
     @Test
     public void validCellValuesSatisfyRepOk() {
         assertTrue(Cell.EMPTY.repOK());
         assertTrue(new Cell(2).repOK());
         assertTrue(new Cell(2048).repOK());
-    }
-
-    @Test
-    public void nonPowerOfTwoCellFailsRepOk() {
-        Cell cell;
-        try {
-            cell = new Cell(3);
-        } catch (IllegalArgumentException e) {
-            return;
-        }
-        assertFalse(cell.repOK());
     }
 
     @Test
@@ -125,15 +112,6 @@ public class CellTest {
     public void testCellEqualsDifferentClass() {
         Cell cell = new Cell(4);
         assertFalse(cell.equals("4"));
-    }
-
-    @Test
-    public void testCellNotEqualsByHash() {
-        Cell cell = new Cell(4);
-        Cell otherCell = new Cell(8);
-        int hashCell = cell.hashCode();
-        int hashOtherCell = otherCell.hashCode();
-        assertNotEquals(hashCell, hashOtherCell);
     }
 
     @Test

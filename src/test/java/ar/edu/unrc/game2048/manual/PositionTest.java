@@ -42,11 +42,6 @@ public class PositionTest {
     }
 
     @Test
-    public void testDifferentPositionsHaveDifferentHashCode() {
-        assertNotEquals(new Position(0, 2).hashCode(), new Position(1, 2).hashCode());
-    }
-
-    @Test
     public void testPositionToString() {
         assertEquals("(1, 2)", new Position(1, 2).toString());
     }

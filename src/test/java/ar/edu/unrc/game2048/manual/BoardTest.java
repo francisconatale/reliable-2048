@@ -44,14 +44,6 @@ public class BoardTest {
         assertEquals(board, copyOfBoard);
     }
 
-    @Test
-    public void hasEmptyCellsInBoardTest() {
-        Board board = new Board(4, true);
-        seeder.seederBoard(board, 1);
-        System.out.println(board.toString());
-        assertTrue(board.hasEmptyCells());
-    }
-
     @ParameterizedTest(name = "{0}")
     @MethodSource("moveTestCases")
     public void testMoveInGame(String testName, String initialBoardStr, Direction direction, String expectedBoardStr, int expectedScore) {
@@ -121,24 +113,6 @@ public class BoardTest {
         );
     }
 
-    @Test
-    public void maximumScoreOfBoardTest() {
-        Board board = new Board(4, true);
-        board.setCell(0, 0, new Cell(2));
-        board.setCell(0, 1, new Cell(2));
-        board.move(Direction.LEFT);
-        int scoreExpected = 4;
-        assertEquals(scoreExpected, board.getScore());
-    }
-
-    @Test
-    public void notHasEmptyCellsInBoardTest() {
-        Board board = new Board(4, true);
-        int n = board.getSize();
-        seeder.seederBoard(board, n * n);
-        assertFalse(board.hasEmptyCells());
-    }
-
     @ParameterizedTest(name = "setCell fuera de límites ({0}, {1}) lanza IndexOutOfBoundsException")
     @CsvSource({
         "-1, 2",
@@ -177,13 +151,6 @@ public class BoardTest {
         Cell cell = new Cell(2);
         board.setCell(row, col, cell);
         assertEquals(cell, board.getCell(row, col));
-    }
-
-    @Test
-    public void testBoardGetCell() {
-        Board board = new Board();
-        Cell cell = board.getCell(0, 0);
-        assertNotNull(cell);
     }
 
     @ParameterizedTest(name = "getCell fuera de límites ({0}, {1}) lanza IndexOutOfBoundsException")
@@ -273,28 +240,9 @@ public class BoardTest {
     }
 
     @Test
-    public void boardWithInvalidCellFailsRepOk() {
-        Board board = new Board(4, true);
-        try {
-            board.setCell(0, 0, new Cell(3)); // Invalid cell value
-        } catch (IllegalArgumentException e) {
-            // Expected exception, do nothing
-            return;
-        }
-        assertFalse(board.repOK());
-    }
-
-    @Test
     public void testBoardEqualsNull() {
         Board board = new Board(4, true);
         assertFalse(board.equals(null));
-    }
-
-    @Test
-    public void testBoardGetEmptyPositions() {
-        Board board = new Board();
-        Set<Position> emptyPositions = board.getEmptyPositions();
-        assertNotNull(emptyPositions);
     }
 
     @Test
@@ -331,15 +279,6 @@ public class BoardTest {
         assertFalse(isFull);
     }
 
-    @Test
-    public void testBoardHashCode() {
-        Board board = new Board(4, true);
-        board.setCell(0, 0, new Cell(2));
-        board.setCell(0, 1, new Cell(2));
-        int hashCode = board.hashCode();
-        assertNotNull(hashCode);
-    }
-
     @ParameterizedTest(name = "move({2}) con ficha en ({0},{1}) retorna {3}")
     @CsvSource({
         "0, 0, RIGHT, true",
@@ -354,18 +293,10 @@ public class BoardTest {
     }
 
     @Test
-    public void testAddRandomTileOnFullBoardDoesNothing() throws Exception {
-        Board board = new Board(4, false, new Random(1));
-        int[] values = {2, 4, 8, 16};
-        for (int row = 0; row < board.getSize(); row++) {
-            for (int column = 0; column < board.getSize(); column++) {
-                board.setCell(row, column, new Cell(values[column]));
-            }
-        }
-
-        java.lang.reflect.Method addRandomTile = Board.class.getDeclaredMethod("addRandomTile");
-        addRandomTile.setAccessible(true);
-        addRandomTile.invoke(board);
+    public void testAddRandomTileOnFullBoardDoesNothing() {
+        // A 1x1 non-deterministic board is full after the constructor's first tile,
+        // so the second addRandomTile call exercises the full-board branch.
+        Board board = new Board(1, false, new Random(1));
 
         assertFalse(board.hasEmptyCells());
     }

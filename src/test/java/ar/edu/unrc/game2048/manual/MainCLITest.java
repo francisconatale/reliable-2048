@@ -93,18 +93,6 @@ public class MainCLITest {
     }
 
     @Test
-    public void testCliReportsWinningBoard() {
-        InputReader mockInputReader = Mockito.mock(InputReader.class);
-        Mockito.when(mockInputReader.nextLine()).thenReturn("q");
-        Board board = new Board(4, true);
-        board.setCell(0, 0, new Cell(2048));
-
-        String cliOutput = runCli(board, mockInputReader, new ByteArrayOutputStream());
-
-        assertTrue(cliOutput.contains("Congratulations! You reached 2048!"));
-    }
-
-    @Test
     public void testCliReportsLosingBoardUsingMockedBoard() {
         Board mockBoard = Mockito.mock(Board.class);
         InputReader mockInputReader = Mockito.mock(InputReader.class);

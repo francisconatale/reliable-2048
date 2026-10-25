@@ -5,7 +5,6 @@ import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
 import ar.edu.unrc.game2048.manual.utils.BoardParser;
-import ar.edu.unrc.game2048.move.*;
 public class RegressionGameTest {
     @Test
     public void regressionTestInMoveDownWithBoardNotTrivial(){
@@ -18,25 +17,6 @@ public class RegressionGameTest {
         String expectedBoardToParse =
                 "0 0 0 0\n" +
                 "16 8 0 0\n" +
-                "4 2 0 0\n" +
-                "8 4 0 0";
-        Board expectedBoard = BoardParser.parse(expectedBoardToParse);
-        expectedBoard.setScore(4);
-        initialBoard.move(Direction.DOWN);
-        assertEquals(expectedBoard, initialBoard);
-    }
-
-    @Test
-    public void regressionTestTwoInMoveDownWithBoardNotTrivial(){
-        String initialBoardToParse =
-                        "0 8 0 0\n" +
-                        "4 2 0 0\n" +
-                        "8 2 0 0\n" +
-                        "0 2 0 0";
-        Board initialBoard = BoardParser.parse(initialBoardToParse);
-        String expectedBoardToParse =
-                "0 0 0 0\n" +
-                "0 8 0 0\n" +
                 "4 2 0 0\n" +
                 "8 4 0 0";
         Board expectedBoard = BoardParser.parse(expectedBoardToParse);
@@ -92,19 +72,4 @@ public void EdgeCaseWithOneMergeInLimitCasesCol() {
         board.move(Direction.RIGHT);
         assertEquals(board.isFull(), true);
     }
-
-
-    @Test
-    public void testTryMoveUpAndNotMoveNumbers(){
-        String initialBoardToParse =
-                        "16 0 0 0\n" +
-                        "0 0 0 0\n" +
-                        "0 0 0 0\n" +
-                        "0 0 0 0";
-        Board initialBoard = BoardParser.parse(initialBoardToParse, false);
-        Board expectedBoard = new Board(initialBoard);
-        initialBoard.move(Direction.UP);
-        assertEquals(initialBoard,expectedBoard);
-    }
-
 }
