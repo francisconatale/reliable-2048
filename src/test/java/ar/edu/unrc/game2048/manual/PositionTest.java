@@ -3,7 +3,6 @@ import ar.edu.unrc.game2048.*;
 
 import org.junit.Test;
 import ar.edu.unrc.game2048.Position;
-import ar.edu.unrc.game2048.move.*;
 
 import static org.junit.Assert.*;
 

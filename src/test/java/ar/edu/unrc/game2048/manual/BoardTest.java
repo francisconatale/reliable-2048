@@ -1,8 +1,6 @@
 package ar.edu.unrc.game2048.manual;
 
 import ar.edu.unrc.game2048.*;
-import ar.edu.unrc.game2048.Direction;
-import ar.edu.unrc.game2048.Position;
 import ar.edu.unrc.game2048.manual.utils.BoardParser;
 import ar.edu.unrc.game2048.manual.utils.Seeder;
 
@@ -29,9 +27,11 @@ public class BoardTest {
         assertThrows(IllegalArgumentException.class, () -> new Board(invalidSize, true));
     }
 
-    @Test
-    public void lostBoardTest() {
-        Board board = new Board(4, true);
+    // spurious invariant: this.size one of { 1, 4 } $ canMerge() is called by losingBoard
+    @ParameterizedTest(name = "Tablero con tamaño inválido {0} es perdedor")
+    @ValueSource(ints = {1, 5, 10, 15, 7, 20, 50, 70, 90, 123, 150})
+    public void lostBoardTest(int size) {
+        Board board = new Board(size, true);
         seeder.seederLostBoard(board);
         assertTrue(board.isLosingBoard());
     }
@@ -42,6 +42,26 @@ public class BoardTest {
         seeder.seederBoard(board, 5);
         Board copyOfBoard = new Board(board);
         assertEquals(board, copyOfBoard);
+    }
+
+
+    @Test
+    public void testCounterexampleWinningValueNotEqualsOtherSizeInCopyConstructor() {
+        Board other = new Board(Board.WINNING_VALUE, true);
+        Board copy = new Board(other);
+
+        assertEquals(Board.WINNING_VALUE, copy.getSize());
+        assertEquals(other, copy);
+    }
+
+    @Test
+    public void testCounterexampleWinningValueGreaterOrEqualGridSizeMinusOneInCopyConstructor() {
+        int size = Board.WINNING_VALUE + 2;
+        Board other = new Board(size, true);
+        Board copy = new Board(other);
+
+        assertEquals(size, copy.getSize());
+        assertEquals(other, copy);
     }
 
     @ParameterizedTest(name = "{0}")
@@ -221,11 +241,6 @@ public class BoardTest {
         assertEquals(4, board.getGrid().length);
     }
 
-    @Test
-    public void testBoardAllowsNullRandomByCreatingDefaultRandom() {
-        Board board = new Board(4, false, null);
-        assertTrue(board.hasEmptyCells());
-    }
 
     @Test
     public void validBoardSatisfiesRepOk() {

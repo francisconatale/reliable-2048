@@ -56,7 +56,7 @@ public class Board {
         this.size = size;
         this.grid = new Cell[size][size];
         this.score = new Score(0); 
-        this.random = random != null ? random : new java.util.Random();
+        this.random = random;
         initializeEmpty();
         this.determinist = determinist;
         if(!determinist) {

@@ -9,12 +9,8 @@ import org.junit.Test;
 import static org.junit.Assert.*;
 import static org.evosuite.runtime.EvoAssertions.*;
 import ar.edu.unrc.game2048.Cell;
-import org.evosuite.runtime.EvoRunner;
-import org.evosuite.runtime.EvoRunnerParameters;
-import org.junit.runner.RunWith;
 
-@RunWith(EvoRunner.class) @EvoRunnerParameters(mockJVMNonDeterminism = true, useVFS = true, useVNET = true, resetStaticState = true, separateClassLoader = false, useJEE = true) 
-public class Cell_ESTest extends Cell_ESTest_scaffolding {
+public class Cell_ESTest {
 
   @Test(timeout = 4000)
   public void test00()  throws Throwable  {
