@@ -199,7 +199,7 @@ public class RegressionTest0 {
         // The following exception was thrown during execution in test generation
         try {
             ar.edu.unrc.game2048.Cell cell8 = board1.getCell((int) (byte) 100, (int) '4');
-            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: 100");
+            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: Position (100, 52) is outside the 100x100 board");
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
             // Expected exception.
         }
@@ -274,7 +274,7 @@ public class RegressionTest0 {
         // The following exception was thrown during execution in test generation
         try {
             board1.setCell((int) (short) 100, (int) '4', cell13);
-            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: 100");
+            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: Position (100, 52) is outside the 100x100 board");
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
             // Expected exception.
         }
@@ -338,7 +338,7 @@ public class RegressionTest0 {
         // The following exception was thrown during execution in test generation
         try {
             board1.setCell(2048, (int) 'a', cell13);
-            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: 2048");
+            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: Position (2048, 97) is outside the 100x100 board");
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
             // Expected exception.
         }
@@ -374,7 +374,7 @@ public class RegressionTest0 {
         // The following exception was thrown during execution in test generation
         try {
             board1.setCell((int) (byte) 100, (int) '4', cell12);
-            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: 100");
+            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: Position (100, 52) is outside the 100x100 board");
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
             // Expected exception.
         }
@@ -411,7 +411,7 @@ public class RegressionTest0 {
         // The following exception was thrown during execution in test generation
         try {
             board1.setCell((int) (short) -1, 0, cell12);
-            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: -1");
+            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: Position (-1, 0) is outside the 100x100 board");
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
             // Expected exception.
         }
@@ -508,7 +508,7 @@ public class RegressionTest0 {
         // The following exception was thrown during execution in test generation
         try {
             board1.setCell(2048, (int) ' ', cell12);
-            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: 2048");
+            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: Position (2048, 32) is outside the 100x100 board");
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
             // Expected exception.
         }
@@ -550,7 +550,7 @@ public class RegressionTest0 {
         // The following exception was thrown during execution in test generation
         try {
             board1.setCell(100, 10, cell14);
-            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: 100");
+            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: Position (100, 10) is outside the 100x100 board");
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
             // Expected exception.
         }
@@ -603,7 +603,7 @@ public class RegressionTest0 {
         // The following exception was thrown during execution in test generation
         try {
             ar.edu.unrc.game2048.Cell cell17 = board1.getCell((-1), (int) 'a');
-            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: -1");
+            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: Position (-1, 97) is outside the 100x100 board");
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
             // Expected exception.
         }
@@ -630,7 +630,7 @@ public class RegressionTest0 {
         // The following exception was thrown during execution in test generation
         try {
             ar.edu.unrc.game2048.Cell cell11 = board1.getCell(2048, (int) (short) -1);
-            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: 2048");
+            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: Position (2048, -1) is outside the 100x100 board");
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
             // Expected exception.
         }
@@ -899,7 +899,7 @@ public class RegressionTest0 {
         // The following exception was thrown during execution in test generation
         try {
             ar.edu.unrc.game2048.Cell cell11 = board1.getCell(2048, (int) (byte) 0);
-            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: 2048");
+            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: Position (2048, 0) is outside the 100x100 board");
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
             // Expected exception.
         }
@@ -1255,7 +1255,7 @@ public class RegressionTest0 {
         // The following exception was thrown during execution in test generation
         try {
             board1.setCell((int) (short) 10, (int) (short) 100, cell17);
-            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: 100");
+            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: Position (10, 100) is outside the 100x100 board");
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
             // Expected exception.
         }
@@ -1283,7 +1283,7 @@ public class RegressionTest0 {
         // The following exception was thrown during execution in test generation
         try {
             board1.setCell(4, (int) (byte) 1, cell13);
-            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: 4");
+            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: Position (4, 1) is outside the 1x1 board");
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
             // Expected exception.
         }
@@ -1558,7 +1558,7 @@ public class RegressionTest0 {
         // The following exception was thrown during execution in test generation
         try {
             ar.edu.unrc.game2048.Cell cell10 = board1.getCell(2048, 2048);
-            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: 2048");
+            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: Position (2048, 2048) is outside the 100x100 board");
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
             // Expected exception.
         }
@@ -1591,7 +1591,7 @@ public class RegressionTest0 {
         // The following exception was thrown during execution in test generation
         try {
             board1.setCell((int) (byte) -1, 4, cell24);
-            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: -1");
+            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: Position (-1, 4) is outside the 100x100 board");
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
             // Expected exception.
         }
@@ -1641,7 +1641,7 @@ public class RegressionTest0 {
         // The following exception was thrown during execution in test generation
         try {
             ar.edu.unrc.game2048.Cell cell6 = board1.getCell(2048, (int) (short) 1);
-            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: 2048");
+            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: Position (2048, 1) is outside the 100x100 board");
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
             // Expected exception.
         }
@@ -1725,7 +1725,7 @@ public class RegressionTest0 {
         // The following exception was thrown during execution in test generation
         try {
             ar.edu.unrc.game2048.Cell cell8 = board1.getCell((int) (short) 1, (int) (byte) -1);
-            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: -1");
+            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: Position (1, -1) is outside the 100x100 board");
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
             // Expected exception.
         }
@@ -1987,7 +1987,7 @@ public class RegressionTest0 {
         // The following exception was thrown during execution in test generation
         try {
             board1.setCell((int) 'a', 100, cell13);
-            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: 97");
+            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: Position (97, 100) is outside the 1x1 board");
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
             // Expected exception.
         }
@@ -2091,7 +2091,7 @@ public class RegressionTest0 {
         // The following exception was thrown during execution in test generation
         try {
             board1.setCell((int) (short) 100, (int) (byte) 1, cell18);
-            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: 100");
+            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: Position (100, 1) is outside the 100x100 board");
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
             // Expected exception.
         }
@@ -2213,7 +2213,7 @@ public class RegressionTest0 {
         // The following exception was thrown during execution in test generation
         try {
             ar.edu.unrc.game2048.Cell cell13 = board1.getCell(2048, (int) (short) 10);
-            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: 2048");
+            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: Position (2048, 10) is outside the 100x100 board");
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
             // Expected exception.
         }
@@ -2795,7 +2795,7 @@ public class RegressionTest0 {
         // The following exception was thrown during execution in test generation
         try {
             ar.edu.unrc.game2048.Cell cell15 = board6.getCell((int) (short) 10, (int) (short) 100);
-            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: 100");
+            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: Position (10, 100) is outside the 100x100 board");
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
             // Expected exception.
         }
@@ -2877,7 +2877,7 @@ public class RegressionTest0 {
         // The following exception was thrown during execution in test generation
         try {
             board11.setCell((int) (byte) 0, (int) (byte) 100, cell33);
-            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: 100");
+            org.junit.Assert.fail("Expected exception of type java.lang.ArrayIndexOutOfBoundsException; message: Position (0, 100) is outside the 100x100 board");
         } catch (java.lang.ArrayIndexOutOfBoundsException e) {
             // Expected exception.
         }

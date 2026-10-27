@@ -103,12 +103,29 @@ public class Board {
         grid[pos.row][pos.col] = new Cell(value);
     }
 
-    public Cell[][] getGrid(){ return grid; }
+    /**
+     * Retorna una copia de la matriz de celdas del tablero para evitar que el estado interno del tablero sea modificado desde fuera.
+     *
+     * @return una nueva matriz de celdas que representa el estado actual del tablero
+     */
+    public Cell[][] getGrid() {
+        Cell[][] copy = new Cell[size][size];
+        for (int r = 0; r < size; r++) {
+            for (int c = 0; c < size; c++) {
+                copy[r][c] = grid[r][c];
+            }
+        }
+        return copy;
+    }
 
     @CheckRep
     public boolean repOK() {
         if (size <= 0 || grid == null || grid.length != size
                 || score == null || random == null || moveProvider == null) {
+            return false;
+        }
+
+        if (score.getScore() < 0) {
             return false;
         }
 
@@ -146,7 +163,10 @@ public class Board {
         this.size = other.size;
         this.grid = new Cell[size][size];
         this.score = new Score(other.score.getScore());
-        this.random = other.random;
+
+        // Generador independiente para la copia, para evitar que la copia y el original compartan el mismo estado aleatorio
+        this.random = new java.util.Random();
+        
         for (int r = 0; r < size; r++) {
             for (int c = 0; c < size; c++) {
                 this.grid[r][c] = other.grid[r][c];
@@ -192,6 +212,7 @@ public class Board {
      * @throws IndexOutOfBoundsException if row or col is out of bounds
      */
     public Cell getCell(int row, int col) {
+        checkBounds(row, col);
         return grid[row][col];
     }
 
@@ -208,7 +229,15 @@ public class Board {
         if (cell == null) {
             throw new IllegalArgumentException("Cell cannot be null");
         }
+        checkBounds(row, col);
         grid[row][col] = cell;
+    }
+
+    private void checkBounds(int row, int col) {
+        if (row < 0 || row >= size || col < 0 || col >= size) {
+            throw new ArrayIndexOutOfBoundsException(
+                    "Position (" + row + ", " + col + ") is outside the " + size + "x" + size + " board");
+        }
     }
 
     /**
@@ -369,7 +398,12 @@ public class Board {
         return moved;
     }
 
-    public void setScore(int value){ score.setScore(value);}
+    public void setScore(int value) {
+        if (value < 0) {
+            throw new IllegalArgumentException("Score cannot be negative: " + value);
+        }
+        score.setScore(value);
+    }
 
     /**
      * Represents a direction on the board.

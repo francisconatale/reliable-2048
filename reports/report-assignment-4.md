@@ -1,10 +1,16 @@
 # Reporte assignment 4: inferencia dinámica de invariantes y generación de oráculos con Daikon
 
-## 1. Recolección de trazas
+## 1. Preparación y recolección de trazas
 
-Para recolectar trazas de ejecución de `Board` y `Cell`, ejecutamos Chicory combinando tres fuentes de pruebas: las pruebas manuales, las suites generadas por Randoop y las suites generadas por EvoSuite.
+### 1.0 Preparación del entorno
 
-El script `run-daikon.sh` instrumentó únicamente las clases del modelo (`Board` y `Cell`), omitiendo clases auxiliares como `Position`:
+- JDK 21 en el `PATH` (Daikon 5.9.0 exige Java 11 o superior; con Java 8 falla con `UnsupportedClassVersionError`).
+- `lib/daikon.jar` (el jar completo de https://plse.cs.washington.edu/daikon/download/). Se verificó con `java -cp lib/daikon.jar daikon.Daikon`, que imprime `Daikon version 5.9.0` (la opción `--version` del enunciado no existe en esta versión).
+- Proyecto compilado con información de depuración (`mvn clean test-compile`) y pruebas en JUnit 4, requisito de Chicory.
+
+### 1.1 Corrida inicial (línea base)
+
+Para la primera corrida combinamos las pruebas manuales, las suites generadas por Randoop y las suites generadas por EvoSuite. El script `run-daikon.sh` instrumentó únicamente las clases del modelo (`Board` y `Cell`), omitiendo clases auxiliares como `Position`:
 
 ```bash
 ./run-daikon.sh \
@@ -16,9 +22,39 @@ El script `run-daikon.sh` instrumentó únicamente las clases del modelo (`Board
     ar.edu.unrc.game2048.evosuite.Cell_ESTest
 ```
 
+La salida de esta corrida se conserva en `daikon-invariants/daikon-output.txt` y es la línea base de la sección 3.4.
+
+### 1.2 Corrida ampliada (Fase 3.3)
+
+Después de clasificar los invariantes (sección 3) y corregir `Board` (sección 6), se agregaron pruebas para ampliar la diversidad de la traza y se volvió a ejecutar Chicory sobre las pruebas manuales `BoardTest` y `CellTest`:
+
+```bash
+./run-daikon.sh \
+    ar.edu.unrc.game2048.manual.BoardTest \
+    ar.edu.unrc.game2048.manual.CellTest
+```
+
+El script instrumenta con:
+
+```text
+--ppt-select-pattern='^ar\.edu\.unrc\.game2048\.(Board|Cell)([.$]|:)'
+--ppt-omit-pattern='.*Position.*'
+--sample-start=500
+```
+
+El patrón anterior (`ar.edu.unrc.game2048.Board|ar.edu.unrc.game2048.Cell`, sin anclar) también capturaba métodos de otras clases que reciben un `Board` o un `Cell` como parámetro (`Move*.execute`, `Seeder`, `BoardTest.fillCheckerboard`). Con el patrón anclado la salida pasó de 167 a 133 puntos de programa, todos de `Board` y `Cell`.
+
 ## 2. Inferencia de invariantes con Daikon
 
-Una vez obtenidas las trazas con Chicory, ejecutamos Daikon para contrastar los valores registrados contra su catálogo de plantillas de invariantes.
+Una vez obtenidas las trazas con Chicory, ejecutamos Daikon para contrastar los valores registrados contra su catálogo de plantillas de invariantes, guardando además el archivo binario `.inv`:
+
+```bash
+java -cp lib/daikon.jar daikon.Daikon \
+     -o daikon-traces/JUnitCore.inv.gz \
+     daikon-traces/JUnitCore.dtrace.gz > daikon-output.txt
+```
+
+(En Daikon 5.9.0 la opción para guardar el `.inv` es `-o`; `--save_inv_to` del enunciado ya no existe.) Evidencia entregada: `daikon-traces/JUnitCore.dtrace.gz`, `daikon-traces/JUnitCore.inv.gz` y `daikon-output.txt`.
 
 ## 3. Discusión y clasificación de invariantes inferidos
 
@@ -278,7 +314,32 @@ Cada invariante inferido se clasificó según las cuatro categorías de la activ
 | `Board` | `Board.isWinningBoard:::EXIT` | `(return == true) ==> (DEFAULT_SIZE == this.size)` | Too strong / likely spurious |
 | `Board` | `Board.getScore:::EXIT` | `DEFAULT_SIZE >= return && return one of {0, 4}` | Too strong / likely spurious |
 
-Luego de este análisis, agregamos casos de prueba adicionales para eliminar las invariantes espurias originadas por falta de diversidad en las trazas.
+### 3.4 Ampliación de la traza y nueva ejecución (Fase 3.3)
+
+Luego de este análisis, agregamos casos de prueba adicionales para eliminar las invariantes espurias originadas por falta de diversidad en las trazas (tableros de tamaño 2, 3, 5 y 6; tableros deterministas y no deterministas llenos, ganadores y perdedores; fusiones encadenadas con puntajes mayores a 4; movimientos sin efecto en las cuatro direcciones) y corregimos los defectos señalados por las invariantes 6, 7 y 9 (sección 6.3). Volvimos a correr Chicory y Daikon (sección 1.2) y comparamos con la línea base (`daikon-invariants/daikon-output.txt`, 1686 líneas, contra la nueva `daikon-output.txt`).
+
+| Invariante de la línea base | Línea base | Corrida ampliada | Qué lo cambió |
+|---|---|---|---|
+| `isFull`: `(return == true) ==> (this.determinist == false)` | Presente | Ausente | Tableros deterministas llenos (`deterministicBoardCanBeFullTest`) |
+| `isFull`/`isWinningBoard`: `(return == true) ==> (DEFAULT_SIZE == this.size)` | Presente | Ausente | Tableros llenos y ganadores de 2, 3 y 5 de lado |
+| `isLosingBoard`: `(return == true) <==> (DEFAULT_SIZE == this.size)` | Presente | Ausente en el punto `EXIT` general | Derrotas en 2x2, 3x3, 5x5 y 6x6 |
+| `getScore`: `return one of { 0, 4 }`, `DEFAULT_SIZE >= return` | Presente | Ausente | Fusiones encadenadas (puntajes 8, 24, 56) |
+| `Cell.repOK:::ENTER`: `this.value one of { 0, 2, 2048 }` | Presente | Ausente (ahora `one of { 0, 2, 4 }` solo en puntos de `canMergeWith`) | Más valores de celda |
+| `this.size one of { 4, 100 }` en `setScore:::ENTER` y `this.size one of {...}` en otros 25 puntos | 26 apariciones | 9 apariciones, con `{ 2, 4 }` y `{ 2, 3, 5 }` | Tableros de varios tamaños |
+| Constructor de copia: `this.random == other.random` | Presente | Ausente | Corrección de `Board(Board)` |
+| `getGrid:::EXIT`: `this.grid == return`, `return == orig(this.grid)` | Presente | Ausente | Copia defensiva en `getGrid()` |
+| `Board:::OBJECT`: `this.emptyCells == null` (40 apariciones) | Presente | Ausente | El campo ya no existe en `Board.java` |
+
+Lo que la ampliación no eliminó o cambió de forma inesperada:
+
+- **`this.determinist == true` sigue apareciendo en 16 puntos de programa** (`getScore`, `getGrid`, `hashCode`, `toString`, `setScore`, `repOK`, entre otros). Casi todas las pruebas manuales usan tableros deterministas; solo los tests nuevos de `move`, `isFull` y victoria/derrota usan tableros no deterministas.
+- **`Board.isLosingBoard():::EXIT296` conserva `DEFAULT_SIZE == this.size` y `this.determinist == return`.** Ese punto (retorno anticipado cuando hay celdas vacías) tiene una única muestra en la traza, que Daikon reporta con invariantes del estilo `has only one value`. Es un artefacto de tener una sola observación, no una propiedad del programa.
+- **`this.size one of { 2, 4 }` sigue en `equals`, `toString` y `move`**, con muestras de pocos tamaños. Además, `Board:::OBJECT` pasó de `this.size >= 1` a `this.size >= 2`: un tablero de 1x1 es válido, pero las pruebas manuales no lo ejercitan, por lo que es una cota espuria más.
+- **`setScore:::ENTER` dejó de inferir `value >= 0`.** Es el efecto inverso: la nueva prueba `setScoreNegativeThrowsTest` llama a `setScore(-1)`, y como Chicory registra la entrada antes de que el método lance la excepción, la traza contiene un valor negativo. Daikon no distingue entre una entrada inválida rechazada y una válida, por lo que ya no infiere la precondición. Esa regla ahora está garantizada por la validación del método y por `repOK()` (sección 6.3), y no por Daikon. En cambio `getCell:::ENTER` conserva las cotas `row >= 0` y `row <= size(this.grid[])-1`.
+- **`this.value one of { 0, 2, 4 }` en `canMergeWith`**: solo se observaron esos valores en las fusiones.
+
+**Conclusión de la Fase 3.3.** Ampliar la traza eliminó las invariantes espurias que dependían de una dimensión o de un modo de juego (`DEFAULT_SIZE`, `determinist`, cotas del puntaje) y confirmó las genuinas (`2 * this.value - return.value == 0` en `mergeWith`, `this.size == size(this.grid[])`, no nulidad de la grilla). Persisten invariantes espurias donde la variabilidad sigue siendo baja: casi todas las pruebas usan `determinist == true`, y algunos puntos de salida tienen una sola muestra. Daikon genera propiedades tan buenas como lo sea la diversidad de sus ejecuciones.
+
 
 ## 4. Comparación con `repOK()` y especificaciones previas
 
@@ -294,7 +355,7 @@ Daikon infirió varias propiedades que ya estaban definidas en `repOK()`:
 
 ### 4.2 Propiedades que Daikon encontró fuera de `repOK()`
 
-Daikon detectó propiedades y restricciones operacionales que no estaban formalizadas en `repOK()`:
+Sobre la línea base (corrida inicial), Daikon detectó propiedades y restricciones operacionales que no estaban formalizadas en `repOK()`:
 
 1. Unicidad referencial de `Cell.EMPTY`:
    - Invariante inferido:
@@ -381,3 +442,24 @@ if (grid[row][column].isEmpty() && grid[row][column] != Cell.EMPTY) {
     return false;
 }
 ```
+
+### 6.3 Correcciones en `Board` derivadas de los invariantes incorrectos
+
+Las invariantes 6, 7 y 9 de la sección 3.2 señalaban defectos reales. Se corrigieron y se agregaron pruebas que los verifican:
+
+- `getGrid()` devuelve una copia de la matriz (`getGridReturnsDefensiveCopyTest`).
+- `Board(Board)` crea su propio `Random` en lugar de compartir el del original (`copyDoesNotShareRandomTest`, `moveDoesNotConsumeRandomSequenceOfBoardTest`).
+- `setScore(int)` lanza `IllegalArgumentException` si `value < 0` (`setScoreNegativeThrowsTest`).
+- `getCell` y `setCell` validan los límites y lanzan una excepción descriptiva (`getCellOutOfBoundsThrowsTest`, `setCellOutOfBoundsThrowsAndNullCellStillIllegalArgumentTest`). Se lanza `ArrayIndexOutOfBoundsException`, subclase de `IndexOutOfBoundsException`, para mantener el tipo de excepción que esperan las suites generadas por Randoop y EvoSuite.
+
+Para mantener la suite en verde se adaptaron dos pruebas existentes: `boardWithNullCellFailsRepOk` (ahora corrompe la grilla por reflexión, porque `getGrid()` devuelve una copia) y `test08` de `Board_ESTest` (ahora espera la excepción de `setScore(-14)`).
+
+### 6.4 Actualización en `Board.repOK()` por la precondición de `setScore`
+
+Daikon infirió en la corrida inicial `setScore(int):::ENTER: value >= 0`. Como el puntaje es un invariante del estado del tablero, y no solo una precondición del setter, se agregó a `Board.repOK()`:
+```java
+if (score.getScore() < 0) {
+    return false;
+}
+```
+Se cubre con `boardWithNegativeScoreFailsRepOkTest`, que corrompe el `Score` interno por reflexión y comprueba que `repOK()` devuelve `false`.

@@ -73,7 +73,7 @@ public class CellTest {
 
     @Test
     public void testCellIsEmpty(){
-        Cell cell = new Cell(0);
+        Cell cell = Cell.EMPTY;
         boolean result = cell.isEmpty();
         assertTrue(result);
     }
@@ -162,8 +162,8 @@ public class CellTest {
 
     @Test
     public void testEmptyCellCannotMerge(){
-        Cell cell = new Cell(0);
-        Cell otherCell = new Cell(0);
+        Cell cell = Cell.EMPTY;
+        Cell otherCell = Cell.EMPTY;
         assertFalse(cell.canMergeWith(otherCell));
     }
 

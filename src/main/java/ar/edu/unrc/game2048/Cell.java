@@ -24,21 +24,21 @@ public final class Cell {
     /**
      * The empty cell singleton (value = 0).
      */
-    public static final Cell EMPTY = new Cell(0);
+    public static final Cell EMPTY = new Cell();
+
+    private Cell() {
+        this.value = 0;
+    }
     
     /**
      * Creates a new cell with the given value.
      * 
-     * @param value the value of the cell (must be 0 or a power of two)
-     * @throws IllegalArgumentException if the value is negative or not a power of two (except 0)
+     * @param value the value of the cell (must be a power of two greater than 1)
+     * @throws IllegalArgumentException if the value is less than 2 or not a power of 2
      */
     public Cell(int value) {
-        if (value < 0) {
-            throw new IllegalArgumentException("Cell value cannot be negative: " + value);
-        }
-
-        if (value != 0 && Integer.bitCount(value) != 1) {
-            throw new IllegalArgumentException("Cell value must be 0 or a power of two: " + value);
+        if (value < 2 || Integer.bitCount(value) != 1) {
+            throw new IllegalArgumentException("Cell value must be a power of 2 greater than 1: " + value);
         }
         
         this.value = value;
@@ -68,7 +68,7 @@ public final class Cell {
            return this == Cell.EMPTY; 
         }
         
-        return value > 0 && Integer.bitCount(value) == 1;
+        return value > 1 && Integer.bitCount(value) == 1;
     }
     
     /**

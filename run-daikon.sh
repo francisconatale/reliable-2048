@@ -27,7 +27,7 @@ FULL_CP="lib/daikon.jar:target/classes:target/test-classes:${DEPS_CP}"
 echo "Ejecutando Chicory para: ${TEST_CLASSES[*]}..."
 java -cp "$FULL_CP" \
     daikon.Chicory \
-    --ppt-select-pattern="ar.edu.unrc.game2048.Board|ar.edu.unrc.game2048.Cell" \
+    --ppt-select-pattern='^ar\.edu\.unrc\.game2048\.(Board|Cell)([.$]|:)' \
     --ppt-omit-pattern=".*Position.*" \
     --sample-start=500 \
     --output-dir=daikon-traces \

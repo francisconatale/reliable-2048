@@ -4,7 +4,7 @@ set -e
 
 EVOSUITE_JAR="evosuite-1.0.6.jar"
 EVOSUITE_URL="https://github.com/EvoSuite/evosuite/releases/download/v1.0.6/evosuite-1.0.6.jar"
-SEARCH_BUDGET=180
+SEARCH_BUDGET=400
 TARGET_PACKAGE="ar.edu.unrc.game2048.evosuite"
 TARGET_DIR="src/test/java/ar/edu/unrc/game2048/evosuite"
 
@@ -21,7 +21,9 @@ mkdir -p "$TARGET_DIR"
 for TARGET_CLASS in ar.edu.unrc.game2048.Cell ar.edu.unrc.game2048.Board; do
     echo "Generating EvoSuite tests for $TARGET_CLASS..."
     java -jar "$EVOSUITE_JAR" -projectCP "$CLASS_PATH" -class "$TARGET_CLASS" \
-        -Dsearch_budget=$SEARCH_BUDGET -Dtest_dir=src/test/java
+        -Dsearch_budget=$SEARCH_BUDGET -Dtest_dir=src/test/java \
+        -Dreplace_calls=false -Dvirtual_fs=false -Dvirtual_net=false \
+        -Dreset_static_fields=false -Djee=false
 
     SIMPLE_NAME=$(echo "$TARGET_CLASS" | awk -F. '{print $NF}')
     SRC_PKG_DIR=$(echo "$TARGET_CLASS" | sed 's/\.[^.]*$//' | tr '.' '/')
