@@ -1,0 +1,1 @@
+scripts/run-tests-and-mutation.sh

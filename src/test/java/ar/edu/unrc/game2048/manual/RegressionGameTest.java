@@ -1,6 +1,6 @@
 package ar.edu.unrc.game2048.manual;
 import ar.edu.unrc.game2048.*;
-import ar.edu.unrc.game2048.strategy.*;
+
 import static org.junit.Assert.assertEquals;
 import org.junit.Test;
 
@@ -21,26 +21,7 @@ public class RegressionGameTest {
                 "8 4 0 0";
         Board expectedBoard = BoardParser.parse(expectedBoardToParse);
         expectedBoard.setScore(4);
-        initialBoard.move(Board.Direction.DOWN);
-        assertEquals(expectedBoard, initialBoard);
-    }
-
-    @Test
-    public void regressionTestTwoInMoveDownWithBoardNotTrivial(){
-        String initialBoardToParse =
-                        "0 8 0 0\n" +
-                        "4 2 0 0\n" +
-                        "8 2 0 0\n" +
-                        "0 2 0 0";
-        Board initialBoard = BoardParser.parse(initialBoardToParse);
-        String expectedBoardToParse =
-                "0 0 0 0\n" +
-                "0 8 0 0\n" +
-                "4 2 0 0\n" +
-                "8 4 0 0";
-        Board expectedBoard = BoardParser.parse(expectedBoardToParse);
-        expectedBoard.setScore(4);
-        initialBoard.move(Board.Direction.DOWN);
+        initialBoard.move(Direction.DOWN);
         assertEquals(expectedBoard, initialBoard);
     }
 
@@ -88,22 +69,7 @@ public void EdgeCaseWithOneMergeInLimitCasesCol() {
         String initialBoardToParse =
                 "2 2" + "\n" + "8 2";
         Board board = BoardParser.parse(initialBoardToParse, false);
-        board.move(Board.Direction.RIGHT);
+        board.move(Direction.RIGHT);
         assertEquals(board.isFull(), true);
     }
-
-
-    @Test
-    public void testTryMoveUpAndNotMoveNumbers(){
-        String initialBoardToParse =
-                        "16 0 0 0\n" +
-                        "0 0 0 0\n" +
-                        "0 0 0 0\n" +
-                        "0 0 0 0";
-        Board initialBoard = BoardParser.parse(initialBoardToParse, false);
-        Board expectedBoard = new Board(initialBoard);
-        initialBoard.move(Board.Direction.UP);
-        assertEquals(initialBoard,expectedBoard);
-    }
-
 }

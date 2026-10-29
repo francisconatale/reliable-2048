@@ -57,18 +57,15 @@ public class MainCLI {
             
             boolean moved = false;
             switch (input) {
-                case "W": moved = board.move(Board.Direction.UP); break;
-                case "S": moved = board.move(Board.Direction.DOWN); break;
-                case "A": moved = board.move(Board.Direction.LEFT); break;
-                case "D": moved = board.move(Board.Direction.RIGHT); break;
+                case "W": moved = board.move(Direction.UP); break;
+                case "S": moved = board.move(Direction.DOWN); break;
+                case "A": moved = board.move(Direction.LEFT); break;
+                case "D": moved = board.move(Direction.RIGHT); break;
                 default: 
                     System.out.println("Invalid input! Use W, A, S, D, or Q.");
                     continue;
             }
 
-            // Para el fuzzer con -ea (assertions activadas), descomentar la siguiente linea
-            // assert board.repOK() : "repOK de Board violado despues de move(" + input + ")";
-            
             if (moved) {
                 System.out.println("Tile moved!");
             } else {

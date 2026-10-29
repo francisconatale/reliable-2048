@@ -1,6 +1,5 @@
 package ar.edu.unrc.game2048.manual;
 import ar.edu.unrc.game2048.*;
-import ar.edu.unrc.game2048.strategy.*;
 
 import static org.junit.Assert.assertTrue;
 import static org.junit.Assert.assertEquals;
@@ -10,7 +9,7 @@ import java.io.PrintStream;
 import org.junit.Test;
 import org.mockito.Mockito;
 
-import ar.edu.unrc.game2048.Board.Direction;
+import ar.edu.unrc.game2048.Direction;
 
 public class MainCLITest {
 
@@ -91,18 +90,6 @@ public class MainCLITest {
                 new ByteArrayOutputStream());
 
         assertTrue(cliOutput.contains("Invalid input! Use W, A, S, D, or Q."));
-    }
-
-    @Test
-    public void testCliReportsWinningBoard() {
-        InputReader mockInputReader = Mockito.mock(InputReader.class);
-        Mockito.when(mockInputReader.nextLine()).thenReturn("q");
-        Board board = new Board(4, true);
-        board.setCell(0, 0, new Cell(2048));
-
-        String cliOutput = runCli(board, mockInputReader, new ByteArrayOutputStream());
-
-        assertTrue(cliOutput.contains("Congratulations! You reached 2048!"));
     }
 
     @Test

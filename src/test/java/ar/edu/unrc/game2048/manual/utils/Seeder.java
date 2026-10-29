@@ -1,8 +1,8 @@
 package ar.edu.unrc.game2048.manual.utils;
 import ar.edu.unrc.game2048.*;
-import ar.edu.unrc.game2048.strategy.*;
 import ar.edu.unrc.game2048.Board;
-import ar.edu.unrc.game2048.Board.Position;
+import ar.edu.unrc.game2048.Position;
+import ar.edu.unrc.game2048.move.*;
 import ar.edu.unrc.game2048.Cell;
 import java.util.*;
 public class Seeder {
@@ -16,6 +16,7 @@ public class Seeder {
             2, 4, 8, 16, 32, 64, 128, 256, 512, 1024
     );
     private final Random random = new Random();
+    
     public void seederLostBoard(Board board) {
         int size = board.getSize();
         for (int row = 0; row < size; row++) {
@@ -44,6 +45,8 @@ public class Seeder {
     private int getRandomPossibleValue(){
         return POSSIBLE_VALUES.get(random.nextInt(POSSIBLE_VALUES.size()));
     }
+
+    // get a neighbors of {cell} located in {position}
     private List<Integer> valueOfNeighborCells(Position position, Board board) {
         List<Integer> values = new LinkedList<>();
         for (Position direction : DIRECTIONS) {
@@ -54,10 +57,12 @@ public class Seeder {
         }
         return values;
     }
+
     private boolean isValidPosition(int row, int col, int size) {
         return row >= 0 && row < size
                 && col >= 0 && col < size;
     }
+
     private int unusedNeighborValue(List<Integer> excluded) {
         List<Integer> available = new LinkedList<>(POSSIBLE_VALUES);
         for (Integer value : excluded) {

@@ -31,10 +31,11 @@ java -cp "$FULL_CP" \
     --ppt-omit-pattern=".*Position.*" \
     --sample-start=500 \
     --output-dir=daikon-traces \
-    org.junit.runner.JUnitCore \
+    --dtrace-file=daikon-traces/JUnitCore.dtrace.gz \
+    ar.edu.unrc.game2048.manual.utils.DaikonTestRunner \
     "${TEST_CLASSES[@]}" || true
 
 echo ""
 echo "¡Traza generada con éxito en daikon-traces/JUnitCore.dtrace.gz!"
 echo "Para inferir invariantes ejecuta:"
-echo "  java -cp lib/daikon.jar daikon.Daikon daikon-traces/JUnitCore.dtrace.gz > daikon-output.txt"
+echo "  java -cp lib/daikon.jar daikon.Daikon --config_option daikon.split.PptSplitter.disable_splitting=true daikon-traces/JUnitCore.dtrace.gz > daikon-output.txt"

@@ -1,6 +1,6 @@
-package ar.edu.unrc.game2048.strategy;
+package ar.edu.unrc.game2048.move;
 
-import ar.edu.unrc.game2048.Board.Direction;
+import ar.edu.unrc.game2048.Direction;
 import java.util.EnumMap;
 import java.util.Map;
 
@@ -15,7 +15,7 @@ public class MoveProvider {
         providers.put(Direction.RIGHT, new MoveRight());
     }
 
-    public Move provide(Direction direction) {
+    public static Move provide(Direction direction) {
         return providers.get(direction);
     }
 }

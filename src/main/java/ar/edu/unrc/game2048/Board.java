@@ -2,12 +2,11 @@ package ar.edu.unrc.game2048;
 
 import java.util.Arrays;
 import java.util.HashSet;
-import java.util.List;
 import java.util.Objects;
+import java.util.Random;
 import java.util.Set;
 
-import ar.edu.unrc.game2048.strategy.Move;
-import ar.edu.unrc.game2048.strategy.MoveProvider;
+import ar.edu.unrc.game2048.move.MoveProvider;
 import randoop.CheckRep;
 
 /**
@@ -23,41 +22,19 @@ import randoop.CheckRep;
  * Thread-safety: This class is not thread-safe.
  */
 public class Board {
-    private MoveProvider moveProvider = new MoveProvider();
-    /**
-     * Board default number of rows/columns (4 x 4)
-     */
+  
     public static final int DEFAULT_SIZE = 4;
-
-    /**
-     * Default winning value: when board contains this value, the player wins (2048)
-     */
     public static final int WINNING_VALUE = 2048;
-
-    /**
-     * Board size (i.e., number of rows and columns). Must be > 0.
-     */
     private final int size;
-
-    /**
-     * Contents of the board: a 2D array of Cells. List<Cell> represents the cell at (row, col).
-     */
     private final Cell[][] grid;
-
-    /**
-     * Game accumulated score.
-     */
     private Score score;
+    private boolean determinist;
+    private Random random;
 
-    /**
-     * Creates a new board of the default size (4x4) with two random tiles.
-     */
     public Board() {
         this(DEFAULT_SIZE, false);
     }
-    private boolean determinist;
-    private java.util.Random random;
-
+   
     /**
      * Creates a new board of the specified size with two random tiles.
      *
@@ -69,17 +46,17 @@ public class Board {
     }
 
     public static Board forTesting(int size) {
-        return new Board(size, true, new java.util.Random(42L));
+        return new Board(size, true, new Random(42L));
     }
 
-    public Board(int size, boolean determinist, java.util.Random random) {
+    public Board(int size, boolean determinist, Random random) {
         if (size <= 0) {
             throw new IllegalArgumentException("Board size must be positive: " + size);
         }
         this.size = size;
         this.grid = new Cell[size][size];
-        this.score = new Score(0);
-        this.random = random != null ? random : new java.util.Random();
+        this.score = new Score(0); 
+        this.random = random;
         initializeEmpty();
         this.determinist = determinist;
         if(!determinist) {
@@ -89,18 +66,18 @@ public class Board {
     }
 
     private void addRandomTile() {
-        Set<Board.Position> empty = getEmptyPositions();
+        Set<Position> empty = getEmptyPositions();
         if (empty.isEmpty()) {
             return;
         }
+        Position allowedPosition = getRandomPosition(empty);
+        int value = random.nextDouble() < 0.9 ? 2 : 4; // standard rule of the 2048 game
+        setCell(allowedPosition.row, allowedPosition.col, new Cell(value));
+    }
 
-        // Choose random positiom
-        int randomIndex = (int) (random.nextDouble() * empty.size());
-        Board.Position pos = empty.stream().skip(randomIndex).findFirst().get();
-
-        // 90% chance of 2, 10% chance of 4 (standard 2048 rules)
-        int value = random.nextDouble() < 0.9 ? 2 : 4;
-        grid[pos.row][pos.col] = new Cell(value);
+    private Position getRandomPosition(Set<Position> allowedPositions){
+        int randomIndex = (int) (random.nextDouble() * allowedPositions.size());
+        return allowedPositions.stream().skip(randomIndex).findFirst().get();
     }
 
     /**
@@ -121,7 +98,7 @@ public class Board {
     @CheckRep
     public boolean repOK() {
         if (size <= 0 || grid == null || grid.length != size
-                || score == null || random == null || moveProvider == null) {
+                || score == null || random == null) {
             return false;
         }
 
@@ -129,26 +106,24 @@ public class Board {
             return false;
         }
 
-        
         for (int row = 0; row < size; row++) {
             if (grid[row] == null || grid[row].length != size) {
                 return false;
             }
 
-            
+        
             for (int column = 0; column < size; column++) {
                 if (grid[row][column] == null || !grid[row][column].repOK()) {
                     return false;
                 }
 
                 if (grid[row][column].isEmpty() && grid[row][column] != Cell.EMPTY) {
-                       return false; // Violación de unicidad de instancia vacía
+                       return false;
                 }
             }
         }
         return true;
     }
-
 
 
     /**
@@ -167,9 +142,9 @@ public class Board {
         // Generador independiente para la copia, para evitar que la copia y el original compartan el mismo estado aleatorio
         this.random = new java.util.Random();
         
-        for (int r = 0; r < size; r++) {
-            for (int c = 0; c < size; c++) {
-                this.grid[r][c] = other.grid[r][c];
+        for (int row = 0; row < size; row++) {
+            for (int col = 0; col < size; col++) {
+                this.grid[row][col] = other.grid[row][col];
             }
         }
     }
@@ -263,7 +238,14 @@ public class Board {
      * @return true if there is at least one empty cell
      */
     public boolean hasEmptyCells() {
-        return !getEmptyPositions().isEmpty();
+        for (int r = 0; r < size; r++) {
+            for (int c = 0; c < size; c++) {
+                if (grid[r][c].isEmpty()) {
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     /**
@@ -275,7 +257,7 @@ public class Board {
     public boolean isWinningBoard() {
         for (int r = 0; r < size; r++) {
             for (int c = 0; c < size; c++) {
-                if (grid[r][c].getValue() == WINNING_VALUE) {
+                if (getCell(r, c).getValue() == WINNING_VALUE) {
                     return true;
                 }
             }
@@ -295,21 +277,31 @@ public class Board {
             return false;
         }
 
-        // Check for possible merges
         for (int r = 0; r < size; r++) {
             for (int c = 0; c < size; c++) {
-                Cell current = grid[r][c];
-                // Check right neighbor
-                if (c + 1 < size && current.canMergeWith(grid[r][c + 1])) {
-                    return false;
-                }
-                // Check down neighbor
-                if (r + 1 < size && current.canMergeWith(grid[r + 1][c])) {
+                Cell current = getCell(r, c);
+                Cell right = getNeighbor(r, c, 0, 1);
+                Cell down  = getNeighbor(r, c, 1, 0);
+
+                if (canMerge(current, right) || canMerge(current, down)) {
                     return false;
                 }
             }
         }
         return true;
+    }
+
+    private Cell getNeighbor(int row, int col, int rowOffset, int colOffset) {
+        int neighborRow = row + rowOffset;
+        int neighborCol = col + colOffset;
+        if (neighborRow >= size || neighborCol >= size) {
+            return null;
+        }
+        return getCell(neighborRow, neighborCol);
+    }
+
+    private boolean canMerge(Cell current, Cell neighbor) {
+        return neighbor != null && current.canMergeWith(neighbor);
     }
 
 
@@ -321,7 +313,6 @@ public class Board {
     public boolean isFull() {
         return !hasEmptyCells();
     }
-
 
     /**
      * Checks if this board is structurally identical to another.
@@ -374,23 +365,13 @@ public class Board {
         return sb.toString();
     }
 
-    public void setMoveProvider(MoveProvider moveProvider) {
-        if (moveProvider == null) {
-            throw new IllegalArgumentException("moveProvider no puede ser null");
-        }
-        this.moveProvider = moveProvider;
-    }
 
     public boolean move(Direction direction) {
         if (direction == null) {
             throw new IllegalArgumentException("direction no puede ser null");
         }
-        if (moveProvider == null) {
-            throw new IllegalStateException("moveProvider no puede ser null");
-        }
         Board previous = new Board(this);
-        Move move = moveProvider.provide(direction);
-        move.execute(this, grid, score);
+        MoveProvider.provide(direction).execute(this, grid, score);
         boolean moved = !this.equals(previous);
         if (moved && !determinist) {
             addRandomTile();
@@ -403,44 +384,5 @@ public class Board {
             throw new IllegalArgumentException("Score cannot be negative: " + value);
         }
         score.setScore(value);
-    }
-
-    /**
-     * Represents a direction on the board.
-     */
-    public enum Direction {
-        UP, DOWN, LEFT, RIGHT
-    }
-
-    /**
-     * Represents a position on the board.
-     */
-    public static class Position {
-        public final int row;
-        public final int col;
-
-        public Position(int row, int col) {
-            this.row = row;
-            this.col = col;
-        }
-
-
-        @Override
-        public boolean equals(Object o) {
-            if (this == o) return true;
-            if (o == null || getClass() != o.getClass()) return false;
-            Position position = (Position) o;
-            return row == position.row && col == position.col;
-        }
-
-        @Override
-        public int hashCode() {
-            return Objects.hash(row, col);
-        }
-
-        @Override
-        public String toString() {
-            return "(" + row + ", " + col + ")";
-        }
     }
 }

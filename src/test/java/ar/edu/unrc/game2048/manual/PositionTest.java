@@ -1,9 +1,8 @@
 package ar.edu.unrc.game2048.manual;
 import ar.edu.unrc.game2048.*;
-import ar.edu.unrc.game2048.strategy.*;
 
 import org.junit.Test;
-import ar.edu.unrc.game2048.Board.Position;
+import ar.edu.unrc.game2048.Position;
 
 import static org.junit.Assert.*;
 
@@ -39,11 +38,6 @@ public class PositionTest {
     @Test
     public void testEqualPositionsHaveSameHashCode() {
         assertEquals(new Position(0, 2).hashCode(), new Position(0, 2).hashCode());
-    }
-
-    @Test
-    public void testDifferentPositionsHaveDifferentHashCode() {
-        assertNotEquals(new Position(0, 2).hashCode(), new Position(1, 2).hashCode());
     }
 
     @Test

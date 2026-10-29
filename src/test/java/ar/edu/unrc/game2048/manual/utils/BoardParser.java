@@ -1,8 +1,8 @@
 package ar.edu.unrc.game2048.manual.utils;
 import ar.edu.unrc.game2048.*;
-import ar.edu.unrc.game2048.strategy.*;
 import ar.edu.unrc.game2048.Board;
 import ar.edu.unrc.game2048.Cell;
+import ar.edu.unrc.game2048.move.*;
 public class BoardParser {
     public static Board parse(String boardString, boolean deterministic) {
         if (boardString == null || boardString.trim().isEmpty()) {
