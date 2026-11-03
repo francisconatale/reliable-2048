@@ -39,6 +39,7 @@ public class CellTest {
         Cell target = new Cell(4);
         boolean result = origin.canMergeWith(target);
         assertFalse(result);
+        assertThrows(IllegalArgumentException.class, () -> new Cell(2).canMergeWith(null));
     }
 
     @Test
@@ -46,6 +47,7 @@ public class CellTest {
         Cell origin = new Cell(2);
         Cell target = new Cell(4);
         assertThrows(IllegalArgumentException.class, () -> { origin.mergeWith(target); });
+        assertThrows(IllegalArgumentException.class, () -> new Cell(2).mergeWith(null));
     }
 
     @Test
