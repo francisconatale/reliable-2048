@@ -6,7 +6,7 @@ GRAMMAR = {
     "<size>": {
         "generator": "integer",
         "min": 1,
-        "max": 5000
+        "max": 50
     },
 
     "<cell>": [str(value) for value in CELL_VALUES],
@@ -14,7 +14,6 @@ GRAMMAR = {
     "<board(size)>": {
         "generator": "repeat",
         "element": "<cell>",
-        "count": "size * size"
     }
 }
 
