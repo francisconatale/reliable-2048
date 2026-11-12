@@ -6,7 +6,7 @@ GRAMMAR = {
     "<size>": {
         "generator": "integer",
         "min": 1,
-        "max": 100
+        "max": 5000
     },
 
     "<cell>": [str(value) for value in CELL_VALUES],

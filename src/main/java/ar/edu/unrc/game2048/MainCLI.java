@@ -92,13 +92,32 @@ public class MainCLI {
     // for grammar fuzzing, (size, [0, 1,..., n]), n is size * size
     public static void main(String[] args) {
         MainCLI game = null;
-        if (args.length == 2){
+        if (args.length == 2) {
             Integer sizeOfBoard = Integer.parseInt(args[0]);
             String[] boardValues = args[1].replace("[", "").replace("]", "").split(",");
             Board board = BoardParser.parse(boardValues, sizeOfBoard);
             game = new MainCLI(board);
+        } else if (args.length == 1 && (args[0].equals("--stdin") || args[0].equals("-") || args[0].equals("stdin"))) {
+            Scanner scanner = new Scanner(System.in);
+            if (!scanner.hasNextLine()) {
+                return;
+            }
+            String firstLine = scanner.nextLine().trim();
+            int sizeOfBoard;
+            String boardLine;
+            if (firstLine.contains(" ")) {
+                String[] parts = firstLine.split(" ", 2);
+                sizeOfBoard = Integer.parseInt(parts[0].trim());
+                boardLine = parts[1].trim();
+            } else {
+                sizeOfBoard = Integer.parseInt(firstLine);
+                boardLine = scanner.nextLine().trim();
+            }
+            String[] boardValues = boardLine.replace("[", "").replace("]", "").split(",");
+            Board board = BoardParser.parse(boardValues, sizeOfBoard);
+            game = new MainCLI(board, scanner);
         } else {
-        game = new MainCLI();
+            game = new MainCLI();
         }
         game.play();
     }

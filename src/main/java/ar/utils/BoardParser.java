@@ -33,7 +33,7 @@ public class BoardParser {
         int row = i / size;
         int col = i % size;
 
-        int value = Integer.parseInt(boardToParse[i]);
+        int value = Integer.parseInt(boardToParse[i].trim());
         Cell cell = (value == 0) ? Cell.EMPTY : new Cell(value);
 
         board.setCell(row, col, cell);

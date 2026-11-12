@@ -13,7 +13,7 @@ def test_grammar_generator_produces_valid_structure():
 
     size_str, board_str = parts
     size = int(size_str)
-    assert 1 <= size <= 100
+    assert 1 <= size <= GRAMMAR["<size>"]["max"]
 
     cells = board_str.split(",")
     assert len(cells) == size * size
