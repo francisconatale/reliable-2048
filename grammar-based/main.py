@@ -4,6 +4,7 @@ import time
 from pathlib import Path
 
 from generator import GrammarGenerator
+from mutator import Mutator
 from grammar import GRAMMAR, START_SYMBOL
 from reporter import ExecutionReporter, ExecutionResult
 
@@ -35,11 +36,11 @@ def main(
 ) -> ExecutionReporter:
     generator = GrammarGenerator(GRAMMAR)
     reporter = ExecutionReporter()
-
+    mutator = Mutator()
     for i in range(1, n + 1):
         generated = generator.generate(START_SYMBOL)
         size, board = generated.split(" ", 1)
-
+        mutator.mutate(size, board)
         start_time = time.perf_counter()
         try:
             proc = run_java(size, board, timeout=timeout)
