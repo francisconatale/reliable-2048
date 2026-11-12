@@ -28,3 +28,12 @@ target/
 evosuite-report/
 .scaffolding_list.tmp
 .vscode/
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+.pytest_cache/
+.ruff_cache/
+
