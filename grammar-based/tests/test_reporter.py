@@ -82,10 +82,10 @@ def test_run_java_passes_via_stdin(monkeypatch):
 
     monkeypatch.setattr(subprocess, "run", mock_subprocess_run)
 
-    res = main_module.run_java("4", "0,2,0,2")
+    res = main_module.run_java("0,2,0,2")
     assert res.returncode == 0
     assert captured_args["cmd"][-1] == "--stdin"
-    assert captured_args["kwargs"]["input"] == "4\n0,2,0,2\nq\n"
+    assert captured_args["kwargs"]["input"] == "0,2,0,2\nq\n"
     assert captured_args["kwargs"]["text"] is True
     assert captured_args["kwargs"]["timeout"] == 10.0
 
@@ -99,7 +99,7 @@ def test_run_java_custom_timeout(monkeypatch):
 
     monkeypatch.setattr(subprocess, "run", mock_subprocess_run)
 
-    main_module.run_java("4", "0,2,0,2", timeout=5.0)
+    main_module.run_java("0,2,0,2", timeout=5.0)
     assert captured_args["kwargs"]["timeout"] == 5.0
 
 

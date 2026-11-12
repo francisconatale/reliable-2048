@@ -4,8 +4,8 @@ import time
 from pathlib import Path
 
 from generator import GrammarGenerator
-from mutator import Mutator
 from grammar import GRAMMAR, START_SYMBOL
+from mutator import Mutator
 from reporter import ExecutionReporter, ExecutionResult
 
 CLASSES = Path(__file__).resolve().parent.parent / "target" / "classes"
@@ -13,7 +13,7 @@ DEFAULT_TIMEOUT: float = 10.0
 
 
 def run_java(
-    size: str, board: str, timeout: float = DEFAULT_TIMEOUT
+    board: str, timeout: float = DEFAULT_TIMEOUT
 ) -> subprocess.CompletedProcess:
     return subprocess.run(
         [
@@ -23,7 +23,7 @@ def run_java(
             "ar.edu.unrc.game2048.MainCLI",
             "--stdin",
         ],
-        input=f"{size}\n{board}\nq\n",
+        input=f"{board}\nq\n",
         text=True,
         capture_output=True,
         check=False,
@@ -39,17 +39,20 @@ def main(
     mutator = Mutator()
     for i in range(1, n + 1):
         generated = generator.generate(START_SYMBOL)
-        size, board = generated.split(" ", 1)
-        mutator.mutate(size, board)
+        size_str, raw_board = generated.split(" ", 1)
+        size = int(size_str)
+        cells = [int(x) for x in raw_board.split(",") if x.strip()]
+        mutated_cells = mutator.mutate(size, cells)
+        board = ",".join(str(x) for x in mutated_cells)
         start_time = time.perf_counter()
         try:
-            proc = run_java(size, board, timeout=timeout)
+            proc = run_java(board, timeout=timeout)
             duration = time.perf_counter() - start_time
             is_success = proc.returncode == 0
             reporter.record(
                 ExecutionResult(
                     index=i,
-                    size=size,
+                    size=size_str,
                     board=board,
                     success=is_success,
                     returncode=proc.returncode,
@@ -85,7 +88,7 @@ def main(
             reporter.record(
                 ExecutionResult(
                     index=i,
-                    size=size,
+                    size=size_str,
                     board=board,
                     success=False,
                     returncode=-1,
@@ -102,7 +105,7 @@ def main(
             reporter.record(
                 ExecutionResult(
                     index=i,
-                    size=size,
+                    size=size_str,
                     board=board,
                     success=False,
                     returncode=-1,
@@ -115,7 +118,7 @@ def main(
 
         if verbose:
             print(
-                f"[{i}/{n}] Size: {size} -> {status_label} ({duration:.4f}s)",
+                f"[{i}/{n}] Size: {size_str} -> {status_label} ({duration:.4f}s)",
                 flush=True,
             )
 
