@@ -24,7 +24,7 @@ def modify(size: int, board: list[int]) -> list[int]:
     if cells_to_modify > 0:
         indices = random.sample(range(len(board)), cells_to_modify)
         for idx in indices:
-            board[idx] = random.choice(CELL_VALUES)
+            board[idx] += random.randint(0,MAX)
     print(f"modify mutation was applied -> {cells_to_modify}")
     return board
 
