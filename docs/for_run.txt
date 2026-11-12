@@ -1,0 +1,8 @@
+para correr el juego con un tablero inicial predefinido:
+
+mvn exec:java -Dexec.mainClass="ar.edu.unrc.game2048.MainCLI" -Dexec.args='4 "[0,0,0,0,0,2,0,0,0,0,0,0,2,0,0,2]"'
+donde (size, [0,1,...,n]), donde n = size * size
+
+para correr el juego con un tablero aleatorio:
+mvn exec:java -Dexec.mainClass="ar.edu.unrc.game2048.MainCLI"
+

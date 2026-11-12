@@ -1,5 +1,5 @@
 package ar.edu.unrc.game2048;
-
+import ar.utils.BoardParser;
 import java.util.Scanner;
 
 /**
@@ -14,6 +14,10 @@ public class MainCLI {
     
     public MainCLI() {
         this(new Board(), new Scanner(System.in));
+    }
+
+    public MainCLI(Board board){
+        this(board, new Scanner(System.in));
     }
 
     public MainCLI(Board board, Scanner scanner) {
@@ -83,10 +87,19 @@ public class MainCLI {
      */
     private void displayBoard() {
         System.out.println(board);
-    }
-    
+    }    
+
+    // for grammar fuzzing, (size, [0, 1,..., n]), n is size * size
     public static void main(String[] args) {
-        MainCLI game = new MainCLI();
+        MainCLI game = null;
+        if (args.length == 2){
+            Integer sizeOfBoard = Integer.parseInt(args[0]);
+            String[] boardValues = args[1].replace("[", "").replace("]", "").split(",");
+            Board board = BoardParser.parse(boardValues, sizeOfBoard);
+            game = new MainCLI(board);
+        } else {
+        game = new MainCLI();
+        }
         game.play();
     }
 }

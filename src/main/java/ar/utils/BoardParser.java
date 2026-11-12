@@ -1,0 +1,49 @@
+package ar.utils;
+import ar.edu.unrc.game2048.*;
+import ar.edu.unrc.game2048.Board;
+import ar.edu.unrc.game2048.Cell;
+import ar.edu.unrc.game2048.move.*;
+public class BoardParser {
+    public static Board parse(String boardString, boolean deterministic) {
+        if (boardString == null || boardString.trim().isEmpty()) {
+            throw new IllegalArgumentException("Board string cannot be null or empty");
+        }
+        String[] lines = boardString.trim().split("\\r?\\n");
+        int size = lines.length;
+        Board board = new Board(size, deterministic);
+        for (int r = 0; r < size; r++) {
+            String[] tokens = lines[r].trim().split("\\s+");
+            if (tokens.length != size) {
+                throw new IllegalArgumentException("Invalid board format. Expected " + size + " columns, but got " + tokens.length + " on row " + r);
+            }
+            for (int c = 0; c < size; c++) {
+                int value = Integer.parseInt(tokens[c]);
+                Cell cell = (value == 0) ? Cell.EMPTY : new Cell(value);
+                board.setCell(r, c, cell);
+            }
+        }
+        return board;
+    }
+
+        
+   public static Board parse(String[] boardToParse, int size) {
+    Board board = new Board(size, true);
+
+    for (int i = 0; i < boardToParse.length; i++) {
+        int row = i / size;
+        int col = i % size;
+
+        int value = Integer.parseInt(boardToParse[i]);
+        Cell cell = (value == 0) ? Cell.EMPTY : new Cell(value);
+
+        board.setCell(row, col, cell);
+    }
+
+    return board;
+    }
+
+
+    public static Board parse(String boardString) {
+        return parse(boardString,true);
+    }
+}
