@@ -1,0 +1,329 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuite xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="https://maven.apache.org/surefire/maven-surefire-plugin/xsd/surefire-test-report-3.0.xsd" version="3.0" name="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.397" tests="268" errors="0" skipped="0" failures="0">
+  <properties>
+    <property name="awt.toolkit" value="sun.awt.X11.XToolkit"/>
+    <property name="file.encoding.pkg" value="sun.io"/>
+    <property name="java.specification.version" value="1.8"/>
+    <property name="sun.cpu.isalist" value=""/>
+    <property name="sun.jnu.encoding" value="UTF-8"/>
+    <property name="java.class.path" value="/home/santi/SemCsComp_tp2/reliable-2048/target/test-classes:/home/santi/SemCsComp_tp2/reliable-2048/target/classes:/home/santi/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/home/santi/SemCsComp_tp2/reliable-2048/lib/randoop-all-4.3.4.jar:/home/santi/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/home/santi/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/santi/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/home/santi/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/santi/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:/home/santi/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:/home/santi/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.jar:/home/santi/.m2/repository/org/evosuite/evosuite-standalone-runtime/1.0.6/evosuite-standalone-runtime-1.0.6.jar:/home/santi/.m2/repository/org/mockito/mockito-core/4.11.0/mockito-core-4.11.0.jar:/home/santi/.m2/repository/net/bytebuddy/byte-buddy/1.12.19/byte-buddy-1.12.19.jar:/home/santi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.12.19/byte-buddy-agent-1.12.19.jar:/home/santi/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/home/santi/.m2/repository/org/mockito/mockito-junit-jupiter/4.11.0/mockito-junit-jupiter-4.11.0.jar:/home/santi/.m2/repository/org/junit/vintage/junit-vintage-engine/5.9.2/junit-vintage-engine-5.9.2.jar:/home/santi/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/home/santi/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/santi/.m2/repository/org/junit/platform/junit-platform-launcher/1.9.2/junit-platform-launcher-1.9.2.jar:"/>
+    <property name="java.vm.vendor" value="Amazon.com Inc."/>
+    <property name="sun.arch.data.model" value="64"/>
+    <property name="java.vendor.url" value="https://aws.amazon.com/corretto/"/>
+    <property name="user.timezone" value=""/>
+    <property name="java.vm.specification.version" value="1.8"/>
+    <property name="os.name" value="Linux"/>
+    <property name="user.country" value="ES"/>
+    <property name="sun.java.launcher" value="SUN_STANDARD"/>
+    <property name="sun.boot.library.path" value="/home/santi/.sdkman/candidates/java/8.0.504-amzn/jre/lib/amd64"/>
+    <property name="sun.java.command" value="/home/santi/SemCsComp_tp2/reliable-2048/target/surefire/surefirebooter-20261111011227593_3.jar /home/santi/SemCsComp_tp2/reliable-2048/target/surefire 2026-11-11T01-12-27_252-jvmRun1 surefire-20261111011227593_1tmp surefire_0-20261111011227593_2tmp"/>
+    <property name="surefire.test.class.path" value="/home/santi/SemCsComp_tp2/reliable-2048/target/test-classes:/home/santi/SemCsComp_tp2/reliable-2048/target/classes:/home/santi/.m2/repository/org/hamcrest/hamcrest/2.2/hamcrest-2.2.jar:/home/santi/SemCsComp_tp2/reliable-2048/lib/randoop-all-4.3.4.jar:/home/santi/.m2/repository/org/junit/jupiter/junit-jupiter-api/5.9.2/junit-jupiter-api-5.9.2.jar:/home/santi/.m2/repository/org/opentest4j/opentest4j/1.2.0/opentest4j-1.2.0.jar:/home/santi/.m2/repository/org/junit/platform/junit-platform-commons/1.9.2/junit-platform-commons-1.9.2.jar:/home/santi/.m2/repository/org/apiguardian/apiguardian-api/1.1.2/apiguardian-api-1.1.2.jar:/home/santi/.m2/repository/org/junit/jupiter/junit-jupiter-engine/5.9.2/junit-jupiter-engine-5.9.2.jar:/home/santi/.m2/repository/org/junit/platform/junit-platform-engine/1.9.2/junit-platform-engine-1.9.2.jar:/home/santi/.m2/repository/org/junit/jupiter/junit-jupiter-params/5.9.2/junit-jupiter-params-5.9.2.jar:/home/santi/.m2/repository/org/evosuite/evosuite-standalone-runtime/1.0.6/evosuite-standalone-runtime-1.0.6.jar:/home/santi/.m2/repository/org/mockito/mockito-core/4.11.0/mockito-core-4.11.0.jar:/home/santi/.m2/repository/net/bytebuddy/byte-buddy/1.12.19/byte-buddy-1.12.19.jar:/home/santi/.m2/repository/net/bytebuddy/byte-buddy-agent/1.12.19/byte-buddy-agent-1.12.19.jar:/home/santi/.m2/repository/org/objenesis/objenesis/3.3/objenesis-3.3.jar:/home/santi/.m2/repository/org/mockito/mockito-junit-jupiter/4.11.0/mockito-junit-jupiter-4.11.0.jar:/home/santi/.m2/repository/org/junit/vintage/junit-vintage-engine/5.9.2/junit-vintage-engine-5.9.2.jar:/home/santi/.m2/repository/junit/junit/4.13.2/junit-4.13.2.jar:/home/santi/.m2/repository/org/hamcrest/hamcrest-core/1.3/hamcrest-core-1.3.jar:/home/santi/.m2/repository/org/junit/platform/junit-platform-launcher/1.9.2/junit-platform-launcher-1.9.2.jar:"/>
+    <property name="sun.cpu.endian" value="little"/>
+    <property name="user.home" value="/home/santi"/>
+    <property name="user.language" value="es"/>
+    <property name="java.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.home" value="/home/santi/.sdkman/candidates/java/8.0.504-amzn/jre"/>
+    <property name="basedir" value="/home/santi/SemCsComp_tp2/reliable-2048"/>
+    <property name="file.separator" value="/"/>
+    <property name="line.separator" value="&#10;"/>
+    <property name="java.vm.specification.vendor" value="Oracle Corporation"/>
+    <property name="java.specification.name" value="Java Platform API Specification"/>
+    <property name="java.awt.graphicsenv" value="sun.awt.X11GraphicsEnvironment"/>
+    <property name="surefire.real.class.path" value="/home/santi/SemCsComp_tp2/reliable-2048/target/surefire/surefirebooter-20261111011227593_3.jar:/home/santi/.m2/repository/org/jacoco/org.jacoco.agent/0.8.10/org.jacoco.agent-0.8.10-runtime.jar"/>
+    <property name="sun.boot.class.path" value="/home/santi/.sdkman/candidates/java/8.0.504-amzn/jre/lib/resources.jar:/home/santi/.sdkman/candidates/java/8.0.504-amzn/jre/lib/rt.jar:/home/santi/.sdkman/candidates/java/8.0.504-amzn/jre/lib/sunrsasign.jar:/home/santi/.sdkman/candidates/java/8.0.504-amzn/jre/lib/jsse.jar:/home/santi/.sdkman/candidates/java/8.0.504-amzn/jre/lib/jce.jar:/home/santi/.sdkman/candidates/java/8.0.504-amzn/jre/lib/charsets.jar:/home/santi/.sdkman/candidates/java/8.0.504-amzn/jre/lib/jfr.jar:/home/santi/.sdkman/candidates/java/8.0.504-amzn/jre/classes"/>
+    <property name="sun.management.compiler" value="HotSpot 64-Bit Tiered Compilers"/>
+    <property name="java.runtime.version" value="1.8.0_504-b01"/>
+    <property name="user.name" value="santi"/>
+    <property name="path.separator" value=":"/>
+    <property name="os.version" value="7.2.15-200.fc44.x86_64"/>
+    <property name="java.endorsed.dirs" value="/home/santi/.sdkman/candidates/java/8.0.504-amzn/jre/lib/endorsed"/>
+    <property name="java.runtime.name" value="OpenJDK Runtime Environment"/>
+    <property name="file.encoding" value="UTF-8"/>
+    <property name="java.vm.name" value="OpenJDK 64-Bit Server VM"/>
+    <property name="localRepository" value="/home/santi/.m2/repository"/>
+    <property name="java.vendor.url.bug" value="https://github.com/corretto/corretto-8/issues/"/>
+    <property name="java.io.tmpdir" value="/tmp"/>
+    <property name="java.version" value="1.8.0_504"/>
+    <property name="user.dir" value="/home/santi/SemCsComp_tp2/reliable-2048"/>
+    <property name="os.arch" value="amd64"/>
+    <property name="java.vm.specification.name" value="Java Virtual Machine Specification"/>
+    <property name="java.awt.printerjob" value="sun.print.PSPrinterJob"/>
+    <property name="sun.os.patch.level" value="unknown"/>
+    <property name="java.library.path" value="/usr/java/packages/lib/amd64:/usr/lib64:/lib64:/lib:/usr/lib"/>
+    <property name="java.vm.info" value="mixed mode"/>
+    <property name="java.vendor" value="Amazon.com Inc."/>
+    <property name="java.vm.version" value="25.504-b01"/>
+    <property name="java.specification.maintenance.version" value="6"/>
+    <property name="java.ext.dirs" value="/home/santi/.sdkman/candidates/java/8.0.504-amzn/jre/lib/ext:/usr/java/packages/lib/ext"/>
+    <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
+    <property name="java.class.version" value="52.0"/>
+  </properties>
+  <testcase name="test001" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.029"/>
+  <testcase name="test002" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.003"/>
+  <testcase name="test003" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test004" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test005" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test006" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.005"/>
+  <testcase name="test007" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test008" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test009" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.006"/>
+  <testcase name="test010" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test011" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test012" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test013" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.005"/>
+  <testcase name="test014" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test015" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test016" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test017" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test018" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test019" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test020" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test021" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test022" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test023" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test024" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test025" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.004"/>
+  <testcase name="test026" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test027" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test028" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test029" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test030" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test031" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test032" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test033" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.003"/>
+  <testcase name="test034" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test035" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test036" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test037" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test038" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test039" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test040" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test041" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test042" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test043" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test044" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test045" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test046" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test047" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test048" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test049" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test050" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test051" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test052" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test053" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test054" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test055" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test056" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test057" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test058" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test059" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test060" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test061" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test062" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.003"/>
+  <testcase name="test063" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test064" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test065" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test066" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test067" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test068" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test069" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test070" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test071" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test072" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test073" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test074" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test075" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test076" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test077" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test078" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test079" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test080" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test081" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test082" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test083" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test084" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test085" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test086" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test087" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test088" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.004"/>
+  <testcase name="test089" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test090" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test091" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test092" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test093" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test094" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test095" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test096" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test097" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test098" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test099" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test100" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test101" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test102" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test103" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test104" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test105" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test106" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test107" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test108" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test109" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test110" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test111" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test112" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test113" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test114" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test115" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test116" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test117" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test118" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test119" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test120" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test121" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test122" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test123" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test124" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test125" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test126" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test127" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test128" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test129" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test130" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test131" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test132" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test133" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test134" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test135" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test136" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test137" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test138" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test139" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test140" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test141" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test142" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test143" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test144" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test145" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test146" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test147" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test148" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test149" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test150" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test151" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test152" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test153" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test154" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test155" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test156" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test157" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test158" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test159" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test160" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test161" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test162" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test163" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test164" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test165" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test166" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test167" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test168" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test169" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test170" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test171" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test172" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test173" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test174" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test175" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test176" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test177" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test178" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test179" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test180" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test181" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test182" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test183" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test184" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test185" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test186" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test187" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test188" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test189" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test190" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test191" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test192" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test193" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test194" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test195" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test196" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test197" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test198" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test199" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test200" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test201" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test202" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test203" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test204" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test205" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test206" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test207" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test208" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test209" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test210" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test211" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test212" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test213" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test214" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test215" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test216" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test217" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test218" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test219" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test220" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test221" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test222" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test223" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test224" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test225" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test226" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test227" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test228" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test229" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test230" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.002"/>
+  <testcase name="test231" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test232" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test233" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test234" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test235" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test236" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test237" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test238" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test239" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test240" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test241" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test242" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test243" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test244" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test245" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test246" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test247" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test248" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test249" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test250" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test251" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test252" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test253" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test254" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test255" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test256" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test257" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test258" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test259" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test260" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test261" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test262" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test263" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test264" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+  <testcase name="test265" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test266" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test267" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0"/>
+  <testcase name="test268" classname="ar.edu.unrc.game2048.randoop.board.RegressionTest0" time="0.001"/>
+</testsuite>

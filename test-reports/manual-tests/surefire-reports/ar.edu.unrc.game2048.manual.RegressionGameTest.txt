@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: ar.edu.unrc.game2048.manual.RegressionGameTest
+-------------------------------------------------------------------------------
+Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.009 s - in ar.edu.unrc.game2048.manual.RegressionGameTest

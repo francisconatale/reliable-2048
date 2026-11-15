@@ -9,36 +9,6 @@ import org.junit.jupiter.params.provider.CsvSource;
 import static org.junit.Assert.*;
 
 public class SpuriousInvariantTests {
-
-    // spurious invariant: ar.edu.unrc.game2048.Board.WINNING_VALUE >= this.size
-    @Test
-    public void testSpuriousWinningValueGeqSizeInBoardObject() {
-        int size = Board.WINNING_VALUE + 2;
-        Board board = new Board(size, true);
-        assertEquals(size, board.getSize());
-    }
-
-    // spurious invariant: ar.edu.unrc.game2048.Board.WINNING_VALUE != other.size
-    @Test
-    public void testSpuriousWinningValueNotEqualsOtherSizeInCopyConstructorEnter() {
-        Board other = new Board(Board.WINNING_VALUE, true);
-        Board copy = new Board(other);
-        assertEquals(Board.WINNING_VALUE, copy.getSize());
-        assertEquals(other, copy);
-    }
-
-    // spurious invariant: ar.edu.unrc.game2048.Board.WINNING_VALUE >= size(other.grid[])-1
-    @ParameterizedTest(name = "getCell fuera de límites ({0} lanza IndexOutOfBoundsException")
-    @CsvSource({
-        "1", "2", "5", "20"
-    })
-    public void testSpuriousWinningValueGeqGridSizeMinusOneInCopyConstructorEnter(int increments) {
-        int size = Board.WINNING_VALUE + increments;
-        Board other = new Board(size, true);
-        Board copy = new Board(other);
-        assertEquals(size, copy.getSize());
-        assertEquals(other, copy);
-    }
     
     // spurious invariant: this.determinist == true
     @Test
@@ -66,14 +36,6 @@ public class SpuriousInvariantTests {
         assertTrue(board.repOK());
         Board other = new Board(board);
         assertEquals(board, other);
-    }
-
-    // spurious invariant: ar.edu.unrc.game2048.Board.WINNING_VALUE > this.size
-    @Test
-    public void testSpuriousWinningValueGreaterThanSize() {
-        Board board = new Board(Board.WINNING_VALUE, true);
-        assertEquals(Board.WINNING_VALUE, board.getSize());
-        assertTrue(board.repOK());
     }
 
     // spurious invariant: this.value == 0

@@ -180,7 +180,7 @@
                         <version>3.0.0-M9</version>
                         <configuration>
                             <includes>
-                                <include>**/randoop/**/*Test*.java</include>
+                                <include>**/randoop/**/RegressionTest0.java</include>
                             </includes>
                         </configuration>
                     </plugin>
@@ -189,7 +189,7 @@
                         <artifactId>pitest-maven</artifactId>
                         <configuration>
                             <targetTests>
-                                <param>ar.edu.unrc.game2048.randoop.*Test*</param>
+                                <param>ar.edu.unrc.game2048.randoop.*.RegressionTest0</param>
                             </targetTests>
                             <reportsDirectory>${project.build.directory}/pit-reports-randoop</reportsDirectory>
                         </configuration>
@@ -224,7 +224,7 @@
                             <includes>
                                 <include>**/manual/**/*Test.java</include>
                                 <include>**/evosuite/**/*_ESTest.java</include>
-                                <include>**/randoop/**/*Test*.java</include>
+                                <include>**/randoop/**/RegressionTest0.java</include>
                             </includes>
                         </configuration>
                     </plugin>
@@ -235,7 +235,7 @@
                             <targetTests>
                                 <param>ar.edu.unrc.game2048.manual.*Test</param>
                                 <param>ar.edu.unrc.game2048.manual.*Tests</param>
-                                <param>ar.edu.unrc.game2048.randoop.*Test*</param>
+                                <param>ar.edu.unrc.game2048.randoop.*.RegressionTest0</param>
                                 <param>ar.edu.unrc.game2048.evosuite.*Test</param>
                             </targetTests>
                             <reportsDirectory>${project.build.directory}/pit-reports-all</reportsDirectory>

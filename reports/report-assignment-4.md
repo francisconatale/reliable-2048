@@ -1,465 +1,184 @@
-# Reporte assignment 4: inferencia dinámica de invariantes y generación de oráculos con Daikon
+# Reporte Assignment 4: inferencia dinámica de invariantes con Daikon
 
-## 1. Preparación y recolección de trazas
+## 1. Resumen
 
-### 1.0 Preparación del entorno
+Se instrumentaron `Board` y `Cell` con Chicory y se infirieron invariantes con Daikon 5.9.0 sobre cuatro trazas: tests manuales (`manual`), Randoop, EvoSuite y las tres juntas (`all`).
 
-- JDK 21 en el `PATH` (Daikon 5.9.0 exige Java 11 o superior; con Java 8 falla con `UnsupportedClassVersionError`).
-- `lib/daikon.jar` (el jar completo de https://plse.cs.washington.edu/daikon/download/). Se verificó con `java -cp lib/daikon.jar daikon.Daikon`, que imprime `Daikon version 5.9.0` (la opción `--version` del enunciado no existe en esta versión).
-- Proyecto compilado con información de depuración (`mvn clean test-compile`) y pruebas en JUnit 4, requisito de Chicory.
+- Daikon redescubrió casi todo lo que expresa `repOK()` para las condiciones simples del objeto, y no pudo inferir lo que requiere cuantificar sobre la matriz (celdas no nulas, filas de largo `size`).
+- Aportó contratos que `repOK()` no expresa, como `2 * this.value == return.value` en `Cell.mergeWith` o las precondiciones de `Cell(int)`.
+- Señaló cinco defectos de diseño, todos corregidos. El último: **`Board(Board)` no copiaba el campo `determinist`** (B6). Tras la corrección, `this.determinist == other.determinist` aparece en las cuatro suites.
+- Ampliar la traza redujo los invariantes espurios: los `one of { ... }` pasaron de 36 a 10 y los `this.determinist == true` de 18 a 3 (sección 4).
 
-### 1.1 Corrida inicial (línea base)
+## 2. Recolección e inferencia
 
-Para la primera corrida combinamos las pruebas manuales, las suites generadas por Randoop y las suites generadas por EvoSuite. El script `run-daikon.sh` instrumentó únicamente las clases del modelo (`Board` y `Cell`), omitiendo clases auxiliares como `Position`:
-
-```bash
-./run-daikon.sh \
-    ar.edu.unrc.game2048.manual.BoardTest \
-    ar.edu.unrc.game2048.manual.CellTest \
-    ar.edu.unrc.game2048.randoop.board.RegressionTest \
-    ar.edu.unrc.game2048.randoop.cell.RegressionTest \
-    ar.edu.unrc.game2048.evosuite.Board_ESTest \
-    ar.edu.unrc.game2048.evosuite.Cell_ESTest
-```
-
-La salida de esta corrida se conserva en `daikon-invariants/daikon-output.txt` y es la línea base de la sección 3.4.
-
-### 1.2 Corrida ampliada (Fase 3.3)
-
-Después de clasificar los invariantes (sección 3) y corregir `Board` (sección 6), se agregaron pruebas para ampliar la diversidad de la traza y se volvió a ejecutar Chicory sobre las pruebas manuales `BoardTest` y `CellTest`:
+Entorno: JDK 11 hasta 21 para Daikon (versión usada: 11), EvoSuite con JDK 8, `lib/daikon.jar` 5.9.0, proyecto compilado con `mvn test-compile`.
 
 ```bash
-./run-daikon.sh \
-    ar.edu.unrc.game2048.manual.BoardTest \
-    ar.edu.unrc.game2048.manual.CellTest
+./run-daikon.sh --suite=manual     # también randoop, evosuite y all
 ```
 
-El script instrumenta con:
-
-```text
---ppt-select-pattern='^ar\.edu\.unrc\.game2048\.(Board|Cell)([.$]|:)'
---ppt-omit-pattern='.*Position.*'
---sample-start=500
-```
-
-El patrón anterior (`ar.edu.unrc.game2048.Board|ar.edu.unrc.game2048.Cell`, sin anclar) también capturaba métodos de otras clases que reciben un `Board` o un `Cell` como parámetro (`Move*.execute`, `Seeder`, `BoardTest.fillCheckerboard`). Con el patrón anclado la salida pasó de 167 a 133 puntos de programa, todos de `Board` y `Cell`.
-
-## 2. Inferencia de invariantes con Daikon
-
-Una vez obtenidas las trazas con Chicory, ejecutamos Daikon para contrastar los valores registrados contra su catálogo de plantillas de invariantes, guardando además el archivo binario `.inv`:
+El script ejecuta Chicory con un runner propio (`DaikonTestRunner`, que corre JUnit 4 y 5) y luego Daikon:
 
 ```bash
+java -cp "lib/daikon.jar:target/classes:target/test-classes:<deps>" daikon.Chicory \
+    --ppt-select-pattern='^ar\.edu\.unrc\.game2048\.(Board|Cell)([.$]|:)' \
+    --ppt-omit-pattern=".*Position.*" \
+    --output-dir=daikon-traces/<suite> --dtrace-file=JUnitCore.dtrace.gz \
+    ar.edu.unrc.game2048.manual.utils.DaikonTestRunner <clases de prueba>
+
 java -cp lib/daikon.jar daikon.Daikon \
-     -o daikon-traces/JUnitCore.inv.gz \
-     daikon-traces/JUnitCore.dtrace.gz > daikon-output.txt
+    --config_option daikon.split.PptSplitter.disable_splitting=true \
+    -o daikon-traces/<suite>/JUnitCore.inv.gz \
+    daikon-traces/<suite>/JUnitCore.dtrace.gz > daikon-invariants/<suite>/daikon-output.txt
 ```
 
-(En Daikon 5.9.0 la opción para guardar el `.inv` es `-o`; `--save_inv_to` del enunciado ya no existe.) Evidencia entregada: `daikon-traces/JUnitCore.dtrace.gz`, `daikon-traces/JUnitCore.inv.gz` y `daikon-output.txt`.
+- El patrón de `--ppt-select-pattern` está anclado: sin anclar, Chicory también instrumentaba métodos de otras clases que reciben un `Board` o un `Cell`.
+- No se usa `--sample-start`: descartaba casos poco frecuentes y produjo invariantes falsos. En Daikon 5.9.0 el `.inv` se guarda con `-o` (no existe `--save_inv_to`).
+- Se desactiva el *splitting* para evitar implicaciones condicionales espurias (sección 4.3 mide su efecto).
+- Daikon descarta las llamadas que terminan en excepción (292 en `all`). Por eso las precondiciones inferidas describen solo el dominio de las llamadas válidas.
 
-## 3. Discusión y clasificación de invariantes inferidos
+Evidencia entregada, por suite (`manual`, `randoop`, `evosuite`, `all`): trazas e `.inv` en `daikon-traces/<suite>/`, salida completa y limpia (sin los puntos `EXITnn`) en `daikon-invariants/<suite>/`. Además: `fuzzer` y `all-fuzzer` (sección 4.4), `all-splitting` (sección 4.3) y las entradas del fuzzer en `fuzz-inputs/`.
 
-Cada invariante inferido se clasificó según las cuatro categorías de la actividad:
-1. Correct and useful (correcta y útil): refleja una regla del programa y sirve como oráculo ante fallos reales.
-2. Correct but trivial (correcta pero trivial): se cumple siempre, pero describe propiedades obvias (pureza en getters, no nulidad de constantes) sin aportar reglas nuevas del juego.
-3. Too strong / likely spurious (demasiado fuerte o espuria): surge por sobreajuste ante un conjunto limitado de pruebas y se rompe con una ejecución válida del programa.
-4. Incorrect (incorrecta): contradice la especificación o refleja un defecto del código que Daikon asumió como comportamiento normal.
+| Suite | Tests | Mutantes muertos (PIT) |
+|---|---|---|
+| `manual` | 154 | 238/251 (95%) |
+| `randoop` | 509 | 93/251 (37%) |
+| `evosuite` | 86 | 182/251 (73%) |
 
-### 3.1 Invariantes de `Cell`
+## 3. Invariantes clasificados (salida de `all`, salvo indicación)
 
-#### Invariante 1: No negatividad del valor de celda
-- Punto de programa: `ar.edu.unrc.game2048.Cell:::OBJECT`
-- Invariante inferido:
-  ```text
-  this.value >= 0
-  this.value >= ar.edu.unrc.game2048.Cell.EMPTY.value
-  ```
-- Clasificación: Correct and useful
-- Justificación:
-  - Dominio: modela el invariante de representación de `Cell`. En 2048, una celda está vacía (`value == 0`) o tiene una ficha positiva ($2, 4, 8, \dots$). No hay fichas con valores negativos.
-  - Utilidad como oráculo: detecta estados inválidos producidos por errores aritméticos o desbordamientos.
-  - Relación con `repOK()`: coincide con la primera guarda evaluada en `Cell.repOK()` (`if (value < 0) return false;`).
+Criterios: **útil** (regla real del programa), **trivial** (cierta pero obvia), **espurio** (se cumple por poca variedad en la traza y existe una ejecución válida que la viola), **incorrecto** (contradice la especificación o delata un defecto).
 
-#### Invariante 2: Las celdas operables son potencias de dos
-- Punto de programa: `ar.edu.unrc.game2048.Cell.canMergeWith(Cell):::ENTER`
-- Invariante inferido:
-  ```text
-  this.value is a power of 2
-  other.value is a power of 2
-  this.value >= 2
-  other.value >= 2
-  ```
-- Clasificación: Correct and useful
-- Justificación:
-  - Dominio: indica que en la ejecución del tablero, `canMergeWith` solo se invoca entre fichas activas ($2, 4, 8, \dots$), excluyendo celdas vacías (`0`).
-  - Utilidad como oráculo: funciona como contrato de precondición. Si un invocador pasa celdas vacías o valores no válidos (como 3 o 5), este invariante detecta la violación antes de procesar la lógica.
-  - Relación con `repOK()`: coincide con la propiedad `Integer.bitCount(value) == 1` exigida en `Cell.repOK()`.
+### 3.1 `Cell`
 
-#### Invariante 3: Regla bicondicional de fusión
-- Punto de programa: `ar.edu.unrc.game2048.Cell.canMergeWith(Cell):::EXIT`
-- Invariante inferido:
-  ```text
-  (return == false)  <==>  (this.value != other.value)
-  ```
-- Clasificación: Correct and useful
-- Justificación:
-  - Dominio: dos fichas activas pueden fusionarse si y solo si sus valores numéricos son iguales.
-  - Utilidad como oráculo: define la postcondición del método y sirve como oráculo funcional de `canMergeWith`.
-  - Relación con el código: valida la instrucción `return this.value == other.value;`.
-
-#### Invariante 4: Pureza de `getValue()`
-- Punto de programa: `ar.edu.unrc.game2048.Cell.getValue():::EXIT`
-- Invariante inferido:
-  ```text
-  this.value == return
-  return == orig(this.value)
-  return >= 0
-  ```
-- Clasificación: Correct but trivial
-- Justificación:
-  - Dominio: constata que el método devuelve el valor interno sin alterar el objeto (`orig(this.value) == this.value`).
-  - Por qué es trivial: describe el comportamiento estándar de lectura de un atributo inmutable, sin agregar reglas propias del juego.
-
-#### Invariante 5: Restricción de fusión a valores $2 + 2 \rightarrow 4$
-- Punto de programa: `ar.edu.unrc.game2048.Cell.mergeWith(Cell):::EXIT`
-- Invariante inferido:
-  ```text
-  this.value == 2
-  other.value == 2
-  return.value == 4
-  ```
-- Clasificación: Too strong / likely spurious
-- Justificación:
-  - Dominio: falso invariante producido por sobreajuste (*overfitting*). Apareció porque las pruebas iniciales solo ejercitaron fusiones entre fichas de valor 2.
-  - Contraejemplo: cualquier partida con fichas mayores (por ejemplo, $4 + 4 \rightarrow 8$) incumple esta regla. La postcondición general es `return.value == orig(this.value) * 2`.
-  - Corrección: agregamos pruebas parametrizadas con combinaciones variadas para que Daikon deduzca la regla general de duplicación.
-
-### 3.2 Invariantes de `Board`
-
-#### Invariante 1: Coherencia de dimensiones de la grilla
-- Punto de programa: `ar.edu.unrc.game2048.Board:::OBJECT`
-- Invariante inferido:
-  ```text
-  this.size == size(this.grid[])
-  this.size >= 1
-  ```
-- Clasificación: Correct and useful
-- Justificación:
-  - Dominio: garantiza que la dimensión lógica (`size`) coincida con la cantidad de filas de la matriz interna `grid`.
-  - Utilidad como oráculo: previene estados inconsistentes y excepciones de tipo `ArrayIndexOutOfBoundsException` al recorrer posiciones.
-  - Relación con `repOK()`: corresponde a la comprobación `grid.length == size` en `Board.repOK()`.
-
-#### Invariante 2: Integridad de las filas de la grilla
-- Punto de programa: `ar.edu.unrc.game2048.Board:::OBJECT`
-- Invariante inferido:
-  ```text
-  this.grid != null
-  this.grid[] elements != null
-  ```
-- Clasificación: Correct and useful
-- Justificación:
-  - Dominio: garantiza que la matriz y cada una de sus filas estén instanciadas.
-  - Utilidad como oráculo: evita fallos por `NullPointerException` durante el acceso a celdas.
-  - Relación con `repOK()`: corresponde al bucle de `Board.repOK()` que valida `grid[i] != null` para todo índice válido.
-
-#### Invariante 3: Límites válidos en el acceso a celdas
-- Punto de programa: `ar.edu.unrc.game2048.Board.getCell(int, int):::ENTER`
-- Invariante inferido:
-  ```text
-  row >= 0
-  col >= 0
-  row <= size(this.grid[]) - 1
-  col <= size(this.grid[]) - 1
-  ```
-- Clasificación: Correct and useful
-- Justificación:
-  - Dominio: define el rango de coordenadas válidas $[0, \text{size}-1]$ para acceder a cualquier celda del tablero.
-  - Utilidad como oráculo: detecta intentos de acceso fuera de rango provenientes de la interfaz o de la lógica de juego antes de indexar la matriz.
-  - Relación con el código: coincide con la validación de límites presente en `Board.java`.
-
-#### Invariante 4: Pureza de `getSize()`
-- Punto de programa: `ar.edu.unrc.game2048.Board.getSize():::EXIT`
-- Invariante inferido:
-  ```text
-  return == this.size
-  this.size == orig(this.size)
-  ```
-- Clasificación: Correct but trivial
-- Justificación:
-  - Dominio: constata que el método retorna el atributo `size` sin modificar el tablero.
-  - Por qué es trivial: es la lectura habitual de un getter elemental y no modela ninguna regla específica de 2048.
-
-#### Invariante 5: Restricción del tablero lleno al modo no determinista
-- Punto de programa: `ar.edu.unrc.game2048.Board.isFull():::EXIT` (rama `return == true`)
-- Invariante inferido:
-  ```text
-  (return == true)  ==>  (this.determinist == false)
-  ```
-- Clasificación: Too strong / likely spurious
-- Justificación:
-  - Dominio: Daikon infiere que el tablero solo se llena si el juego corre en modo no determinista (`determinist == false`).
-  - Causa: en la suite ejecutada, los casos que llegaron a llenar el tablero usaban generación aleatoria de fichas.
-  - Contraejemplo: una partida en modo determinista (`new Board(4, true)`) puede recibir movimientos continuos hasta ocupar todas las celdas, con `return == true` y `determinist == true`.
-
-#### Invariante 6: Aliasing de colaboradores mutables en el constructor de copia
-- Punto de programa: `ar.edu.unrc.game2048.Board.Board(ar.edu.unrc.game2048.Board):::EXIT`
-- Invariante inferido:
-  ```text
-  this.score == other.score
-  this.score == orig(other.score)
-  this.random == other.random
-  this.random == orig(other.random)
-  ```
-- Clasificación: Incorrect (defecto de diseño por aliasing)
-- Justificación:
-  - Dominio: el constructor de copia comparte las referencias de `Score` y `Random` entre el tablero original y la copia.
-  - Defecto detectado: la clase documenta una copia profunda (*deep copy*), pero `Score` es mutable. Al compartir la referencia, modificar el puntaje en la copia altera el original. Esto afecta a `move()`, que crea `Board previous = new Board(this);` y compara `!this.equals(previous)` para verificar si hubo cambios.
-  - Relación con el código: proviene de las asignaciones `this.score = other.score;` y `this.random = other.random;` en `Board.java`.
-
-#### Invariante 7: Escape de representación mutable en `getGrid()`
-- Punto de programa: `ar.edu.unrc.game2048.Board.getGrid():::EXIT`
-- Invariante inferido:
-  ```text
-  return == this.grid
-  this.size == size(return[])
-  return != null
-  ```
-- Clasificación: Incorrect (fuga de encapsulamiento)
-- Justificación:
-  - Dominio: el método devuelve la referencia directa a la matriz interna `Cell[][]`.
-  - Defecto detectado: un cliente externo puede modificar la grilla directamente (`board.getGrid()[0][0] = new Cell(-1)`), eludiendo los métodos de `Board` y violando los invariantes de `repOK()`. El método debería retornar una copia defensiva.
-
-#### Invariante 8: Campo de posiciones vacías no inicializado (código muerto)
-- Punto de programa: `ar.edu.unrc.game2048.Board:::OBJECT`
-- Invariante inferido:
-  ```text
-  this.emptyCells == null
-  ```
-- Clasificación: Incorrect (código muerto)
-- Justificación:
-  - Dominio: el campo `emptyCells` permanece siempre en `null`.
-  - Defecto detectado: el atributo `private List<Position> emptyCells;` no se inicializa ni se usa, ya que las posiciones vacías se calculan localmente cuando se necesitan.
-
-#### Invariante 9: Precondición de no negatividad en `setScore(int)`
-- Punto de programa: `ar.edu.unrc.game2048.Board.setScore(int):::ENTER`
-- Invariante inferido:
-  ```text
-  value >= 0
-  ```
-- Clasificación: Correct and useful (omisión de validación defensiva)
-- Justificación:
-  - Dominio: en partidas válidas el puntaje siempre es no negativo ($S \ge 0$).
-  - Defecto detectado: `setScore` no incluye una guarda que rechace valores negativos (`value < 0`), lo que permite que una llamada externa corrompa el puntaje.
-
-#### Invariante 10: Falsa dependencia entre fin de partida y `DEFAULT_SIZE`
-- Punto de programa: `ar.edu.unrc.game2048.Board.isLosingBoard():::EXIT`
-- Invariante inferido:
-  ```text
-  (return == false)  <==>  (ar.edu.unrc.game2048.Board.DEFAULT_SIZE != this.size)
-  (return == true)   <==>  (ar.edu.unrc.game2048.Board.DEFAULT_SIZE == this.size)
-  ```
-- Clasificación: Too strong / likely spurious
-- Justificación:
-  - Dominio: Daikon deduce que un tablero pierde si y solo si su tamaño es 4 (`DEFAULT_SIZE == 4`).
-  - Causa: en las pruebas ejecutadas, los tableros en estado de derrota eran siempre de 4x4. Los tableros de otros tamaños se probaron únicamente con celdas libres.
-  - Contraejemplo: un tablero de 2x2 bloqueado tiene `size == 2 != DEFAULT_SIZE`, pero `isLosingBoard()` devuelve `true`.
-
-#### Invariante 11: Restricción espuria a `DEFAULT_SIZE` para ganar y llenar el tablero
-- Punto de programa: `ar.edu.unrc.game2048.Board.isWinningBoard():::EXIT` y `isFull():::EXIT`
-- Invariante inferido:
-  ```text
-  // En isWinningBoard():::EXIT:
-  (return == true)  ==>  (ar.edu.unrc.game2048.Board.DEFAULT_SIZE == this.size)
-
-  // En isFull():::EXIT:
-  (return == true)  ==>  (ar.edu.unrc.game2048.Board.DEFAULT_SIZE == this.size)
-  ```
-- Clasificación: Too strong / likely spurious
-- Justificación:
-  - Dominio: Daikon asume que solo se puede ganar o llenar el tablero en dimensiones de 4x4.
-  - Causa: los casos de prueba que alcanzaban la ficha 2048 o llenaban la grilla usaban exclusivamente tableros estándar.
-  - Contraejemplo: en un tablero de 3x3 o 5x5 es posible ganar o llenar las posiciones, lo que contradice la implicación.
-
-#### Invariante 12: Cota espuria del puntaje ligada a `DEFAULT_SIZE` en `getScore()`
-- Punto de programa: `ar.edu.unrc.game2048.Board.getScore():::EXIT`
-- Invariante inferido:
-  ```text
-  return one of { 0, 4 }
-  ar.edu.unrc.game2048.Board.DEFAULT_SIZE >= return
-  ```
-- Clasificación: Too strong / likely spurious
-- Justificación:
-  - Dominio: Daikon deduce que el puntaje nunca supera el tamaño por defecto (`return <= DEFAULT_SIZE`, es decir $\le 4$).
-  - Causa: las trazas iniciales no incluyeron partidas largas con múltiples fusiones acumulativas.
-  - Contraejemplo: una sola fusión de fichas de 4 otorga 8 puntos ($8 > 4$), superando la cota inferida.
-
-### 3.3 Tabla resumen de clasificación
-
-| Clase | Punto de programa | Invariante representativo | Clasificación |
+| # | Invariante (punto de programa) | Clasificación | Razonamiento |
 |---|---|---|---|
-| `Cell` | `Cell:::OBJECT` | `this.value >= 0` | Correct and useful |
-| `Cell` | `Cell.canMergeWith:::ENTER` | `this.value is a power of 2` | Correct and useful |
-| `Cell` | `Cell.canMergeWith:::EXIT` | `(return == false) <=> (this.value != other.value)` | Correct and useful |
-| `Cell` | `Cell.getValue:::EXIT` | `return == orig(this.value)` | Correct but trivial |
-| `Cell` | `Cell.mergeWith:::EXIT` | `this.value == 2 && return.value == 4` | Too strong / likely spurious |
-| `Board` | `Board:::OBJECT` | `this.size == size(this.grid[])` | Correct and useful |
-| `Board` | `Board:::OBJECT` | `this.grid[] elements != null` | Correct and useful |
-| `Board` | `Board:::OBJECT` | `this.emptyCells == null` | Incorrect (código muerto) |
-| `Board` | `Board.getCell:::ENTER` | `0 <= row < size && 0 <= col < size` | Correct and useful |
-| `Board` | `Board.getGrid:::EXIT` | `return == this.grid` | Incorrect (fuga de encapsulamiento) |
-| `Board` | `Board.setScore:::ENTER` | `value >= 0` | Correct and useful (omisión de validación defensiva) |
-| `Board` | `Board.Board(Board):::EXIT` | `this.score == other.score && this.random == other.random` | Incorrect (aliasing en copia) |
-| `Board` | `Board.getSize:::EXIT` | `return == this.size` | Correct but trivial |
-| `Board` | `Board.isFull:::EXIT` | `(return == true) ==> (this.determinist == false)` | Too strong / likely spurious |
-| `Board` | `Board.isLosingBoard:::EXIT` | `(return == true) <=> (DEFAULT_SIZE == this.size)` | Too strong / likely spurious |
-| `Board` | `Board.isWinningBoard:::EXIT` | `(return == true) ==> (DEFAULT_SIZE == this.size)` | Too strong / likely spurious |
-| `Board` | `Board.getScore:::EXIT` | `DEFAULT_SIZE >= return && return one of {0, 4}` | Too strong / likely spurious |
+| C1 | `EMPTY != null`, `EMPTY.value == 0` (`Cell:::CLASS`) | Útil | Fija la celda vacía canónica. `EMPTY has only one value` es trivial (`static final`). |
+| C2 | `this.value >= 0` (`Cell:::OBJECT`) | Útil, incompleto | Es la primera parte de `repOK()`. No expresa "positivo implica potencia de dos": requiere una disyunción. |
+| C3 | `value >= 2`, `value is a power of 2` (`Cell(int):::ENTER`) | Útil | Es exactamente la guarda del constructor. Con Randoop sola da `value == 32` y con EvoSuite `one of { 2, 4, 8 }` (espurios). |
+| C4 | `this.value == orig(value)`, `this.value > EMPTY.value` (`Cell(int):::EXIT`) | Útil | El constructor público nunca produce una celda vacía; `Cell():::EXIT` da `this.value == 0`. |
+| C5 | `this.value == other.value`, `other != null` (`mergeWith:::ENTER`) | Útil | Es el contrato del método (lanza excepción si no se pueden fusionar). |
+| C6 | `2 * this.value - return.value == 0` (`mergeWith:::EXIT`) | Útil (el más valioso) | Oráculo funcional de la fusión; detecta errores aritméticos. |
+| C7 | `Cell.repOK():::EXIT: return == true` | Útil (evidencia) | Ninguna celda observada violó `repOK()`; coincide con que sus mutantes sobreviven en PIT. |
+| C8 | `this.value one of { 0, 2, 4 }`, `return one of { 31, 33, 35 }` (`hashCode`) | Espurio | Solo se invocó con 0, 2 y 4; una celda de 8 es válida y da otro hash. |
 
-### 3.4 Ampliación de la traza y nueva ejecución (Fase 3.3)
+### 3.2 `Board`
 
-Luego de este análisis, agregamos casos de prueba adicionales para eliminar las invariantes espurias originadas por falta de diversidad en las trazas (tableros de tamaño 2, 3, 5 y 6; tableros deterministas y no deterministas llenos, ganadores y perdedores; fusiones encadenadas con puntajes mayores a 4; movimientos sin efecto en las cuatro direcciones) y corregimos los defectos señalados por las invariantes 6, 7 y 9 (sección 6.3). Volvimos a correr Chicory y Daikon (sección 1.2) y comparamos con la línea base (`daikon-invariants/daikon-output.txt`, 1686 líneas, contra la nueva `daikon-output.txt`).
-
-| Invariante de la línea base | Línea base | Corrida ampliada | Qué lo cambió |
+| # | Invariante (punto de programa) | Clasificación | Razonamiento |
 |---|---|---|---|
-| `isFull`: `(return == true) ==> (this.determinist == false)` | Presente | Ausente | Tableros deterministas llenos (`deterministicBoardCanBeFullTest`) |
-| `isFull`/`isWinningBoard`: `(return == true) ==> (DEFAULT_SIZE == this.size)` | Presente | Ausente | Tableros llenos y ganadores de 2, 3 y 5 de lado |
-| `isLosingBoard`: `(return == true) <==> (DEFAULT_SIZE == this.size)` | Presente | Ausente en el punto `EXIT` general | Derrotas en 2x2, 3x3, 5x5 y 6x6 |
-| `getScore`: `return one of { 0, 4 }`, `DEFAULT_SIZE >= return` | Presente | Ausente | Fusiones encadenadas (puntajes 8, 24, 56) |
-| `Cell.repOK:::ENTER`: `this.value one of { 0, 2, 2048 }` | Presente | Ausente (ahora `one of { 0, 2, 4 }` solo en puntos de `canMergeWith`) | Más valores de celda |
-| `this.size one of { 4, 100 }` en `setScore:::ENTER` y `this.size one of {...}` en otros 25 puntos | 26 apariciones | 9 apariciones, con `{ 2, 4 }` y `{ 2, 3, 5 }` | Tableros de varios tamaños |
-| Constructor de copia: `this.random == other.random` | Presente | Ausente | Corrección de `Board(Board)` |
-| `getGrid:::EXIT`: `this.grid == return`, `return == orig(this.grid)` | Presente | Ausente | Copia defensiva en `getGrid()` |
-| `Board:::OBJECT`: `this.emptyCells == null` (40 apariciones) | Presente | Ausente | El campo ya no existe en `Board.java` |
+| B1 | `this.size == size(this.grid[])`, `this.size >= 1` (`OBJECT`) | Útil | Equivale a `size > 0` y `grid.length == size` de `repOK()`. |
+| B2 | `grid`, `score`, `random != null`; `grid[] elements != null` (`OBJECT`) | Útil | Coincide con `repOK()`. `random != null` es real desde que el constructor valida `Random` nulo. No infiere que cada celda sea no nula. |
+| B3 | `MAX_SIZE >= this.size` (`OBJECT`) | Útil | Corresponde a `MAX_SIZE < size` en `repOK()`; el `>=` indica que se probó el tamaño máximo. |
+| B4 | `WINNING_VALUE > this.size` (`OBJECT`) | Trivial | Solo porque `MAX_SIZE = 300 < 2048`; no es una regla del dominio. |
+| B5 | `DEFAULT_SIZE == this.size`, `this.determinist == false` (`Board():::EXIT`) | Útil | Postcondición documentada de `new Board()`. |
+| B6 | `this.determinist == false` en `Board(Board):::EXIT` (antes); `== other.determinist` (ahora) | **Incorrecto** (defecto, corregido) | El constructor de copia nunca asignaba `determinist`: la copia de un tablero determinista era no determinista y `move()` le agregaba fichas aleatorias. Ninguna prueba lo detectaba porque `Board.equals` no compara `determinist`. Se corrigió con `this.determinist = other.determinist;`. |
+| B7 | `0 <= row, col <= size-1`, `return != null` (`getCell`) | Útil | Define el rango válido de coordenadas y que el resultado es una celda no nula. |
+| B8 | `this.size == size(return[])`, sin `this.grid == return` (`getGrid:::EXIT`) | Útil | La corrida inicial mostraba `this.grid == return` (fuga de la matriz interna); ahora `getGrid()` devuelve una copia. |
+| B9 | `direction != null` (`move:::ENTER`) | Útil | Equivale a la guarda del método. `move:::EXIT` no dice nada sobre el valor devuelto ni sobre el contenido. |
+| B10 | `this.determinist == false` (`addRandomTile:::ENTER`) | Útil | Solo se invoca en modo no determinista. |
+| B11 | `WINNING_VALUE >= return`, `MAX_SIZE != return` (`getScore:::EXIT`) | Espurio | El puntaje supera 2048 con facilidad (`setScore(5000)` lo viola). Las suites nunca vieron puntajes altos; el fuzzer sí y lo refuta (sección 4.4). |
+| B12 | `WINNING_VALUE > current.value`, `WINNING_VALUE % current.value == 0` (`canMerge:::ENTER`) | Espurio | Una celda de 2048 o 4096 es válida y viola ambos. |
+| B13 | `this.size one of { 2, 3, 5 }` (`isLosingBoard:::EXIT296`) | Espurio | `new Board(300, false)` o un 7x7 son válidos. Con una sola suite aparecen más `one of` sobre el tamaño; al unir las suites casi todos desaparecen. |
 
-Lo que la ampliación no eliminó o cambió de forma inesperada:
+## 4. Ampliación de la traza (Fase 3.3)
 
-- **`this.determinist == true` sigue apareciendo en 16 puntos de programa** (`getScore`, `getGrid`, `hashCode`, `toString`, `setScore`, `repOK`, entre otros). Casi todas las pruebas manuales usan tableros deterministas; solo los tests nuevos de `move`, `isFull` y victoria/derrota usan tableros no deterministas.
-- **`Board.isLosingBoard():::EXIT296` conserva `DEFAULT_SIZE == this.size` y `this.determinist == return`.** Ese punto (retorno anticipado cuando hay celdas vacías) tiene una única muestra en la traza, que Daikon reporta con invariantes del estilo `has only one value`. Es un artefacto de tener una sola observación, no una propiedad del programa.
-- **`this.size one of { 2, 4 }` sigue en `equals`, `toString` y `move`**, con muestras de pocos tamaños. Además, `Board:::OBJECT` pasó de `this.size >= 1` a `this.size >= 2`: un tablero de 1x1 es válido, pero las pruebas manuales no lo ejercitan, por lo que es una cota espuria más.
-- **`setScore:::ENTER` dejó de inferir `value >= 0`.** Es el efecto inverso: la nueva prueba `setScoreNegativeThrowsTest` llama a `setScore(-1)`, y como Chicory registra la entrada antes de que el método lance la excepción, la traza contiene un valor negativo. Daikon no distingue entre una entrada inválida rechazada y una válida, por lo que ya no infiere la precondición. Esa regla ahora está garantizada por la validación del método y por `repOK()` (sección 6.3), y no por Daikon. En cambio `getCell:::ENTER` conserva las cotas `row >= 0` y `row <= size(this.grid[])-1`.
-- **`this.value one of { 0, 2, 4 }` en `canMergeWith`**: solo se observaron esos valores en las fusiones.
+### 4.1 Corrida inicial contra final
 
-**Conclusión de la Fase 3.3.** Ampliar la traza eliminó las invariantes espurias que dependían de una dimensión o de un modo de juego (`DEFAULT_SIZE`, `determinist`, cotas del puntaje) y confirmó las genuinas (`2 * this.value - return.value == 0` en `mergeWith`, `this.size == size(this.grid[])`, no nulidad de la grilla). Persisten invariantes espurias donde la variabilidad sigue siendo baja: casi todas las pruebas usan `determinist == true`, y algunos puntos de salida tienen una sola muestra. Daikon genera propiedades tan buenas como lo sea la diversidad de sus ejecuciones.
+La inicial es la commiteada antes de ampliar las pruebas y corregir `Board`. Tenía el *splitting* activado, así que para comparar se excluyen sus puntos condicionales e implicaciones.
 
+| Métrica | Inicial | Final (`all`) |
+|---|---|---|
+| Invariantes | 701 | 569 |
+| `one of { ... }` | 36 | 10 |
+| `this.determinist == true` | 18 | 3 |
+| `DEFAULT_SIZE == this.size` | 10 | 4 |
+| `this.emptyCells == null`, `this.score == other.score`, `this.random == other.random`, `this.grid == return` en `getGrid` | 3, 1, 1, 1 | 0 |
 
-## 4. Comparación con `repOK()` y especificaciones previas
+- Las pruebas manuales nuevas (tamaños 1 a 150, tableros deterministas llenos, puntajes distintos de 0 y 4, movimientos que no cambian el tablero) eliminaron la mayoría de los `determinist == true` y `DEFAULT_SIZE == this.size`.
+- Los invariantes de aliasing, de `emptyCells` y de `getGrid` desaparecieron porque se corrigieron los defectos.
+- Los que quedan (3 y 4) están en puntos `EXITnn` que solo se alcanzan en casos puntuales (`isLosingBoard:::EXIT296`, `repOK:::EXIT114` y `EXIT125` con tableros corrompidos por reflexión, `equals:::EXIT335`) y en `Board():::EXIT`, donde son correctos.
 
-### 4.1 Invariantes que ya figuraban en `repOK()` y Daikon redescubrió
+### 4.2 Entre suites
 
-Daikon infirió varias propiedades que ya estaban definidas en `repOK()`:
-
-1. No negatividad del valor de celda (`Cell:::OBJECT: this.value >= 0`), presente en `Cell.repOK()`.
-2. Potencias de dos en fichas activas (`Cell.canMergeWith:::ENTER: this.value is a power of 2`), expresada en `Cell.repOK()` mediante `Integer.bitCount(value) == 1`.
-3. Coherencia dimensional de la grilla (`Board:::OBJECT: this.size == size(this.grid[])`), verificada en `Board.repOK()` (`grid.length == size`).
-4. Filas no nulas en la matriz (`Board:::OBJECT: this.grid[] elements != null`), verificada en el bucle de `Board.repOK()` (`grid[r] != null`).
-5. No nulidad de componentes del tablero (`Board:::OBJECT: this.moveProvider != null`, `this.random != null`, `this.score != null`), presentes en `Board.repOK()`.
-
-### 4.2 Propiedades que Daikon encontró fuera de `repOK()`
-
-Sobre la línea base (corrida inicial), Daikon detectó propiedades y restricciones operacionales que no estaban formalizadas en `repOK()`:
-
-1. Unicidad referencial de `Cell.EMPTY`:
-   - Invariante inferido:
-     ```text
-     Cell:::CLASS: Cell.EMPTY has only one value && Cell.EMPTY != null
-     Cell.isEmpty():::EXIT: (this.value == 0) ==> (Cell.EMPTY == orig(this))
-     ```
-   - Detalle: `Cell.repOK()` solo evaluaba el valor escalar `value == 0`. Daikon mostró que en la práctica toda celda vacía usa la misma instancia en memoria (`== Cell.EMPTY`), siguiendo el patrón Flyweight del proyecto.
-
-2. Precondición de fusión (`value >= 2`):
-   - Invariante inferido: `Cell.canMergeWith:::ENTER: this.value >= 2 && other.value >= 2`.
-   - Detalle: la guarda defensiva de `canMergeWith` admite celdas de valor 0 retornando `false`. Daikon mostró que en el flujo real `Board` filtra las celdas vacías antes de consultar la fusión.
-
-3. Límites en el acceso a celdas (`Board.getCell:::ENTER`): Daikon infirió las cotas $[0, \text{size}-1]$ para fila y columna, formalizando el contrato de acceso que antes residía únicamente en la guarda de `Board.java`.
-
-4. Aliasing en el constructor de copia (`Board(Board other)`):
-   - Invariante inferido: `this.score == other.score && this.random == other.random`.
-   - Detalle: expuso que el constructor de copia comparte las referencias de `Score` y `Random`, lo que causa efectos colaterales en la copia durante `move()`.
-
-5. Atributo inerte `emptyCells`:
-   - Invariante inferido: `this.emptyCells == null` constante en `Board:::OBJECT`.
-   - Detalle: mostró que el campo no se utiliza ni se inicializa, ya que las posiciones vacías se calculan localmente cuando se necesitan.
-
-6. Fuga de representación en `getGrid()`:
-   - Invariante inferido: `return == this.grid`.
-   - Detalle: mostró que el getter entrega la matriz interna sin copia defensiva, permitiendo modificaciones externas directas.
-
-7. Precondición de no negatividad en `setScore(int)`:
-   - Invariante inferido: `setScore(int):::ENTER: value >= 0`.
-   - Detalle: confirmó que en ejecuciones normales el puntaje no toma valores negativos, regla que no estaba validada defensivamente en el método.
-
-### 4.3 Propiedades de `repOK()` que Daikon no pudo inferir y por qué
-
-- Potencia de dos disyuntiva en `Cell:::OBJECT`:
-  `Cell.repOK()` comprueba `value == 0 || Integer.bitCount(value) == 1`. Daikon no generó esta propiedad en el punto global `Cell:::OBJECT` por limitaciones de sus plantillas: busca predicados universales para todas las instancias de un punto de observación. Como conviven celdas vacías (`value == 0`) y fichas activas ($2, 4, 8, \dots$), Daikon carece de una plantilla disyuntiva para expresar que el valor es 0 o una potencia de dos. Sí logró inferirla de forma condicionada en puntos de salida (`isEmpty():::EXIT` cuando `return == false`).
-
-## 5. Comparación de fuentes de oráculos
-
-| Fuente de oráculo | Cómo se produce | Fortalezas | Debilidades |
+| Suite | Puntos de programa | Invariantes | `one of` |
 |---|---|---|---|
-| Aserciones manuales | Escritas a mano por quien programa | Muy precisas y alineadas con la intención del dominio. | Costosas de mantener y redactar; pueden omitir casos de borde. |
-| `repOK()` | Invariante de representación escrito en la clase | Reutilizable y verificable al entrar y salir de los métodos. | Se limita al estado interno del objeto; no valida contratos de entrada y salida entre métodos. |
-| Aserciones de Randoop | Inferidas a partir de una corrida de exploración aleatoria | Automáticas y útiles para detectar regresiones o caídas. | Frágiles ante cambios menores en el código; difíciles de leer y sin semántica de negocio. |
-| Aserciones de EvoSuite | Generadas mediante algoritmos genéticos optimizando cobertura | Alta cobertura de ramas y combinaciones complejas. | Tienden a sobreajustar estados circunstanciales; oráculos de regresión difíciles de auditar. Al minimizar casos de prueba, por sí solas pueden generar trazas poco variadas para inferir invariantes. |
-| Invariantes de Daikon | Inferidos a partir de los valores observados en múltiples ejecuciones | Generalizan propiedades abstractas; revelan precondiciones, postcondiciones y contratos lógicos. | Dependen de la diversidad de las trazas; generan invariantes espurias cuando la suite de pruebas es insuficiente. |
+| `manual` | 94 | 627 | 14 |
+| `randoop` | 60 | 386 | 25 |
+| `evosuite` | 91 | 549 | 29 |
+| `all` | 96 | 569 | 10 |
 
-### Qué enfoque produjo los oráculos más útiles
+Randoop sola da los invariantes más débiles (`value == 32`), EvoSuite se queda en `one of` y las pruebas manuales, que eligen los valores con intención, dan la regla general. Combinar trazas no suma invariantes: Daikon solo conserva lo que vale en todas las muestras. Por ejemplo, `repOK:::EXIT: return == true` de EvoSuite desaparece en `all` porque las pruebas manuales hacen que `repOK()` devuelva `false` a propósito.
 
-Cada enfoque aportó en una etapa distinta:
-1. Pruebas manuales: guiaron el desarrollo inicial para reproducir partidas reales y validar la lógica de movimientos y fusiones.
-2. `repOK()`: definió el oráculo estructural básico, asegurando matrices cuadradas válidas, sin filas nulas ni celdas inconsistentes.
-3. Randoop y EvoSuite: aportaron volumen de ejecuciones y cobertura de ramas para alimentar las trazas de Daikon.
-4. Daikon: su mayor aporte estuvo en detectar problemas de manejo de referencias y omisiones de contrato:
-   - Aliasing en `Board(Board)`: detectó que el constructor de copia compartía las instancias de `score` y `random`.
-   - Unicidad de `Cell.EMPTY`: mostró que las celdas vacías usan la misma instancia canónica.
-   - Fuga de representación: evidenció que `getGrid()` devolvía la matriz interna mutable.
-   - Código muerto: identificó que el campo `emptyCells` no se utilizaba.
+### 4.3 Efecto del *splitting*
 
-## 6. Actualizaciones a `repOK()` basadas en la salida de Daikon
+Se repitió la inferencia de `all` con el *splitting* activado (`daikon-invariants/all-splitting/`). Los 569 invariantes no condicionales coinciden con la corrida sin *splitting*; se agregan 46 puntos condicionales y 57 implicaciones (la corrida inicial tenía 42 y 65).
 
-A partir de las observaciones de Daikon, se aplicaron dos mejoras en los métodos `repOK()`:
+- Las implicaciones de apariencia espuria bajan de 10 en la corrida inicial a 6 (por ejemplo, `canMerge: (return == true) ==> (this.determinist == true)`, que se debe a que las fusiones solo se observaron en tableros deterministas y pequeños).
+- Aparecen postcondiciones legítimas que sin *splitting* no existen: `Cell.isEmpty: (this.value == 0) <==> (return == true)`, `Board.canMerge: (return == true) <==> (current.value == neighbor.value)` y, en `Cell.canMergeWith`, `(return == true) ==> (this.value == other.value)`.
 
-### 6.1 Actualización en `Cell.repOK()`
-Daikon infirió la relación de identidad para celdas vacías:
-```text
-(this.value == 0) ==> (Cell.EMPTY == orig(this))
-```
-En la versión inicial de `Cell.repOK()`, una instancia creada con `new Cell(0)` devolvía `true`, aunque el diseño del sistema requiere usar la referencia canónica `Cell.EMPTY`.
+### 4.4 Traza con el fuzzer
 
-Mejora implementada en `Cell.repOK()`:
-```java
-public boolean repOK() {
-    if (value == 0) {
-        return this == Cell.EMPTY;
-    }
-    return value > 0 && Integer.bitCount(value) == 1;
-}
+Se reprodujeron bajo Chicory, contra `MainCLI`, las entradas de las primeras 200 partidas del fuzzer del Assignment 3 (`fuzz-inputs/001.txt` a `200.txt`), una traza por partida (63 MB en total). `MainCLI` crea `new Board()` sin semilla, por lo que repetir una entrada no reproduce el mismo tablero; lo que se aprovecha es la variedad de secuencias.
+
+```bash
+java -cp "lib/daikon.jar:target/classes" daikon.Chicory \
+    --ppt-select-pattern='^ar\.edu\.unrc\.game2048\.(Board|Cell)([.$]|:)' \
+    --ppt-omit-pattern=".*Position.*" \
+    --output-dir=daikon-traces/fuzzer --dtrace-file=runNNN.dtrace.gz \
+    ar.edu.unrc.game2048.MainCLI < fuzz-inputs/NNN.txt > /dev/null
 ```
 
-### 6.2 Actualización en `Board.repOK()`
-A partir de la unicidad de celdas vacías y la integridad de la matriz, `Board.repOK()` ahora comprueba que toda celda con `cell.isEmpty()` sea exactamente la instancia canónica:
-```java
-if (grid[row][column].isEmpty() && grid[row][column] != Cell.EMPTY) {
-    return false;
-}
-```
+| Métrica | `all` | `fuzzer` solo | `all` + `fuzzer` |
+|---|---|---|---|
+| Puntos de programa | 96 | 64 | 96 |
+| Invariantes | 569 | 349 | 568 |
+| `one of { ... }` | 10 | 4 | 9 |
+| `this.determinist == true` | 3 | 0 | 2 |
 
-### 6.3 Correcciones en `Board` derivadas de los invariantes incorrectos
+- **Solo el fuzzer** reintroduce los espurios estructurales que las suites habían eliminado (`DEFAULT_SIZE == this.size`, `this.determinist == false`), porque el CLI siempre juega en un 4x4 no determinista. Tampoco ejecuta `repOK`, `isFull`, `getSize`, `hashCode`, `setScore` ni `getGrid`. Muestra propiedades ciertas del juego pero demasiado fuertes para la API: `getScore: return % DEFAULT_SIZE == 0` (el puntaje solo sube con fusiones de al menos 4; `setScore(3)` lo viola).
+- **Sumado a las suites** refuta cuatro invariantes espurios: `getScore: WINNING_VALUE >= return` y `MAX_SIZE != return`, y `this.size one of { 2, 3, 5 }` junto con `this.determinist == true` en `isLosingBoard:::EXIT296`. También desaparece `other.size >= 1` en `Board(Board):::ENTER` (sigue siendo cierto; no hay explicación comprobada).
 
-Las invariantes 6, 7 y 9 de la sección 3.2 señalaban defectos reales. Se corrigieron y se agregaron pruebas que los verifican:
+**Conclusión.** Ampliar la traza eliminó la mayoría de los espurios que dependían de una dimensión o de un modo de juego, y reveló propiedades genuinas (`2 * this.value == return.value`, la precondición general de `Cell(int)`). El *splitting* recupera postcondiciones condicionales legítimas con pocos espurios. El fuzzer aportó poco por encima de las suites (569 a 568 invariantes): su límite es estructural, porque un CLI que siempre crea un tablero 4x4 no determinista no puede revelar propiedades de otros tamaños ni del modo determinista. Persisten espurios donde la variedad numérica sigue siendo baja (`Cell.hashCode`, cotas con `WINNING_VALUE`).
 
-- `getGrid()` devuelve una copia de la matriz (`getGridReturnsDefensiveCopyTest`).
-- `Board(Board)` crea su propio `Random` en lugar de compartir el del original (`copyDoesNotShareRandomTest`, `moveDoesNotConsumeRandomSequenceOfBoardTest`).
-- `setScore(int)` lanza `IllegalArgumentException` si `value < 0` (`setScoreNegativeThrowsTest`).
-- `getCell` y `setCell` validan los límites y lanzan una excepción descriptiva (`getCellOutOfBoundsThrowsTest`, `setCellOutOfBoundsThrowsAndNullCellStillIllegalArgumentTest`). Se lanza `ArrayIndexOutOfBoundsException`, subclase de `IndexOutOfBoundsException`, para mantener el tipo de excepción que esperan las suites generadas por Randoop y EvoSuite.
+## 5. Comparación con `repOK()`
 
-Para mantener la suite en verde se adaptaron dos pruebas existentes: `boardWithNullCellFailsRepOk` (ahora corrompe la grilla por reflexión, porque `getGrid()` devuelve una copia) y `test08` de `Board_ESTest` (ahora espera la excepción de `setScore(-14)`).
+| Condición de `repOK()` | ¿Daikon la infirió? |
+|---|---|
+| `Board`: `size > 0`, `size <= MAX_SIZE`, `grid != null`, `grid.length == size`, `score`/`random != null`, `grid[row] != null` | Sí (`Board:::OBJECT`; `size >= 1` solo en `evosuite` y `all`) |
+| `Board`: `score.getScore() >= 0` | Indirecto (`getScore:::EXIT`, `setScore:::ENTER`); `Score` no está instrumentada |
+| `Board`: `grid[row].length == size`, `grid[row][col] != null`, `grid[row][col].repOK()`, celda vacía es `Cell.EMPTY` | No |
+| `Cell`: `value >= 0` | Sí |
+| `Cell`: `value == 0 ⇒ this == EMPTY`; `value > 1` y potencia de dos si no es 0 | Parcial (`Cell():::EXIT`, `Cell(int):::EXIT`), no en `OBJECT` |
 
-### 6.4 Actualización en `Board.repOK()` por la precondición de `setScore`
+**Qué infirió Daikon que no está en `repOK()`:** contratos de métodos (postcondición de `mergeWith`, precondiciones de `Cell(int)`, `mergeWith`, `move`, `getCell`), postcondiciones de construcción, la copia defensiva de `getGrid()` y el defecto de `determinist` en la copia. No se agregó nada de esto a `repOK()`, que no mira entradas ni salidas; se tradujo en pruebas.
 
-Daikon infirió en la corrida inicial `setScore(int):::ENTER: value >= 0`. Como el puntaje es un invariante del estado del tablero, y no solo una precondición del setter, se agregó a `Board.repOK()`:
-```java
-if (score.getScore() < 0) {
-    return false;
-}
-```
-Se cubre con `boardWithNegativeScoreFailsRepOkTest`, que corrompe el `Score` interno por reflexión y comprueba que `repOK()` devuelve `false`.
+**Qué no pudo inferir y por qué:**
+- **Cuantificación sobre la matriz.** Las plantillas de Daikon relacionan pocas variables; no hay una para "todo elemento de la matriz es no nulo y es una celda válida" ni "todas las filas tienen largo `size`".
+- **Disyunciones** (`value == 0 || value es potencia de dos`): Daikon solo las produce como implicaciones con *splitting*, y aun así no en `OBJECT`.
+- **Estados antes y después.** Compara referencias, no contenido: no puede decir si el puntaje cambió ni que `move` devuelve `true` si y solo si el tablero cambió.
+- **Estados inválidos.** Solo ve ejecuciones válidas y descarta las llamadas que terminan en excepción, así que las entradas inválidas probadas (tamaño 0, 301 o 400, `Random` nulo, `Cell(3)`) no dejan huella. Por eso `Board(int, boolean, Random):::ENTER` no muestra la cota `size <= MAX_SIZE`, aunque el constructor la exige.
+
+## 6. Comparación de fuentes de oráculos
+
+| Fuente | Fortalezas | Debilidades | Dato en este proyecto |
+|---|---|---|---|
+| Aserciones manuales | Precisas, con intención de dominio | Costosas; pueden omitir casos | 95% de mutantes muertos |
+| `repOK()` | Reutilizable en cualquier prueba | Solo estado, no contratos de métodos | Casi todo redescubierto por Daikon |
+| Randoop | Automático; detecta regresiones | Frágil; sin semántica de dominio | 37% |
+| EvoSuite | Alta cobertura | Difícil de auditar; algunos tests son intermitentes (usan `Random` sin semilla) | 73% |
+| Invariantes de Daikon | Generalizan; revelan contratos y defectos | Dependen de la traza; espurios | Secciones 3 a 5 |
+
+Ningún enfoque fue el mejor por sí solo. Como **oráculo ejecutable** (detecta mutantes y regresiones) fueron más eficaces las pruebas manuales, y `repOK()` permite reutilizarlas como chequeo de estado. Como **herramienta para descubrir qué faltaba especificar** fue la más útil Daikon: señaló los cinco defectos y propuso contratos que no estaban escritos en ningún lado. Randoop y EvoSuite sirvieron como proveedores de ejecuciones para Daikon, no como oráculos. Los invariantes de Daikon no son oráculos ejecutables por sí mismos y solo tienen valor tras una clasificación manual; traducirlos a aserciones y medir si matan mutantes no se hizo.
+
+## 7. Cambios derivados de Daikon
+
+- Corridas anteriores: `Cell.repOK()` exige que una celda vacía sea `Cell.EMPTY`; `Board.repOK()` exige lo mismo y `score >= 0`; `getGrid()` devuelve una copia; `Board(Board)` crea su propio `Random` y `Score`; `setScore` rechaza valores negativos; `getCell` y `setCell` validan límites; se eliminó el campo `emptyCells`.
+- Esta corrida: `Board.MAX_SIZE = 300` (validado en el constructor y en `repOK()`; tableros enormes colgaban a Chicory y a EvoSuite) y validación de `Random` nulo (vuelve real `this.random != null`).
+- **B6:** se agregó `this.determinist = other.determinist;` en `Board(Board)`. La nueva inferencia en las cuatro suites lo confirma. Falta una prueba que lo proteja: `copyABoardTest` solo usa `equals`, que no compara `determinist`.
+
+## 8. Limitaciones
+
+- Las clasificaciones de la sección 3 son manuales, sobre la salida de `all`; los conteos de la sección 4 salen de un script de expresiones regulares y son orientativos.
+- La traza del fuzzer usa 200 de las 2000 partidas del registro y solo explora el tablero 4x4 no determinista.
+- La suite de EvoSuite tiene tests intermitentes; se dejó así. Las trazas pueden variar levemente entre corridas.
+- Los `.dtrace` son pesados (63 MB solo los del fuzzer); hay que verificar su tamaño antes de commitearlos.

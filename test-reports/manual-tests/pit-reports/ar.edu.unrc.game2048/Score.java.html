@@ -1,0 +1,311 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
+<body>
+
+
+<h1>Score.java</h1>
+
+<table class="src">
+
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2682cccc_1'/>
+1
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2682cccc_1'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>package ar.edu.unrc.game2048;</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2682cccc_2'/>
+2
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2682cccc_2'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2682cccc_3'/>
+3
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2682cccc_3'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>public class Score {</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2682cccc_4'/>
+4
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2682cccc_4'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>    int score;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2682cccc_5'/>
+5
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2682cccc_5'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public Score(int value){</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2682cccc_6'/>
+6
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2682cccc_6'>2</a>
+<span>
+1. &#60;init&#62; : negated conditional &rarr; KILLED<br/>
+2. &#60;init&#62; : changed conditional boundary &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>        if(value &#60; 0) { </span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2682cccc_7'/>
+7
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2682cccc_7'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>            throw new IllegalArgumentException(&#34;The score cannot be less 0&#34;);</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2682cccc_8'/>
+8
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2682cccc_8'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>        }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2682cccc_9'/>
+9
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2682cccc_9'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>        this.score = value;</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2682cccc_10'/>
+10
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2682cccc_10'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2682cccc_11'/>
+11
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2682cccc_11'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''></span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2682cccc_12'/>
+12
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2682cccc_12'>1</a>
+<span>
+1. increaseScore : Replaced integer addition with subtraction &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    public void increaseScore(int value){ score += value; }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2682cccc_13'/>
+13
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2682cccc_13'></a>
+<span>
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class=''>    public void setScore(int value){ score = value; }</span></pre></td></tr>
+
+
+<tr>
+<td class='covered'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2682cccc_14'/>
+14
+</td>
+<td class='killed'>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2682cccc_14'>1</a>
+<span>
+1. getScore : replaced int return with 0 for ar/edu/unrc/game2048/Score::getScore &rarr; KILLED<br/>
+
+</span>
+</span>
+</td>
+<td class='covered'><pre><span  class='killed'>    public int getScore(){ return score; }</span></pre></td></tr>
+
+
+<tr>
+<td class='na'>
+<a name='org.pitest.mutationtest.report.html.SourceFile@2682cccc_15'/>
+15
+</td>
+<td class=''>
+<span class='pop'>
+<a href='#grouporg.pitest.mutationtest.report.html.SourceFile@2682cccc_15'></a>
+<span>
+</span>
+</span>
+</td>
+<td class=''><pre><span  class=''>}</span></pre></td></tr>
+
+
+
+<tr><td></td><td></td><td><h2>Mutations</h2></td></tr>
+
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2682cccc_6'>6</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2682cccc_6'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>&#60;init&#62;<br/><b>Killed by : </b>ar.edu.unrc.game2048.manual.ScoreTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.ScoreTest]/[test-template:negativeScoreThrowsTest(int)]/[test-template-invocation:#3]</span></span> negated conditional &rarr; KILLED</p> <p class='KILLED'><span class='pop'>2.<span><b>2</b><br/><b>Location : </b>&#60;init&#62;<br/><b>Killed by : </b>ar.edu.unrc.game2048.manual.ScoreTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.ScoreTest]/[test-template:nonNegativeScoreIsValidTest(int)]/[test-template-invocation:#1]</span></span> changed conditional boundary &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2682cccc_12'>12</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2682cccc_12'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>increaseScore<br/><b>Killed by : </b>ar.edu.unrc.game2048.manual.ScoreTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.ScoreTest]/[method:increaseScoreAddsToTotalTest()]</span></span> Replaced integer addition with subtraction &rarr; KILLED</p> 
+</td>
+</tr>
+<tr>
+<td><a href='#org.pitest.mutationtest.report.html.SourceFile@2682cccc_14'>14</a></td> 
+<td></td>
+<td>
+
+<a name='grouporg.pitest.mutationtest.report.html.SourceFile@2682cccc_14'/> 
+
+<p class='KILLED'><span class='pop'>1.<span><b>1</b><br/><b>Location : </b>getScore<br/><b>Killed by : </b>ar.edu.unrc.game2048.manual.ScoreTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.ScoreTest]/[method:increaseScoreAddsToTotalTest()]</span></span> replaced int return with 0 for ar/edu/unrc/game2048/Score::getScore &rarr; KILLED</p> 
+</td>
+</tr>
+
+</table>
+
+
+<h2>Active mutators</h2>
+<ul>
+<li class='mutator'>CONDITIONALS_BOUNDARY</li>
+<li class='mutator'>EMPTY_RETURNS</li>
+<li class='mutator'>FALSE_RETURNS</li>
+<li class='mutator'>INCREMENTS</li>
+<li class='mutator'>INVERT_NEGS</li>
+<li class='mutator'>MATH</li>
+<li class='mutator'>NEGATE_CONDITIONALS</li>
+<li class='mutator'>NULL_RETURNS</li>
+<li class='mutator'>PRIMITIVE_RETURNS</li>
+<li class='mutator'>TRUE_RETURNS</li>
+<li class='mutator'>VOID_METHOD_CALLS</li>
+
+</ul>
+
+<h2>Tests examined</h2>
+<ul>
+<li>ar.edu.unrc.game2048.manual.ScoreTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.ScoreTest]/[test-template:negativeScoreThrowsTest(int)]/[test-template-invocation:#3] (0 ms)</li><li>ar.edu.unrc.game2048.manual.ScoreTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.ScoreTest]/[test-template:negativeScoreThrowsTest(int)]/[test-template-invocation:#2] (0 ms)</li><li>ar.edu.unrc.game2048.manual.ScoreTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.ScoreTest]/[test-template:negativeScoreThrowsTest(int)]/[test-template-invocation:#1] (0 ms)</li><li>ar.edu.unrc.game2048.manual.ScoreTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.ScoreTest]/[test-template:nonNegativeScoreIsValidTest(int)]/[test-template-invocation:#1] (0 ms)</li><li>ar.edu.unrc.game2048.manual.ScoreTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.ScoreTest]/[method:setScoreReplacesTotalTest()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.ScoreTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.ScoreTest]/[test-template:nonNegativeScoreIsValidTest(int)]/[test-template-invocation:#4] (0 ms)</li><li>ar.edu.unrc.game2048.manual.ScoreTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.ScoreTest]/[method:increaseScoreAddsToTotalTest()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.ScoreTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.ScoreTest]/[test-template:nonNegativeScoreIsValidTest(int)]/[test-template-invocation:#3] (0 ms)</li><li>ar.edu.unrc.game2048.manual.ScoreTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.ScoreTest]/[test-template:nonNegativeScoreIsValidTest(int)]/[test-template-invocation:#2] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:testBoardEqualsNull()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:testBoardEqualsSameBoard()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:trySetCellNullAndGetThrows()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:setScoreZeroIsValidTest()] (1 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:testBoardEqualsDifferentScore()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:testBoardGetGrid()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:scoreValuesOtherThanZeroAndFourTest()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:notEqualsClass()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:setScoreNegativeThrowsTest()] (1 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:setCellValidPositionsTest(int, int)]/[test-template-invocation:#2] (0 ms)</li><li>ar.edu.unrc.game2048.manual.SpuriousInvariantTests.[engine:junit-vintage]/[runner:ar.edu.unrc.game2048.manual.SpuriousInvariantTests]/[test:testSpuriousDefaultSizeNotEqualsThisSize(ar.edu.unrc.game2048.manual.SpuriousInvariantTests)] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:setCellValidPositionsTest(int, int)]/[test-template-invocation:#1] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:testBoardIsWinningBoard()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:setCellOutOfBoundsTest(int, int)]/[test-template-invocation:#4] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:boardWithNullCellFailsRepOk()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:setCellValidPositionsTest(int, int)]/[test-template-invocation:#3] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:setCellOutOfBoundsTest(int, int)]/[test-template-invocation:#2] (1 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:setCellOutOfBoundsTest(int, int)]/[test-template-invocation:#3] (1 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:getCellOutOfBoundsThrowsTest()] (1 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:testBoardEqualsDifferentBoardState()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:setCellValidPositionsTest(int, int)]/[test-template-invocation:#4] (1 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:testBoardHashCodeChangesWithBoardState()] (1 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:boardWithNegativeScoreFailsRepOkTest()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:toStringTest()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.SpuriousInvariantTests.[engine:junit-vintage]/[runner:ar.edu.unrc.game2048.manual.SpuriousInvariantTests]/[test:testSpuriousSizeRestrictedToObservedSet(ar.edu.unrc.game2048.manual.SpuriousInvariantTests)] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:setCellOutOfBoundsTest(int, int)]/[test-template-invocation:#1] (3 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:testAddRandomTileOnFullBoardDoesNothing()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:isFullInNonStandardSizesTest()] (1 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:testBoardIsNotFull()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:getGridReturnsDefensiveCopyTest()] (1 ms)</li><li>ar.edu.unrc.game2048.manual.PositionTest.[engine:junit-vintage]/[runner:ar.edu.unrc.game2048.manual.PositionTest]/[test:positionNotEqualsADifferentClass(ar.edu.unrc.game2048.manual.PositionTest)] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:testBoardIndexOutOfBoundsException(int, int)]/[test-template-invocation:#3] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:testAddRandomTileSelectsPositionUsingRandomIndex()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.SpuriousInvariantTests.[engine:junit-vintage]/[runner:ar.edu.unrc.game2048.manual.SpuriousInvariantTests]/[test:testSpuriousDeterministMustBeTrueInEqualsEnter(ar.edu.unrc.game2048.manual.SpuriousInvariantTests)] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:testBoardIndexOutOfBoundsException(int, int)]/[test-template-invocation:#2] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:winningAndFullBoardInNonStandardSizesTest()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:testAddRandomTileProbabilityBoundary(double, int)]/[test-template-invocation:#2] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:testBoardIsNotWinningBoard()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:testAddRandomTileProbabilityBoundary(double, int)]/[test-template-invocation:#3] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:testBoardIndexOutOfBoundsException(int, int)]/[test-template-invocation:#4] (0 ms)</li><li>ar.edu.unrc.game2048.manual.RegressionGameTest.[engine:junit-vintage]/[runner:ar.edu.unrc.game2048.manual.RegressionGameTest]/[test:EdgeCaseWithOneMergeInLimitCasesRow(ar.edu.unrc.game2048.manual.RegressionGameTest)] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:copyABoardTest()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:testAddRandomTileProbabilityBoundary(double, int)]/[test-template-invocation:#1] (1 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:nonDeterministicBoardCanBeFullTest()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.RegressionGameTest.[engine:junit-vintage]/[runner:ar.edu.unrc.game2048.manual.RegressionGameTest]/[test:EdgeCaseWithOneMergeInLimitCasesCol(ar.edu.unrc.game2048.manual.RegressionGameTest)] (0 ms)</li><li>ar.edu.unrc.game2048.manual.RegressionGameTest.[engine:junit-vintage]/[runner:ar.edu.unrc.game2048.manual.RegressionGameTest]/[test:EdgeCaseWithOneMerge(ar.edu.unrc.game2048.manual.RegressionGameTest)] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:testBoardIsFull()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:fullBoardWithPossibleMergeIsNotLosingInOtherSizesTest()] (1 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:deterministicBoardCanBeFullTest()] (1 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:losingBoardInNonStandardSizesTest()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:lostBoardTest(int)]/[test-template-invocation:#2] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:testMoveReturnsWhetherBoardChanges(int, int, ar.edu.unrc.game2048.Direction, boolean)]/[test-template-invocation:#3] (1 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:copyDoesNotShareRandomTest()] (1 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:moveReturnsFalseInEveryDirectionTest()] (1 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:testMoveReturnsWhetherBoardChanges(int, int, ar.edu.unrc.game2048.Direction, boolean)]/[test-template-invocation:#2] (1 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:lostBoardTest(int)]/[test-template-invocation:#5] (1 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:testMoveReturnsWhetherBoardChanges(int, int, ar.edu.unrc.game2048.Direction, boolean)]/[test-template-invocation:#4] (1 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:testMoveReturnsWhetherBoardChanges(int, int, ar.edu.unrc.game2048.Direction, boolean)]/[test-template-invocation:#1] (1 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:lostBoardTest(int)]/[test-template-invocation:#3] (1 ms)</li><li>ar.edu.unrc.game2048.manual.MainCLITest.[engine:junit-vintage]/[runner:ar.edu.unrc.game2048.manual.MainCLITest]/[test:testCliReportsInvalidInput(ar.edu.unrc.game2048.manual.MainCLITest)] (1 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:moveOnDeterministicBoardDoesNotAddTileTest()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.MoveStrategyTest.[engine:junit-vintage]/[runner:ar.edu.unrc.game2048.manual.MoveStrategyTest]/[test:testMoveRightPreservesOrder(ar.edu.unrc.game2048.manual.MoveStrategyTest)] (0 ms)</li><li>ar.edu.unrc.game2048.manual.MoveStrategyTest.[engine:junit-vintage]/[runner:ar.edu.unrc.game2048.manual.MoveStrategyTest]/[test:testMoveUpCompactsCellsFromBottom(ar.edu.unrc.game2048.manual.MoveStrategyTest)] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:lostBoardTest(int)]/[test-template-invocation:#4] (2 ms)</li><li>ar.edu.unrc.game2048.manual.MoveStrategyTest.[engine:junit-vintage]/[runner:ar.edu.unrc.game2048.manual.MoveStrategyTest]/[test:testMoveLeftCompactsCellsFromRight(ar.edu.unrc.game2048.manual.MoveStrategyTest)] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:testBoardIndexOutOfBoundsException(int, int)]/[test-template-invocation:#1] (6 ms)</li><li>ar.edu.unrc.game2048.manual.MoveStrategyTest.[engine:junit-vintage]/[runner:ar.edu.unrc.game2048.manual.MoveStrategyTest]/[test:testMoveLeftFillsRowWithoutDroppingLastCell(ar.edu.unrc.game2048.manual.MoveStrategyTest)] (0 ms)</li><li>ar.edu.unrc.game2048.manual.MoveStrategyTest.[engine:junit-vintage]/[runner:ar.edu.unrc.game2048.manual.MoveStrategyTest]/[test:testMoveUpFillsColumnWithoutDroppingLastCell(ar.edu.unrc.game2048.manual.MoveStrategyTest)] (0 ms)</li><li>ar.edu.unrc.game2048.manual.MoveStrategyTest.[engine:junit-vintage]/[runner:ar.edu.unrc.game2048.manual.MoveStrategyTest]/[test:testMoveUpMergesPairsAtColumnBoundary(ar.edu.unrc.game2048.manual.MoveStrategyTest)] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:nonDeterministicBoardCanWinAndLoseTest()] (1 ms)</li><li>ar.edu.unrc.game2048.manual.MoveStrategyTest.[engine:junit-vintage]/[runner:ar.edu.unrc.game2048.manual.MoveStrategyTest]/[test:testMoveLeftMergesPairsAtRowBoundary(ar.edu.unrc.game2048.manual.MoveStrategyTest)] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:lostBoardTest(int)]/[test-template-invocation:#6] (4 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:validBoardSatisfiesRepOk()] (12 ms)</li><li>ar.edu.unrc.game2048.manual.RegressionGameTest.[engine:junit-vintage]/[runner:ar.edu.unrc.game2048.manual.RegressionGameTest]/[test:regressionTestInMoveDownWithBoardNotTrivial(ar.edu.unrc.game2048.manual.RegressionGameTest)] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:losingBoard2x2AllDifferentTest()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:testMoveInGame(java.lang.String, java.lang.String, ar.edu.unrc.game2048.Direction, java.lang.String, int)]/[test-template-invocation:#2] (2 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:accumulatedScoreGreaterThanDefaultSizeTest()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:testMoveInGame(java.lang.String, java.lang.String, ar.edu.unrc.game2048.Direction, java.lang.String, int)]/[test-template-invocation:#4] (2 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:winningBoardInNonStandardSizesTest()] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:testMoveInGame(java.lang.String, java.lang.String, ar.edu.unrc.game2048.Direction, java.lang.String, int)]/[test-template-invocation:#3] (2 ms)</li><li>ar.edu.unrc.game2048.manual.RegressionGameTest.[engine:junit-vintage]/[runner:ar.edu.unrc.game2048.manual.RegressionGameTest]/[test:testTryAddTwoRandomTileAndOnlySetOne(ar.edu.unrc.game2048.manual.RegressionGameTest)] (0 ms)</li><li>ar.edu.unrc.game2048.manual.MainCLITest.[engine:junit-vintage]/[runner:ar.edu.unrc.game2048.manual.MainCLITest]/[test:testMainStartsCliAndProcessesQuit(ar.edu.unrc.game2048.manual.MainCLITest)] (4 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:lostBoardTest(int)]/[test-template-invocation:#7] (9 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:testMoveInGame(java.lang.String, java.lang.String, ar.edu.unrc.game2048.Direction, java.lang.String, int)]/[test-template-invocation:#1] (4 ms)</li><li>ar.edu.unrc.game2048.manual.MainCLITest.[engine:junit-vintage]/[runner:ar.edu.unrc.game2048.manual.MainCLITest]/[test:testCliReportsNoMovement(ar.edu.unrc.game2048.manual.MainCLITest)] (1 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:setCellOutOfBoundsThrowsAndNullCellStillIllegalArgumentTest()] (18 ms)</li><li>ar.edu.unrc.game2048.manual.MainCLITest.[engine:junit-vintage]/[runner:ar.edu.unrc.game2048.manual.MainCLITest]/[test:testInputMovesUp(ar.edu.unrc.game2048.manual.MainCLITest)] (0 ms)</li><li>ar.edu.unrc.game2048.manual.MainCLITest.[engine:junit-vintage]/[runner:ar.edu.unrc.game2048.manual.MainCLITest]/[test:testInputMovesLeft(ar.edu.unrc.game2048.manual.MainCLITest)] (0 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:lostBoardTest(int)]/[test-template-invocation:#8] (14 ms)</li><li>ar.edu.unrc.game2048.manual.MainCLITest.[engine:junit-vintage]/[runner:ar.edu.unrc.game2048.manual.MainCLITest]/[test:testCliReportsMovedBoardAndClosesInput(ar.edu.unrc.game2048.manual.MainCLITest)] (1 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:lostBoardTest(int)]/[test-template-invocation:#9] (15 ms)</li><li>ar.edu.unrc.game2048.manual.MainCLITest.[engine:junit-vintage]/[runner:ar.edu.unrc.game2048.manual.MainCLITest]/[test:testInputMovesDown(ar.edu.unrc.game2048.manual.MainCLITest)] (1 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:lostBoardTest(int)]/[test-template-invocation:#11] (18 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[method:moveDoesNotConsumeRandomSequenceOfBoardTest()] (7 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:lostBoardTest(int)]/[test-template-invocation:#1] (24 ms)</li><li>ar.edu.unrc.game2048.manual.BoardTest.[engine:junit-jupiter]/[class:ar.edu.unrc.game2048.manual.BoardTest]/[test-template:lostBoardTest(int)]/[test-template-invocation:#10] (26 ms)</li><li>ar.edu.unrc.game2048.manual.MainCLITest.[engine:junit-vintage]/[runner:ar.edu.unrc.game2048.manual.MainCLITest]/[test:testInputMovesRight(ar.edu.unrc.game2048.manual.MainCLITest)] (392 ms)</li>
+</ul>
+
+<br/>
+
+Report generated by <a href='https://pitest.org'>PIT</a> 1.15.0
+
+</body>
+</html>

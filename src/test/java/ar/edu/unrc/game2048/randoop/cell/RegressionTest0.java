@@ -8766,71 +8766,6 @@ public class RegressionTest0 {
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
-        ar.edu.unrc.game2048.Cell cell4 = new ar.edu.unrc.game2048.Cell((int) ' ');
-        ar.edu.unrc.game2048.Cell cell5 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell6 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean7 = cell5.canMergeWith(cell6);
-        java.lang.Object obj8 = null;
-        boolean boolean9 = cell6.equals(obj8);
-        int int10 = cell6.getValue();
-        java.lang.String str11 = cell6.toString();
-        ar.edu.unrc.game2048.Cell cell12 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell13 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean14 = cell12.canMergeWith(cell13);
-        java.lang.Object obj15 = null;
-        boolean boolean16 = cell13.equals(obj15);
-        java.lang.String str17 = cell13.toString();
-        ar.edu.unrc.game2048.Cell cell18 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean19 = cell18.isEmpty();
-        boolean boolean21 = cell18.equals((java.lang.Object) ' ');
-        ar.edu.unrc.game2048.Cell cell22 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell23 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean24 = cell22.canMergeWith(cell23);
-        java.lang.Class<?> wildcardClass25 = cell23.getClass();
-        boolean boolean26 = cell18.equals((java.lang.Object) wildcardClass25);
-        boolean boolean27 = cell13.equals((java.lang.Object) boolean26);
-        boolean boolean28 = cell6.canMergeWith(cell13);
-        java.lang.String str29 = cell13.toString();
-        boolean boolean30 = cell4.equals((java.lang.Object) cell13);
-        boolean boolean31 = cell1.equals((java.lang.Object) boolean30);
-        java.lang.String str32 = cell1.toString();
-        org.junit.Assert.assertNotNull(cell0);
-        org.junit.Assert.assertNotNull(cell1);
-        org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
-        org.junit.Assert.assertNotNull(cell5);
-        org.junit.Assert.assertNotNull(cell6);
-        org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + false + "'", boolean7 == false);
-        org.junit.Assert.assertTrue("'" + boolean9 + "' != '" + false + "'", boolean9 == false);
-        org.junit.Assert.assertTrue("'" + int10 + "' != '" + 0 + "'", int10 == 0);
-        org.junit.Assert.assertEquals("'" + str11 + "' != '" + "." + "'", str11, ".");
-        org.junit.Assert.assertNotNull(cell12);
-        org.junit.Assert.assertNotNull(cell13);
-        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
-        org.junit.Assert.assertTrue("'" + boolean16 + "' != '" + false + "'", boolean16 == false);
-        org.junit.Assert.assertEquals("'" + str17 + "' != '" + "." + "'", str17, ".");
-        org.junit.Assert.assertNotNull(cell18);
-        org.junit.Assert.assertTrue("'" + boolean19 + "' != '" + true + "'", boolean19 == true);
-        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + false + "'", boolean21 == false);
-        org.junit.Assert.assertNotNull(cell22);
-        org.junit.Assert.assertNotNull(cell23);
-        org.junit.Assert.assertTrue("'" + boolean24 + "' != '" + false + "'", boolean24 == false);
-        org.junit.Assert.assertNotNull(wildcardClass25);
-        org.junit.Assert.assertTrue("'" + boolean26 + "' != '" + false + "'", boolean26 == false);
-        org.junit.Assert.assertTrue("'" + boolean27 + "' != '" + false + "'", boolean27 == false);
-        org.junit.Assert.assertTrue("'" + boolean28 + "' != '" + false + "'", boolean28 == false);
-        org.junit.Assert.assertEquals("'" + str29 + "' != '" + "." + "'", str29, ".");
-        org.junit.Assert.assertTrue("'" + boolean30 + "' != '" + false + "'", boolean30 == false);
-        org.junit.Assert.assertTrue("'" + boolean31 + "' != '" + false + "'", boolean31 == false);
-        org.junit.Assert.assertEquals("'" + str32 + "' != '" + "." + "'", str32, ".");
-    }
-
-    @Test
-    public void test148() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test148");
-        ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean2 = cell0.canMergeWith(cell1);
         boolean boolean4 = cell0.equals((java.lang.Object) (byte) 100);
         ar.edu.unrc.game2048.Cell cell5 = ar.edu.unrc.game2048.Cell.EMPTY;
         java.lang.String str6 = cell5.toString();
@@ -8875,9 +8810,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test149() throws Throwable {
+    public void test148() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test149");
+            System.out.format("%n%s%n", "RegressionTest0.test148");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean1 = cell0.isEmpty();
         int int2 = cell0.getValue();
@@ -8891,9 +8826,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test150() throws Throwable {
+    public void test149() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test150");
+            System.out.format("%n%s%n", "RegressionTest0.test149");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         int int1 = cell0.getValue();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -8933,9 +8868,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test151() throws Throwable {
+    public void test150() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test151");
+            System.out.format("%n%s%n", "RegressionTest0.test150");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         int int1 = cell0.getValue();
         boolean boolean2 = cell0.isEmpty();
@@ -9043,9 +8978,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test152() throws Throwable {
+    public void test151() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test152");
+            System.out.format("%n%s%n", "RegressionTest0.test151");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -9065,9 +9000,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test153() throws Throwable {
+    public void test152() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test153");
+            System.out.format("%n%s%n", "RegressionTest0.test152");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         int int1 = cell0.getValue();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -9184,9 +9119,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test154() throws Throwable {
+    public void test153() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test154");
+            System.out.format("%n%s%n", "RegressionTest0.test153");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -9335,9 +9270,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test155() throws Throwable {
+    public void test154() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test155");
+            System.out.format("%n%s%n", "RegressionTest0.test154");
         ar.edu.unrc.game2048.Cell cell1 = new ar.edu.unrc.game2048.Cell((int) ' ');
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell3 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -9417,9 +9352,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test156() throws Throwable {
+    public void test155() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test156");
+            System.out.format("%n%s%n", "RegressionTest0.test155");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         int int1 = cell0.getValue();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -9506,9 +9441,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test157() throws Throwable {
+    public void test156() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test157");
+            System.out.format("%n%s%n", "RegressionTest0.test156");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         int int1 = cell0.getValue();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -9566,9 +9501,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test158() throws Throwable {
+    public void test157() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test158");
+            System.out.format("%n%s%n", "RegressionTest0.test157");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         int int1 = cell0.getValue();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -9607,9 +9542,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test159() throws Throwable {
+    public void test158() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test159");
+            System.out.format("%n%s%n", "RegressionTest0.test158");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean1 = cell0.isEmpty();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -9660,9 +9595,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test160() throws Throwable {
+    public void test159() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test160");
+            System.out.format("%n%s%n", "RegressionTest0.test159");
         ar.edu.unrc.game2048.Cell cell1 = new ar.edu.unrc.game2048.Cell((int) ' ');
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell3 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -9780,9 +9715,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test161() throws Throwable {
+    public void test160() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test161");
+            System.out.format("%n%s%n", "RegressionTest0.test160");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         int int1 = cell0.getValue();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -9822,9 +9757,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test162() throws Throwable {
+    public void test161() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test162");
+            System.out.format("%n%s%n", "RegressionTest0.test161");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean1 = cell0.isEmpty();
         boolean boolean3 = cell0.equals((java.lang.Object) ' ');
@@ -9838,9 +9773,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test163() throws Throwable {
+    public void test162() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test163");
+            System.out.format("%n%s%n", "RegressionTest0.test162");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         int int1 = cell0.getValue();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -10026,9 +9961,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test164() throws Throwable {
+    public void test163() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test164");
+            System.out.format("%n%s%n", "RegressionTest0.test163");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         int int1 = cell0.getValue();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -10180,9 +10115,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test165() throws Throwable {
+    public void test164() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test165");
+            System.out.format("%n%s%n", "RegressionTest0.test164");
         ar.edu.unrc.game2048.Cell cell1 = new ar.edu.unrc.game2048.Cell((int) ' ');
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell3 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -10312,9 +10247,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test166() throws Throwable {
+    public void test165() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test166");
+            System.out.format("%n%s%n", "RegressionTest0.test165");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean1 = cell0.isEmpty();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -10340,9 +10275,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test167() throws Throwable {
+    public void test166() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test167");
+            System.out.format("%n%s%n", "RegressionTest0.test166");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -10519,9 +10454,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test168() throws Throwable {
+    public void test167() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test168");
+            System.out.format("%n%s%n", "RegressionTest0.test167");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -10539,9 +10474,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test169() throws Throwable {
+    public void test168() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test169");
+            System.out.format("%n%s%n", "RegressionTest0.test168");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -10629,9 +10564,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test170() throws Throwable {
+    public void test169() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test170");
+            System.out.format("%n%s%n", "RegressionTest0.test169");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean1 = cell0.isEmpty();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -10654,9 +10589,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test171() throws Throwable {
+    public void test170() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test171");
+            System.out.format("%n%s%n", "RegressionTest0.test170");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -10674,9 +10609,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test172() throws Throwable {
+    public void test171() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test172");
+            System.out.format("%n%s%n", "RegressionTest0.test171");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         java.lang.String str1 = cell0.toString();
         int int2 = cell0.getValue();
@@ -10757,9 +10692,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test173() throws Throwable {
+    public void test172() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test173");
+            System.out.format("%n%s%n", "RegressionTest0.test172");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         int int1 = cell0.getValue();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -10812,9 +10747,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test174() throws Throwable {
+    public void test173() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test174");
+            System.out.format("%n%s%n", "RegressionTest0.test173");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean1 = cell0.isEmpty();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -10889,9 +10824,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test175() throws Throwable {
+    public void test174() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test175");
+            System.out.format("%n%s%n", "RegressionTest0.test174");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         int int1 = cell0.getValue();
         boolean boolean3 = cell0.equals((java.lang.Object) (short) 0);
@@ -10974,9 +10909,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test176() throws Throwable {
+    public void test175() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test176");
+            System.out.format("%n%s%n", "RegressionTest0.test175");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -11102,9 +11037,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test177() throws Throwable {
+    public void test176() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test177");
+            System.out.format("%n%s%n", "RegressionTest0.test176");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         int int1 = cell0.getValue();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -11138,9 +11073,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test178() throws Throwable {
+    public void test177() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test178");
+            System.out.format("%n%s%n", "RegressionTest0.test177");
         ar.edu.unrc.game2048.Cell cell1 = new ar.edu.unrc.game2048.Cell((int) ' ');
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell3 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -11260,148 +11195,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test179() throws Throwable {
+    public void test178() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test179");
-        ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean2 = cell0.canMergeWith(cell1);
-        java.lang.Object obj3 = null;
-        boolean boolean4 = cell1.equals(obj3);
-        int int5 = cell1.getValue();
-        java.lang.String str6 = cell1.toString();
-        ar.edu.unrc.game2048.Cell cell7 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell8 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean9 = cell7.canMergeWith(cell8);
-        java.lang.Object obj10 = null;
-        boolean boolean11 = cell8.equals(obj10);
-        java.lang.String str12 = cell8.toString();
-        ar.edu.unrc.game2048.Cell cell13 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean14 = cell13.isEmpty();
-        boolean boolean16 = cell13.equals((java.lang.Object) ' ');
-        ar.edu.unrc.game2048.Cell cell17 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell18 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean19 = cell17.canMergeWith(cell18);
-        java.lang.Class<?> wildcardClass20 = cell18.getClass();
-        boolean boolean21 = cell13.equals((java.lang.Object) wildcardClass20);
-        boolean boolean22 = cell8.equals((java.lang.Object) boolean21);
-        boolean boolean23 = cell1.canMergeWith(cell8);
-        java.lang.String str24 = cell8.toString();
-        ar.edu.unrc.game2048.Cell cell25 = ar.edu.unrc.game2048.Cell.EMPTY;
-        int int26 = cell25.getValue();
-        ar.edu.unrc.game2048.Cell cell27 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell28 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean29 = cell27.canMergeWith(cell28);
-        java.lang.Object obj30 = null;
-        boolean boolean31 = cell28.equals(obj30);
-        int int32 = cell28.getValue();
-        boolean boolean33 = cell25.canMergeWith(cell28);
-        boolean boolean34 = cell8.canMergeWith(cell28);
-        ar.edu.unrc.game2048.Cell cell35 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell36 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean37 = cell35.canMergeWith(cell36);
-        java.lang.Object obj38 = null;
-        boolean boolean39 = cell36.equals(obj38);
-        java.lang.String str40 = cell36.toString();
-        ar.edu.unrc.game2048.Cell cell41 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean42 = cell41.isEmpty();
-        boolean boolean44 = cell41.equals((java.lang.Object) ' ');
-        ar.edu.unrc.game2048.Cell cell45 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell46 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean47 = cell45.canMergeWith(cell46);
-        java.lang.Class<?> wildcardClass48 = cell46.getClass();
-        boolean boolean49 = cell41.equals((java.lang.Object) wildcardClass48);
-        boolean boolean50 = cell36.equals((java.lang.Object) boolean49);
-        int int51 = cell36.getValue();
-        int int52 = cell36.getValue();
-        boolean boolean53 = cell28.canMergeWith(cell36);
-        ar.edu.unrc.game2048.Cell cell54 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell55 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean56 = cell54.canMergeWith(cell55);
-        java.lang.Object obj57 = null;
-        boolean boolean58 = cell55.equals(obj57);
-        java.lang.String str59 = cell55.toString();
-        ar.edu.unrc.game2048.Cell cell60 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean61 = cell60.isEmpty();
-        boolean boolean63 = cell60.equals((java.lang.Object) ' ');
-        ar.edu.unrc.game2048.Cell cell64 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell65 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean66 = cell64.canMergeWith(cell65);
-        java.lang.Class<?> wildcardClass67 = cell65.getClass();
-        boolean boolean68 = cell60.equals((java.lang.Object) wildcardClass67);
-        boolean boolean69 = cell55.equals((java.lang.Object) boolean68);
-        boolean boolean70 = cell55.isEmpty();
-        boolean boolean71 = cell28.canMergeWith(cell55);
-        org.junit.Assert.assertNotNull(cell0);
-        org.junit.Assert.assertNotNull(cell1);
-        org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
-        org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
-        org.junit.Assert.assertTrue("'" + int5 + "' != '" + 0 + "'", int5 == 0);
-        org.junit.Assert.assertEquals("'" + str6 + "' != '" + "." + "'", str6, ".");
-        org.junit.Assert.assertNotNull(cell7);
-        org.junit.Assert.assertNotNull(cell8);
-        org.junit.Assert.assertTrue("'" + boolean9 + "' != '" + false + "'", boolean9 == false);
-        org.junit.Assert.assertTrue("'" + boolean11 + "' != '" + false + "'", boolean11 == false);
-        org.junit.Assert.assertEquals("'" + str12 + "' != '" + "." + "'", str12, ".");
-        org.junit.Assert.assertNotNull(cell13);
-        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + true + "'", boolean14 == true);
-        org.junit.Assert.assertTrue("'" + boolean16 + "' != '" + false + "'", boolean16 == false);
-        org.junit.Assert.assertNotNull(cell17);
-        org.junit.Assert.assertNotNull(cell18);
-        org.junit.Assert.assertTrue("'" + boolean19 + "' != '" + false + "'", boolean19 == false);
-        org.junit.Assert.assertNotNull(wildcardClass20);
-        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + false + "'", boolean21 == false);
-        org.junit.Assert.assertTrue("'" + boolean22 + "' != '" + false + "'", boolean22 == false);
-        org.junit.Assert.assertTrue("'" + boolean23 + "' != '" + false + "'", boolean23 == false);
-        org.junit.Assert.assertEquals("'" + str24 + "' != '" + "." + "'", str24, ".");
-        org.junit.Assert.assertNotNull(cell25);
-        org.junit.Assert.assertTrue("'" + int26 + "' != '" + 0 + "'", int26 == 0);
-        org.junit.Assert.assertNotNull(cell27);
-        org.junit.Assert.assertNotNull(cell28);
-        org.junit.Assert.assertTrue("'" + boolean29 + "' != '" + false + "'", boolean29 == false);
-        org.junit.Assert.assertTrue("'" + boolean31 + "' != '" + false + "'", boolean31 == false);
-        org.junit.Assert.assertTrue("'" + int32 + "' != '" + 0 + "'", int32 == 0);
-        org.junit.Assert.assertTrue("'" + boolean33 + "' != '" + false + "'", boolean33 == false);
-        org.junit.Assert.assertTrue("'" + boolean34 + "' != '" + false + "'", boolean34 == false);
-        org.junit.Assert.assertNotNull(cell35);
-        org.junit.Assert.assertNotNull(cell36);
-        org.junit.Assert.assertTrue("'" + boolean37 + "' != '" + false + "'", boolean37 == false);
-        org.junit.Assert.assertTrue("'" + boolean39 + "' != '" + false + "'", boolean39 == false);
-        org.junit.Assert.assertEquals("'" + str40 + "' != '" + "." + "'", str40, ".");
-        org.junit.Assert.assertNotNull(cell41);
-        org.junit.Assert.assertTrue("'" + boolean42 + "' != '" + true + "'", boolean42 == true);
-        org.junit.Assert.assertTrue("'" + boolean44 + "' != '" + false + "'", boolean44 == false);
-        org.junit.Assert.assertNotNull(cell45);
-        org.junit.Assert.assertNotNull(cell46);
-        org.junit.Assert.assertTrue("'" + boolean47 + "' != '" + false + "'", boolean47 == false);
-        org.junit.Assert.assertNotNull(wildcardClass48);
-        org.junit.Assert.assertTrue("'" + boolean49 + "' != '" + false + "'", boolean49 == false);
-        org.junit.Assert.assertTrue("'" + boolean50 + "' != '" + false + "'", boolean50 == false);
-        org.junit.Assert.assertTrue("'" + int51 + "' != '" + 0 + "'", int51 == 0);
-        org.junit.Assert.assertTrue("'" + int52 + "' != '" + 0 + "'", int52 == 0);
-        org.junit.Assert.assertTrue("'" + boolean53 + "' != '" + false + "'", boolean53 == false);
-        org.junit.Assert.assertNotNull(cell54);
-        org.junit.Assert.assertNotNull(cell55);
-        org.junit.Assert.assertTrue("'" + boolean56 + "' != '" + false + "'", boolean56 == false);
-        org.junit.Assert.assertTrue("'" + boolean58 + "' != '" + false + "'", boolean58 == false);
-        org.junit.Assert.assertEquals("'" + str59 + "' != '" + "." + "'", str59, ".");
-        org.junit.Assert.assertNotNull(cell60);
-        org.junit.Assert.assertTrue("'" + boolean61 + "' != '" + true + "'", boolean61 == true);
-        org.junit.Assert.assertTrue("'" + boolean63 + "' != '" + false + "'", boolean63 == false);
-        org.junit.Assert.assertNotNull(cell64);
-        org.junit.Assert.assertNotNull(cell65);
-        org.junit.Assert.assertTrue("'" + boolean66 + "' != '" + false + "'", boolean66 == false);
-        org.junit.Assert.assertNotNull(wildcardClass67);
-        org.junit.Assert.assertTrue("'" + boolean68 + "' != '" + false + "'", boolean68 == false);
-        org.junit.Assert.assertTrue("'" + boolean69 + "' != '" + false + "'", boolean69 == false);
-        org.junit.Assert.assertTrue("'" + boolean70 + "' != '" + true + "'", boolean70 == true);
-        org.junit.Assert.assertTrue("'" + boolean71 + "' != '" + false + "'", boolean71 == false);
-    }
-
-    @Test
-    public void test180() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test180");
+            System.out.format("%n%s%n", "RegressionTest0.test178");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -11416,9 +11212,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test181() throws Throwable {
+    public void test179() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test181");
+            System.out.format("%n%s%n", "RegressionTest0.test179");
         ar.edu.unrc.game2048.Cell cell1 = new ar.edu.unrc.game2048.Cell((int) ' ');
         java.lang.String str2 = cell1.toString();
         java.lang.Class<?> wildcardClass3 = cell1.getClass();
@@ -11427,118 +11223,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test182() throws Throwable {
+    public void test180() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test182");
-        ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean2 = cell0.canMergeWith(cell1);
-        java.lang.String str3 = cell1.toString();
-        java.lang.String str4 = cell1.toString();
-        int int5 = cell1.getValue();
-        ar.edu.unrc.game2048.Cell cell6 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell7 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean8 = cell6.canMergeWith(cell7);
-        java.lang.Object obj9 = null;
-        boolean boolean10 = cell7.equals(obj9);
-        int int11 = cell7.getValue();
-        java.lang.String str12 = cell7.toString();
-        ar.edu.unrc.game2048.Cell cell13 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell14 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean15 = cell13.canMergeWith(cell14);
-        java.lang.Object obj16 = null;
-        boolean boolean17 = cell14.equals(obj16);
-        java.lang.String str18 = cell14.toString();
-        ar.edu.unrc.game2048.Cell cell19 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean20 = cell19.isEmpty();
-        boolean boolean22 = cell19.equals((java.lang.Object) ' ');
-        ar.edu.unrc.game2048.Cell cell23 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell24 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean25 = cell23.canMergeWith(cell24);
-        java.lang.Class<?> wildcardClass26 = cell24.getClass();
-        boolean boolean27 = cell19.equals((java.lang.Object) wildcardClass26);
-        boolean boolean28 = cell14.equals((java.lang.Object) boolean27);
-        boolean boolean29 = cell7.canMergeWith(cell14);
-        java.lang.String str30 = cell7.toString();
-        boolean boolean31 = cell1.equals((java.lang.Object) cell7);
-        ar.edu.unrc.game2048.Cell cell32 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell33 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean34 = cell32.canMergeWith(cell33);
-        java.lang.String str35 = cell33.toString();
-        ar.edu.unrc.game2048.Cell cell36 = ar.edu.unrc.game2048.Cell.EMPTY;
-        int int37 = cell36.getValue();
-        ar.edu.unrc.game2048.Cell cell38 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell39 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean40 = cell38.canMergeWith(cell39);
-        java.lang.Object obj41 = null;
-        boolean boolean42 = cell39.equals(obj41);
-        int int43 = cell39.getValue();
-        boolean boolean44 = cell36.canMergeWith(cell39);
-        ar.edu.unrc.game2048.Cell cell45 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell46 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean47 = cell45.canMergeWith(cell46);
-        boolean boolean49 = cell45.equals((java.lang.Object) (byte) 100);
-        boolean boolean50 = cell39.canMergeWith(cell45);
-        boolean boolean51 = cell33.canMergeWith(cell39);
-        boolean boolean52 = cell39.isEmpty();
-        int int53 = cell39.getValue();
-        boolean boolean54 = cell1.canMergeWith(cell39);
-        org.junit.Assert.assertNotNull(cell0);
-        org.junit.Assert.assertNotNull(cell1);
-        org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
-        org.junit.Assert.assertEquals("'" + str3 + "' != '" + "." + "'", str3, ".");
-        org.junit.Assert.assertEquals("'" + str4 + "' != '" + "." + "'", str4, ".");
-        org.junit.Assert.assertTrue("'" + int5 + "' != '" + 0 + "'", int5 == 0);
-        org.junit.Assert.assertNotNull(cell6);
-        org.junit.Assert.assertNotNull(cell7);
-        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
-        org.junit.Assert.assertTrue("'" + boolean10 + "' != '" + false + "'", boolean10 == false);
-        org.junit.Assert.assertTrue("'" + int11 + "' != '" + 0 + "'", int11 == 0);
-        org.junit.Assert.assertEquals("'" + str12 + "' != '" + "." + "'", str12, ".");
-        org.junit.Assert.assertNotNull(cell13);
-        org.junit.Assert.assertNotNull(cell14);
-        org.junit.Assert.assertTrue("'" + boolean15 + "' != '" + false + "'", boolean15 == false);
-        org.junit.Assert.assertTrue("'" + boolean17 + "' != '" + false + "'", boolean17 == false);
-        org.junit.Assert.assertEquals("'" + str18 + "' != '" + "." + "'", str18, ".");
-        org.junit.Assert.assertNotNull(cell19);
-        org.junit.Assert.assertTrue("'" + boolean20 + "' != '" + true + "'", boolean20 == true);
-        org.junit.Assert.assertTrue("'" + boolean22 + "' != '" + false + "'", boolean22 == false);
-        org.junit.Assert.assertNotNull(cell23);
-        org.junit.Assert.assertNotNull(cell24);
-        org.junit.Assert.assertTrue("'" + boolean25 + "' != '" + false + "'", boolean25 == false);
-        org.junit.Assert.assertNotNull(wildcardClass26);
-        org.junit.Assert.assertTrue("'" + boolean27 + "' != '" + false + "'", boolean27 == false);
-        org.junit.Assert.assertTrue("'" + boolean28 + "' != '" + false + "'", boolean28 == false);
-        org.junit.Assert.assertTrue("'" + boolean29 + "' != '" + false + "'", boolean29 == false);
-        org.junit.Assert.assertEquals("'" + str30 + "' != '" + "." + "'", str30, ".");
-        org.junit.Assert.assertTrue("'" + boolean31 + "' != '" + true + "'", boolean31 == true);
-        org.junit.Assert.assertNotNull(cell32);
-        org.junit.Assert.assertNotNull(cell33);
-        org.junit.Assert.assertTrue("'" + boolean34 + "' != '" + false + "'", boolean34 == false);
-        org.junit.Assert.assertEquals("'" + str35 + "' != '" + "." + "'", str35, ".");
-        org.junit.Assert.assertNotNull(cell36);
-        org.junit.Assert.assertTrue("'" + int37 + "' != '" + 0 + "'", int37 == 0);
-        org.junit.Assert.assertNotNull(cell38);
-        org.junit.Assert.assertNotNull(cell39);
-        org.junit.Assert.assertTrue("'" + boolean40 + "' != '" + false + "'", boolean40 == false);
-        org.junit.Assert.assertTrue("'" + boolean42 + "' != '" + false + "'", boolean42 == false);
-        org.junit.Assert.assertTrue("'" + int43 + "' != '" + 0 + "'", int43 == 0);
-        org.junit.Assert.assertTrue("'" + boolean44 + "' != '" + false + "'", boolean44 == false);
-        org.junit.Assert.assertNotNull(cell45);
-        org.junit.Assert.assertNotNull(cell46);
-        org.junit.Assert.assertTrue("'" + boolean47 + "' != '" + false + "'", boolean47 == false);
-        org.junit.Assert.assertTrue("'" + boolean49 + "' != '" + false + "'", boolean49 == false);
-        org.junit.Assert.assertTrue("'" + boolean50 + "' != '" + false + "'", boolean50 == false);
-        org.junit.Assert.assertTrue("'" + boolean51 + "' != '" + false + "'", boolean51 == false);
-        org.junit.Assert.assertTrue("'" + boolean52 + "' != '" + true + "'", boolean52 == true);
-        org.junit.Assert.assertTrue("'" + int53 + "' != '" + 0 + "'", int53 == 0);
-        org.junit.Assert.assertTrue("'" + boolean54 + "' != '" + false + "'", boolean54 == false);
-    }
-
-    @Test
-    public void test183() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test183");
+            System.out.format("%n%s%n", "RegressionTest0.test180");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -11683,9 +11370,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test184() throws Throwable {
+    public void test181() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test184");
+            System.out.format("%n%s%n", "RegressionTest0.test181");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -11811,9 +11498,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test185() throws Throwable {
+    public void test182() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test185");
+            System.out.format("%n%s%n", "RegressionTest0.test182");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -11886,9 +11573,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test186() throws Throwable {
+    public void test183() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test186");
+            System.out.format("%n%s%n", "RegressionTest0.test183");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -12071,9 +11758,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test187() throws Throwable {
+    public void test184() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test187");
+            System.out.format("%n%s%n", "RegressionTest0.test184");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean1 = cell0.isEmpty();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -12152,9 +11839,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test188() throws Throwable {
+    public void test185() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test188");
+            System.out.format("%n%s%n", "RegressionTest0.test185");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -12313,9 +12000,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test189() throws Throwable {
+    public void test186() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test189");
+            System.out.format("%n%s%n", "RegressionTest0.test186");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean1 = cell0.isEmpty();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -12364,9 +12051,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test190() throws Throwable {
+    public void test187() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test190");
+            System.out.format("%n%s%n", "RegressionTest0.test187");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         int int1 = cell0.getValue();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -12466,9 +12153,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test191() throws Throwable {
+    public void test188() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test191");
+            System.out.format("%n%s%n", "RegressionTest0.test188");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -12485,9 +12172,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test192() throws Throwable {
+    public void test189() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test192");
+            System.out.format("%n%s%n", "RegressionTest0.test189");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         int int1 = cell0.getValue();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -12545,9 +12232,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test193() throws Throwable {
+    public void test190() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test193");
+            System.out.format("%n%s%n", "RegressionTest0.test190");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -12701,9 +12388,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test194() throws Throwable {
+    public void test191() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test194");
+            System.out.format("%n%s%n", "RegressionTest0.test191");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         int int1 = cell0.getValue();
         boolean boolean3 = cell0.equals((java.lang.Object) (short) 0);
@@ -12715,9 +12402,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test195() throws Throwable {
+    public void test192() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test195");
+            System.out.format("%n%s%n", "RegressionTest0.test192");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -12756,9 +12443,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test196() throws Throwable {
+    public void test193() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test196");
+            System.out.format("%n%s%n", "RegressionTest0.test193");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         int int1 = cell0.getValue();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -12868,9 +12555,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test197() throws Throwable {
+    public void test194() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test197");
+            System.out.format("%n%s%n", "RegressionTest0.test194");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean1 = cell0.isEmpty();
         int int2 = cell0.getValue();
@@ -13054,9 +12741,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test198() throws Throwable {
+    public void test195() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test198");
+            System.out.format("%n%s%n", "RegressionTest0.test195");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean1 = cell0.isEmpty();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -13107,9 +12794,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test199() throws Throwable {
+    public void test196() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test199");
+            System.out.format("%n%s%n", "RegressionTest0.test196");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         int int1 = cell0.getValue();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -13152,9 +12839,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test200() throws Throwable {
+    public void test197() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test200");
+            System.out.format("%n%s%n", "RegressionTest0.test197");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -13208,9 +12895,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test201() throws Throwable {
+    public void test198() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test201");
+            System.out.format("%n%s%n", "RegressionTest0.test198");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean1 = cell0.isEmpty();
         int int2 = cell0.getValue();
@@ -13306,9 +12993,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test202() throws Throwable {
+    public void test199() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test202");
+            System.out.format("%n%s%n", "RegressionTest0.test199");
         ar.edu.unrc.game2048.Cell cell1 = new ar.edu.unrc.game2048.Cell((int) ' ');
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell3 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -13386,9 +13073,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test203() throws Throwable {
+    public void test200() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test203");
+            System.out.format("%n%s%n", "RegressionTest0.test200");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         int int1 = cell0.getValue();
         boolean boolean2 = cell0.isEmpty();
@@ -13410,9 +13097,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test204() throws Throwable {
+    public void test201() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test204");
+            System.out.format("%n%s%n", "RegressionTest0.test201");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -13444,9 +13131,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test205() throws Throwable {
+    public void test202() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test205");
+            System.out.format("%n%s%n", "RegressionTest0.test202");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         int int1 = cell0.getValue();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -13512,9 +13199,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test206() throws Throwable {
+    public void test203() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test206");
+            System.out.format("%n%s%n", "RegressionTest0.test203");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -13531,123 +13218,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test207() throws Throwable {
+    public void test204() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test207");
-        ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean2 = cell0.canMergeWith(cell1);
-        java.lang.Object obj3 = null;
-        boolean boolean4 = cell1.equals(obj3);
-        java.lang.String str5 = cell1.toString();
-        ar.edu.unrc.game2048.Cell cell6 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell7 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean8 = cell6.canMergeWith(cell7);
-        java.lang.Object obj9 = null;
-        boolean boolean10 = cell7.equals(obj9);
-        int int11 = cell7.getValue();
-        java.lang.String str12 = cell7.toString();
-        ar.edu.unrc.game2048.Cell cell13 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell14 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean15 = cell13.canMergeWith(cell14);
-        java.lang.Object obj16 = null;
-        boolean boolean17 = cell14.equals(obj16);
-        java.lang.String str18 = cell14.toString();
-        ar.edu.unrc.game2048.Cell cell19 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean20 = cell19.isEmpty();
-        boolean boolean22 = cell19.equals((java.lang.Object) ' ');
-        ar.edu.unrc.game2048.Cell cell23 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell24 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean25 = cell23.canMergeWith(cell24);
-        java.lang.Class<?> wildcardClass26 = cell24.getClass();
-        boolean boolean27 = cell19.equals((java.lang.Object) wildcardClass26);
-        boolean boolean28 = cell14.equals((java.lang.Object) boolean27);
-        boolean boolean29 = cell7.canMergeWith(cell14);
-        java.lang.String str30 = cell14.toString();
-        ar.edu.unrc.game2048.Cell cell31 = ar.edu.unrc.game2048.Cell.EMPTY;
-        int int32 = cell31.getValue();
-        ar.edu.unrc.game2048.Cell cell33 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell34 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean35 = cell33.canMergeWith(cell34);
-        java.lang.Object obj36 = null;
-        boolean boolean37 = cell34.equals(obj36);
-        int int38 = cell34.getValue();
-        boolean boolean39 = cell31.canMergeWith(cell34);
-        boolean boolean40 = cell14.canMergeWith(cell34);
-        boolean boolean42 = cell34.equals((java.lang.Object) "hi!");
-        boolean boolean43 = cell1.canMergeWith(cell34);
-        ar.edu.unrc.game2048.Cell cell44 = ar.edu.unrc.game2048.Cell.EMPTY;
-        int int45 = cell44.getValue();
-        ar.edu.unrc.game2048.Cell cell46 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell47 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean48 = cell46.canMergeWith(cell47);
-        java.lang.Object obj49 = null;
-        boolean boolean50 = cell47.equals(obj49);
-        int int51 = cell47.getValue();
-        boolean boolean52 = cell44.canMergeWith(cell47);
-        boolean boolean53 = cell44.isEmpty();
-        java.lang.Object obj54 = null;
-        boolean boolean55 = cell44.equals(obj54);
-        boolean boolean56 = cell44.isEmpty();
-        boolean boolean57 = cell1.canMergeWith(cell44);
-        int int58 = cell44.getValue();
-        org.junit.Assert.assertNotNull(cell0);
-        org.junit.Assert.assertNotNull(cell1);
-        org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
-        org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
-        org.junit.Assert.assertEquals("'" + str5 + "' != '" + "." + "'", str5, ".");
-        org.junit.Assert.assertNotNull(cell6);
-        org.junit.Assert.assertNotNull(cell7);
-        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
-        org.junit.Assert.assertTrue("'" + boolean10 + "' != '" + false + "'", boolean10 == false);
-        org.junit.Assert.assertTrue("'" + int11 + "' != '" + 0 + "'", int11 == 0);
-        org.junit.Assert.assertEquals("'" + str12 + "' != '" + "." + "'", str12, ".");
-        org.junit.Assert.assertNotNull(cell13);
-        org.junit.Assert.assertNotNull(cell14);
-        org.junit.Assert.assertTrue("'" + boolean15 + "' != '" + false + "'", boolean15 == false);
-        org.junit.Assert.assertTrue("'" + boolean17 + "' != '" + false + "'", boolean17 == false);
-        org.junit.Assert.assertEquals("'" + str18 + "' != '" + "." + "'", str18, ".");
-        org.junit.Assert.assertNotNull(cell19);
-        org.junit.Assert.assertTrue("'" + boolean20 + "' != '" + true + "'", boolean20 == true);
-        org.junit.Assert.assertTrue("'" + boolean22 + "' != '" + false + "'", boolean22 == false);
-        org.junit.Assert.assertNotNull(cell23);
-        org.junit.Assert.assertNotNull(cell24);
-        org.junit.Assert.assertTrue("'" + boolean25 + "' != '" + false + "'", boolean25 == false);
-        org.junit.Assert.assertNotNull(wildcardClass26);
-        org.junit.Assert.assertTrue("'" + boolean27 + "' != '" + false + "'", boolean27 == false);
-        org.junit.Assert.assertTrue("'" + boolean28 + "' != '" + false + "'", boolean28 == false);
-        org.junit.Assert.assertTrue("'" + boolean29 + "' != '" + false + "'", boolean29 == false);
-        org.junit.Assert.assertEquals("'" + str30 + "' != '" + "." + "'", str30, ".");
-        org.junit.Assert.assertNotNull(cell31);
-        org.junit.Assert.assertTrue("'" + int32 + "' != '" + 0 + "'", int32 == 0);
-        org.junit.Assert.assertNotNull(cell33);
-        org.junit.Assert.assertNotNull(cell34);
-        org.junit.Assert.assertTrue("'" + boolean35 + "' != '" + false + "'", boolean35 == false);
-        org.junit.Assert.assertTrue("'" + boolean37 + "' != '" + false + "'", boolean37 == false);
-        org.junit.Assert.assertTrue("'" + int38 + "' != '" + 0 + "'", int38 == 0);
-        org.junit.Assert.assertTrue("'" + boolean39 + "' != '" + false + "'", boolean39 == false);
-        org.junit.Assert.assertTrue("'" + boolean40 + "' != '" + false + "'", boolean40 == false);
-        org.junit.Assert.assertTrue("'" + boolean42 + "' != '" + false + "'", boolean42 == false);
-        org.junit.Assert.assertTrue("'" + boolean43 + "' != '" + false + "'", boolean43 == false);
-        org.junit.Assert.assertNotNull(cell44);
-        org.junit.Assert.assertTrue("'" + int45 + "' != '" + 0 + "'", int45 == 0);
-        org.junit.Assert.assertNotNull(cell46);
-        org.junit.Assert.assertNotNull(cell47);
-        org.junit.Assert.assertTrue("'" + boolean48 + "' != '" + false + "'", boolean48 == false);
-        org.junit.Assert.assertTrue("'" + boolean50 + "' != '" + false + "'", boolean50 == false);
-        org.junit.Assert.assertTrue("'" + int51 + "' != '" + 0 + "'", int51 == 0);
-        org.junit.Assert.assertTrue("'" + boolean52 + "' != '" + false + "'", boolean52 == false);
-        org.junit.Assert.assertTrue("'" + boolean53 + "' != '" + true + "'", boolean53 == true);
-        org.junit.Assert.assertTrue("'" + boolean55 + "' != '" + false + "'", boolean55 == false);
-        org.junit.Assert.assertTrue("'" + boolean56 + "' != '" + true + "'", boolean56 == true);
-        org.junit.Assert.assertTrue("'" + boolean57 + "' != '" + false + "'", boolean57 == false);
-        org.junit.Assert.assertTrue("'" + int58 + "' != '" + 0 + "'", int58 == 0);
-    }
-
-    @Test
-    public void test208() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test208");
+            System.out.format("%n%s%n", "RegressionTest0.test204");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         int int1 = cell0.getValue();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -13748,9 +13321,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test209() throws Throwable {
+    public void test205() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test209");
+            System.out.format("%n%s%n", "RegressionTest0.test205");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         int int1 = cell0.getValue();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -13833,9 +13406,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test210() throws Throwable {
+    public void test206() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test210");
+            System.out.format("%n%s%n", "RegressionTest0.test206");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -13862,9 +13435,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test211() throws Throwable {
+    public void test207() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test211");
+            System.out.format("%n%s%n", "RegressionTest0.test207");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -14035,9 +13608,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test212() throws Throwable {
+    public void test208() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test212");
+            System.out.format("%n%s%n", "RegressionTest0.test208");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         int int1 = cell0.getValue();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -14077,9 +13650,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test213() throws Throwable {
+    public void test209() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test213");
+            System.out.format("%n%s%n", "RegressionTest0.test209");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         java.lang.String str1 = cell0.toString();
         ar.edu.unrc.game2048.Cell cell3 = new ar.edu.unrc.game2048.Cell((int) ' ');
@@ -14201,9 +13774,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test214() throws Throwable {
+    public void test210() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test214");
+            System.out.format("%n%s%n", "RegressionTest0.test210");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -14340,9 +13913,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test215() throws Throwable {
+    public void test211() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test215");
+            System.out.format("%n%s%n", "RegressionTest0.test211");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -14409,9 +13982,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test216() throws Throwable {
+    public void test212() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test216");
+            System.out.format("%n%s%n", "RegressionTest0.test212");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -14477,9 +14050,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test217() throws Throwable {
+    public void test213() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test217");
+            System.out.format("%n%s%n", "RegressionTest0.test213");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean1 = cell0.isEmpty();
         int int2 = cell0.getValue();
@@ -14588,9 +14161,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test218() throws Throwable {
+    public void test214() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test218");
+            System.out.format("%n%s%n", "RegressionTest0.test214");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -14635,9 +14208,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test219() throws Throwable {
+    public void test215() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test219");
+            System.out.format("%n%s%n", "RegressionTest0.test215");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean1 = cell0.isEmpty();
         int int2 = cell0.getValue();
@@ -14651,9 +14224,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test220() throws Throwable {
+    public void test216() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test220");
+            System.out.format("%n%s%n", "RegressionTest0.test216");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         int int1 = cell0.getValue();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -14717,38 +14290,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test221() throws Throwable {
+    public void test217() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test221");
-        ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
-        int int1 = cell0.getValue();
-        ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell3 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean4 = cell2.canMergeWith(cell3);
-        java.lang.Object obj5 = null;
-        boolean boolean6 = cell3.equals(obj5);
-        int int7 = cell3.getValue();
-        boolean boolean8 = cell0.canMergeWith(cell3);
-        java.lang.String str9 = cell3.toString();
-        java.lang.String str10 = cell3.toString();
-        int int11 = cell3.getValue();
-        org.junit.Assert.assertNotNull(cell0);
-        org.junit.Assert.assertTrue("'" + int1 + "' != '" + 0 + "'", int1 == 0);
-        org.junit.Assert.assertNotNull(cell2);
-        org.junit.Assert.assertNotNull(cell3);
-        org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
-        org.junit.Assert.assertTrue("'" + boolean6 + "' != '" + false + "'", boolean6 == false);
-        org.junit.Assert.assertTrue("'" + int7 + "' != '" + 0 + "'", int7 == 0);
-        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
-        org.junit.Assert.assertEquals("'" + str9 + "' != '" + "." + "'", str9, ".");
-        org.junit.Assert.assertEquals("'" + str10 + "' != '" + "." + "'", str10, ".");
-        org.junit.Assert.assertTrue("'" + int11 + "' != '" + 0 + "'", int11 == 0);
-    }
-
-    @Test
-    public void test222() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test222");
+            System.out.format("%n%s%n", "RegressionTest0.test217");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean1 = cell0.isEmpty();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -14844,9 +14388,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test223() throws Throwable {
+    public void test218() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test223");
+            System.out.format("%n%s%n", "RegressionTest0.test218");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         java.lang.String str1 = cell0.toString();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -14881,9 +14425,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test224() throws Throwable {
+    public void test219() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test224");
+            System.out.format("%n%s%n", "RegressionTest0.test219");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -14901,9 +14445,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test225() throws Throwable {
+    public void test220() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test225");
+            System.out.format("%n%s%n", "RegressionTest0.test220");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean1 = cell0.isEmpty();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -14954,23 +14498,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test226() throws Throwable {
+    public void test221() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test226");
-        ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
-        ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
-        boolean boolean2 = cell0.canMergeWith(cell1);
-        int int3 = cell0.getValue();
-        org.junit.Assert.assertNotNull(cell0);
-        org.junit.Assert.assertNotNull(cell1);
-        org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
-        org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
-    }
-
-    @Test
-    public void test227() throws Throwable {
-        if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test227");
+            System.out.format("%n%s%n", "RegressionTest0.test221");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -15047,9 +14577,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test228() throws Throwable {
+    public void test222() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test228");
+            System.out.format("%n%s%n", "RegressionTest0.test222");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean1 = cell0.isEmpty();
         ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
@@ -15087,9 +14617,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test229() throws Throwable {
+    public void test223() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test229");
+            System.out.format("%n%s%n", "RegressionTest0.test223");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -15171,9 +14701,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test230() throws Throwable {
+    public void test224() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test230");
+            System.out.format("%n%s%n", "RegressionTest0.test224");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
         boolean boolean2 = cell0.canMergeWith(cell1);
@@ -15310,9 +14840,9 @@ public class RegressionTest0 {
     }
 
     @Test
-    public void test231() throws Throwable {
+    public void test225() throws Throwable {
         if (debug)
-            System.out.format("%n%s%n", "RegressionTest0.test231");
+            System.out.format("%n%s%n", "RegressionTest0.test225");
         ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
         java.lang.String str1 = cell0.toString();
         int int2 = cell0.getValue();
@@ -15441,6 +14971,1414 @@ public class RegressionTest0 {
         org.junit.Assert.assertTrue("'" + boolean67 + "' != '" + false + "'", boolean67 == false);
         org.junit.Assert.assertTrue("'" + int68 + "' != '" + 32 + "'", int68 == 32);
         org.junit.Assert.assertTrue("'" + boolean69 + "' != '" + false + "'", boolean69 == false);
+    }
+
+    @Test
+    public void test226() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test226");
+        ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean2 = cell0.canMergeWith(cell1);
+        java.lang.String str3 = cell1.toString();
+        ar.edu.unrc.game2048.Cell cell4 = ar.edu.unrc.game2048.Cell.EMPTY;
+        int int5 = cell4.getValue();
+        ar.edu.unrc.game2048.Cell cell6 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell7 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean8 = cell6.canMergeWith(cell7);
+        java.lang.Object obj9 = null;
+        boolean boolean10 = cell7.equals(obj9);
+        int int11 = cell7.getValue();
+        boolean boolean12 = cell4.canMergeWith(cell7);
+        ar.edu.unrc.game2048.Cell cell13 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell14 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean15 = cell13.canMergeWith(cell14);
+        boolean boolean17 = cell13.equals((java.lang.Object) (byte) 100);
+        boolean boolean18 = cell7.canMergeWith(cell13);
+        boolean boolean19 = cell1.canMergeWith(cell7);
+        boolean boolean20 = cell7.isEmpty();
+        int int21 = cell7.getValue();
+        ar.edu.unrc.game2048.Cell cell22 = ar.edu.unrc.game2048.Cell.EMPTY;
+        java.lang.String str23 = cell22.toString();
+        int int24 = cell22.getValue();
+        ar.edu.unrc.game2048.Cell cell25 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell26 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean27 = cell25.canMergeWith(cell26);
+        java.lang.Object obj28 = null;
+        boolean boolean29 = cell26.equals(obj28);
+        int int30 = cell26.getValue();
+        java.lang.String str31 = cell26.toString();
+        ar.edu.unrc.game2048.Cell cell32 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell33 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean34 = cell32.canMergeWith(cell33);
+        java.lang.Object obj35 = null;
+        boolean boolean36 = cell33.equals(obj35);
+        java.lang.String str37 = cell33.toString();
+        ar.edu.unrc.game2048.Cell cell38 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean39 = cell38.isEmpty();
+        boolean boolean41 = cell38.equals((java.lang.Object) ' ');
+        ar.edu.unrc.game2048.Cell cell42 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell43 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean44 = cell42.canMergeWith(cell43);
+        java.lang.Class<?> wildcardClass45 = cell43.getClass();
+        boolean boolean46 = cell38.equals((java.lang.Object) wildcardClass45);
+        boolean boolean47 = cell33.equals((java.lang.Object) boolean46);
+        boolean boolean48 = cell26.canMergeWith(cell33);
+        java.lang.String str49 = cell33.toString();
+        ar.edu.unrc.game2048.Cell cell50 = ar.edu.unrc.game2048.Cell.EMPTY;
+        int int51 = cell50.getValue();
+        ar.edu.unrc.game2048.Cell cell52 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell53 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean54 = cell52.canMergeWith(cell53);
+        java.lang.Object obj55 = null;
+        boolean boolean56 = cell53.equals(obj55);
+        int int57 = cell53.getValue();
+        boolean boolean58 = cell50.canMergeWith(cell53);
+        boolean boolean59 = cell33.canMergeWith(cell53);
+        boolean boolean60 = cell53.isEmpty();
+        boolean boolean61 = cell22.equals((java.lang.Object) cell53);
+        boolean boolean62 = cell7.canMergeWith(cell53);
+        org.junit.Assert.assertNotNull(cell0);
+        org.junit.Assert.assertNotNull(cell1);
+        org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
+        org.junit.Assert.assertEquals("'" + str3 + "' != '" + "." + "'", str3, ".");
+        org.junit.Assert.assertNotNull(cell4);
+        org.junit.Assert.assertTrue("'" + int5 + "' != '" + 0 + "'", int5 == 0);
+        org.junit.Assert.assertNotNull(cell6);
+        org.junit.Assert.assertNotNull(cell7);
+        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
+        org.junit.Assert.assertTrue("'" + boolean10 + "' != '" + false + "'", boolean10 == false);
+        org.junit.Assert.assertTrue("'" + int11 + "' != '" + 0 + "'", int11 == 0);
+        org.junit.Assert.assertTrue("'" + boolean12 + "' != '" + false + "'", boolean12 == false);
+        org.junit.Assert.assertNotNull(cell13);
+        org.junit.Assert.assertNotNull(cell14);
+        org.junit.Assert.assertTrue("'" + boolean15 + "' != '" + false + "'", boolean15 == false);
+        org.junit.Assert.assertTrue("'" + boolean17 + "' != '" + false + "'", boolean17 == false);
+        org.junit.Assert.assertTrue("'" + boolean18 + "' != '" + false + "'", boolean18 == false);
+        org.junit.Assert.assertTrue("'" + boolean19 + "' != '" + false + "'", boolean19 == false);
+        org.junit.Assert.assertTrue("'" + boolean20 + "' != '" + true + "'", boolean20 == true);
+        org.junit.Assert.assertTrue("'" + int21 + "' != '" + 0 + "'", int21 == 0);
+        org.junit.Assert.assertNotNull(cell22);
+        org.junit.Assert.assertEquals("'" + str23 + "' != '" + "." + "'", str23, ".");
+        org.junit.Assert.assertTrue("'" + int24 + "' != '" + 0 + "'", int24 == 0);
+        org.junit.Assert.assertNotNull(cell25);
+        org.junit.Assert.assertNotNull(cell26);
+        org.junit.Assert.assertTrue("'" + boolean27 + "' != '" + false + "'", boolean27 == false);
+        org.junit.Assert.assertTrue("'" + boolean29 + "' != '" + false + "'", boolean29 == false);
+        org.junit.Assert.assertTrue("'" + int30 + "' != '" + 0 + "'", int30 == 0);
+        org.junit.Assert.assertEquals("'" + str31 + "' != '" + "." + "'", str31, ".");
+        org.junit.Assert.assertNotNull(cell32);
+        org.junit.Assert.assertNotNull(cell33);
+        org.junit.Assert.assertTrue("'" + boolean34 + "' != '" + false + "'", boolean34 == false);
+        org.junit.Assert.assertTrue("'" + boolean36 + "' != '" + false + "'", boolean36 == false);
+        org.junit.Assert.assertEquals("'" + str37 + "' != '" + "." + "'", str37, ".");
+        org.junit.Assert.assertNotNull(cell38);
+        org.junit.Assert.assertTrue("'" + boolean39 + "' != '" + true + "'", boolean39 == true);
+        org.junit.Assert.assertTrue("'" + boolean41 + "' != '" + false + "'", boolean41 == false);
+        org.junit.Assert.assertNotNull(cell42);
+        org.junit.Assert.assertNotNull(cell43);
+        org.junit.Assert.assertTrue("'" + boolean44 + "' != '" + false + "'", boolean44 == false);
+        org.junit.Assert.assertNotNull(wildcardClass45);
+        org.junit.Assert.assertTrue("'" + boolean46 + "' != '" + false + "'", boolean46 == false);
+        org.junit.Assert.assertTrue("'" + boolean47 + "' != '" + false + "'", boolean47 == false);
+        org.junit.Assert.assertTrue("'" + boolean48 + "' != '" + false + "'", boolean48 == false);
+        org.junit.Assert.assertEquals("'" + str49 + "' != '" + "." + "'", str49, ".");
+        org.junit.Assert.assertNotNull(cell50);
+        org.junit.Assert.assertTrue("'" + int51 + "' != '" + 0 + "'", int51 == 0);
+        org.junit.Assert.assertNotNull(cell52);
+        org.junit.Assert.assertNotNull(cell53);
+        org.junit.Assert.assertTrue("'" + boolean54 + "' != '" + false + "'", boolean54 == false);
+        org.junit.Assert.assertTrue("'" + boolean56 + "' != '" + false + "'", boolean56 == false);
+        org.junit.Assert.assertTrue("'" + int57 + "' != '" + 0 + "'", int57 == 0);
+        org.junit.Assert.assertTrue("'" + boolean58 + "' != '" + false + "'", boolean58 == false);
+        org.junit.Assert.assertTrue("'" + boolean59 + "' != '" + false + "'", boolean59 == false);
+        org.junit.Assert.assertTrue("'" + boolean60 + "' != '" + true + "'", boolean60 == true);
+        org.junit.Assert.assertTrue("'" + boolean61 + "' != '" + true + "'", boolean61 == true);
+        org.junit.Assert.assertTrue("'" + boolean62 + "' != '" + false + "'", boolean62 == false);
+    }
+
+    @Test
+    public void test227() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test227");
+        ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean2 = cell0.canMergeWith(cell1);
+        java.lang.Object obj3 = null;
+        boolean boolean4 = cell1.equals(obj3);
+        int int5 = cell1.getValue();
+        java.lang.String str6 = cell1.toString();
+        ar.edu.unrc.game2048.Cell cell7 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell8 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean9 = cell7.canMergeWith(cell8);
+        java.lang.Object obj10 = null;
+        boolean boolean11 = cell8.equals(obj10);
+        java.lang.String str12 = cell8.toString();
+        ar.edu.unrc.game2048.Cell cell13 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean14 = cell13.isEmpty();
+        boolean boolean16 = cell13.equals((java.lang.Object) ' ');
+        ar.edu.unrc.game2048.Cell cell17 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell18 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean19 = cell17.canMergeWith(cell18);
+        java.lang.Class<?> wildcardClass20 = cell18.getClass();
+        boolean boolean21 = cell13.equals((java.lang.Object) wildcardClass20);
+        boolean boolean22 = cell8.equals((java.lang.Object) boolean21);
+        boolean boolean23 = cell1.canMergeWith(cell8);
+        java.lang.String str24 = cell8.toString();
+        ar.edu.unrc.game2048.Cell cell25 = ar.edu.unrc.game2048.Cell.EMPTY;
+        int int26 = cell25.getValue();
+        ar.edu.unrc.game2048.Cell cell27 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell28 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean29 = cell27.canMergeWith(cell28);
+        java.lang.Object obj30 = null;
+        boolean boolean31 = cell28.equals(obj30);
+        int int32 = cell28.getValue();
+        boolean boolean33 = cell25.canMergeWith(cell28);
+        boolean boolean34 = cell8.canMergeWith(cell28);
+        ar.edu.unrc.game2048.Cell cell35 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell36 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean37 = cell35.canMergeWith(cell36);
+        java.lang.Object obj38 = null;
+        boolean boolean39 = cell36.equals(obj38);
+        java.lang.String str40 = cell36.toString();
+        ar.edu.unrc.game2048.Cell cell41 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean42 = cell41.isEmpty();
+        boolean boolean44 = cell41.equals((java.lang.Object) ' ');
+        ar.edu.unrc.game2048.Cell cell45 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell46 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean47 = cell45.canMergeWith(cell46);
+        java.lang.Class<?> wildcardClass48 = cell46.getClass();
+        boolean boolean49 = cell41.equals((java.lang.Object) wildcardClass48);
+        boolean boolean50 = cell36.equals((java.lang.Object) boolean49);
+        int int51 = cell36.getValue();
+        int int52 = cell36.getValue();
+        boolean boolean53 = cell28.canMergeWith(cell36);
+        ar.edu.unrc.game2048.Cell cell54 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell55 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean56 = cell54.canMergeWith(cell55);
+        java.lang.Object obj57 = null;
+        boolean boolean58 = cell55.equals(obj57);
+        java.lang.String str59 = cell55.toString();
+        ar.edu.unrc.game2048.Cell cell60 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean61 = cell60.isEmpty();
+        boolean boolean63 = cell60.equals((java.lang.Object) ' ');
+        ar.edu.unrc.game2048.Cell cell64 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell65 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean66 = cell64.canMergeWith(cell65);
+        java.lang.Class<?> wildcardClass67 = cell65.getClass();
+        boolean boolean68 = cell60.equals((java.lang.Object) wildcardClass67);
+        boolean boolean69 = cell55.equals((java.lang.Object) boolean68);
+        boolean boolean70 = cell55.isEmpty();
+        boolean boolean71 = cell28.canMergeWith(cell55);
+        ar.edu.unrc.game2048.Cell cell72 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean73 = cell72.isEmpty();
+        boolean boolean75 = cell72.equals((java.lang.Object) ' ');
+        boolean boolean77 = cell72.equals((java.lang.Object) (-1));
+        boolean boolean78 = cell72.isEmpty();
+        boolean boolean79 = cell28.equals((java.lang.Object) boolean78);
+        org.junit.Assert.assertNotNull(cell0);
+        org.junit.Assert.assertNotNull(cell1);
+        org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
+        org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
+        org.junit.Assert.assertTrue("'" + int5 + "' != '" + 0 + "'", int5 == 0);
+        org.junit.Assert.assertEquals("'" + str6 + "' != '" + "." + "'", str6, ".");
+        org.junit.Assert.assertNotNull(cell7);
+        org.junit.Assert.assertNotNull(cell8);
+        org.junit.Assert.assertTrue("'" + boolean9 + "' != '" + false + "'", boolean9 == false);
+        org.junit.Assert.assertTrue("'" + boolean11 + "' != '" + false + "'", boolean11 == false);
+        org.junit.Assert.assertEquals("'" + str12 + "' != '" + "." + "'", str12, ".");
+        org.junit.Assert.assertNotNull(cell13);
+        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + true + "'", boolean14 == true);
+        org.junit.Assert.assertTrue("'" + boolean16 + "' != '" + false + "'", boolean16 == false);
+        org.junit.Assert.assertNotNull(cell17);
+        org.junit.Assert.assertNotNull(cell18);
+        org.junit.Assert.assertTrue("'" + boolean19 + "' != '" + false + "'", boolean19 == false);
+        org.junit.Assert.assertNotNull(wildcardClass20);
+        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + false + "'", boolean21 == false);
+        org.junit.Assert.assertTrue("'" + boolean22 + "' != '" + false + "'", boolean22 == false);
+        org.junit.Assert.assertTrue("'" + boolean23 + "' != '" + false + "'", boolean23 == false);
+        org.junit.Assert.assertEquals("'" + str24 + "' != '" + "." + "'", str24, ".");
+        org.junit.Assert.assertNotNull(cell25);
+        org.junit.Assert.assertTrue("'" + int26 + "' != '" + 0 + "'", int26 == 0);
+        org.junit.Assert.assertNotNull(cell27);
+        org.junit.Assert.assertNotNull(cell28);
+        org.junit.Assert.assertTrue("'" + boolean29 + "' != '" + false + "'", boolean29 == false);
+        org.junit.Assert.assertTrue("'" + boolean31 + "' != '" + false + "'", boolean31 == false);
+        org.junit.Assert.assertTrue("'" + int32 + "' != '" + 0 + "'", int32 == 0);
+        org.junit.Assert.assertTrue("'" + boolean33 + "' != '" + false + "'", boolean33 == false);
+        org.junit.Assert.assertTrue("'" + boolean34 + "' != '" + false + "'", boolean34 == false);
+        org.junit.Assert.assertNotNull(cell35);
+        org.junit.Assert.assertNotNull(cell36);
+        org.junit.Assert.assertTrue("'" + boolean37 + "' != '" + false + "'", boolean37 == false);
+        org.junit.Assert.assertTrue("'" + boolean39 + "' != '" + false + "'", boolean39 == false);
+        org.junit.Assert.assertEquals("'" + str40 + "' != '" + "." + "'", str40, ".");
+        org.junit.Assert.assertNotNull(cell41);
+        org.junit.Assert.assertTrue("'" + boolean42 + "' != '" + true + "'", boolean42 == true);
+        org.junit.Assert.assertTrue("'" + boolean44 + "' != '" + false + "'", boolean44 == false);
+        org.junit.Assert.assertNotNull(cell45);
+        org.junit.Assert.assertNotNull(cell46);
+        org.junit.Assert.assertTrue("'" + boolean47 + "' != '" + false + "'", boolean47 == false);
+        org.junit.Assert.assertNotNull(wildcardClass48);
+        org.junit.Assert.assertTrue("'" + boolean49 + "' != '" + false + "'", boolean49 == false);
+        org.junit.Assert.assertTrue("'" + boolean50 + "' != '" + false + "'", boolean50 == false);
+        org.junit.Assert.assertTrue("'" + int51 + "' != '" + 0 + "'", int51 == 0);
+        org.junit.Assert.assertTrue("'" + int52 + "' != '" + 0 + "'", int52 == 0);
+        org.junit.Assert.assertTrue("'" + boolean53 + "' != '" + false + "'", boolean53 == false);
+        org.junit.Assert.assertNotNull(cell54);
+        org.junit.Assert.assertNotNull(cell55);
+        org.junit.Assert.assertTrue("'" + boolean56 + "' != '" + false + "'", boolean56 == false);
+        org.junit.Assert.assertTrue("'" + boolean58 + "' != '" + false + "'", boolean58 == false);
+        org.junit.Assert.assertEquals("'" + str59 + "' != '" + "." + "'", str59, ".");
+        org.junit.Assert.assertNotNull(cell60);
+        org.junit.Assert.assertTrue("'" + boolean61 + "' != '" + true + "'", boolean61 == true);
+        org.junit.Assert.assertTrue("'" + boolean63 + "' != '" + false + "'", boolean63 == false);
+        org.junit.Assert.assertNotNull(cell64);
+        org.junit.Assert.assertNotNull(cell65);
+        org.junit.Assert.assertTrue("'" + boolean66 + "' != '" + false + "'", boolean66 == false);
+        org.junit.Assert.assertNotNull(wildcardClass67);
+        org.junit.Assert.assertTrue("'" + boolean68 + "' != '" + false + "'", boolean68 == false);
+        org.junit.Assert.assertTrue("'" + boolean69 + "' != '" + false + "'", boolean69 == false);
+        org.junit.Assert.assertTrue("'" + boolean70 + "' != '" + true + "'", boolean70 == true);
+        org.junit.Assert.assertTrue("'" + boolean71 + "' != '" + false + "'", boolean71 == false);
+        org.junit.Assert.assertNotNull(cell72);
+        org.junit.Assert.assertTrue("'" + boolean73 + "' != '" + true + "'", boolean73 == true);
+        org.junit.Assert.assertTrue("'" + boolean75 + "' != '" + false + "'", boolean75 == false);
+        org.junit.Assert.assertTrue("'" + boolean77 + "' != '" + false + "'", boolean77 == false);
+        org.junit.Assert.assertTrue("'" + boolean78 + "' != '" + true + "'", boolean78 == true);
+        org.junit.Assert.assertTrue("'" + boolean79 + "' != '" + false + "'", boolean79 == false);
+    }
+
+    @Test
+    public void test228() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test228");
+        ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
+        java.lang.String str1 = cell0.toString();
+        ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
+        int int3 = cell2.getValue();
+        ar.edu.unrc.game2048.Cell cell4 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell5 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean6 = cell4.canMergeWith(cell5);
+        java.lang.Object obj7 = null;
+        boolean boolean8 = cell5.equals(obj7);
+        int int9 = cell5.getValue();
+        boolean boolean10 = cell2.canMergeWith(cell5);
+        boolean boolean12 = cell2.equals((java.lang.Object) ' ');
+        ar.edu.unrc.game2048.Cell cell13 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean14 = cell2.canMergeWith(cell13);
+        boolean boolean15 = cell0.canMergeWith(cell13);
+        java.lang.Class<?> wildcardClass16 = cell0.getClass();
+        org.junit.Assert.assertNotNull(cell0);
+        org.junit.Assert.assertEquals("'" + str1 + "' != '" + "." + "'", str1, ".");
+        org.junit.Assert.assertNotNull(cell2);
+        org.junit.Assert.assertTrue("'" + int3 + "' != '" + 0 + "'", int3 == 0);
+        org.junit.Assert.assertNotNull(cell4);
+        org.junit.Assert.assertNotNull(cell5);
+        org.junit.Assert.assertTrue("'" + boolean6 + "' != '" + false + "'", boolean6 == false);
+        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
+        org.junit.Assert.assertTrue("'" + int9 + "' != '" + 0 + "'", int9 == 0);
+        org.junit.Assert.assertTrue("'" + boolean10 + "' != '" + false + "'", boolean10 == false);
+        org.junit.Assert.assertTrue("'" + boolean12 + "' != '" + false + "'", boolean12 == false);
+        org.junit.Assert.assertNotNull(cell13);
+        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
+        org.junit.Assert.assertTrue("'" + boolean15 + "' != '" + false + "'", boolean15 == false);
+        org.junit.Assert.assertNotNull(wildcardClass16);
+    }
+
+    @Test
+    public void test229() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test229");
+        ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean2 = cell0.canMergeWith(cell1);
+        java.lang.String str3 = cell1.toString();
+        java.lang.String str4 = cell1.toString();
+        int int5 = cell1.getValue();
+        ar.edu.unrc.game2048.Cell cell6 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell7 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean8 = cell6.canMergeWith(cell7);
+        java.lang.Object obj9 = null;
+        boolean boolean10 = cell7.equals(obj9);
+        int int11 = cell7.getValue();
+        java.lang.String str12 = cell7.toString();
+        ar.edu.unrc.game2048.Cell cell13 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell14 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean15 = cell13.canMergeWith(cell14);
+        java.lang.Object obj16 = null;
+        boolean boolean17 = cell14.equals(obj16);
+        java.lang.String str18 = cell14.toString();
+        ar.edu.unrc.game2048.Cell cell19 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean20 = cell19.isEmpty();
+        boolean boolean22 = cell19.equals((java.lang.Object) ' ');
+        ar.edu.unrc.game2048.Cell cell23 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell24 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean25 = cell23.canMergeWith(cell24);
+        java.lang.Class<?> wildcardClass26 = cell24.getClass();
+        boolean boolean27 = cell19.equals((java.lang.Object) wildcardClass26);
+        boolean boolean28 = cell14.equals((java.lang.Object) boolean27);
+        boolean boolean29 = cell7.canMergeWith(cell14);
+        java.lang.String str30 = cell7.toString();
+        boolean boolean31 = cell1.equals((java.lang.Object) cell7);
+        ar.edu.unrc.game2048.Cell cell32 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell33 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean34 = cell32.canMergeWith(cell33);
+        java.lang.String str35 = cell33.toString();
+        ar.edu.unrc.game2048.Cell cell36 = ar.edu.unrc.game2048.Cell.EMPTY;
+        int int37 = cell36.getValue();
+        ar.edu.unrc.game2048.Cell cell38 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell39 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean40 = cell38.canMergeWith(cell39);
+        java.lang.Object obj41 = null;
+        boolean boolean42 = cell39.equals(obj41);
+        int int43 = cell39.getValue();
+        boolean boolean44 = cell36.canMergeWith(cell39);
+        ar.edu.unrc.game2048.Cell cell45 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell46 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean47 = cell45.canMergeWith(cell46);
+        boolean boolean49 = cell45.equals((java.lang.Object) (byte) 100);
+        boolean boolean50 = cell39.canMergeWith(cell45);
+        boolean boolean51 = cell33.canMergeWith(cell39);
+        boolean boolean52 = cell39.isEmpty();
+        int int53 = cell39.getValue();
+        boolean boolean54 = cell1.canMergeWith(cell39);
+        int int55 = cell1.getValue();
+        org.junit.Assert.assertNotNull(cell0);
+        org.junit.Assert.assertNotNull(cell1);
+        org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
+        org.junit.Assert.assertEquals("'" + str3 + "' != '" + "." + "'", str3, ".");
+        org.junit.Assert.assertEquals("'" + str4 + "' != '" + "." + "'", str4, ".");
+        org.junit.Assert.assertTrue("'" + int5 + "' != '" + 0 + "'", int5 == 0);
+        org.junit.Assert.assertNotNull(cell6);
+        org.junit.Assert.assertNotNull(cell7);
+        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
+        org.junit.Assert.assertTrue("'" + boolean10 + "' != '" + false + "'", boolean10 == false);
+        org.junit.Assert.assertTrue("'" + int11 + "' != '" + 0 + "'", int11 == 0);
+        org.junit.Assert.assertEquals("'" + str12 + "' != '" + "." + "'", str12, ".");
+        org.junit.Assert.assertNotNull(cell13);
+        org.junit.Assert.assertNotNull(cell14);
+        org.junit.Assert.assertTrue("'" + boolean15 + "' != '" + false + "'", boolean15 == false);
+        org.junit.Assert.assertTrue("'" + boolean17 + "' != '" + false + "'", boolean17 == false);
+        org.junit.Assert.assertEquals("'" + str18 + "' != '" + "." + "'", str18, ".");
+        org.junit.Assert.assertNotNull(cell19);
+        org.junit.Assert.assertTrue("'" + boolean20 + "' != '" + true + "'", boolean20 == true);
+        org.junit.Assert.assertTrue("'" + boolean22 + "' != '" + false + "'", boolean22 == false);
+        org.junit.Assert.assertNotNull(cell23);
+        org.junit.Assert.assertNotNull(cell24);
+        org.junit.Assert.assertTrue("'" + boolean25 + "' != '" + false + "'", boolean25 == false);
+        org.junit.Assert.assertNotNull(wildcardClass26);
+        org.junit.Assert.assertTrue("'" + boolean27 + "' != '" + false + "'", boolean27 == false);
+        org.junit.Assert.assertTrue("'" + boolean28 + "' != '" + false + "'", boolean28 == false);
+        org.junit.Assert.assertTrue("'" + boolean29 + "' != '" + false + "'", boolean29 == false);
+        org.junit.Assert.assertEquals("'" + str30 + "' != '" + "." + "'", str30, ".");
+        org.junit.Assert.assertTrue("'" + boolean31 + "' != '" + true + "'", boolean31 == true);
+        org.junit.Assert.assertNotNull(cell32);
+        org.junit.Assert.assertNotNull(cell33);
+        org.junit.Assert.assertTrue("'" + boolean34 + "' != '" + false + "'", boolean34 == false);
+        org.junit.Assert.assertEquals("'" + str35 + "' != '" + "." + "'", str35, ".");
+        org.junit.Assert.assertNotNull(cell36);
+        org.junit.Assert.assertTrue("'" + int37 + "' != '" + 0 + "'", int37 == 0);
+        org.junit.Assert.assertNotNull(cell38);
+        org.junit.Assert.assertNotNull(cell39);
+        org.junit.Assert.assertTrue("'" + boolean40 + "' != '" + false + "'", boolean40 == false);
+        org.junit.Assert.assertTrue("'" + boolean42 + "' != '" + false + "'", boolean42 == false);
+        org.junit.Assert.assertTrue("'" + int43 + "' != '" + 0 + "'", int43 == 0);
+        org.junit.Assert.assertTrue("'" + boolean44 + "' != '" + false + "'", boolean44 == false);
+        org.junit.Assert.assertNotNull(cell45);
+        org.junit.Assert.assertNotNull(cell46);
+        org.junit.Assert.assertTrue("'" + boolean47 + "' != '" + false + "'", boolean47 == false);
+        org.junit.Assert.assertTrue("'" + boolean49 + "' != '" + false + "'", boolean49 == false);
+        org.junit.Assert.assertTrue("'" + boolean50 + "' != '" + false + "'", boolean50 == false);
+        org.junit.Assert.assertTrue("'" + boolean51 + "' != '" + false + "'", boolean51 == false);
+        org.junit.Assert.assertTrue("'" + boolean52 + "' != '" + true + "'", boolean52 == true);
+        org.junit.Assert.assertTrue("'" + int53 + "' != '" + 0 + "'", int53 == 0);
+        org.junit.Assert.assertTrue("'" + boolean54 + "' != '" + false + "'", boolean54 == false);
+        org.junit.Assert.assertTrue("'" + int55 + "' != '" + 0 + "'", int55 == 0);
+    }
+
+    @Test
+    public void test230() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test230");
+        ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean1 = cell0.isEmpty();
+        ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell3 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean4 = cell2.canMergeWith(cell3);
+        java.lang.Object obj5 = null;
+        boolean boolean6 = cell3.equals(obj5);
+        java.lang.String str7 = cell3.toString();
+        boolean boolean8 = cell0.canMergeWith(cell3);
+        ar.edu.unrc.game2048.Cell cell10 = new ar.edu.unrc.game2048.Cell((int) ' ');
+        boolean boolean11 = cell0.canMergeWith(cell10);
+        ar.edu.unrc.game2048.Cell cell12 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell13 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean14 = cell12.canMergeWith(cell13);
+        java.lang.Object obj15 = null;
+        boolean boolean16 = cell13.equals(obj15);
+        java.lang.String str17 = cell13.toString();
+        ar.edu.unrc.game2048.Cell cell18 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean19 = cell18.isEmpty();
+        boolean boolean21 = cell18.equals((java.lang.Object) ' ');
+        ar.edu.unrc.game2048.Cell cell22 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell23 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean24 = cell22.canMergeWith(cell23);
+        java.lang.Class<?> wildcardClass25 = cell23.getClass();
+        boolean boolean26 = cell18.equals((java.lang.Object) wildcardClass25);
+        boolean boolean27 = cell13.equals((java.lang.Object) boolean26);
+        boolean boolean28 = cell13.isEmpty();
+        boolean boolean29 = cell0.equals((java.lang.Object) cell13);
+        org.junit.Assert.assertNotNull(cell0);
+        org.junit.Assert.assertTrue("'" + boolean1 + "' != '" + true + "'", boolean1 == true);
+        org.junit.Assert.assertNotNull(cell2);
+        org.junit.Assert.assertNotNull(cell3);
+        org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
+        org.junit.Assert.assertTrue("'" + boolean6 + "' != '" + false + "'", boolean6 == false);
+        org.junit.Assert.assertEquals("'" + str7 + "' != '" + "." + "'", str7, ".");
+        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
+        org.junit.Assert.assertTrue("'" + boolean11 + "' != '" + false + "'", boolean11 == false);
+        org.junit.Assert.assertNotNull(cell12);
+        org.junit.Assert.assertNotNull(cell13);
+        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
+        org.junit.Assert.assertTrue("'" + boolean16 + "' != '" + false + "'", boolean16 == false);
+        org.junit.Assert.assertEquals("'" + str17 + "' != '" + "." + "'", str17, ".");
+        org.junit.Assert.assertNotNull(cell18);
+        org.junit.Assert.assertTrue("'" + boolean19 + "' != '" + true + "'", boolean19 == true);
+        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + false + "'", boolean21 == false);
+        org.junit.Assert.assertNotNull(cell22);
+        org.junit.Assert.assertNotNull(cell23);
+        org.junit.Assert.assertTrue("'" + boolean24 + "' != '" + false + "'", boolean24 == false);
+        org.junit.Assert.assertNotNull(wildcardClass25);
+        org.junit.Assert.assertTrue("'" + boolean26 + "' != '" + false + "'", boolean26 == false);
+        org.junit.Assert.assertTrue("'" + boolean27 + "' != '" + false + "'", boolean27 == false);
+        org.junit.Assert.assertTrue("'" + boolean28 + "' != '" + true + "'", boolean28 == true);
+        org.junit.Assert.assertTrue("'" + boolean29 + "' != '" + true + "'", boolean29 == true);
+    }
+
+    @Test
+    public void test231() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test231");
+        ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean2 = cell0.canMergeWith(cell1);
+        ar.edu.unrc.game2048.Cell cell4 = new ar.edu.unrc.game2048.Cell((int) ' ');
+        ar.edu.unrc.game2048.Cell cell5 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell6 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean7 = cell5.canMergeWith(cell6);
+        java.lang.Object obj8 = null;
+        boolean boolean9 = cell6.equals(obj8);
+        int int10 = cell6.getValue();
+        java.lang.String str11 = cell6.toString();
+        ar.edu.unrc.game2048.Cell cell12 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell13 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean14 = cell12.canMergeWith(cell13);
+        java.lang.Object obj15 = null;
+        boolean boolean16 = cell13.equals(obj15);
+        java.lang.String str17 = cell13.toString();
+        ar.edu.unrc.game2048.Cell cell18 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean19 = cell18.isEmpty();
+        boolean boolean21 = cell18.equals((java.lang.Object) ' ');
+        ar.edu.unrc.game2048.Cell cell22 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell23 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean24 = cell22.canMergeWith(cell23);
+        java.lang.Class<?> wildcardClass25 = cell23.getClass();
+        boolean boolean26 = cell18.equals((java.lang.Object) wildcardClass25);
+        boolean boolean27 = cell13.equals((java.lang.Object) boolean26);
+        boolean boolean28 = cell6.canMergeWith(cell13);
+        java.lang.String str29 = cell13.toString();
+        boolean boolean30 = cell4.equals((java.lang.Object) cell13);
+        boolean boolean31 = cell1.equals((java.lang.Object) boolean30);
+        java.lang.String str32 = cell1.toString();
+        java.lang.String str33 = cell1.toString();
+        org.junit.Assert.assertNotNull(cell0);
+        org.junit.Assert.assertNotNull(cell1);
+        org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
+        org.junit.Assert.assertNotNull(cell5);
+        org.junit.Assert.assertNotNull(cell6);
+        org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + false + "'", boolean7 == false);
+        org.junit.Assert.assertTrue("'" + boolean9 + "' != '" + false + "'", boolean9 == false);
+        org.junit.Assert.assertTrue("'" + int10 + "' != '" + 0 + "'", int10 == 0);
+        org.junit.Assert.assertEquals("'" + str11 + "' != '" + "." + "'", str11, ".");
+        org.junit.Assert.assertNotNull(cell12);
+        org.junit.Assert.assertNotNull(cell13);
+        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
+        org.junit.Assert.assertTrue("'" + boolean16 + "' != '" + false + "'", boolean16 == false);
+        org.junit.Assert.assertEquals("'" + str17 + "' != '" + "." + "'", str17, ".");
+        org.junit.Assert.assertNotNull(cell18);
+        org.junit.Assert.assertTrue("'" + boolean19 + "' != '" + true + "'", boolean19 == true);
+        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + false + "'", boolean21 == false);
+        org.junit.Assert.assertNotNull(cell22);
+        org.junit.Assert.assertNotNull(cell23);
+        org.junit.Assert.assertTrue("'" + boolean24 + "' != '" + false + "'", boolean24 == false);
+        org.junit.Assert.assertNotNull(wildcardClass25);
+        org.junit.Assert.assertTrue("'" + boolean26 + "' != '" + false + "'", boolean26 == false);
+        org.junit.Assert.assertTrue("'" + boolean27 + "' != '" + false + "'", boolean27 == false);
+        org.junit.Assert.assertTrue("'" + boolean28 + "' != '" + false + "'", boolean28 == false);
+        org.junit.Assert.assertEquals("'" + str29 + "' != '" + "." + "'", str29, ".");
+        org.junit.Assert.assertTrue("'" + boolean30 + "' != '" + false + "'", boolean30 == false);
+        org.junit.Assert.assertTrue("'" + boolean31 + "' != '" + false + "'", boolean31 == false);
+        org.junit.Assert.assertEquals("'" + str32 + "' != '" + "." + "'", str32, ".");
+        org.junit.Assert.assertEquals("'" + str33 + "' != '" + "." + "'", str33, ".");
+    }
+
+    @Test
+    public void test232() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test232");
+        ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean2 = cell0.canMergeWith(cell1);
+        java.lang.Object obj3 = null;
+        boolean boolean4 = cell1.equals(obj3);
+        int int5 = cell1.getValue();
+        java.lang.String str6 = cell1.toString();
+        ar.edu.unrc.game2048.Cell cell7 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell8 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean9 = cell7.canMergeWith(cell8);
+        java.lang.Object obj10 = null;
+        boolean boolean11 = cell8.equals(obj10);
+        java.lang.String str12 = cell8.toString();
+        ar.edu.unrc.game2048.Cell cell13 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean14 = cell13.isEmpty();
+        boolean boolean16 = cell13.equals((java.lang.Object) ' ');
+        ar.edu.unrc.game2048.Cell cell17 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell18 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean19 = cell17.canMergeWith(cell18);
+        java.lang.Class<?> wildcardClass20 = cell18.getClass();
+        boolean boolean21 = cell13.equals((java.lang.Object) wildcardClass20);
+        boolean boolean22 = cell8.equals((java.lang.Object) boolean21);
+        boolean boolean23 = cell1.canMergeWith(cell8);
+        java.lang.String str24 = cell8.toString();
+        ar.edu.unrc.game2048.Cell cell25 = ar.edu.unrc.game2048.Cell.EMPTY;
+        int int26 = cell25.getValue();
+        ar.edu.unrc.game2048.Cell cell27 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell28 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean29 = cell27.canMergeWith(cell28);
+        java.lang.Object obj30 = null;
+        boolean boolean31 = cell28.equals(obj30);
+        int int32 = cell28.getValue();
+        boolean boolean33 = cell25.canMergeWith(cell28);
+        boolean boolean34 = cell8.canMergeWith(cell28);
+        ar.edu.unrc.game2048.Cell cell35 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell36 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean37 = cell35.canMergeWith(cell36);
+        java.lang.Object obj38 = null;
+        boolean boolean39 = cell36.equals(obj38);
+        java.lang.String str40 = cell36.toString();
+        ar.edu.unrc.game2048.Cell cell41 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean42 = cell41.isEmpty();
+        boolean boolean44 = cell41.equals((java.lang.Object) ' ');
+        ar.edu.unrc.game2048.Cell cell45 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell46 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean47 = cell45.canMergeWith(cell46);
+        java.lang.Class<?> wildcardClass48 = cell46.getClass();
+        boolean boolean49 = cell41.equals((java.lang.Object) wildcardClass48);
+        boolean boolean50 = cell36.equals((java.lang.Object) boolean49);
+        int int51 = cell36.getValue();
+        int int52 = cell36.getValue();
+        boolean boolean53 = cell28.canMergeWith(cell36);
+        ar.edu.unrc.game2048.Cell cell54 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell55 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean56 = cell54.canMergeWith(cell55);
+        java.lang.Object obj57 = null;
+        boolean boolean58 = cell55.equals(obj57);
+        java.lang.String str59 = cell55.toString();
+        ar.edu.unrc.game2048.Cell cell60 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean61 = cell60.isEmpty();
+        boolean boolean63 = cell60.equals((java.lang.Object) ' ');
+        ar.edu.unrc.game2048.Cell cell64 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell65 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean66 = cell64.canMergeWith(cell65);
+        java.lang.Class<?> wildcardClass67 = cell65.getClass();
+        boolean boolean68 = cell60.equals((java.lang.Object) wildcardClass67);
+        boolean boolean69 = cell55.equals((java.lang.Object) boolean68);
+        boolean boolean70 = cell55.isEmpty();
+        boolean boolean71 = cell28.canMergeWith(cell55);
+        int int72 = cell55.getValue();
+        boolean boolean73 = cell55.isEmpty();
+        org.junit.Assert.assertNotNull(cell0);
+        org.junit.Assert.assertNotNull(cell1);
+        org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
+        org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
+        org.junit.Assert.assertTrue("'" + int5 + "' != '" + 0 + "'", int5 == 0);
+        org.junit.Assert.assertEquals("'" + str6 + "' != '" + "." + "'", str6, ".");
+        org.junit.Assert.assertNotNull(cell7);
+        org.junit.Assert.assertNotNull(cell8);
+        org.junit.Assert.assertTrue("'" + boolean9 + "' != '" + false + "'", boolean9 == false);
+        org.junit.Assert.assertTrue("'" + boolean11 + "' != '" + false + "'", boolean11 == false);
+        org.junit.Assert.assertEquals("'" + str12 + "' != '" + "." + "'", str12, ".");
+        org.junit.Assert.assertNotNull(cell13);
+        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + true + "'", boolean14 == true);
+        org.junit.Assert.assertTrue("'" + boolean16 + "' != '" + false + "'", boolean16 == false);
+        org.junit.Assert.assertNotNull(cell17);
+        org.junit.Assert.assertNotNull(cell18);
+        org.junit.Assert.assertTrue("'" + boolean19 + "' != '" + false + "'", boolean19 == false);
+        org.junit.Assert.assertNotNull(wildcardClass20);
+        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + false + "'", boolean21 == false);
+        org.junit.Assert.assertTrue("'" + boolean22 + "' != '" + false + "'", boolean22 == false);
+        org.junit.Assert.assertTrue("'" + boolean23 + "' != '" + false + "'", boolean23 == false);
+        org.junit.Assert.assertEquals("'" + str24 + "' != '" + "." + "'", str24, ".");
+        org.junit.Assert.assertNotNull(cell25);
+        org.junit.Assert.assertTrue("'" + int26 + "' != '" + 0 + "'", int26 == 0);
+        org.junit.Assert.assertNotNull(cell27);
+        org.junit.Assert.assertNotNull(cell28);
+        org.junit.Assert.assertTrue("'" + boolean29 + "' != '" + false + "'", boolean29 == false);
+        org.junit.Assert.assertTrue("'" + boolean31 + "' != '" + false + "'", boolean31 == false);
+        org.junit.Assert.assertTrue("'" + int32 + "' != '" + 0 + "'", int32 == 0);
+        org.junit.Assert.assertTrue("'" + boolean33 + "' != '" + false + "'", boolean33 == false);
+        org.junit.Assert.assertTrue("'" + boolean34 + "' != '" + false + "'", boolean34 == false);
+        org.junit.Assert.assertNotNull(cell35);
+        org.junit.Assert.assertNotNull(cell36);
+        org.junit.Assert.assertTrue("'" + boolean37 + "' != '" + false + "'", boolean37 == false);
+        org.junit.Assert.assertTrue("'" + boolean39 + "' != '" + false + "'", boolean39 == false);
+        org.junit.Assert.assertEquals("'" + str40 + "' != '" + "." + "'", str40, ".");
+        org.junit.Assert.assertNotNull(cell41);
+        org.junit.Assert.assertTrue("'" + boolean42 + "' != '" + true + "'", boolean42 == true);
+        org.junit.Assert.assertTrue("'" + boolean44 + "' != '" + false + "'", boolean44 == false);
+        org.junit.Assert.assertNotNull(cell45);
+        org.junit.Assert.assertNotNull(cell46);
+        org.junit.Assert.assertTrue("'" + boolean47 + "' != '" + false + "'", boolean47 == false);
+        org.junit.Assert.assertNotNull(wildcardClass48);
+        org.junit.Assert.assertTrue("'" + boolean49 + "' != '" + false + "'", boolean49 == false);
+        org.junit.Assert.assertTrue("'" + boolean50 + "' != '" + false + "'", boolean50 == false);
+        org.junit.Assert.assertTrue("'" + int51 + "' != '" + 0 + "'", int51 == 0);
+        org.junit.Assert.assertTrue("'" + int52 + "' != '" + 0 + "'", int52 == 0);
+        org.junit.Assert.assertTrue("'" + boolean53 + "' != '" + false + "'", boolean53 == false);
+        org.junit.Assert.assertNotNull(cell54);
+        org.junit.Assert.assertNotNull(cell55);
+        org.junit.Assert.assertTrue("'" + boolean56 + "' != '" + false + "'", boolean56 == false);
+        org.junit.Assert.assertTrue("'" + boolean58 + "' != '" + false + "'", boolean58 == false);
+        org.junit.Assert.assertEquals("'" + str59 + "' != '" + "." + "'", str59, ".");
+        org.junit.Assert.assertNotNull(cell60);
+        org.junit.Assert.assertTrue("'" + boolean61 + "' != '" + true + "'", boolean61 == true);
+        org.junit.Assert.assertTrue("'" + boolean63 + "' != '" + false + "'", boolean63 == false);
+        org.junit.Assert.assertNotNull(cell64);
+        org.junit.Assert.assertNotNull(cell65);
+        org.junit.Assert.assertTrue("'" + boolean66 + "' != '" + false + "'", boolean66 == false);
+        org.junit.Assert.assertNotNull(wildcardClass67);
+        org.junit.Assert.assertTrue("'" + boolean68 + "' != '" + false + "'", boolean68 == false);
+        org.junit.Assert.assertTrue("'" + boolean69 + "' != '" + false + "'", boolean69 == false);
+        org.junit.Assert.assertTrue("'" + boolean70 + "' != '" + true + "'", boolean70 == true);
+        org.junit.Assert.assertTrue("'" + boolean71 + "' != '" + false + "'", boolean71 == false);
+        org.junit.Assert.assertTrue("'" + int72 + "' != '" + 0 + "'", int72 == 0);
+        org.junit.Assert.assertTrue("'" + boolean73 + "' != '" + true + "'", boolean73 == true);
+    }
+
+    @Test
+    public void test233() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test233");
+        ar.edu.unrc.game2048.Cell cell1 = new ar.edu.unrc.game2048.Cell((int) ' ');
+        ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell3 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean4 = cell2.canMergeWith(cell3);
+        java.lang.Object obj5 = null;
+        boolean boolean6 = cell3.equals(obj5);
+        int int7 = cell3.getValue();
+        java.lang.String str8 = cell3.toString();
+        ar.edu.unrc.game2048.Cell cell9 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell10 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean11 = cell9.canMergeWith(cell10);
+        java.lang.Object obj12 = null;
+        boolean boolean13 = cell10.equals(obj12);
+        java.lang.String str14 = cell10.toString();
+        ar.edu.unrc.game2048.Cell cell15 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean16 = cell15.isEmpty();
+        boolean boolean18 = cell15.equals((java.lang.Object) ' ');
+        ar.edu.unrc.game2048.Cell cell19 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell20 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean21 = cell19.canMergeWith(cell20);
+        java.lang.Class<?> wildcardClass22 = cell20.getClass();
+        boolean boolean23 = cell15.equals((java.lang.Object) wildcardClass22);
+        boolean boolean24 = cell10.equals((java.lang.Object) boolean23);
+        boolean boolean25 = cell3.canMergeWith(cell10);
+        java.lang.String str26 = cell10.toString();
+        boolean boolean27 = cell1.equals((java.lang.Object) cell10);
+        ar.edu.unrc.game2048.Cell cell28 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell29 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean30 = cell28.canMergeWith(cell29);
+        java.lang.Object obj31 = null;
+        boolean boolean32 = cell29.equals(obj31);
+        java.lang.String str33 = cell29.toString();
+        ar.edu.unrc.game2048.Cell cell34 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell35 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean36 = cell34.canMergeWith(cell35);
+        boolean boolean37 = cell29.canMergeWith(cell34);
+        java.lang.String str38 = cell29.toString();
+        boolean boolean39 = cell10.canMergeWith(cell29);
+        int int40 = cell29.getValue();
+        ar.edu.unrc.game2048.Cell cell41 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell42 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean43 = cell41.canMergeWith(cell42);
+        java.lang.String str44 = cell42.toString();
+        boolean boolean45 = cell29.canMergeWith(cell42);
+        org.junit.Assert.assertNotNull(cell2);
+        org.junit.Assert.assertNotNull(cell3);
+        org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
+        org.junit.Assert.assertTrue("'" + boolean6 + "' != '" + false + "'", boolean6 == false);
+        org.junit.Assert.assertTrue("'" + int7 + "' != '" + 0 + "'", int7 == 0);
+        org.junit.Assert.assertEquals("'" + str8 + "' != '" + "." + "'", str8, ".");
+        org.junit.Assert.assertNotNull(cell9);
+        org.junit.Assert.assertNotNull(cell10);
+        org.junit.Assert.assertTrue("'" + boolean11 + "' != '" + false + "'", boolean11 == false);
+        org.junit.Assert.assertTrue("'" + boolean13 + "' != '" + false + "'", boolean13 == false);
+        org.junit.Assert.assertEquals("'" + str14 + "' != '" + "." + "'", str14, ".");
+        org.junit.Assert.assertNotNull(cell15);
+        org.junit.Assert.assertTrue("'" + boolean16 + "' != '" + true + "'", boolean16 == true);
+        org.junit.Assert.assertTrue("'" + boolean18 + "' != '" + false + "'", boolean18 == false);
+        org.junit.Assert.assertNotNull(cell19);
+        org.junit.Assert.assertNotNull(cell20);
+        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + false + "'", boolean21 == false);
+        org.junit.Assert.assertNotNull(wildcardClass22);
+        org.junit.Assert.assertTrue("'" + boolean23 + "' != '" + false + "'", boolean23 == false);
+        org.junit.Assert.assertTrue("'" + boolean24 + "' != '" + false + "'", boolean24 == false);
+        org.junit.Assert.assertTrue("'" + boolean25 + "' != '" + false + "'", boolean25 == false);
+        org.junit.Assert.assertEquals("'" + str26 + "' != '" + "." + "'", str26, ".");
+        org.junit.Assert.assertTrue("'" + boolean27 + "' != '" + false + "'", boolean27 == false);
+        org.junit.Assert.assertNotNull(cell28);
+        org.junit.Assert.assertNotNull(cell29);
+        org.junit.Assert.assertTrue("'" + boolean30 + "' != '" + false + "'", boolean30 == false);
+        org.junit.Assert.assertTrue("'" + boolean32 + "' != '" + false + "'", boolean32 == false);
+        org.junit.Assert.assertEquals("'" + str33 + "' != '" + "." + "'", str33, ".");
+        org.junit.Assert.assertNotNull(cell34);
+        org.junit.Assert.assertNotNull(cell35);
+        org.junit.Assert.assertTrue("'" + boolean36 + "' != '" + false + "'", boolean36 == false);
+        org.junit.Assert.assertTrue("'" + boolean37 + "' != '" + false + "'", boolean37 == false);
+        org.junit.Assert.assertEquals("'" + str38 + "' != '" + "." + "'", str38, ".");
+        org.junit.Assert.assertTrue("'" + boolean39 + "' != '" + false + "'", boolean39 == false);
+        org.junit.Assert.assertTrue("'" + int40 + "' != '" + 0 + "'", int40 == 0);
+        org.junit.Assert.assertNotNull(cell41);
+        org.junit.Assert.assertNotNull(cell42);
+        org.junit.Assert.assertTrue("'" + boolean43 + "' != '" + false + "'", boolean43 == false);
+        org.junit.Assert.assertEquals("'" + str44 + "' != '" + "." + "'", str44, ".");
+        org.junit.Assert.assertTrue("'" + boolean45 + "' != '" + false + "'", boolean45 == false);
+    }
+
+    @Test
+    public void test234() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test234");
+        ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
+        int int1 = cell0.getValue();
+        ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell3 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean4 = cell2.canMergeWith(cell3);
+        java.lang.Object obj5 = null;
+        boolean boolean6 = cell3.equals(obj5);
+        int int7 = cell3.getValue();
+        boolean boolean8 = cell0.canMergeWith(cell3);
+        ar.edu.unrc.game2048.Cell cell9 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell10 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean11 = cell9.canMergeWith(cell10);
+        boolean boolean13 = cell9.equals((java.lang.Object) (byte) 100);
+        boolean boolean14 = cell3.canMergeWith(cell9);
+        ar.edu.unrc.game2048.Cell cell15 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell16 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean17 = cell15.canMergeWith(cell16);
+        java.lang.Object obj18 = null;
+        boolean boolean19 = cell16.equals(obj18);
+        boolean boolean20 = cell16.isEmpty();
+        ar.edu.unrc.game2048.Cell cell21 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell22 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean23 = cell21.canMergeWith(cell22);
+        java.lang.String str24 = cell22.toString();
+        boolean boolean25 = cell16.canMergeWith(cell22);
+        boolean boolean26 = cell3.canMergeWith(cell22);
+        java.lang.String str27 = cell3.toString();
+        ar.edu.unrc.game2048.Cell cell28 = ar.edu.unrc.game2048.Cell.EMPTY;
+        int int29 = cell28.getValue();
+        ar.edu.unrc.game2048.Cell cell30 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell31 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean32 = cell30.canMergeWith(cell31);
+        java.lang.Object obj33 = null;
+        boolean boolean34 = cell31.equals(obj33);
+        int int35 = cell31.getValue();
+        boolean boolean36 = cell28.canMergeWith(cell31);
+        boolean boolean38 = cell28.equals((java.lang.Object) ' ');
+        ar.edu.unrc.game2048.Cell cell39 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean40 = cell28.canMergeWith(cell39);
+        ar.edu.unrc.game2048.Cell cell41 = ar.edu.unrc.game2048.Cell.EMPTY;
+        int int42 = cell41.getValue();
+        ar.edu.unrc.game2048.Cell cell43 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell44 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean45 = cell43.canMergeWith(cell44);
+        java.lang.Object obj46 = null;
+        boolean boolean47 = cell44.equals(obj46);
+        int int48 = cell44.getValue();
+        boolean boolean49 = cell41.canMergeWith(cell44);
+        boolean boolean51 = cell41.equals((java.lang.Object) ' ');
+        ar.edu.unrc.game2048.Cell cell52 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean53 = cell41.canMergeWith(cell52);
+        boolean boolean54 = cell39.canMergeWith(cell41);
+        boolean boolean55 = cell41.isEmpty();
+        boolean boolean56 = cell3.canMergeWith(cell41);
+        ar.edu.unrc.game2048.Cell cell57 = ar.edu.unrc.game2048.Cell.EMPTY;
+        int int58 = cell57.getValue();
+        ar.edu.unrc.game2048.Cell cell59 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell60 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean61 = cell59.canMergeWith(cell60);
+        java.lang.Object obj62 = null;
+        boolean boolean63 = cell60.equals(obj62);
+        int int64 = cell60.getValue();
+        boolean boolean65 = cell57.canMergeWith(cell60);
+        ar.edu.unrc.game2048.Cell cell66 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell67 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean68 = cell66.canMergeWith(cell67);
+        boolean boolean70 = cell66.equals((java.lang.Object) (byte) 100);
+        boolean boolean71 = cell60.canMergeWith(cell66);
+        boolean boolean72 = cell3.equals((java.lang.Object) cell60);
+        boolean boolean73 = cell60.isEmpty();
+        org.junit.Assert.assertNotNull(cell0);
+        org.junit.Assert.assertTrue("'" + int1 + "' != '" + 0 + "'", int1 == 0);
+        org.junit.Assert.assertNotNull(cell2);
+        org.junit.Assert.assertNotNull(cell3);
+        org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
+        org.junit.Assert.assertTrue("'" + boolean6 + "' != '" + false + "'", boolean6 == false);
+        org.junit.Assert.assertTrue("'" + int7 + "' != '" + 0 + "'", int7 == 0);
+        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
+        org.junit.Assert.assertNotNull(cell9);
+        org.junit.Assert.assertNotNull(cell10);
+        org.junit.Assert.assertTrue("'" + boolean11 + "' != '" + false + "'", boolean11 == false);
+        org.junit.Assert.assertTrue("'" + boolean13 + "' != '" + false + "'", boolean13 == false);
+        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
+        org.junit.Assert.assertNotNull(cell15);
+        org.junit.Assert.assertNotNull(cell16);
+        org.junit.Assert.assertTrue("'" + boolean17 + "' != '" + false + "'", boolean17 == false);
+        org.junit.Assert.assertTrue("'" + boolean19 + "' != '" + false + "'", boolean19 == false);
+        org.junit.Assert.assertTrue("'" + boolean20 + "' != '" + true + "'", boolean20 == true);
+        org.junit.Assert.assertNotNull(cell21);
+        org.junit.Assert.assertNotNull(cell22);
+        org.junit.Assert.assertTrue("'" + boolean23 + "' != '" + false + "'", boolean23 == false);
+        org.junit.Assert.assertEquals("'" + str24 + "' != '" + "." + "'", str24, ".");
+        org.junit.Assert.assertTrue("'" + boolean25 + "' != '" + false + "'", boolean25 == false);
+        org.junit.Assert.assertTrue("'" + boolean26 + "' != '" + false + "'", boolean26 == false);
+        org.junit.Assert.assertEquals("'" + str27 + "' != '" + "." + "'", str27, ".");
+        org.junit.Assert.assertNotNull(cell28);
+        org.junit.Assert.assertTrue("'" + int29 + "' != '" + 0 + "'", int29 == 0);
+        org.junit.Assert.assertNotNull(cell30);
+        org.junit.Assert.assertNotNull(cell31);
+        org.junit.Assert.assertTrue("'" + boolean32 + "' != '" + false + "'", boolean32 == false);
+        org.junit.Assert.assertTrue("'" + boolean34 + "' != '" + false + "'", boolean34 == false);
+        org.junit.Assert.assertTrue("'" + int35 + "' != '" + 0 + "'", int35 == 0);
+        org.junit.Assert.assertTrue("'" + boolean36 + "' != '" + false + "'", boolean36 == false);
+        org.junit.Assert.assertTrue("'" + boolean38 + "' != '" + false + "'", boolean38 == false);
+        org.junit.Assert.assertNotNull(cell39);
+        org.junit.Assert.assertTrue("'" + boolean40 + "' != '" + false + "'", boolean40 == false);
+        org.junit.Assert.assertNotNull(cell41);
+        org.junit.Assert.assertTrue("'" + int42 + "' != '" + 0 + "'", int42 == 0);
+        org.junit.Assert.assertNotNull(cell43);
+        org.junit.Assert.assertNotNull(cell44);
+        org.junit.Assert.assertTrue("'" + boolean45 + "' != '" + false + "'", boolean45 == false);
+        org.junit.Assert.assertTrue("'" + boolean47 + "' != '" + false + "'", boolean47 == false);
+        org.junit.Assert.assertTrue("'" + int48 + "' != '" + 0 + "'", int48 == 0);
+        org.junit.Assert.assertTrue("'" + boolean49 + "' != '" + false + "'", boolean49 == false);
+        org.junit.Assert.assertTrue("'" + boolean51 + "' != '" + false + "'", boolean51 == false);
+        org.junit.Assert.assertNotNull(cell52);
+        org.junit.Assert.assertTrue("'" + boolean53 + "' != '" + false + "'", boolean53 == false);
+        org.junit.Assert.assertTrue("'" + boolean54 + "' != '" + false + "'", boolean54 == false);
+        org.junit.Assert.assertTrue("'" + boolean55 + "' != '" + true + "'", boolean55 == true);
+        org.junit.Assert.assertTrue("'" + boolean56 + "' != '" + false + "'", boolean56 == false);
+        org.junit.Assert.assertNotNull(cell57);
+        org.junit.Assert.assertTrue("'" + int58 + "' != '" + 0 + "'", int58 == 0);
+        org.junit.Assert.assertNotNull(cell59);
+        org.junit.Assert.assertNotNull(cell60);
+        org.junit.Assert.assertTrue("'" + boolean61 + "' != '" + false + "'", boolean61 == false);
+        org.junit.Assert.assertTrue("'" + boolean63 + "' != '" + false + "'", boolean63 == false);
+        org.junit.Assert.assertTrue("'" + int64 + "' != '" + 0 + "'", int64 == 0);
+        org.junit.Assert.assertTrue("'" + boolean65 + "' != '" + false + "'", boolean65 == false);
+        org.junit.Assert.assertNotNull(cell66);
+        org.junit.Assert.assertNotNull(cell67);
+        org.junit.Assert.assertTrue("'" + boolean68 + "' != '" + false + "'", boolean68 == false);
+        org.junit.Assert.assertTrue("'" + boolean70 + "' != '" + false + "'", boolean70 == false);
+        org.junit.Assert.assertTrue("'" + boolean71 + "' != '" + false + "'", boolean71 == false);
+        org.junit.Assert.assertTrue("'" + boolean72 + "' != '" + true + "'", boolean72 == true);
+        org.junit.Assert.assertTrue("'" + boolean73 + "' != '" + true + "'", boolean73 == true);
+    }
+
+    @Test
+    public void test235() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test235");
+        ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean2 = cell0.canMergeWith(cell1);
+        java.lang.Object obj3 = null;
+        boolean boolean4 = cell1.equals(obj3);
+        java.lang.String str5 = cell1.toString();
+        ar.edu.unrc.game2048.Cell cell6 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell7 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean8 = cell6.canMergeWith(cell7);
+        java.lang.Object obj9 = null;
+        boolean boolean10 = cell7.equals(obj9);
+        int int11 = cell7.getValue();
+        java.lang.String str12 = cell7.toString();
+        ar.edu.unrc.game2048.Cell cell13 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell14 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean15 = cell13.canMergeWith(cell14);
+        java.lang.Object obj16 = null;
+        boolean boolean17 = cell14.equals(obj16);
+        java.lang.String str18 = cell14.toString();
+        ar.edu.unrc.game2048.Cell cell19 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean20 = cell19.isEmpty();
+        boolean boolean22 = cell19.equals((java.lang.Object) ' ');
+        ar.edu.unrc.game2048.Cell cell23 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell24 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean25 = cell23.canMergeWith(cell24);
+        java.lang.Class<?> wildcardClass26 = cell24.getClass();
+        boolean boolean27 = cell19.equals((java.lang.Object) wildcardClass26);
+        boolean boolean28 = cell14.equals((java.lang.Object) boolean27);
+        boolean boolean29 = cell7.canMergeWith(cell14);
+        java.lang.String str30 = cell14.toString();
+        ar.edu.unrc.game2048.Cell cell31 = ar.edu.unrc.game2048.Cell.EMPTY;
+        int int32 = cell31.getValue();
+        ar.edu.unrc.game2048.Cell cell33 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell34 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean35 = cell33.canMergeWith(cell34);
+        java.lang.Object obj36 = null;
+        boolean boolean37 = cell34.equals(obj36);
+        int int38 = cell34.getValue();
+        boolean boolean39 = cell31.canMergeWith(cell34);
+        boolean boolean40 = cell14.canMergeWith(cell34);
+        boolean boolean42 = cell34.equals((java.lang.Object) "hi!");
+        boolean boolean43 = cell1.canMergeWith(cell34);
+        ar.edu.unrc.game2048.Cell cell44 = ar.edu.unrc.game2048.Cell.EMPTY;
+        int int45 = cell44.getValue();
+        ar.edu.unrc.game2048.Cell cell46 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell47 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean48 = cell46.canMergeWith(cell47);
+        java.lang.Object obj49 = null;
+        boolean boolean50 = cell47.equals(obj49);
+        int int51 = cell47.getValue();
+        boolean boolean52 = cell44.canMergeWith(cell47);
+        boolean boolean53 = cell44.isEmpty();
+        java.lang.Object obj54 = null;
+        boolean boolean55 = cell44.equals(obj54);
+        boolean boolean56 = cell44.isEmpty();
+        boolean boolean57 = cell1.canMergeWith(cell44);
+        int int58 = cell44.getValue();
+        ar.edu.unrc.game2048.Cell cell59 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell60 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean61 = cell59.canMergeWith(cell60);
+        int int62 = cell59.getValue();
+        // The following exception was thrown during execution in test generation
+        try {
+            ar.edu.unrc.game2048.Cell cell63 = cell44.mergeWith(cell59);
+            org.junit.Assert.fail("Expected exception of type java.lang.IllegalArgumentException; message: Cannot merge cells: . and .");
+        } catch (java.lang.IllegalArgumentException e) {
+            // Expected exception.
+        }
+        org.junit.Assert.assertNotNull(cell0);
+        org.junit.Assert.assertNotNull(cell1);
+        org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
+        org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
+        org.junit.Assert.assertEquals("'" + str5 + "' != '" + "." + "'", str5, ".");
+        org.junit.Assert.assertNotNull(cell6);
+        org.junit.Assert.assertNotNull(cell7);
+        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
+        org.junit.Assert.assertTrue("'" + boolean10 + "' != '" + false + "'", boolean10 == false);
+        org.junit.Assert.assertTrue("'" + int11 + "' != '" + 0 + "'", int11 == 0);
+        org.junit.Assert.assertEquals("'" + str12 + "' != '" + "." + "'", str12, ".");
+        org.junit.Assert.assertNotNull(cell13);
+        org.junit.Assert.assertNotNull(cell14);
+        org.junit.Assert.assertTrue("'" + boolean15 + "' != '" + false + "'", boolean15 == false);
+        org.junit.Assert.assertTrue("'" + boolean17 + "' != '" + false + "'", boolean17 == false);
+        org.junit.Assert.assertEquals("'" + str18 + "' != '" + "." + "'", str18, ".");
+        org.junit.Assert.assertNotNull(cell19);
+        org.junit.Assert.assertTrue("'" + boolean20 + "' != '" + true + "'", boolean20 == true);
+        org.junit.Assert.assertTrue("'" + boolean22 + "' != '" + false + "'", boolean22 == false);
+        org.junit.Assert.assertNotNull(cell23);
+        org.junit.Assert.assertNotNull(cell24);
+        org.junit.Assert.assertTrue("'" + boolean25 + "' != '" + false + "'", boolean25 == false);
+        org.junit.Assert.assertNotNull(wildcardClass26);
+        org.junit.Assert.assertTrue("'" + boolean27 + "' != '" + false + "'", boolean27 == false);
+        org.junit.Assert.assertTrue("'" + boolean28 + "' != '" + false + "'", boolean28 == false);
+        org.junit.Assert.assertTrue("'" + boolean29 + "' != '" + false + "'", boolean29 == false);
+        org.junit.Assert.assertEquals("'" + str30 + "' != '" + "." + "'", str30, ".");
+        org.junit.Assert.assertNotNull(cell31);
+        org.junit.Assert.assertTrue("'" + int32 + "' != '" + 0 + "'", int32 == 0);
+        org.junit.Assert.assertNotNull(cell33);
+        org.junit.Assert.assertNotNull(cell34);
+        org.junit.Assert.assertTrue("'" + boolean35 + "' != '" + false + "'", boolean35 == false);
+        org.junit.Assert.assertTrue("'" + boolean37 + "' != '" + false + "'", boolean37 == false);
+        org.junit.Assert.assertTrue("'" + int38 + "' != '" + 0 + "'", int38 == 0);
+        org.junit.Assert.assertTrue("'" + boolean39 + "' != '" + false + "'", boolean39 == false);
+        org.junit.Assert.assertTrue("'" + boolean40 + "' != '" + false + "'", boolean40 == false);
+        org.junit.Assert.assertTrue("'" + boolean42 + "' != '" + false + "'", boolean42 == false);
+        org.junit.Assert.assertTrue("'" + boolean43 + "' != '" + false + "'", boolean43 == false);
+        org.junit.Assert.assertNotNull(cell44);
+        org.junit.Assert.assertTrue("'" + int45 + "' != '" + 0 + "'", int45 == 0);
+        org.junit.Assert.assertNotNull(cell46);
+        org.junit.Assert.assertNotNull(cell47);
+        org.junit.Assert.assertTrue("'" + boolean48 + "' != '" + false + "'", boolean48 == false);
+        org.junit.Assert.assertTrue("'" + boolean50 + "' != '" + false + "'", boolean50 == false);
+        org.junit.Assert.assertTrue("'" + int51 + "' != '" + 0 + "'", int51 == 0);
+        org.junit.Assert.assertTrue("'" + boolean52 + "' != '" + false + "'", boolean52 == false);
+        org.junit.Assert.assertTrue("'" + boolean53 + "' != '" + true + "'", boolean53 == true);
+        org.junit.Assert.assertTrue("'" + boolean55 + "' != '" + false + "'", boolean55 == false);
+        org.junit.Assert.assertTrue("'" + boolean56 + "' != '" + true + "'", boolean56 == true);
+        org.junit.Assert.assertTrue("'" + boolean57 + "' != '" + false + "'", boolean57 == false);
+        org.junit.Assert.assertTrue("'" + int58 + "' != '" + 0 + "'", int58 == 0);
+        org.junit.Assert.assertNotNull(cell59);
+        org.junit.Assert.assertNotNull(cell60);
+        org.junit.Assert.assertTrue("'" + boolean61 + "' != '" + false + "'", boolean61 == false);
+        org.junit.Assert.assertTrue("'" + int62 + "' != '" + 0 + "'", int62 == 0);
+    }
+
+    @Test
+    public void test236() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test236");
+        ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean2 = cell0.canMergeWith(cell1);
+        java.lang.Object obj3 = null;
+        boolean boolean4 = cell1.equals(obj3);
+        ar.edu.unrc.game2048.Cell cell6 = new ar.edu.unrc.game2048.Cell((int) ' ');
+        ar.edu.unrc.game2048.Cell cell7 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell8 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean9 = cell7.canMergeWith(cell8);
+        java.lang.Object obj10 = null;
+        boolean boolean11 = cell8.equals(obj10);
+        int int12 = cell8.getValue();
+        java.lang.String str13 = cell8.toString();
+        ar.edu.unrc.game2048.Cell cell14 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell15 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean16 = cell14.canMergeWith(cell15);
+        java.lang.Object obj17 = null;
+        boolean boolean18 = cell15.equals(obj17);
+        java.lang.String str19 = cell15.toString();
+        ar.edu.unrc.game2048.Cell cell20 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean21 = cell20.isEmpty();
+        boolean boolean23 = cell20.equals((java.lang.Object) ' ');
+        ar.edu.unrc.game2048.Cell cell24 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell25 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean26 = cell24.canMergeWith(cell25);
+        java.lang.Class<?> wildcardClass27 = cell25.getClass();
+        boolean boolean28 = cell20.equals((java.lang.Object) wildcardClass27);
+        boolean boolean29 = cell15.equals((java.lang.Object) boolean28);
+        boolean boolean30 = cell8.canMergeWith(cell15);
+        java.lang.String str31 = cell15.toString();
+        boolean boolean32 = cell6.equals((java.lang.Object) cell15);
+        boolean boolean33 = cell1.canMergeWith(cell6);
+        int int34 = cell6.getValue();
+        org.junit.Assert.assertNotNull(cell0);
+        org.junit.Assert.assertNotNull(cell1);
+        org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
+        org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
+        org.junit.Assert.assertNotNull(cell7);
+        org.junit.Assert.assertNotNull(cell8);
+        org.junit.Assert.assertTrue("'" + boolean9 + "' != '" + false + "'", boolean9 == false);
+        org.junit.Assert.assertTrue("'" + boolean11 + "' != '" + false + "'", boolean11 == false);
+        org.junit.Assert.assertTrue("'" + int12 + "' != '" + 0 + "'", int12 == 0);
+        org.junit.Assert.assertEquals("'" + str13 + "' != '" + "." + "'", str13, ".");
+        org.junit.Assert.assertNotNull(cell14);
+        org.junit.Assert.assertNotNull(cell15);
+        org.junit.Assert.assertTrue("'" + boolean16 + "' != '" + false + "'", boolean16 == false);
+        org.junit.Assert.assertTrue("'" + boolean18 + "' != '" + false + "'", boolean18 == false);
+        org.junit.Assert.assertEquals("'" + str19 + "' != '" + "." + "'", str19, ".");
+        org.junit.Assert.assertNotNull(cell20);
+        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + true + "'", boolean21 == true);
+        org.junit.Assert.assertTrue("'" + boolean23 + "' != '" + false + "'", boolean23 == false);
+        org.junit.Assert.assertNotNull(cell24);
+        org.junit.Assert.assertNotNull(cell25);
+        org.junit.Assert.assertTrue("'" + boolean26 + "' != '" + false + "'", boolean26 == false);
+        org.junit.Assert.assertNotNull(wildcardClass27);
+        org.junit.Assert.assertTrue("'" + boolean28 + "' != '" + false + "'", boolean28 == false);
+        org.junit.Assert.assertTrue("'" + boolean29 + "' != '" + false + "'", boolean29 == false);
+        org.junit.Assert.assertTrue("'" + boolean30 + "' != '" + false + "'", boolean30 == false);
+        org.junit.Assert.assertEquals("'" + str31 + "' != '" + "." + "'", str31, ".");
+        org.junit.Assert.assertTrue("'" + boolean32 + "' != '" + false + "'", boolean32 == false);
+        org.junit.Assert.assertTrue("'" + boolean33 + "' != '" + false + "'", boolean33 == false);
+        org.junit.Assert.assertTrue("'" + int34 + "' != '" + 32 + "'", int34 == 32);
+    }
+
+    @Test
+    public void test237() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test237");
+        ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean2 = cell0.canMergeWith(cell1);
+        java.lang.Object obj3 = null;
+        boolean boolean4 = cell1.equals(obj3);
+        int int5 = cell1.getValue();
+        int int6 = cell1.getValue();
+        org.junit.Assert.assertNotNull(cell0);
+        org.junit.Assert.assertNotNull(cell1);
+        org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
+        org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
+        org.junit.Assert.assertTrue("'" + int5 + "' != '" + 0 + "'", int5 == 0);
+        org.junit.Assert.assertTrue("'" + int6 + "' != '" + 0 + "'", int6 == 0);
+    }
+
+    @Test
+    public void test238() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test238");
+        ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
+        int int1 = cell0.getValue();
+        boolean boolean2 = cell0.isEmpty();
+        ar.edu.unrc.game2048.Cell cell3 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell4 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean5 = cell3.canMergeWith(cell4);
+        java.lang.Object obj6 = null;
+        boolean boolean7 = cell4.equals(obj6);
+        int int8 = cell4.getValue();
+        java.lang.String str9 = cell4.toString();
+        ar.edu.unrc.game2048.Cell cell10 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell11 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean12 = cell10.canMergeWith(cell11);
+        java.lang.Object obj13 = null;
+        boolean boolean14 = cell11.equals(obj13);
+        java.lang.String str15 = cell11.toString();
+        ar.edu.unrc.game2048.Cell cell16 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean17 = cell16.isEmpty();
+        boolean boolean19 = cell16.equals((java.lang.Object) ' ');
+        ar.edu.unrc.game2048.Cell cell20 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell21 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean22 = cell20.canMergeWith(cell21);
+        java.lang.Class<?> wildcardClass23 = cell21.getClass();
+        boolean boolean24 = cell16.equals((java.lang.Object) wildcardClass23);
+        boolean boolean25 = cell11.equals((java.lang.Object) boolean24);
+        boolean boolean26 = cell4.canMergeWith(cell11);
+        ar.edu.unrc.game2048.Cell cell27 = ar.edu.unrc.game2048.Cell.EMPTY;
+        int int28 = cell27.getValue();
+        ar.edu.unrc.game2048.Cell cell29 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell30 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean31 = cell29.canMergeWith(cell30);
+        java.lang.Object obj32 = null;
+        boolean boolean33 = cell30.equals(obj32);
+        int int34 = cell30.getValue();
+        boolean boolean35 = cell27.canMergeWith(cell30);
+        boolean boolean37 = cell27.equals((java.lang.Object) ' ');
+        ar.edu.unrc.game2048.Cell cell38 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean39 = cell27.canMergeWith(cell38);
+        ar.edu.unrc.game2048.Cell cell40 = ar.edu.unrc.game2048.Cell.EMPTY;
+        int int41 = cell40.getValue();
+        ar.edu.unrc.game2048.Cell cell42 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell43 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean44 = cell42.canMergeWith(cell43);
+        java.lang.Object obj45 = null;
+        boolean boolean46 = cell43.equals(obj45);
+        int int47 = cell43.getValue();
+        boolean boolean48 = cell40.canMergeWith(cell43);
+        boolean boolean50 = cell40.equals((java.lang.Object) ' ');
+        ar.edu.unrc.game2048.Cell cell51 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean52 = cell40.canMergeWith(cell51);
+        boolean boolean53 = cell38.canMergeWith(cell40);
+        boolean boolean54 = cell4.equals((java.lang.Object) cell40);
+        boolean boolean55 = cell0.canMergeWith(cell4);
+        java.lang.Object obj56 = null;
+        boolean boolean57 = cell4.equals(obj56);
+        org.junit.Assert.assertNotNull(cell0);
+        org.junit.Assert.assertTrue("'" + int1 + "' != '" + 0 + "'", int1 == 0);
+        org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + true + "'", boolean2 == true);
+        org.junit.Assert.assertNotNull(cell3);
+        org.junit.Assert.assertNotNull(cell4);
+        org.junit.Assert.assertTrue("'" + boolean5 + "' != '" + false + "'", boolean5 == false);
+        org.junit.Assert.assertTrue("'" + boolean7 + "' != '" + false + "'", boolean7 == false);
+        org.junit.Assert.assertTrue("'" + int8 + "' != '" + 0 + "'", int8 == 0);
+        org.junit.Assert.assertEquals("'" + str9 + "' != '" + "." + "'", str9, ".");
+        org.junit.Assert.assertNotNull(cell10);
+        org.junit.Assert.assertNotNull(cell11);
+        org.junit.Assert.assertTrue("'" + boolean12 + "' != '" + false + "'", boolean12 == false);
+        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + false + "'", boolean14 == false);
+        org.junit.Assert.assertEquals("'" + str15 + "' != '" + "." + "'", str15, ".");
+        org.junit.Assert.assertNotNull(cell16);
+        org.junit.Assert.assertTrue("'" + boolean17 + "' != '" + true + "'", boolean17 == true);
+        org.junit.Assert.assertTrue("'" + boolean19 + "' != '" + false + "'", boolean19 == false);
+        org.junit.Assert.assertNotNull(cell20);
+        org.junit.Assert.assertNotNull(cell21);
+        org.junit.Assert.assertTrue("'" + boolean22 + "' != '" + false + "'", boolean22 == false);
+        org.junit.Assert.assertNotNull(wildcardClass23);
+        org.junit.Assert.assertTrue("'" + boolean24 + "' != '" + false + "'", boolean24 == false);
+        org.junit.Assert.assertTrue("'" + boolean25 + "' != '" + false + "'", boolean25 == false);
+        org.junit.Assert.assertTrue("'" + boolean26 + "' != '" + false + "'", boolean26 == false);
+        org.junit.Assert.assertNotNull(cell27);
+        org.junit.Assert.assertTrue("'" + int28 + "' != '" + 0 + "'", int28 == 0);
+        org.junit.Assert.assertNotNull(cell29);
+        org.junit.Assert.assertNotNull(cell30);
+        org.junit.Assert.assertTrue("'" + boolean31 + "' != '" + false + "'", boolean31 == false);
+        org.junit.Assert.assertTrue("'" + boolean33 + "' != '" + false + "'", boolean33 == false);
+        org.junit.Assert.assertTrue("'" + int34 + "' != '" + 0 + "'", int34 == 0);
+        org.junit.Assert.assertTrue("'" + boolean35 + "' != '" + false + "'", boolean35 == false);
+        org.junit.Assert.assertTrue("'" + boolean37 + "' != '" + false + "'", boolean37 == false);
+        org.junit.Assert.assertNotNull(cell38);
+        org.junit.Assert.assertTrue("'" + boolean39 + "' != '" + false + "'", boolean39 == false);
+        org.junit.Assert.assertNotNull(cell40);
+        org.junit.Assert.assertTrue("'" + int41 + "' != '" + 0 + "'", int41 == 0);
+        org.junit.Assert.assertNotNull(cell42);
+        org.junit.Assert.assertNotNull(cell43);
+        org.junit.Assert.assertTrue("'" + boolean44 + "' != '" + false + "'", boolean44 == false);
+        org.junit.Assert.assertTrue("'" + boolean46 + "' != '" + false + "'", boolean46 == false);
+        org.junit.Assert.assertTrue("'" + int47 + "' != '" + 0 + "'", int47 == 0);
+        org.junit.Assert.assertTrue("'" + boolean48 + "' != '" + false + "'", boolean48 == false);
+        org.junit.Assert.assertTrue("'" + boolean50 + "' != '" + false + "'", boolean50 == false);
+        org.junit.Assert.assertNotNull(cell51);
+        org.junit.Assert.assertTrue("'" + boolean52 + "' != '" + false + "'", boolean52 == false);
+        org.junit.Assert.assertTrue("'" + boolean53 + "' != '" + false + "'", boolean53 == false);
+        org.junit.Assert.assertTrue("'" + boolean54 + "' != '" + true + "'", boolean54 == true);
+        org.junit.Assert.assertTrue("'" + boolean55 + "' != '" + false + "'", boolean55 == false);
+        org.junit.Assert.assertTrue("'" + boolean57 + "' != '" + false + "'", boolean57 == false);
+    }
+
+    @Test
+    public void test239() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test239");
+        ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
+        int int1 = cell0.getValue();
+        ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell3 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean4 = cell2.canMergeWith(cell3);
+        java.lang.Object obj5 = null;
+        boolean boolean6 = cell3.equals(obj5);
+        int int7 = cell3.getValue();
+        boolean boolean8 = cell0.canMergeWith(cell3);
+        java.lang.String str9 = cell3.toString();
+        java.lang.String str10 = cell3.toString();
+        int int11 = cell3.getValue();
+        int int12 = cell3.getValue();
+        org.junit.Assert.assertNotNull(cell0);
+        org.junit.Assert.assertTrue("'" + int1 + "' != '" + 0 + "'", int1 == 0);
+        org.junit.Assert.assertNotNull(cell2);
+        org.junit.Assert.assertNotNull(cell3);
+        org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
+        org.junit.Assert.assertTrue("'" + boolean6 + "' != '" + false + "'", boolean6 == false);
+        org.junit.Assert.assertTrue("'" + int7 + "' != '" + 0 + "'", int7 == 0);
+        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
+        org.junit.Assert.assertEquals("'" + str9 + "' != '" + "." + "'", str9, ".");
+        org.junit.Assert.assertEquals("'" + str10 + "' != '" + "." + "'", str10, ".");
+        org.junit.Assert.assertTrue("'" + int11 + "' != '" + 0 + "'", int11 == 0);
+        org.junit.Assert.assertTrue("'" + int12 + "' != '" + 0 + "'", int12 == 0);
+    }
+
+    @Test
+    public void test240() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test240");
+        ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean1 = cell0.isEmpty();
+        ar.edu.unrc.game2048.Cell cell2 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell3 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean4 = cell2.canMergeWith(cell3);
+        java.lang.Object obj5 = null;
+        boolean boolean6 = cell3.equals(obj5);
+        java.lang.String str7 = cell3.toString();
+        boolean boolean8 = cell0.canMergeWith(cell3);
+        boolean boolean9 = cell3.isEmpty();
+        ar.edu.unrc.game2048.Cell cell10 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean11 = cell10.isEmpty();
+        boolean boolean13 = cell10.equals((java.lang.Object) ' ');
+        ar.edu.unrc.game2048.Cell cell14 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell15 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean16 = cell14.canMergeWith(cell15);
+        java.lang.Class<?> wildcardClass17 = cell15.getClass();
+        boolean boolean18 = cell10.equals((java.lang.Object) wildcardClass17);
+        int int19 = cell10.getValue();
+        boolean boolean20 = cell3.canMergeWith(cell10);
+        org.junit.Assert.assertNotNull(cell0);
+        org.junit.Assert.assertTrue("'" + boolean1 + "' != '" + true + "'", boolean1 == true);
+        org.junit.Assert.assertNotNull(cell2);
+        org.junit.Assert.assertNotNull(cell3);
+        org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
+        org.junit.Assert.assertTrue("'" + boolean6 + "' != '" + false + "'", boolean6 == false);
+        org.junit.Assert.assertEquals("'" + str7 + "' != '" + "." + "'", str7, ".");
+        org.junit.Assert.assertTrue("'" + boolean8 + "' != '" + false + "'", boolean8 == false);
+        org.junit.Assert.assertTrue("'" + boolean9 + "' != '" + true + "'", boolean9 == true);
+        org.junit.Assert.assertNotNull(cell10);
+        org.junit.Assert.assertTrue("'" + boolean11 + "' != '" + true + "'", boolean11 == true);
+        org.junit.Assert.assertTrue("'" + boolean13 + "' != '" + false + "'", boolean13 == false);
+        org.junit.Assert.assertNotNull(cell14);
+        org.junit.Assert.assertNotNull(cell15);
+        org.junit.Assert.assertTrue("'" + boolean16 + "' != '" + false + "'", boolean16 == false);
+        org.junit.Assert.assertNotNull(wildcardClass17);
+        org.junit.Assert.assertTrue("'" + boolean18 + "' != '" + false + "'", boolean18 == false);
+        org.junit.Assert.assertTrue("'" + int19 + "' != '" + 0 + "'", int19 == 0);
+        org.junit.Assert.assertTrue("'" + boolean20 + "' != '" + false + "'", boolean20 == false);
+    }
+
+    @Test
+    public void test241() throws Throwable {
+        if (debug)
+            System.out.format("%n%s%n", "RegressionTest0.test241");
+        ar.edu.unrc.game2048.Cell cell0 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell1 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean2 = cell0.canMergeWith(cell1);
+        java.lang.Object obj3 = null;
+        boolean boolean4 = cell1.equals(obj3);
+        int int5 = cell1.getValue();
+        java.lang.String str6 = cell1.toString();
+        ar.edu.unrc.game2048.Cell cell7 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell8 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean9 = cell7.canMergeWith(cell8);
+        java.lang.Object obj10 = null;
+        boolean boolean11 = cell8.equals(obj10);
+        java.lang.String str12 = cell8.toString();
+        ar.edu.unrc.game2048.Cell cell13 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean14 = cell13.isEmpty();
+        boolean boolean16 = cell13.equals((java.lang.Object) ' ');
+        ar.edu.unrc.game2048.Cell cell17 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell18 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean19 = cell17.canMergeWith(cell18);
+        java.lang.Class<?> wildcardClass20 = cell18.getClass();
+        boolean boolean21 = cell13.equals((java.lang.Object) wildcardClass20);
+        boolean boolean22 = cell8.equals((java.lang.Object) boolean21);
+        boolean boolean23 = cell1.canMergeWith(cell8);
+        java.lang.String str24 = cell8.toString();
+        ar.edu.unrc.game2048.Cell cell25 = ar.edu.unrc.game2048.Cell.EMPTY;
+        int int26 = cell25.getValue();
+        ar.edu.unrc.game2048.Cell cell27 = ar.edu.unrc.game2048.Cell.EMPTY;
+        ar.edu.unrc.game2048.Cell cell28 = ar.edu.unrc.game2048.Cell.EMPTY;
+        boolean boolean29 = cell27.canMergeWith(cell28);
+        java.lang.Object obj30 = null;
+        boolean boolean31 = cell28.equals(obj30);
+        int int32 = cell28.getValue();
+        boolean boolean33 = cell25.canMergeWith(cell28);
+        boolean boolean34 = cell8.canMergeWith(cell28);
+        boolean boolean36 = cell28.equals((java.lang.Object) "hi!");
+        int int37 = cell28.getValue();
+        java.lang.Object obj38 = null;
+        boolean boolean39 = cell28.equals(obj38);
+        int int40 = cell28.getValue();
+        java.lang.Class<?> wildcardClass41 = cell28.getClass();
+        org.junit.Assert.assertNotNull(cell0);
+        org.junit.Assert.assertNotNull(cell1);
+        org.junit.Assert.assertTrue("'" + boolean2 + "' != '" + false + "'", boolean2 == false);
+        org.junit.Assert.assertTrue("'" + boolean4 + "' != '" + false + "'", boolean4 == false);
+        org.junit.Assert.assertTrue("'" + int5 + "' != '" + 0 + "'", int5 == 0);
+        org.junit.Assert.assertEquals("'" + str6 + "' != '" + "." + "'", str6, ".");
+        org.junit.Assert.assertNotNull(cell7);
+        org.junit.Assert.assertNotNull(cell8);
+        org.junit.Assert.assertTrue("'" + boolean9 + "' != '" + false + "'", boolean9 == false);
+        org.junit.Assert.assertTrue("'" + boolean11 + "' != '" + false + "'", boolean11 == false);
+        org.junit.Assert.assertEquals("'" + str12 + "' != '" + "." + "'", str12, ".");
+        org.junit.Assert.assertNotNull(cell13);
+        org.junit.Assert.assertTrue("'" + boolean14 + "' != '" + true + "'", boolean14 == true);
+        org.junit.Assert.assertTrue("'" + boolean16 + "' != '" + false + "'", boolean16 == false);
+        org.junit.Assert.assertNotNull(cell17);
+        org.junit.Assert.assertNotNull(cell18);
+        org.junit.Assert.assertTrue("'" + boolean19 + "' != '" + false + "'", boolean19 == false);
+        org.junit.Assert.assertNotNull(wildcardClass20);
+        org.junit.Assert.assertTrue("'" + boolean21 + "' != '" + false + "'", boolean21 == false);
+        org.junit.Assert.assertTrue("'" + boolean22 + "' != '" + false + "'", boolean22 == false);
+        org.junit.Assert.assertTrue("'" + boolean23 + "' != '" + false + "'", boolean23 == false);
+        org.junit.Assert.assertEquals("'" + str24 + "' != '" + "." + "'", str24, ".");
+        org.junit.Assert.assertNotNull(cell25);
+        org.junit.Assert.assertTrue("'" + int26 + "' != '" + 0 + "'", int26 == 0);
+        org.junit.Assert.assertNotNull(cell27);
+        org.junit.Assert.assertNotNull(cell28);
+        org.junit.Assert.assertTrue("'" + boolean29 + "' != '" + false + "'", boolean29 == false);
+        org.junit.Assert.assertTrue("'" + boolean31 + "' != '" + false + "'", boolean31 == false);
+        org.junit.Assert.assertTrue("'" + int32 + "' != '" + 0 + "'", int32 == 0);
+        org.junit.Assert.assertTrue("'" + boolean33 + "' != '" + false + "'", boolean33 == false);
+        org.junit.Assert.assertTrue("'" + boolean34 + "' != '" + false + "'", boolean34 == false);
+        org.junit.Assert.assertTrue("'" + boolean36 + "' != '" + false + "'", boolean36 == false);
+        org.junit.Assert.assertTrue("'" + int37 + "' != '" + 0 + "'", int37 == 0);
+        org.junit.Assert.assertTrue("'" + boolean39 + "' != '" + false + "'", boolean39 == false);
+        org.junit.Assert.assertTrue("'" + int40 + "' != '" + 0 + "'", int40 == 0);
+        org.junit.Assert.assertNotNull(wildcardClass41);
     }
 }
 

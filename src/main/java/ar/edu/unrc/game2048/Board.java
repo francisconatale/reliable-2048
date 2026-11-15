@@ -24,6 +24,7 @@ import randoop.CheckRep;
 public class Board {
   
     public static final int DEFAULT_SIZE = 4;
+    public static final int MAX_SIZE = 300;
     public static final int WINNING_VALUE = 2048;
     private final int size;
     private final Cell[][] grid;
@@ -38,8 +39,8 @@ public class Board {
     /**
      * Creates a new board of the specified size with two random tiles.
      *
-     * @param size the board size (must be > 0)
-     * @throws IllegalArgumentException if size <= 0
+     * @param size the board size (must be > 0 and <= MAX_SIZE)
+     * @throws IllegalArgumentException if size <= 0 or MAX_SIZE < size
      */
     public Board(int size, boolean determinist) {
         this(size, determinist, new java.util.Random());
@@ -50,9 +51,16 @@ public class Board {
     }
 
     public Board(int size, boolean determinist, Random random) {
+        if (random == null) {
+            throw new IllegalArgumentException("The param 'random' must not be null");
+        }
         if (size <= 0) {
             throw new IllegalArgumentException("Board size must be positive: " + size);
         }
+        if (size > MAX_SIZE) {
+            throw new IllegalArgumentException("Board size must be less than or equal to " + MAX_SIZE + ": " + size);
+        }
+
         this.size = size;
         this.grid = new Cell[size][size];
         this.score = new Score(0); 
@@ -97,7 +105,7 @@ public class Board {
 
     @CheckRep
     public boolean repOK() {
-        if (size <= 0 || grid == null || grid.length != size
+        if (size <= 0 || MAX_SIZE < size || grid == null || grid.length != size
                 || score == null || random == null) {
             return false;
         }
@@ -138,6 +146,7 @@ public class Board {
         this.size = other.size;
         this.grid = new Cell[size][size];
         this.score = new Score(other.score.getScore());
+        this.determinist = other.determinist;
 
         // Generador independiente para la copia, para evitar que la copia y el original compartan el mismo estado aleatorio
         this.random = new java.util.Random();

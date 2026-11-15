@@ -1,0 +1,22 @@
+================================================================================
+            RESUMEN DE EJECUCIÓN - reliable-2048
+================================================================================
+Fecha: 2026-11-11 01:11:38
+Reportes guardados en: /home/santi/SemCsComp_tp2/reliable-2048/test-reports
+
+[manual-tests]
+  - Tests:    EXITOSO ([INFO] Tests run: 154, Failures: 0, Errors: 0, Skipped: 0)
+  - Mutación: EXITOSO (Line Coverage (for mutated classes only): 295/302 (98%) | Generated 251 mutations Killed 238 (95%) | Mutations with no coverage 4. Test strength 96%)
+  - Directorio: test-reports/manual-tests/
+
+[randoop-tests]
+  - Tests:    EXITOSO ([INFO] Tests run: 509, Failures: 0, Errors: 0, Skipped: 0)
+  - Mutación: EXITOSO (Line Coverage (for mutated classes only): 168/302 (56%) | Generated 251 mutations Killed 93 (37%) | Mutations with no coverage 113. Test strength 67%)
+  - Directorio: test-reports/randoop-tests/
+
+[evosuite-tests]
+  - Tests:    EXITOSO ([INFO] Tests run: 86, Failures: 0, Errors: 0, Skipped: 0)
+  - Mutación: EXITOSO (Line Coverage (for mutated classes only): 241/302 (80%) | Generated 251 mutations Killed 182 (73%) | Mutations with no coverage 36. Test strength 85%)
+  - Directorio: test-reports/evosuite-tests/
+
+================================================================================

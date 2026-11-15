@@ -22,7 +22,7 @@ reliable-2048/
 ├── reports/                            # informes y entregables de cada asignación
 │   ├── report-assignment-2.md          # resultados de Randoop, PITest y repOK
 │   ├── report-assignment-3.md          # comparativa integral
-│   └── report-assignment-4.md          # inferencia de invariantes con Daikon (en progreso)
+│   └── report-assignment-4.md          # inferencia de invariantes con Daikon
 │
 ├── scripts/                            # 
 │   ├── run-tests-and-mutation.sh       # ejecución de tests y mutación (3 perfiles)
@@ -36,8 +36,14 @@ reliable-2048/
 │   │   ├── metrics/                    # CSVs de cobertura
 │   │   ├── pit-reports-*/              # reportes de mutación (manual, randoop, evosuite)
 │   │   └── site/                       # reportes HTML JaCoCo
-│   └── assignment-4/                   # traces e invariantes de Daikon
 │
+├── fuzz-inputs/                        # entradas (partidas del fuzzer) usadas para la traza `fuzzer`
+├── daikon-traces/<suite>/              # trazas (.dtrace.gz) e invariantes (.inv.gz) de Daikon (manual, randoop, evosuite, all, fuzzer)
+├── daikon-invariants/<suite>/          # salida de Daikon (completa y limpia) por suite
+├── test-reports/                       # resultados de tests, JaCoCo y PIT por perfil (se regenera)
+│
+├── run-daikon.sh                       # Chicory + Daikon por suite (manual | randoop | evosuite | all)
+├── run-tests-and-mutation.sh           # enlace a scripts/run-tests-and-mutation.sh
 ├── src/                                # código fuente y suites de tests
 ├── lib/                                # dependencias JAR externas
 └── pom.xml                             # configuración de Maven y perfiles de testing
@@ -67,5 +73,12 @@ Para ejecutar automáticamente los tests unitarios y el análisis de mutación (
 ```bash
 ./run-tests-and-mutation.sh
 ```
+
+### Inferencia de invariantes con Daikon
+Con JDK 11 hasta 21 y `lib/daikon.jar` (ver `docs/Command-Guide.md`, sección 10):
+```bash
+./run-daikon.sh --suite=manual     # o randoop | evosuite | all
+```
+Los resultados quedan en `daikon-traces/<suite>/` y `daikon-invariants/<suite>/`.
 
 Para ver la guía completa de comandos, generación de reportes y ejecución de herramientas, consultar [`docs/Command-Guide.md`](docs/Command-Guide.md).

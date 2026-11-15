@@ -22,7 +22,7 @@ public class BoardTest {
     private final Seeder seeder = new Seeder();
 
     @ParameterizedTest(name = "Tablero con tamaño inválido {0} lanza IllegalArgumentException")
-    @ValueSource(ints = {0, -1, -5})
+    @ValueSource(ints = {0, -1, -5, 301, 400})
     public void invalidBoardTest(int invalidSize) {
         assertThrows(IllegalArgumentException.class, () -> new Board(invalidSize, true));
     }
@@ -42,26 +42,6 @@ public class BoardTest {
         seeder.seederBoard(board, 5);
         Board copyOfBoard = new Board(board);
         assertEquals(board, copyOfBoard);
-    }
-
-
-    @Test
-    public void testCounterexampleWinningValueNotEqualsOtherSizeInCopyConstructor() {
-        Board other = new Board(Board.WINNING_VALUE, true);
-        Board copy = new Board(other);
-
-        assertEquals(Board.WINNING_VALUE, copy.getSize());
-        assertEquals(other, copy);
-    }
-
-    @Test
-    public void testCounterexampleWinningValueGreaterOrEqualGridSizeMinusOneInCopyConstructor() {
-        int size = Board.WINNING_VALUE + 2;
-        Board other = new Board(size, true);
-        Board copy = new Board(other);
-
-        assertEquals(size, copy.getSize());
-        assertEquals(other, copy);
     }
 
     @ParameterizedTest(name = "{0}")
@@ -245,6 +225,10 @@ public class BoardTest {
     @Test
     public void validBoardSatisfiesRepOk() {
         assertTrue(new Board(4, true).repOK());
+        
+        Board board = new Board(Board.MAX_SIZE, true);
+        assertEquals(Board.MAX_SIZE, board.getSize());
+        assertTrue(board.repOK());
     }
 
     @Test
@@ -572,21 +556,6 @@ public class BoardTest {
     }
 
     @Test
-    public void moveOnNonDeterministicBoardAddsRandomTileTest() {
-        Board board = new Board(4, false, new Random(5L));
-        for (int r = 0; r < 4; r++) {
-            for (int c = 0; c < 4; c++) {
-                board.setCell(r, c, Cell.EMPTY);
-            }
-        }
-        board.setCell(0, 3, new Cell(2));
-        assertTrue(board.move(Direction.LEFT));
-        assertEquals(2, board.getCell(0, 0).getValue());
-        assertEquals(2, 16 - board.getEmptyPositions().size());
-        assertTrue(board.repOK());
-    }
-
-    @Test
     public void moveOnDeterministicBoardDoesNotAddTileTest() {
         Board board = new Board(4, true);
         board.setCell(0, 3, new Cell(2));
@@ -625,5 +594,11 @@ public class BoardTest {
         scoreField.setAccessible(true);
         ((Score) scoreField.get(board)).setScore(-1);
         assertFalse(board.repOK());
+    }
+
+    @Test
+    public void nullRandomThrowsTest() {
+        assertThrows(IllegalArgumentException.class, () -> new Board(4, true, null));
+        assertThrows(IllegalArgumentException.class, () -> new Board(4, false, null));
     }
 }

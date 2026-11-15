@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: ar.edu.unrc.game2048.evosuite.Board_ESTest
+-------------------------------------------------------------------------------
+Tests run: 60, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.31 s - in ar.edu.unrc.game2048.evosuite.Board_ESTest

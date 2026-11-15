@@ -1,0 +1,14 @@
+GROUP,PACKAGE,CLASS,INSTRUCTION_MISSED,INSTRUCTION_COVERED,BRANCH_MISSED,BRANCH_COVERED,LINE_MISSED,LINE_COVERED,COMPLEXITY_MISSED,COMPLEXITY_COVERED,METHOD_MISSED,METHOD_COVERED
+2048-game,ar.edu.unrc.game2048,Cell,2,171,3,33,0,30,3,26,0,11
+2048-game,ar.edu.unrc.game2048,Position,28,45,6,4,1,9,6,3,1,3
+2048-game,ar.edu.unrc.game2048,ScannerInputReader,14,0,0,0,6,0,3,0,3,0
+2048-game,ar.edu.unrc.game2048,Score,5,22,1,1,1,7,1,4,0,4
+2048-game,ar.edu.unrc.game2048,Direction,0,44,0,0,0,2,0,1,0,1
+2048-game,ar.edu.unrc.game2048,Board,25,831,20,116,8,138,19,76,0,27
+2048-game,ar.edu.unrc.game2048,MainCLI,159,0,13,0,44,0,14,0,6,0
+2048-game,ar.edu.unrc.game2048.move,MoveUp,0,7,0,0,0,3,0,3,0,3
+2048-game,ar.edu.unrc.game2048.move,Move,0,185,0,24,0,38,0,18,0,6
+2048-game,ar.edu.unrc.game2048.move,MoveLeft,0,7,0,0,0,3,0,3,0,3
+2048-game,ar.edu.unrc.game2048.move,MoveRight,0,7,0,0,0,3,0,3,0,3
+2048-game,ar.edu.unrc.game2048.move,MoveDown,0,7,0,0,0,3,0,3,0,3
+2048-game,ar.edu.unrc.game2048.move,MoveProvider,3,39,0,0,1,7,1,2,1,2

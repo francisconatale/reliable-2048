@@ -247,11 +247,12 @@ for PROFILE in "${SELECTED_PROFILES[@]}"; do
             fi
 
             # Extraer estadísticas de PITest del log
-            LINE_COV=$(grep -E ">> Line Coverage:" "$MUTATION_LOG" | tail -n 1 | sed 's/.*>> //' || true)
+            LINE_COV=$(grep -E ">> Line Coverage" "$MUTATION_LOG" | tail -n 1 | sed 's/.*>> //' || true)
             MUT_COV=$(grep -E ">> Generated .* mutations Killed" "$MUTATION_LOG" | tail -n 1 | sed 's/.*>> //' || true)
+            MUT_STRENGTH=$(grep -E ">> Mutations with no coverage" "$MUTATION_LOG" | tail -n 1 | sed 's/.*>> //' || true)
 
             if [ -n "$MUT_COV" ]; then
-                MUTATION_DETAILS["$PROFILE"]="${LINE_COV:-N/A} | ${MUT_COV}"
+                MUTATION_DETAILS["$PROFILE"]="${LINE_COV:-N/A} | ${MUT_COV} | ${MUT_STRENGTH:-N/A}"
             else
                 MUTATION_DETAILS["$PROFILE"]="Reporte generado en pit-reports/"
             fi

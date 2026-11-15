@@ -1,0 +1,659 @@
+Daikon version 5.9.0, released September 1, 2026; http://plse.cs.washington.edu/daikon.
+Reading declaration files Processing trace data; reading 1 dtrace file:
+
+No return from procedure observed 66 times.  Unmatched entries are ignored!
+Unterminated calls:
+  ar.edu.unrc.game2048.Board.forTesting(int) : 8 invocations
+  ar.edu.unrc.game2048.Board.Board(int, boolean, java.util.Random) : 15 invocations
+  ar.edu.unrc.game2048.Board.move(ar.edu.unrc.game2048.Direction) : 2 invocations
+  ar.edu.unrc.game2048.Board.getCell(int, int) : 9 invocations
+  ar.edu.unrc.game2048.Board.checkBounds(int, int) : 12 invocations
+  ar.edu.unrc.game2048.Board.setCell(int, int, ar.edu.unrc.game2048.Cell) : 5 invocations
+  ar.edu.unrc.game2048.Cell.Cell(int) : 3 invocations
+  ar.edu.unrc.game2048.Cell.mergeWith(ar.edu.unrc.game2048.Cell) : 5 invocations
+  ar.edu.unrc.game2048.Board.Board(int, boolean) : 2 invocations
+  ar.edu.unrc.game2048.Board.setScore(int) : 3 invocations
+  ar.edu.unrc.game2048.Board.Board(ar.edu.unrc.game2048.Board) : 1 invocation
+  ar.edu.unrc.game2048.Cell.canMergeWith(ar.edu.unrc.game2048.Cell) : 1 invocation
+End of report for procedures not returned from.  Unmatched entries are ignored!
+
+===========================================================================
+ar.edu.unrc.game2048.Board:::CLASS
+===========================================================================
+ar.edu.unrc.game2048.Board:::OBJECT
+this.size == size(this.grid[])
+this.size >= 1
+this.grid != null
+this.grid.getClass().getName() == ar.edu.unrc.game2048.Cell[][].class
+this.grid[] elements != null
+this.score != null
+this.random != null
+ar.edu.unrc.game2048.Board.DEFAULT_SIZE != size(this.grid[])-1
+ar.edu.unrc.game2048.Board.MAX_SIZE >= this.size
+ar.edu.unrc.game2048.Board.WINNING_VALUE > this.size
+===========================================================================
+ar.edu.unrc.game2048.Board.Board():::EXIT
+ar.edu.unrc.game2048.Board.DEFAULT_SIZE == this.size
+ar.edu.unrc.game2048.Board.DEFAULT_SIZE == size(this.grid[])
+this.determinist == false
+===========================================================================
+ar.edu.unrc.game2048.Board.Board(ar.edu.unrc.game2048.Board):::ENTER
+other.size == size(other.grid[])
+other != null
+other.grid != null
+other.grid.getClass().getName() == ar.edu.unrc.game2048.Cell[][].class
+other.grid[] elements != null
+other.score != null
+other.random != null
+ar.edu.unrc.game2048.Board.DEFAULT_SIZE != size(other.grid[])-1
+ar.edu.unrc.game2048.Board.MAX_SIZE > other.size
+ar.edu.unrc.game2048.Board.WINNING_VALUE > other.size
+===========================================================================
+ar.edu.unrc.game2048.Board.Board(ar.edu.unrc.game2048.Board):::EXIT
+this.size == other.size
+this.size == orig(other.size)
+this.size == size(other.grid[])
+this.size == orig(size(other.grid[]))
+this.grid.getClass().getName() == other.grid.getClass().getName()
+this.grid.getClass().getName() == orig(other.grid.getClass().getName())
+this.determinist == other.determinist
+this.determinist == orig(other.determinist)
+other.grid == orig(other.grid)
+other.grid[] == orig(other.grid[])
+other.score == orig(other.score)
+other.random == orig(other.random)
+other.grid != null
+other.grid[] elements != null
+other.score != null
+other.random != null
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+===========================================================================
+ar.edu.unrc.game2048.Board.Board(int, boolean):::ENTER
+size >= 1
+===========================================================================
+ar.edu.unrc.game2048.Board.Board(int, boolean):::EXIT
+this.size == orig(size)
+this.determinist == orig(determinist)
+===========================================================================
+ar.edu.unrc.game2048.Board.Board(int, boolean, java.util.Random):::ENTER
+size >= 1
+random != null
+===========================================================================
+ar.edu.unrc.game2048.Board.Board(int, boolean, java.util.Random):::EXIT
+this.size == orig(size)
+this.determinist == orig(determinist)
+this.random == orig(random)
+===========================================================================
+ar.edu.unrc.game2048.Board.addRandomTile():::ENTER
+this.determinist == false
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+===========================================================================
+ar.edu.unrc.game2048.Board.addRandomTile():::EXIT
+this.size == orig(this.size)
+this.size == orig(size(this.grid[]))
+this.grid == orig(this.grid)
+this.grid.getClass().getName() == orig(this.grid.getClass().getName())
+this.grid[] == orig(this.grid[])
+this.score == orig(this.score)
+this.determinist == orig(this.determinist)
+this.random == orig(this.random)
+this.determinist == false
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+===========================================================================
+ar.edu.unrc.game2048.Board.canMerge(ar.edu.unrc.game2048.Cell, ar.edu.unrc.game2048.Cell):::ENTER
+ar.edu.unrc.game2048.Cell.EMPTY.value == size(this.grid[])-1
+this.grid[this.size-1] == this.grid[ar.edu.unrc.game2048.Cell.EMPTY.value]
+this.size == 1
+this.determinist == false
+current != null
+current.value == 2
+ar.edu.unrc.game2048.Cell.EMPTY has only one value
+ar.edu.unrc.game2048.Cell.EMPTY != null
+neighbor == null
+this.grid[] elements == this.grid[ar.edu.unrc.game2048.Cell.EMPTY.value]
+===========================================================================
+ar.edu.unrc.game2048.Board.canMerge(ar.edu.unrc.game2048.Cell, ar.edu.unrc.game2048.Cell):::EXIT
+this.size == orig(this.size)
+this.size == orig(size(this.grid[]))
+this.grid == orig(this.grid)
+this.grid.getClass().getName() == orig(this.grid.getClass().getName())
+this.grid[] == orig(this.grid[])
+this.score == orig(this.score)
+this.determinist == return
+this.random == orig(this.random)
+current.value == orig(current.value)
+ar.edu.unrc.game2048.Cell.EMPTY == orig(ar.edu.unrc.game2048.Cell.EMPTY)
+ar.edu.unrc.game2048.Cell.EMPTY.value == orig(ar.edu.unrc.game2048.Cell.EMPTY.value)
+ar.edu.unrc.game2048.Cell.EMPTY.value == size(this.grid[])-1
+ar.edu.unrc.game2048.Cell.EMPTY.value == orig(size(this.grid[]))-1
+return == orig(this.determinist)
+this.grid[this.size-1] == this.grid[ar.edu.unrc.game2048.Cell.EMPTY.value]
+orig(this.grid[post(this.size)-1]) == this.grid[ar.edu.unrc.game2048.Cell.EMPTY.value]
+this.grid[ar.edu.unrc.game2048.Cell.EMPTY.value] == this.grid[orig(this.size)-1]
+this.grid[ar.edu.unrc.game2048.Cell.EMPTY.value] == orig(this.grid[this.size-1])
+this.size == 1
+current.value == 2
+ar.edu.unrc.game2048.Cell.EMPTY has only one value
+ar.edu.unrc.game2048.Cell.EMPTY != null
+return == false
+this.grid[] elements == this.grid[ar.edu.unrc.game2048.Cell.EMPTY.value]
+===========================================================================
+ar.edu.unrc.game2048.Board.checkBounds(int, int):::ENTER
+row >= 0
+col >= 0
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+ar.edu.unrc.game2048.Board.MAX_SIZE > row
+ar.edu.unrc.game2048.Board.MAX_SIZE > col
+ar.edu.unrc.game2048.Board.WINNING_VALUE > row
+ar.edu.unrc.game2048.Board.WINNING_VALUE > col
+row <= size(this.grid[])-1
+col <= size(this.grid[])-1
+===========================================================================
+ar.edu.unrc.game2048.Board.checkBounds(int, int):::EXIT
+this.size == orig(this.size)
+this.size == orig(size(this.grid[]))
+this.grid == orig(this.grid)
+this.grid.getClass().getName() == orig(this.grid.getClass().getName())
+this.grid[] == orig(this.grid[])
+this.score == orig(this.score)
+this.determinist == orig(this.determinist)
+this.random == orig(this.random)
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+orig(row) <= size(this.grid[])-1
+orig(col) <= size(this.grid[])-1
+===========================================================================
+ar.edu.unrc.game2048.Board.equals(java.lang.Object):::ENTER
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+this.grid.getClass().getName() != o.getClass().getName()
+===========================================================================
+ar.edu.unrc.game2048.Board.equals(java.lang.Object):::EXIT
+this.size == orig(this.size)
+this.size == orig(size(this.grid[]))
+this.grid == orig(this.grid)
+this.grid.getClass().getName() == orig(this.grid.getClass().getName())
+this.grid[] == orig(this.grid[])
+this.score == orig(this.score)
+this.determinist == orig(this.determinist)
+this.random == orig(this.random)
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+this.grid.getClass().getName() != orig(o.getClass().getName())
+===========================================================================
+ar.edu.unrc.game2048.Board.forTesting(int):::ENTER
+size >= 1
+ar.edu.unrc.game2048.Board.MAX_SIZE >= size
+ar.edu.unrc.game2048.Board.WINNING_VALUE > size
+===========================================================================
+ar.edu.unrc.game2048.Board.forTesting(int):::EXIT
+return.size == orig(size)
+return.size == size(return.grid[])
+return != null
+return.size >= 1
+return.grid != null
+return.grid.getClass().getName() == ar.edu.unrc.game2048.Cell[][].class
+return.grid[] elements != null
+return.score != null
+return.determinist == true
+return.random != null
+ar.edu.unrc.game2048.Board.DEFAULT_SIZE != size(return.grid[])-1
+ar.edu.unrc.game2048.Board.MAX_SIZE >= return.size
+ar.edu.unrc.game2048.Board.WINNING_VALUE > return.size
+===========================================================================
+ar.edu.unrc.game2048.Board.getCell(int, int):::ENTER
+row >= 0
+col >= 0
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+ar.edu.unrc.game2048.Board.MAX_SIZE > row
+ar.edu.unrc.game2048.Board.MAX_SIZE > col
+ar.edu.unrc.game2048.Board.WINNING_VALUE > row
+ar.edu.unrc.game2048.Board.WINNING_VALUE > col
+row <= size(this.grid[])-1
+col <= size(this.grid[])-1
+===========================================================================
+ar.edu.unrc.game2048.Board.getCell(int, int):::EXIT
+this.size == orig(this.size)
+this.size == orig(size(this.grid[]))
+this.grid == orig(this.grid)
+this.grid.getClass().getName() == orig(this.grid.getClass().getName())
+this.grid[] == orig(this.grid[])
+this.score == orig(this.score)
+this.determinist == orig(this.determinist)
+this.random == orig(this.random)
+return != null
+return.value one of { 0, 2, 4 }
+ar.edu.unrc.game2048.Cell.EMPTY has only one value
+ar.edu.unrc.game2048.Cell.EMPTY != null
+ar.edu.unrc.game2048.Cell.EMPTY.value == 0
+ar.edu.unrc.game2048.Board.DEFAULT_SIZE >= return.value
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+ar.edu.unrc.game2048.Board.MAX_SIZE > return.value
+ar.edu.unrc.game2048.Board.WINNING_VALUE > return.value
+return.value >= ar.edu.unrc.game2048.Cell.EMPTY.value
+return.value != size(this.grid[])-1
+ar.edu.unrc.game2048.Cell.EMPTY.value <= orig(row)
+ar.edu.unrc.game2048.Cell.EMPTY.value <= orig(col)
+ar.edu.unrc.game2048.Cell.EMPTY.value <= size(this.grid[])-1
+orig(row) <= size(this.grid[])-1
+orig(col) <= size(this.grid[])-1
+===========================================================================
+ar.edu.unrc.game2048.Board.getGrid():::ENTER
+this.size one of { 3, 4, 29 }
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+===========================================================================
+ar.edu.unrc.game2048.Board.getGrid():::EXIT
+this.size == orig(this.size)
+this.size == size(return[])
+this.size == orig(size(this.grid[]))
+this.grid == orig(this.grid)
+this.grid.getClass().getName() == return.getClass().getName()
+this.grid[] == orig(this.grid[])
+this.score == orig(this.score)
+this.determinist == orig(this.determinist)
+this.random == orig(this.random)
+return.getClass().getName() == orig(this.grid.getClass().getName())
+this.size one of { 3, 4, 29 }
+return != null
+return.getClass().getName() == ar.edu.unrc.game2048.Cell[][].class
+return[] elements != null
+ar.edu.unrc.game2048.Board.DEFAULT_SIZE != size(return[])-1
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+===========================================================================
+ar.edu.unrc.game2048.Board.getNeighbor(int, int, int, int):::ENTER
+row == size(this.grid[])-1
+col == size(this.grid[])-1
+this.grid[this.size-1] == this.grid[row]
+this.grid[this.size-1] == this.grid[col]
+this.size == 1
+this.determinist == false
+rowOffset one of { 0, 1 }
+colOffset one of { 0, 1 }
+ar.edu.unrc.game2048.Board.DEFAULT_SIZE > rowOffset
+ar.edu.unrc.game2048.Board.DEFAULT_SIZE > colOffset
+ar.edu.unrc.game2048.Board.MAX_SIZE > rowOffset
+ar.edu.unrc.game2048.Board.MAX_SIZE > colOffset
+ar.edu.unrc.game2048.Board.WINNING_VALUE > rowOffset
+ar.edu.unrc.game2048.Board.WINNING_VALUE > colOffset
+this.size >= rowOffset
+this.size >= colOffset
+this.grid[] elements == this.grid[this.size-1]
+rowOffset != colOffset
+rowOffset >= size(this.grid[])-1
+colOffset >= size(this.grid[])-1
+===========================================================================
+ar.edu.unrc.game2048.Board.getNeighbor(int, int, int, int):::EXIT
+this.size == orig(this.size)
+this.size == orig(size(this.grid[]))
+this.grid == orig(this.grid)
+this.grid.getClass().getName() == orig(this.grid.getClass().getName())
+this.grid[] == orig(this.grid[])
+this.score == orig(this.score)
+this.determinist == orig(this.determinist)
+this.random == orig(this.random)
+ar.edu.unrc.game2048.Cell.EMPTY.value == orig(row)
+ar.edu.unrc.game2048.Cell.EMPTY.value == orig(col)
+ar.edu.unrc.game2048.Cell.EMPTY.value == size(this.grid[])-1
+ar.edu.unrc.game2048.Cell.EMPTY.value == orig(size(this.grid[]))-1
+this.grid[this.size-1] == this.grid[ar.edu.unrc.game2048.Cell.EMPTY.value]
+orig(this.grid[post(this.size)-1]) == this.grid[ar.edu.unrc.game2048.Cell.EMPTY.value]
+this.grid[ar.edu.unrc.game2048.Cell.EMPTY.value] == this.grid[orig(this.size)-1]
+this.grid[ar.edu.unrc.game2048.Cell.EMPTY.value] == orig(this.grid[this.size-1])
+this.size == 1
+this.determinist == false
+return == null
+ar.edu.unrc.game2048.Cell.EMPTY has only one value
+ar.edu.unrc.game2048.Cell.EMPTY != null
+this.size >= orig(rowOffset)
+this.size >= orig(colOffset)
+this.grid[] elements == this.grid[ar.edu.unrc.game2048.Cell.EMPTY.value]
+ar.edu.unrc.game2048.Cell.EMPTY.value <= orig(rowOffset)
+ar.edu.unrc.game2048.Cell.EMPTY.value <= orig(colOffset)
+===========================================================================
+ar.edu.unrc.game2048.Board.getScore():::ENTER
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+===========================================================================
+ar.edu.unrc.game2048.Board.getScore():::EXIT
+this.size == orig(this.size)
+this.size == orig(size(this.grid[]))
+this.grid == orig(this.grid)
+this.grid.getClass().getName() == orig(this.grid.getClass().getName())
+this.grid[] == orig(this.grid[])
+this.score == orig(this.score)
+this.determinist == orig(this.determinist)
+this.random == orig(this.random)
+return one of { 0, 4, 60 }
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+ar.edu.unrc.game2048.Board.MAX_SIZE > return
+ar.edu.unrc.game2048.Board.WINNING_VALUE > return
+return % this.size == 0
+this.size >= return
+===========================================================================
+ar.edu.unrc.game2048.Board.getSize():::ENTER
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+===========================================================================
+ar.edu.unrc.game2048.Board.getSize():::EXIT
+this.size == return
+this.grid == orig(this.grid)
+this.grid.getClass().getName() == orig(this.grid.getClass().getName())
+this.grid[] == orig(this.grid[])
+this.score == orig(this.score)
+this.determinist == orig(this.determinist)
+this.random == orig(this.random)
+return == orig(this.size)
+return == size(this.grid[])
+return == orig(size(this.grid[]))
+return >= 1
+ar.edu.unrc.game2048.Board.MAX_SIZE > return
+ar.edu.unrc.game2048.Board.WINNING_VALUE > return
+===========================================================================
+ar.edu.unrc.game2048.Board.hasEmptyCells():::ENTER
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+===========================================================================
+ar.edu.unrc.game2048.Board.hasEmptyCells():::EXIT
+this.size == orig(this.size)
+this.size == orig(size(this.grid[]))
+this.grid == orig(this.grid)
+this.grid.getClass().getName() == orig(this.grid.getClass().getName())
+this.grid[] == orig(this.grid[])
+this.score == orig(this.score)
+this.determinist == orig(this.determinist)
+this.random == orig(this.random)
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+===========================================================================
+ar.edu.unrc.game2048.Board.hashCode():::ENTER
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+===========================================================================
+ar.edu.unrc.game2048.Board.hashCode():::EXIT
+this.size == orig(this.size)
+this.size == orig(size(this.grid[]))
+this.grid == orig(this.grid)
+this.grid.getClass().getName() == orig(this.grid.getClass().getName())
+this.grid[] == orig(this.grid[])
+this.score == orig(this.score)
+this.determinist == orig(this.determinist)
+this.random == orig(this.random)
+ar.edu.unrc.game2048.Board.DEFAULT_SIZE != return
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+ar.edu.unrc.game2048.Board.MAX_SIZE != return
+ar.edu.unrc.game2048.Board.WINNING_VALUE != return
+this.size != return
+return != size(this.grid[])-1
+===========================================================================
+ar.edu.unrc.game2048.Board.initializeEmpty():::ENTER
+this.determinist == false
+===========================================================================
+ar.edu.unrc.game2048.Board.initializeEmpty():::EXIT
+this.size == orig(this.size)
+this.size == orig(size(this.grid[]))
+this.grid == orig(this.grid)
+this.grid.getClass().getName() == orig(this.grid.getClass().getName())
+this.grid[] == orig(this.grid[])
+this.score == orig(this.score)
+this.determinist == orig(this.determinist)
+this.random == orig(this.random)
+this.determinist == false
+===========================================================================
+ar.edu.unrc.game2048.Board.isFull():::ENTER
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+===========================================================================
+ar.edu.unrc.game2048.Board.isFull():::EXIT
+this.size == orig(this.size)
+this.size == orig(size(this.grid[]))
+this.grid == orig(this.grid)
+this.grid.getClass().getName() == orig(this.grid.getClass().getName())
+this.grid[] == orig(this.grid[])
+this.score == orig(this.score)
+this.determinist == orig(this.determinist)
+this.random == orig(this.random)
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+===========================================================================
+ar.edu.unrc.game2048.Board.isLosingBoard():::ENTER
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+===========================================================================
+ar.edu.unrc.game2048.Board.isLosingBoard():::EXIT
+this.size == orig(this.size)
+this.size == orig(size(this.grid[]))
+this.grid == orig(this.grid)
+this.grid.getClass().getName() == orig(this.grid.getClass().getName())
+this.grid[] == orig(this.grid[])
+this.score == orig(this.score)
+this.determinist == orig(this.determinist)
+this.random == orig(this.random)
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+===========================================================================
+ar.edu.unrc.game2048.Board.isWinningBoard():::ENTER
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+===========================================================================
+ar.edu.unrc.game2048.Board.isWinningBoard():::EXIT
+this.size == orig(this.size)
+this.size == orig(size(this.grid[]))
+this.grid == orig(this.grid)
+this.grid.getClass().getName() == orig(this.grid.getClass().getName())
+this.grid[] == orig(this.grid[])
+this.score == orig(this.score)
+this.determinist == orig(this.determinist)
+this.random == orig(this.random)
+return == false
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+===========================================================================
+ar.edu.unrc.game2048.Board.move(ar.edu.unrc.game2048.Direction):::ENTER
+direction != null
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+===========================================================================
+ar.edu.unrc.game2048.Board.move(ar.edu.unrc.game2048.Direction):::EXIT
+this.size == orig(this.size)
+this.size == orig(size(this.grid[]))
+this.grid == orig(this.grid)
+this.grid.getClass().getName() == orig(this.grid.getClass().getName())
+this.grid[] == orig(this.grid[])
+this.score == orig(this.score)
+this.determinist == orig(this.determinist)
+this.random == orig(this.random)
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+===========================================================================
+ar.edu.unrc.game2048.Board.repOK():::ENTER
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+===========================================================================
+ar.edu.unrc.game2048.Board.repOK():::EXIT
+this.size == orig(this.size)
+this.size == orig(size(this.grid[]))
+this.grid == orig(this.grid)
+this.grid.getClass().getName() == orig(this.grid.getClass().getName())
+this.grid[] == orig(this.grid[])
+this.score == orig(this.score)
+this.determinist == orig(this.determinist)
+this.random == orig(this.random)
+return == true
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+===========================================================================
+ar.edu.unrc.game2048.Board.setCell(int, int, ar.edu.unrc.game2048.Cell):::ENTER
+this.determinist == false
+row >= 0
+col >= 0
+cell != null
+cell.value one of { 0, 2, 4 }
+ar.edu.unrc.game2048.Cell.EMPTY has only one value
+ar.edu.unrc.game2048.Cell.EMPTY != null
+ar.edu.unrc.game2048.Cell.EMPTY.value == 0
+ar.edu.unrc.game2048.Board.DEFAULT_SIZE != col
+ar.edu.unrc.game2048.Board.DEFAULT_SIZE >= cell.value
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+ar.edu.unrc.game2048.Board.MAX_SIZE > row
+ar.edu.unrc.game2048.Board.MAX_SIZE > col
+ar.edu.unrc.game2048.Board.MAX_SIZE > cell.value
+ar.edu.unrc.game2048.Board.WINNING_VALUE > row
+ar.edu.unrc.game2048.Board.WINNING_VALUE > col
+ar.edu.unrc.game2048.Board.WINNING_VALUE > cell.value
+row >= ar.edu.unrc.game2048.Cell.EMPTY.value
+row <= size(this.grid[])-1
+col >= ar.edu.unrc.game2048.Cell.EMPTY.value
+col <= size(this.grid[])-1
+cell.value >= ar.edu.unrc.game2048.Cell.EMPTY.value
+cell.value != size(this.grid[])-1
+ar.edu.unrc.game2048.Cell.EMPTY.value <= size(this.grid[])-1
+===========================================================================
+ar.edu.unrc.game2048.Board.setCell(int, int, ar.edu.unrc.game2048.Cell):::EXIT
+this.size == orig(this.size)
+this.size == orig(size(this.grid[]))
+this.grid == orig(this.grid)
+this.grid.getClass().getName() == orig(this.grid.getClass().getName())
+this.grid[] == orig(this.grid[])
+this.score == orig(this.score)
+this.determinist == orig(this.determinist)
+this.random == orig(this.random)
+cell.value == orig(cell.value)
+ar.edu.unrc.game2048.Cell.EMPTY == orig(ar.edu.unrc.game2048.Cell.EMPTY)
+ar.edu.unrc.game2048.Cell.EMPTY.value == orig(ar.edu.unrc.game2048.Cell.EMPTY.value)
+this.determinist == false
+cell.value one of { 0, 2, 4 }
+ar.edu.unrc.game2048.Cell.EMPTY has only one value
+ar.edu.unrc.game2048.Cell.EMPTY != null
+ar.edu.unrc.game2048.Cell.EMPTY.value == 0
+ar.edu.unrc.game2048.Board.DEFAULT_SIZE >= cell.value
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+ar.edu.unrc.game2048.Board.MAX_SIZE > cell.value
+ar.edu.unrc.game2048.Board.WINNING_VALUE > cell.value
+cell.value >= ar.edu.unrc.game2048.Cell.EMPTY.value
+cell.value != size(this.grid[])-1
+ar.edu.unrc.game2048.Cell.EMPTY.value <= orig(row)
+ar.edu.unrc.game2048.Cell.EMPTY.value <= orig(col)
+ar.edu.unrc.game2048.Cell.EMPTY.value <= size(this.grid[])-1
+orig(row) <= size(this.grid[])-1
+orig(col) <= size(this.grid[])-1
+===========================================================================
+ar.edu.unrc.game2048.Board.setScore(int):::ENTER
+value >= 0
+ar.edu.unrc.game2048.Board.DEFAULT_SIZE != value
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+ar.edu.unrc.game2048.Board.MAX_SIZE != value
+ar.edu.unrc.game2048.Board.WINNING_VALUE != value
+value != size(this.grid[])-1
+===========================================================================
+ar.edu.unrc.game2048.Board.setScore(int):::EXIT
+this.size == orig(this.size)
+this.size == orig(size(this.grid[]))
+this.grid == orig(this.grid)
+this.grid.getClass().getName() == orig(this.grid.getClass().getName())
+this.grid[] == orig(this.grid[])
+this.score == orig(this.score)
+this.determinist == orig(this.determinist)
+this.random == orig(this.random)
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+orig(value) != size(this.grid[])-1
+===========================================================================
+ar.edu.unrc.game2048.Board.toString():::ENTER
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+===========================================================================
+ar.edu.unrc.game2048.Board.toString():::EXIT
+this.size == orig(this.size)
+this.size == orig(size(this.grid[]))
+this.grid == orig(this.grid)
+this.grid.getClass().getName() == orig(this.grid.getClass().getName())
+this.grid[] == orig(this.grid[])
+this.score == orig(this.score)
+this.determinist == orig(this.determinist)
+this.random == orig(this.random)
+return != null
+ar.edu.unrc.game2048.Board.MAX_SIZE > this.size
+===========================================================================
+ar.edu.unrc.game2048.Cell:::CLASS
+ar.edu.unrc.game2048.Cell.EMPTY has only one value
+ar.edu.unrc.game2048.Cell.EMPTY != null
+ar.edu.unrc.game2048.Cell.EMPTY.value == 0
+===========================================================================
+ar.edu.unrc.game2048.Cell:::OBJECT
+this.value >= 0
+this.value >= ar.edu.unrc.game2048.Cell.EMPTY.value
+===========================================================================
+ar.edu.unrc.game2048.Cell.Cell():::EXIT
+this.value == 0
+===========================================================================
+ar.edu.unrc.game2048.Cell.Cell(int):::ENTER
+value one of { 2, 4, 8 }
+===========================================================================
+ar.edu.unrc.game2048.Cell.Cell(int):::EXIT
+this.value == orig(value)
+this.value one of { 2, 4, 8 }
+this.value > ar.edu.unrc.game2048.Cell.EMPTY.value
+===========================================================================
+ar.edu.unrc.game2048.Cell.canMergeWith(ar.edu.unrc.game2048.Cell):::ENTER
+other != null
+other.value >= 0
+ar.edu.unrc.game2048.Cell.EMPTY.value <= other.value
+===========================================================================
+ar.edu.unrc.game2048.Cell.canMergeWith(ar.edu.unrc.game2048.Cell):::EXIT
+this.value == orig(this.value)
+ar.edu.unrc.game2048.Cell.EMPTY == orig(ar.edu.unrc.game2048.Cell.EMPTY)
+ar.edu.unrc.game2048.Cell.EMPTY.value == orig(ar.edu.unrc.game2048.Cell.EMPTY.value)
+other.value == orig(other.value)
+other.value >= 0
+ar.edu.unrc.game2048.Cell.EMPTY.value <= other.value
+===========================================================================
+ar.edu.unrc.game2048.Cell.equals(java.lang.Object):::ENTER
+this.value one of { 0, 2, 4 }
+===========================================================================
+ar.edu.unrc.game2048.Cell.equals(java.lang.Object):::EXIT
+this.value == orig(this.value)
+ar.edu.unrc.game2048.Cell.EMPTY == orig(ar.edu.unrc.game2048.Cell.EMPTY)
+ar.edu.unrc.game2048.Cell.EMPTY.value == orig(ar.edu.unrc.game2048.Cell.EMPTY.value)
+this.value one of { 0, 2, 4 }
+===========================================================================
+ar.edu.unrc.game2048.Cell.getValue():::ENTER
+this.value one of { 0, 2, 4 }
+===========================================================================
+ar.edu.unrc.game2048.Cell.getValue():::EXIT
+this.value == return
+ar.edu.unrc.game2048.Cell.EMPTY == orig(ar.edu.unrc.game2048.Cell.EMPTY)
+ar.edu.unrc.game2048.Cell.EMPTY.value == orig(ar.edu.unrc.game2048.Cell.EMPTY.value)
+return == orig(this.value)
+return one of { 0, 2, 4 }
+ar.edu.unrc.game2048.Cell.EMPTY.value <= return
+===========================================================================
+ar.edu.unrc.game2048.Cell.hashCode():::ENTER
+this.value one of { 0, 2, 4 }
+===========================================================================
+ar.edu.unrc.game2048.Cell.hashCode():::EXIT
+this.value == orig(this.value)
+ar.edu.unrc.game2048.Cell.EMPTY == orig(ar.edu.unrc.game2048.Cell.EMPTY)
+ar.edu.unrc.game2048.Cell.EMPTY.value == orig(ar.edu.unrc.game2048.Cell.EMPTY.value)
+this.value one of { 0, 2, 4 }
+return one of { 31, 33, 35 }
+this.value < return
+ar.edu.unrc.game2048.Cell.EMPTY.value < return
+===========================================================================
+ar.edu.unrc.game2048.Cell.isEmpty():::ENTER
+===========================================================================
+ar.edu.unrc.game2048.Cell.isEmpty():::EXIT
+this.value == orig(this.value)
+ar.edu.unrc.game2048.Cell.EMPTY == orig(ar.edu.unrc.game2048.Cell.EMPTY)
+ar.edu.unrc.game2048.Cell.EMPTY.value == orig(ar.edu.unrc.game2048.Cell.EMPTY.value)
+===========================================================================
+ar.edu.unrc.game2048.Cell.mergeWith(ar.edu.unrc.game2048.Cell):::ENTER
+this.value == other.value
+this.value one of { 2, 4 }
+===========================================================================
+ar.edu.unrc.game2048.Cell.mergeWith(ar.edu.unrc.game2048.Cell):::EXIT
+this.value == other.value
+this.value == orig(this.value)
+this.value == orig(other.value)
+ar.edu.unrc.game2048.Cell.EMPTY == orig(ar.edu.unrc.game2048.Cell.EMPTY)
+ar.edu.unrc.game2048.Cell.EMPTY.value == orig(ar.edu.unrc.game2048.Cell.EMPTY.value)
+this.value one of { 2, 4 }
+return.value one of { 4, 8 }
+===========================================================================
+ar.edu.unrc.game2048.Cell.repOK():::ENTER
+this.value one of { 0, 2, 4 }
+===========================================================================
+ar.edu.unrc.game2048.Cell.repOK():::EXIT
+this.value == orig(this.value)
+ar.edu.unrc.game2048.Cell.EMPTY == orig(ar.edu.unrc.game2048.Cell.EMPTY)
+ar.edu.unrc.game2048.Cell.EMPTY.value == orig(ar.edu.unrc.game2048.Cell.EMPTY.value)
+this.value one of { 0, 2, 4 }
+return == true
+===========================================================================
+ar.edu.unrc.game2048.Cell.toString():::ENTER
+===========================================================================
+ar.edu.unrc.game2048.Cell.toString():::EXIT
+this.value == orig(this.value)
+ar.edu.unrc.game2048.Cell.EMPTY == orig(ar.edu.unrc.game2048.Cell.EMPTY)
+ar.edu.unrc.game2048.Cell.EMPTY.value == orig(ar.edu.unrc.game2048.Cell.EMPTY.value)
+return != null
+Exiting Daikon.
