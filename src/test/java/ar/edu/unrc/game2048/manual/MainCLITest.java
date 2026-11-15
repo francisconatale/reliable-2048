@@ -70,6 +70,54 @@ public class MainCLITest {
     }
 
     @Test
+    public void testMainStartsCliWithStdinTwoLines() {
+        java.io.InputStream originalInput = System.in;
+        PrintStream originalOutput = System.out;
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        try {
+            System.setIn(new ByteArrayInputStream("2\n[2,0,0,2]\nq\n".getBytes()));
+            System.setOut(new PrintStream(output));
+            MainCLI.main(new String[]{"--stdin"});
+        } finally {
+            System.setIn(originalInput);
+            System.setOut(originalOutput);
+        }
+        assertTrue(output.toString().contains("Thanks for playing!"));
+    }
+
+    @Test
+    public void testMainStartsCliWithStdinSingleLine() {
+        java.io.InputStream originalInput = System.in;
+        PrintStream originalOutput = System.out;
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        try {
+            System.setIn(new ByteArrayInputStream("2 [2,0,0,2]\nq\n".getBytes()));
+            System.setOut(new PrintStream(output));
+            MainCLI.main(new String[]{"--stdin"});
+        } finally {
+            System.setIn(originalInput);
+            System.setOut(originalOutput);
+        }
+        assertTrue(output.toString().contains("Thanks for playing!"));
+    }
+
+    @Test
+    public void testMainStartsCliWithArgs() {
+        java.io.InputStream originalInput = System.in;
+        PrintStream originalOutput = System.out;
+        ByteArrayOutputStream output = new ByteArrayOutputStream();
+        try {
+            System.setIn(new ByteArrayInputStream("q\n".getBytes()));
+            System.setOut(new PrintStream(output));
+            MainCLI.main(new String[]{"2", "[2,0,0,2]"});
+        } finally {
+            System.setIn(originalInput);
+            System.setOut(originalOutput);
+        }
+        assertTrue(output.toString().contains("Thanks for playing!"));
+    }
+
+    @Test
     public void testCliReportsNoMovement() {
         InputReader mockInputReader = Mockito.mock(InputReader.class);
         Mockito.when(mockInputReader.nextLine()).thenReturn("d", "q");

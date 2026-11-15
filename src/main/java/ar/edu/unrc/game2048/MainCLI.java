@@ -1,5 +1,5 @@
 package ar.edu.unrc.game2048;
-
+import ar.utils.BoardParser;
 import java.util.Scanner;
 
 /**
@@ -14,6 +14,10 @@ public class MainCLI {
     
     public MainCLI() {
         this(new Board(), new Scanner(System.in));
+    }
+
+    public MainCLI(Board board){
+        this(board, new Scanner(System.in));
     }
 
     public MainCLI(Board board, Scanner scanner) {
@@ -83,10 +87,45 @@ public class MainCLI {
      */
     private void displayBoard() {
         System.out.println(board);
-    }
-    
+    }    
+
+    // for grammar fuzzing, (size, [0, 1,..., n]) or directly ([0, 1,..., n])
     public static void main(String[] args) {
-        MainCLI game = new MainCLI();
+        MainCLI game = null;
+        if (args.length == 2) {
+            Integer sizeOfBoard = Integer.parseInt(args[0]);
+            String[] boardValues = args[1].replace("[", "").replace("]", "").split(",");
+            Board board = BoardParser.parse(boardValues, sizeOfBoard);
+            game = new MainCLI(board);
+        } else if (args.length == 1 && !args[0].equals("--stdin") && !args[0].equals("-") && !args[0].equals("stdin")) {
+            String[] boardValues = args[0].replace("[", "").replace("]", "").split(",");
+            Board board = BoardParser.parse(boardValues);
+            game = new MainCLI(board);
+        } else if (args.length == 1 && (args[0].equals("--stdin") || args[0].equals("-") || args[0].equals("stdin"))) {
+            Scanner scanner = new Scanner(System.in);
+            if (!scanner.hasNextLine()) {
+                return;
+            }
+            String firstLine = scanner.nextLine().trim();
+            String boardLine;
+            if (firstLine.contains(",")) {
+                boardLine = firstLine;
+            } else if (firstLine.contains(" ")) {
+                String[] parts = firstLine.split(" ", 2);
+                if (parts[1].trim().contains(",")) {
+                    boardLine = parts[1].trim();
+                } else {
+                    boardLine = firstLine;
+                }
+            } else {
+                boardLine = firstLine;
+            }
+            String[] boardValues = boardLine.replace("[", "").replace("]", "").split(",");
+            Board board = BoardParser.parse(boardValues);
+            game = new MainCLI(board, scanner);
+        } else {
+            game = new MainCLI();
+        }
         game.play();
     }
 }
