@@ -1,0 +1,57 @@
+{
+ "_aviso": "GUION ESCRITO A MANO para probar el flujo sin red. NO es salida de un LLM: no usar como resultado de un modelo.",
+ "fp_tests": [
+  {
+   "reasoning": "The cap 2048 looks like the winning tile, but a score is a running sum of merged tile values, so a single move can exceed it if the row holds large tiles.",
+   "tests": [
+    {
+     "args": [
+      "new int[]{2, 2}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{1024, 1024}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{8, 8, 4, 4}"
+     ]
+    }
+   ]
+  },
+  {
+   "reasoning": "Previous inputs stayed at or below 2048. Use tiles of 2048 and above so a merge creates a tile larger than 2048.",
+   "tests": [
+    {
+     "args": [
+      "new int[]{2048, 2048}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{4096, 4096, 2048, 2048}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{65536, 65536}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{0, 0, 0, 0}"
+     ]
+    }
+   ]
+  }
+ ],
+ "fp_explain": [
+  {
+   "verdict": "assertion_too_strong",
+   "explanation": "The program adds 2*v for each merge, so merging two 2048 tiles scores 4096; the score is a sum of created tile values and is not bounded by the winning value 2048. The behavior is correct for the 2048 rules.",
+   "suggested_assertion": "result % 4 == 0 && result >= 0"
+  }
+ ]
+}

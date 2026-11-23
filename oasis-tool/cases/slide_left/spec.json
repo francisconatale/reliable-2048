@@ -1,0 +1,8 @@
+{
+  "name": "slide_left",
+  "source": "Subject.java",
+  "method": "slideLeft",
+  "pre": "row != null && Subject.validTiles(row)",
+  "assertion": "result.length == row.length",
+  "description": "Slides a 2048 row to the left and merges equal adjacent tiles once per tile. Returns a new array of the same length; tiles are 0 or powers of two."
+}

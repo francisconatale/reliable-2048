@@ -1,0 +1,77 @@
+{
+ "model": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+ "spec": "cases/score_cap/spec.json",
+ "fp": {
+  "mode": "fp",
+  "assertion": "result <= 2048",
+  "rounds": [
+   {
+    "reasoning": "The method computes the score from merging tiles when sliding left. Each merge of two equal tiles of value v adds 2*v to the score. The precondition only requires that the array is non-null and contains only zeros or powers of two (via Subject.validTiles). There is no upper bound on tile values or the number of merges. A row with two merges of 1024 tiles yields a score of 4096, which exceeds 2048. Similarly, larger tiles or more merges produce even larger scores. Therefore, the assertion result <= 2048 is a false positive.",
+    "proposed": 5,
+    "valid": 5
+   }
+  ],
+  "violations": [
+   {
+    "args": [
+     "new int[]{1024, 1024, 1024, 1024}"
+    ],
+    "status": "FAIL",
+    "result": "4096",
+    "post": "[1024, 1024, 1024, 1024]",
+    "detail": ""
+   },
+   {
+    "args": [
+     "new int[]{2048, 2048, 0, 0}"
+    ],
+    "status": "FAIL",
+    "result": "4096",
+    "post": "[2048, 2048, 0, 0]",
+    "detail": ""
+   },
+   {
+    "args": [
+     "new int[]{2048, 2048, 2048, 2048}"
+    ],
+    "status": "FAIL",
+    "result": "8192",
+    "post": "[2048, 2048, 2048, 2048]",
+    "detail": ""
+   },
+   {
+    "args": [
+     "new int[]{4096, 4096, 0, 0}"
+    ],
+    "status": "FAIL",
+    "result": "8192",
+    "post": "[4096, 4096, 0, 0]",
+    "detail": ""
+   },
+   {
+    "args": [
+     "new int[]{1024, 1024, 2048, 2048}"
+    ],
+    "status": "FAIL",
+    "result": "6144",
+    "post": "[1024, 1024, 2048, 2048]",
+    "detail": ""
+   }
+  ],
+  "crashes": [],
+  "held": [],
+  "rejected_tests": [],
+  "explanation": {
+   "verdict": "assertion_too_strong",
+   "explanation": "The method correctly implements the 2048 left-move scoring rule: it sums the values of tiles created by merges. The failing inputs contain tiles of 1024, 2048, 4096, etc., and multiple merges can produce scores well above 2048 (e.g., 4096, 6144, 8192). The assertion `result <= 2048` incorrectly assumes a maximum score of 2048, but the game allows arbitrarily large tiles and multiple merges per row. The program's behavior matches the specification for all given inputs.",
+   "suggested_assertion": "result >= 0 && result <= Arrays.stream(row).sum()"
+  },
+  "suggestion_check": {
+   "assertion": "result >= 0 && result <= Arrays.stream(row).sum()",
+   "compiles": true,
+   "violated_on": [],
+   "checked": 5
+  }
+ },
+ "fn": null
+}

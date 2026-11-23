@@ -1,0 +1,111 @@
+{
+ "_aviso": "GUION ESCRITO A MANO para probar el flujo sin red. NO es salida de un LLM: no usar como resultado de un modelo.",
+ "fn_mutants": [
+  {
+   "mutants": [
+    {
+     "description": "only compacts tiles to the left, never merges",
+     "code": "static int[] slideLeft(int[] row) {\n        int n = row.length;\n        int[] out = new int[n];\n        int pos = 0;\n        for (int i = 0; i < n; i++) {\n            if (row[i] != 0) {\n                out[pos++] = row[i];\n            }\n        }\n        return out;\n}"
+    },
+    {
+     "description": "after a merge prev is not reset, so a tile can merge again",
+     "code": "static int[] slideLeft(int[] row) {\n        int n = row.length;\n        int[] out = new int[n];\n        int pos = 0;\n        int prev = 0;\n        for (int i = 0; i < n; i++) {\n            int v = row[i];\n            if (v == 0) {\n                continue;\n            }\n            if (prev == v) {\n                out[pos - 1] = 2 * v;\n            } else {\n                out[pos++] = v;\n                prev = v;\n            }\n        }\n        return out;\n}"
+    },
+    {
+     "description": "merges equal neighbors in place without compacting zeros",
+     "code": "static int[] slideLeft(int[] row) {\n        int n = row.length;\n        int[] out = new int[n];\n        System.arraycopy(row, 0, out, 0, n);\n        for (int i = 0; i + 1 < n; i++) {\n            if (out[i] != 0 && out[i] == out[i + 1]) {\n                out[i] = 2 * out[i];\n                out[i + 1] = 0;\n            }\n        }\n        return out;\n}"
+    },
+    {
+     "description": "a merge keeps the tile value instead of doubling it",
+     "code": "static int[] slideLeft(int[] row) {\n        int n = row.length;\n        int[] out = new int[n];\n        int pos = 0;\n        int prev = 0;\n        for (int i = 0; i < n; i++) {\n            int v = row[i];\n            if (v == 0) {\n                continue;\n            }\n            if (prev == v) {\n                out[pos - 1] = v;\n                prev = 0;\n            } else {\n                out[pos++] = v;\n                prev = v;\n            }\n        }\n        return out;\n}"
+    },
+    {
+     "description": "returns the input array unchanged",
+     "code": "static int[] slideLeft(int[] row) {\n        return row;\n}"
+    },
+    {
+     "description": "skips non-positive values (equivalent under the precondition)",
+     "code": "static int[] slideLeft(int[] row) {\n        int n = row.length;\n        int[] out = new int[n];\n        int pos = 0;\n        int prev = 0;\n        for (int i = 0; i < n; i++) {\n            int v = row[i];\n            if (v <= 0) {\n                continue;\n            }\n            if (prev == v) {\n                out[pos - 1] = 2 * v;\n                prev = 0;\n            } else {\n                out[pos++] = v;\n                prev = v;\n            }\n        }\n        return out;\n}"
+    }
+   ]
+  }
+ ],
+ "fn_tests": [
+  {
+   "tests": [
+    {
+     "args": [
+      "new int[]{2, 2, 0, 0}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{0, 2, 0, 2}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{2, 2, 2, 2}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{4, 2, 2, 0}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{0, 0, 0, 0}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{2, 4, 8, 16}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{2, 0, 0, 0}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{8, 8, 8, 0}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{0, 0, 2, 2}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{}"
+     ]
+    }
+   ]
+  }
+ ],
+ "fn_distinguish": [
+  {
+   "tests": [
+    {
+     "args": [
+      "new int[]{0, 2}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{2, 2, 2}"
+     ]
+    }
+   ]
+  }
+ ],
+ "fn_assertion": [
+  {
+   "assertion": "result.length == row.length && Arrays.stream(result).sum() == Arrays.stream(old_row).sum() && Subject.compacted(result)",
+   "explanation": "Merging never creates or destroys value, so the sum of the tiles is preserved; and after sliding left there is no zero before a non-zero tile."
+  }
+ ]
+}

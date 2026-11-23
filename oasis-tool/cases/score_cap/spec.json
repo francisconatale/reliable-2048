@@ -1,0 +1,8 @@
+{
+  "name": "score_cap",
+  "source": "Subject.java",
+  "method": "scoreOfLeftMove",
+  "pre": "row != null && Subject.validTiles(row)",
+  "assertion": "result <= 2048",
+  "description": "Points won by sliding a 2048 row to the left: the sum of the values of the tiles created by merges. Tiles are 0 or powers of two."
+}

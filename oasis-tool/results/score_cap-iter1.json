@@ -1,0 +1,101 @@
+{
+ "model": "replay:score_cap.replay.json",
+ "spec": "cases/score_cap/spec.json",
+ "fp": {
+  "mode": "fp",
+  "assertion": "result <= 2048",
+  "rounds": [
+   {
+    "reasoning": "The cap 2048 looks like the winning tile, but a score is a running sum of merged tile values, so a single move can exceed it if the row holds large tiles.",
+    "proposed": 3,
+    "valid": 3
+   },
+   {
+    "reasoning": "Previous inputs stayed at or below 2048. Use tiles of 2048 and above so a merge creates a tile larger than 2048.",
+    "proposed": 4,
+    "valid": 4
+   }
+  ],
+  "violations": [
+   {
+    "args": [
+     "new int[]{2048, 2048}"
+    ],
+    "status": "FAIL",
+    "result": "4096",
+    "post": "[2048, 2048]",
+    "detail": ""
+   },
+   {
+    "args": [
+     "new int[]{4096, 4096, 2048, 2048}"
+    ],
+    "status": "FAIL",
+    "result": "12288",
+    "post": "[4096, 4096, 2048, 2048]",
+    "detail": ""
+   },
+   {
+    "args": [
+     "new int[]{65536, 65536}"
+    ],
+    "status": "FAIL",
+    "result": "131072",
+    "post": "[65536, 65536]",
+    "detail": ""
+   }
+  ],
+  "crashes": [],
+  "held": [
+   {
+    "args": [
+     "new int[]{2, 2}"
+    ],
+    "status": "PASS",
+    "result": "4",
+    "post": "[2, 2]",
+    "detail": ""
+   },
+   {
+    "args": [
+     "new int[]{1024, 1024}"
+    ],
+    "status": "PASS",
+    "result": "2048",
+    "post": "[1024, 1024]",
+    "detail": ""
+   },
+   {
+    "args": [
+     "new int[]{8, 8, 4, 4}"
+    ],
+    "status": "PASS",
+    "result": "24",
+    "post": "[8, 8, 4, 4]",
+    "detail": ""
+   },
+   {
+    "args": [
+     "new int[]{0, 0, 0, 0}"
+    ],
+    "status": "PASS",
+    "result": "0",
+    "post": "[0, 0, 0, 0]",
+    "detail": ""
+   }
+  ],
+  "rejected_tests": [],
+  "explanation": {
+   "verdict": "assertion_too_strong",
+   "explanation": "The program adds 2*v for each merge, so merging two 2048 tiles scores 4096; the score is a sum of created tile values and is not bounded by the winning value 2048. The behavior is correct for the 2048 rules.",
+   "suggested_assertion": "result % 4 == 0 && result >= 0"
+  },
+  "suggestion_check": {
+   "assertion": "result % 4 == 0 && result >= 0",
+   "compiles": true,
+   "violated_on": [],
+   "checked": 7
+  }
+ },
+ "fn": null
+}

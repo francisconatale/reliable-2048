@@ -1,0 +1,27 @@
+{
+ "model": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+ "spec": "cases/score_cap/spec.json",
+ "fp": {
+  "mode": "fp",
+  "assertion": "result >= 0 && result % 4 == 0 && result <= Arrays.stream(row).sum()",
+  "rounds": [
+   {
+    "reasoning": "The assertion consists of three conditions: result >= 0, result % 4 == 0, and result <= sum(row). The first and third hold for all valid inputs because the score is a sum of non‑negative merge values (2*v) and each merge consumes two tiles of value v, so the total score cannot exceed the sum of the row. However, the second condition (result % 4 == 0) is not always true. When two tiles of value 1 merge, the score increases by 2, which is not a multiple of 4. Since the precondition allows tiles that are powers of two (including 1), rows containing a merge of 1s are valid and cause the assertion to evaluate to false.",
+    "proposed": 11,
+    "valid": 11
+   },
+   {
+    "reasoning": "The assertion consists of three conditions: result >= 0, result % 4 == 0, and result <= sum(row). The first and third hold for all valid inputs because the score is a sum of non‑negative merge values (2*v) and each merge consumes two tiles of value v, so the total score cannot exceed the sum of the row. However, the second condition (result % 4 == 0) is not always true. When two tiles of value 1 merge, the score increases by 2, which is not a multiple of 4. Since the precondition allows tiles that are powers of two (including 1), rows containing a merge of 1s are valid and cause the assertion to evaluate to false.",
+    "proposed": 0,
+    "valid": 0
+   }
+  ],
+  "violations": [],
+  "crashes": [],
+  "held": [],
+  "rejected_tests": [],
+  "explanation": null,
+  "suggestion_check": null
+ },
+ "fn": null
+}

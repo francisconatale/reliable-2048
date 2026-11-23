@@ -1,0 +1,412 @@
+{
+ "model": "openrouter:nvidia/nemotron-3-ultra-550b-a55b:free",
+ "spec": "cases/slide_left/spec.json",
+ "fp": null,
+ "fn": {
+  "mode": "fn",
+  "assertion": "result.length == row.length",
+  "mutants": [
+   {
+    "id": "M1",
+    "description": "[LLM] After merging, prev is set to the merged value instead of 0, allowing a tile to merge multiple times.",
+    "origin": "llm",
+    "cls": "survived",
+    "code": "static int[] slideLeft(int[] row) {\n    int n = row.length;\n    int[] out = new int[n];\n    int pos = 0;\n    int prev = 0;\n    for (int i = 0; i < n; i++) {\n        int v = row[i];\n        if (v == 0) {\n            continue;\n        }\n        if (prev == v) {\n            out[pos - 1] = 2 * v;\n            prev = v; // fault: should be 0\n        } else {\n            out[pos++] = v;\n            prev = v;\n        }\n    }\n    return out;\n}",
+    "witness": {
+     "args": [
+      "new int[]{2,2,2,0}"
+     ],
+     "orig_result": "[4, 2, 0, 0]",
+     "orig_post": "[2, 2, 2, 0]",
+     "mut_result": "[4, 0, 0, 0]",
+     "mut_post": "[2, 2, 2, 0]",
+     "status": "PASS"
+    }
+   },
+   {
+    "id": "M2",
+    "description": "[LLM] Merged tile is placed at the next position (pos) instead of the previous (pos-1), effectively not merging in place.",
+    "origin": "llm",
+    "cls": "survived",
+    "code": "static int[] slideLeft(int[] row) {\n    int n = row.length;\n    int[] out = new int[n];\n    int pos = 0;\n    int prev = 0;\n    for (int i = 0; i < n; i++) {\n        int v = row[i];\n        if (v == 0) {\n            continue;\n        }\n        if (prev == v) {\n            out[pos] = 2 * v; // fault: pos instead of pos-1\n            pos++;\n            prev = 0;\n        } else {\n            out[pos++] = v;\n            prev = v;\n        }\n    }\n    return out;\n}",
+    "witness": {
+     "args": [
+      "new int[]{2,2,0,0}"
+     ],
+     "orig_result": "[4, 0, 0, 0]",
+     "orig_post": "[2, 2, 0, 0]",
+     "mut_result": "[2, 4, 0, 0]",
+     "mut_post": "[2, 2, 0, 0]",
+     "status": "PASS"
+    }
+   },
+   {
+    "id": "M3",
+    "description": "[LLM] In the non-merge branch, pos is not incremented, causing subsequent tiles to overwrite the same position.",
+    "origin": "llm",
+    "cls": "survived",
+    "code": "static int[] slideLeft(int[] row) {\n    int n = row.length;\n    int[] out = new int[n];\n    int pos = 0;\n    int prev = 0;\n    for (int i = 0; i < n; i++) {\n        int v = row[i];\n        if (v == 0) {\n            continue;\n        }\n        if (prev == v) {\n            out[pos - 1] = 2 * v;\n            prev = 0;\n        } else {\n            out[pos] = v; // fault: no pos++\n            prev = v;\n        }\n    }\n    return out;\n}",
+    "witness": {
+     "args": [
+      "new int[]{2,4,8,16}"
+     ],
+     "orig_result": "[2, 4, 8, 16]",
+     "orig_post": "[2, 4, 8, 16]",
+     "mut_result": "[16, 0, 0, 0]",
+     "mut_post": "[2, 4, 8, 16]",
+     "status": "PASS"
+    }
+   },
+   {
+    "id": "M4",
+    "description": "[LLM] In the non-merge branch, prev is set to 0 instead of the tile value, preventing a merge with the next equal tile.",
+    "origin": "llm",
+    "cls": "survived",
+    "code": "static int[] slideLeft(int[] row) {\n    int n = row.length;\n    int[] out = new int[n];\n    int pos = 0;\n    int prev = 0;\n    for (int i = 0; i < n; i++) {\n        int v = row[i];\n        if (v == 0) {\n            continue;\n        }\n        if (prev == v) {\n            out[pos - 1] = 2 * v;\n            prev = 0;\n        } else {\n            out[pos++] = v;\n            prev = 0; // fault: should be v\n        }\n    }\n    return out;\n}",
+    "witness": {
+     "args": [
+      "new int[]{2,2,0,0}"
+     ],
+     "orig_result": "[4, 0, 0, 0]",
+     "orig_post": "[2, 2, 0, 0]",
+     "mut_result": "[2, 2, 0, 0]",
+     "mut_post": "[2, 2, 0, 0]",
+     "status": "PASS"
+    }
+   },
+   {
+    "id": "M5",
+    "description": "[LLM] Merge does not double the value; it just keeps the same value.",
+    "origin": "llm",
+    "cls": "survived",
+    "code": "static int[] slideLeft(int[] row) {\n    int n = row.length;\n    int[] out = new int[n];\n    int pos = 0;\n    int prev = 0;\n    for (int i = 0; i < n; i++) {\n        int v = row[i];\n        if (v == 0) {\n            continue;\n        }\n        if (prev == v) {\n            out[pos - 1] = v; // fault: not doubled\n            prev = 0;\n        } else {\n            out[pos++] = v;\n            prev = v;\n        }\n    }\n    return out;\n}",
+    "witness": {
+     "args": [
+      "new int[]{2,2,0,0}"
+     ],
+     "orig_result": "[4, 0, 0, 0]",
+     "orig_post": "[2, 2, 0, 0]",
+     "mut_result": "[2, 0, 0, 0]",
+     "mut_post": "[2, 2, 0, 0]",
+     "status": "PASS"
+    }
+   },
+   {
+    "id": "M6",
+    "description": "[LLM] The loop iterates from right to left, implementing slideRight instead of slideLeft.",
+    "origin": "llm",
+    "cls": "survived",
+    "code": "static int[] slideLeft(int[] row) {\n    int n = row.length;\n    int[] out = new int[n];\n    int pos = n - 1; // start from right\n    int prev = 0;\n    for (int i = n - 1; i >= 0; i--) { // fault: right to left\n        int v = row[i];\n        if (v == 0) {\n            continue;\n        }\n        if (prev == v) {\n            out[pos + 1] = 2 * v; // adjust for right merge\n            prev = 0;\n        } else {\n            out[pos--] = v;\n            prev = v;\n        }\n    }\n    return out;\n}",
+    "witness": {
+     "args": [
+      "new int[]{2,2,0,0}"
+     ],
+     "orig_result": "[4, 0, 0, 0]",
+     "orig_post": "[2, 2, 0, 0]",
+     "mut_result": "[0, 0, 0, 4]",
+     "mut_post": "[2, 2, 0, 0]",
+     "status": "PASS"
+    }
+   },
+   {
+    "id": "M7",
+    "description": "[LLM] The loop starts at index 1, skipping the first tile.",
+    "origin": "llm",
+    "cls": "survived",
+    "code": "static int[] slideLeft(int[] row) {\n    int n = row.length;\n    int[] out = new int[n];\n    int pos = 0;\n    int prev = 0;\n    for (int i = 1; i < n; i++) { // fault: start at 1\n        int v = row[i];\n        if (v == 0) {\n            continue;\n        }\n        if (prev == v) {\n            out[pos - 1] = 2 * v;\n            prev = 0;\n        } else {\n            out[pos++] = v;\n            prev = v;\n        }\n    }\n    return out;\n}",
+    "witness": {
+     "args": [
+      "new int[]{2}"
+     ],
+     "orig_result": "[2]",
+     "orig_post": "[2]",
+     "mut_result": "[0]",
+     "mut_post": "[2]",
+     "status": "PASS"
+    }
+   },
+   {
+    "id": "M8",
+    "description": "[LLM] The output array is initialized as a clone of the input instead of a zero-filled array, leaving stray values.",
+    "origin": "llm",
+    "cls": "survived",
+    "code": "static int[] slideLeft(int[] row) {\n    int n = row.length;\n    int[] out = row.clone(); // fault: clone input instead of new array\n    int pos = 0;\n    int prev = 0;\n    for (int i = 0; i < n; i++) {\n        int v = row[i];\n        if (v == 0) {\n            continue;\n        }\n        if (prev == v) {\n            out[pos - 1] = 2 * v;\n            prev = 0;\n        } else {\n            out[pos++] = v;\n            prev = v;\n        }\n    }\n    return out;\n}",
+    "witness": {
+     "args": [
+      "new int[]{2,2,0,0}"
+     ],
+     "orig_result": "[4, 0, 0, 0]",
+     "orig_post": "[2, 2, 0, 0]",
+     "mut_result": "[4, 2, 0, 0]",
+     "mut_post": "[2, 2, 0, 0]",
+     "status": "PASS"
+    }
+   },
+   {
+    "id": "M9",
+    "description": "[LLM] After the loop, the result array is reversed, turning a left slide into a right slide.",
+    "origin": "llm",
+    "cls": "survived",
+    "code": "static int[] slideLeft(int[] row) {\n    int n = row.length;\n    int[] out = new int[n];\n    int pos = 0;\n    int prev = 0;\n    for (int i = 0; i < n; i++) {\n        int v = row[i];\n        if (v == 0) {\n            continue;\n        }\n        if (prev == v) {\n            out[pos - 1] = 2 * v;\n            prev = 0;\n        } else {\n            out[pos++] = v;\n            prev = v;\n        }\n    }\n    // fault: reverse the result\n    for (int i = 0; i < n / 2; i++) {\n        int tmp = out[i];\n        out[i] = out[n - 1 - i];\n        out[n - 1 - i] = tmp;\n    }\n    return out;\n}",
+    "witness": {
+     "args": [
+      "new int[]{2,4,8,16}"
+     ],
+     "orig_result": "[2, 4, 8, 16]",
+     "orig_post": "[2, 4, 8, 16]",
+     "mut_result": "[16, 8, 4, 2]",
+     "mut_post": "[2, 4, 8, 16]",
+     "status": "PASS"
+    }
+   },
+   {
+    "id": "M10",
+    "description": "[LLM] The method returns the input array instead of the computed output array.",
+    "origin": "llm",
+    "cls": "survived",
+    "code": "static int[] slideLeft(int[] row) {\n    int n = row.length;\n    int[] out = new int[n];\n    int pos = 0;\n    int prev = 0;\n    for (int i = 0; i < n; i++) {\n        int v = row[i];\n        if (v == 0) {\n            continue;\n        }\n        if (prev == v) {\n            out[pos - 1] = 2 * v;\n            prev = 0;\n        } else {\n            out[pos++] = v;\n            prev = v;\n        }\n    }\n    return row; // fault: return input array\n}",
+    "witness": {
+     "args": [
+      "new int[]{2,2,0,0}"
+     ],
+     "orig_result": "[4, 0, 0, 0]",
+     "orig_post": "[2, 2, 0, 0]",
+     "mut_result": "[2, 2, 0, 0]",
+     "mut_post": "[2, 2, 0, 0]",
+     "status": "PASS"
+    }
+   },
+   {
+    "id": "M11",
+    "description": "[operador] constante 0 -> 1 (línea 8 del método)",
+    "origin": "operator",
+    "cls": "survived",
+    "code": "static int[] slideLeft(int[] row) {\n        int n = row.length;\n        int[] out = new int[n];\n        int pos = 0;\n        int prev = 0;\n        for (int i = 0; i < n; i++) {\n            int v = row[i];\n            if (v == 1) {\n                continue;\n            }\n            if (prev == v) {\n                out[pos - 1] = 2 * v;\n                prev = 0;\n            } else {\n                out[pos++] = v;\n                prev = v;\n            }\n        }\n        return out;\n    }",
+    "witness": {
+     "args": [
+      "new int[]{2,2,0,0}"
+     ],
+     "orig_result": "[4, 0, 0, 0]",
+     "orig_post": "[2, 2, 0, 0]",
+     "mut_result": "[0, 0, 0, 0]",
+     "mut_post": "[2, 2, 0, 0]",
+     "status": "PASS"
+    }
+   },
+   {
+    "id": "M12",
+    "description": "[operador] constante 2 -> 3 (línea 12 del método)",
+    "origin": "operator",
+    "cls": "survived",
+    "code": "static int[] slideLeft(int[] row) {\n        int n = row.length;\n        int[] out = new int[n];\n        int pos = 0;\n        int prev = 0;\n        for (int i = 0; i < n; i++) {\n            int v = row[i];\n            if (v == 0) {\n                continue;\n            }\n            if (prev == v) {\n                out[pos - 1] = 3 * v;\n                prev = 0;\n            } else {\n                out[pos++] = v;\n                prev = v;\n            }\n        }\n        return out;\n    }",
+    "witness": {
+     "args": [
+      "new int[]{2,2,0,0}"
+     ],
+     "orig_result": "[4, 0, 0, 0]",
+     "orig_post": "[2, 2, 0, 0]",
+     "mut_result": "[6, 0, 0, 0]",
+     "mut_post": "[2, 2, 0, 0]",
+     "status": "PASS"
+    }
+   },
+   {
+    "id": "M13",
+    "description": "[operador] ++ -> -- (línea 6 del método)",
+    "origin": "operator",
+    "cls": "crashed",
+    "code": "static int[] slideLeft(int[] row) {\n        int n = row.length;\n        int[] out = new int[n];\n        int pos = 0;\n        int prev = 0;\n        for (int i = 0; i < n; i--) {\n            int v = row[i];\n            if (v == 0) {\n                continue;\n            }\n            if (prev == v) {\n                out[pos - 1] = 2 * v;\n                prev = 0;\n            } else {\n                out[pos++] = v;\n                prev = v;\n            }\n        }\n        return out;\n    }",
+    "witness": {
+     "args": [
+      "new int[]{0}"
+     ],
+     "orig_result": "[0]",
+     "orig_post": "[0]",
+     "mut_result": "EXC java.lang.ArrayIndexOutOfBoundsException: Index -1 out of bounds for length 1",
+     "mut_post": "",
+     "status": "EXC"
+    }
+   },
+   {
+    "id": "M14",
+    "description": "[operador] == -> != (línea 8 del método)",
+    "origin": "operator",
+    "cls": "survived",
+    "code": "static int[] slideLeft(int[] row) {\n        int n = row.length;\n        int[] out = new int[n];\n        int pos = 0;\n        int prev = 0;\n        for (int i = 0; i < n; i++) {\n            int v = row[i];\n            if (v != 0) {\n                continue;\n            }\n            if (prev == v) {\n                out[pos - 1] = 2 * v;\n                prev = 0;\n            } else {\n                out[pos++] = v;\n                prev = v;\n            }\n        }\n        return out;\n    }",
+    "witness": {
+     "args": [
+      "new int[]{2}"
+     ],
+     "orig_result": "[2]",
+     "orig_post": "[2]",
+     "mut_result": "[0]",
+     "mut_post": "[2]",
+     "status": "PASS"
+    }
+   },
+   {
+    "id": "M15",
+    "description": "[operador] constante 0 -> 1 (línea 6 del método)",
+    "origin": "operator",
+    "cls": "survived",
+    "code": "static int[] slideLeft(int[] row) {\n        int n = row.length;\n        int[] out = new int[n];\n        int pos = 0;\n        int prev = 0;\n        for (int i = 1; i < n; i++) {\n            int v = row[i];\n            if (v == 0) {\n                continue;\n            }\n            if (prev == v) {\n                out[pos - 1] = 2 * v;\n                prev = 0;\n            } else {\n                out[pos++] = v;\n                prev = v;\n            }\n        }\n        return out;\n    }",
+    "witness": {
+     "args": [
+      "new int[]{2}"
+     ],
+     "orig_result": "[2]",
+     "orig_post": "[2]",
+     "mut_result": "[0]",
+     "mut_post": "[2]",
+     "status": "PASS"
+    }
+   },
+   {
+    "id": "M16",
+    "description": "[operador] == -> != (línea 11 del método)",
+    "origin": "operator",
+    "cls": "crashed",
+    "code": "static int[] slideLeft(int[] row) {\n        int n = row.length;\n        int[] out = new int[n];\n        int pos = 0;\n        int prev = 0;\n        for (int i = 0; i < n; i++) {\n            int v = row[i];\n            if (v == 0) {\n                continue;\n            }\n            if (prev != v) {\n                out[pos - 1] = 2 * v;\n                prev = 0;\n            } else {\n                out[pos++] = v;\n                prev = v;\n            }\n        }\n        return out;\n    }",
+    "witness": {
+     "args": [
+      "new int[]{2}"
+     ],
+     "orig_result": "[2]",
+     "orig_post": "[2]",
+     "mut_result": "EXC java.lang.ArrayIndexOutOfBoundsException: Index -1 out of bounds for length 1",
+     "mut_post": "",
+     "status": "EXC"
+    }
+   },
+   {
+    "id": "M17",
+    "description": "[operador] - -> + (línea 12 del método)",
+    "origin": "operator",
+    "cls": "survived",
+    "code": "static int[] slideLeft(int[] row) {\n        int n = row.length;\n        int[] out = new int[n];\n        int pos = 0;\n        int prev = 0;\n        for (int i = 0; i < n; i++) {\n            int v = row[i];\n            if (v == 0) {\n                continue;\n            }\n            if (prev == v) {\n                out[pos + 1] = 2 * v;\n                prev = 0;\n            } else {\n                out[pos++] = v;\n                prev = v;\n            }\n        }\n        return out;\n    }",
+    "witness": {
+     "args": [
+      "new int[]{2,2,0,0}"
+     ],
+     "orig_result": "[4, 0, 0, 0]",
+     "orig_post": "[2, 2, 0, 0]",
+     "mut_result": "[2, 0, 4, 0]",
+     "mut_post": "[2, 2, 0, 0]",
+     "status": "PASS"
+    }
+   },
+   {
+    "id": "M18",
+    "description": "[operador] constante 1 -> 0 (línea 12 del método)",
+    "origin": "operator",
+    "cls": "survived",
+    "code": "static int[] slideLeft(int[] row) {\n        int n = row.length;\n        int[] out = new int[n];\n        int pos = 0;\n        int prev = 0;\n        for (int i = 0; i < n; i++) {\n            int v = row[i];\n            if (v == 0) {\n                continue;\n            }\n            if (prev == v) {\n                out[pos - 0] = 2 * v;\n                prev = 0;\n            } else {\n                out[pos++] = v;\n                prev = v;\n            }\n        }\n        return out;\n    }",
+    "witness": {
+     "args": [
+      "new int[]{2,2,0,0}"
+     ],
+     "orig_result": "[4, 0, 0, 0]",
+     "orig_post": "[2, 2, 0, 0]",
+     "mut_result": "[2, 4, 0, 0]",
+     "mut_post": "[2, 2, 0, 0]",
+     "status": "PASS"
+    }
+   },
+   {
+    "id": "M19",
+    "description": "[operador] constante 2 -> 1 (línea 12 del método)",
+    "origin": "operator",
+    "cls": "survived",
+    "code": "static int[] slideLeft(int[] row) {\n        int n = row.length;\n        int[] out = new int[n];\n        int pos = 0;\n        int prev = 0;\n        for (int i = 0; i < n; i++) {\n            int v = row[i];\n            if (v == 0) {\n                continue;\n            }\n            if (prev == v) {\n                out[pos - 1] = 1 * v;\n                prev = 0;\n            } else {\n                out[pos++] = v;\n                prev = v;\n            }\n        }\n        return out;\n    }",
+    "witness": {
+     "args": [
+      "new int[]{2,2,0,0}"
+     ],
+     "orig_result": "[4, 0, 0, 0]",
+     "orig_post": "[2, 2, 0, 0]",
+     "mut_result": "[2, 0, 0, 0]",
+     "mut_post": "[2, 2, 0, 0]",
+     "status": "PASS"
+    }
+   },
+   {
+    "id": "M20",
+    "description": "[operador] constante 0 -> 1 (línea 4 del método)",
+    "origin": "operator",
+    "cls": "survived",
+    "code": "static int[] slideLeft(int[] row) {\n        int n = row.length;\n        int[] out = new int[n];\n        int pos = 1;\n        int prev = 0;\n        for (int i = 0; i < n; i++) {\n            int v = row[i];\n            if (v == 0) {\n                continue;\n            }\n            if (prev == v) {\n                out[pos - 1] = 2 * v;\n                prev = 0;\n            } else {\n                out[pos++] = v;\n                prev = v;\n            }\n        }\n        return out;\n    }",
+    "witness": {
+     "args": [
+      "new int[]{2,2,0,0}"
+     ],
+     "orig_result": "[4, 0, 0, 0]",
+     "orig_post": "[2, 2, 0, 0]",
+     "mut_result": "[0, 4, 0, 0]",
+     "mut_post": "[2, 2, 0, 0]",
+     "status": "PASS"
+    }
+   },
+   {
+    "id": "M21",
+    "description": "[operador] constante 0 -> 1 (línea 5 del método)",
+    "origin": "operator",
+    "cls": "equivalent_so_far",
+    "code": "static int[] slideLeft(int[] row) {\n        int n = row.length;\n        int[] out = new int[n];\n        int pos = 0;\n        int prev = 1;\n        for (int i = 0; i < n; i++) {\n            int v = row[i];\n            if (v == 0) {\n                continue;\n            }\n            if (prev == v) {\n                out[pos - 1] = 2 * v;\n                prev = 0;\n            } else {\n                out[pos++] = v;\n                prev = v;\n            }\n        }\n        return out;\n    }",
+    "witness": null
+   },
+   {
+    "id": "M22",
+    "description": "[operador] * -> / (línea 12 del método)",
+    "origin": "operator",
+    "cls": "survived",
+    "code": "static int[] slideLeft(int[] row) {\n        int n = row.length;\n        int[] out = new int[n];\n        int pos = 0;\n        int prev = 0;\n        for (int i = 0; i < n; i++) {\n            int v = row[i];\n            if (v == 0) {\n                continue;\n            }\n            if (prev == v) {\n                out[pos - 1] = 2 / v;\n                prev = 0;\n            } else {\n                out[pos++] = v;\n                prev = v;\n            }\n        }\n        return out;\n    }",
+    "witness": {
+     "args": [
+      "new int[]{2,2,0,0}"
+     ],
+     "orig_result": "[4, 0, 0, 0]",
+     "orig_post": "[2, 2, 0, 0]",
+     "mut_result": "[1, 0, 0, 0]",
+     "mut_post": "[2, 2, 0, 0]",
+     "status": "PASS"
+    }
+   }
+  ],
+  "tests": 15,
+  "rejected_tests": [],
+  "invalid_mutants": 0,
+  "suggestion": {
+   "assertion": "result.length == old_row.length && Subject.validTiles(result) && Subject.compacted(result) && Arrays.stream(result).sum() == Arrays.stream(old_row).sum() && (Subject.hasMergeablePair(Arrays.stream(old_row).filter(x -> x != 0).toArray()) ? Subject.nonzero(result) < Subject.nonzero(old_row) : Subject.nonzero(result) == Subject.nonzero(old_row))",
+   "explanation": "The assertion combines five conditions:\n1. `result.length == old_row.length` ensures the output array has the same length as the input.\n2. `Subject.validTiles(result)` guarantees every tile in the result is 0 or a power of two.\n3. `Subject.compacted(result)` forces all non-zero tiles to be left-aligned with zeros on the right.\n4. `Arrays.stream(result).sum() == Arrays.stream(old_row).sum()` enforces that the total sum of tiles is preserved (merging two equal tiles v+v into 2v does not change the sum).\n5. The ternary condition uses `Subject.hasMergeablePair` on the compacted non-zero sequence of the input (obtained by filtering out zeros). If that compacted sequence contains an adjacent equal pair, at least one merge must occur, so the number of non-zero tiles in the result must be strictly less than in the input (`Subject.nonzero(result) < Subject.nonzero(old_row)`). Otherwise, no merges happen and the non-zero count must stay the same (`Subject.nonzero(result) == Subject.nonzero(old_row)`).\n\nTogether these conditions capture the core invariants of a correct 2048 left slide: length, tile validity, compaction, sum preservation, and the exact effect of merging on the non-zero tile count. All eight mutants violate at least one of these conditions on their distinguishing inputs, while the original implementation satisfies them for every valid input."
+  },
+  "suggestion_check": {
+   "assertion": "result.length == old_row.length && Subject.validTiles(result) && Subject.compacted(result) && Arrays.stream(result).sum() == Arrays.stream(old_row).sum() && (Subject.hasMergeablePair(Arrays.stream(old_row).filter(x -> x != 0).toArray()) ? Subject.nonzero(result) < Subject.nonzero(old_row) : Subject.nonzero(result) == Subject.nonzero(old_row))",
+   "compiles": true,
+   "violated_by_original_on": [],
+   "now_killed": [
+    "M1",
+    "M2",
+    "M3",
+    "M4",
+    "M5",
+    "M6",
+    "M7",
+    "M8",
+    "M9",
+    "M10",
+    "M11",
+    "M12",
+    "M14",
+    "M15",
+    "M17",
+    "M18",
+    "M19",
+    "M20",
+    "M22"
+   ],
+   "still_surviving": [
+    "M21"
+   ]
+  }
+ }
+}

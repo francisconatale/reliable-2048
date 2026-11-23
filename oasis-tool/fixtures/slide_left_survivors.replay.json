@@ -1,0 +1,110 @@
+{
+ "_aviso": "GUION ESCRITO A MANO: mutantes reconstruidos por m\u00ed a partir de las descripciones de los sobrevivientes de la corrida real (iteraci\u00f3n 2). NO es salida de un LLM.",
+ "fn_mutants": [
+  {
+   "mutants": [
+    {
+     "description": "FirstPairOnly: merges only the first adjacent equal pair",
+     "code": "static int[] slideLeft(int[] row) {\n        int n = row.length;\n        int[] out = new int[n];\n        int pos = 0;\n        int prev = 0;\n        boolean merged = false;\n        for (int v : row) {\n            if (v == 0) {\n                continue;\n            }\n            if (!merged && prev == v) {\n                out[pos - 1] = 2 * v;\n                prev = 0;\n                merged = true;\n            } else {\n                out[pos++] = v;\n                prev = v;\n            }\n        }\n        return out;\n}"
+    },
+    {
+     "description": "SortAscendingMerge: sorts the non-zero tiles ascending, then merges adjacent equals once",
+     "code": "static int[] slideLeft(int[] row) {\n        int[] t = Arrays.stream(row).filter(x -> x != 0).sorted().toArray();\n        int[] out = new int[row.length];\n        int pos = 0;\n        for (int i = 0; i < t.length; i++) {\n            if (i + 1 < t.length && t[i] == t[i + 1]) {\n                out[pos++] = 2 * t[i];\n                i++;\n            } else {\n                out[pos++] = t[i];\n            }\n        }\n        return out;\n}"
+    },
+    {
+     "description": "SortDescendingMerge: sorts the non-zero tiles descending, then merges adjacent equals once",
+     "code": "static int[] slideLeft(int[] row) {\n        int[] t = Arrays.stream(row).filter(x -> x != 0).boxed().sorted(Comparator.reverseOrder()).mapToInt(Integer::intValue).toArray();\n        int[] out = new int[row.length];\n        int pos = 0;\n        for (int i = 0; i < t.length; i++) {\n            if (i + 1 < t.length && t[i] == t[i + 1]) {\n                out[pos++] = 2 * t[i];\n                i++;\n            } else {\n                out[pos++] = t[i];\n            }\n        }\n        return out;\n}"
+    },
+    {
+     "description": "MergeByValue: merges all tiles of the same value into one tile (value * count)",
+     "code": "static int[] slideLeft(int[] row) {\n        LinkedHashMap<Integer, Integer> c = new LinkedHashMap<>();\n        for (int v : row) {\n            if (v != 0) {\n                c.merge(v, v, Integer::sum);\n            }\n        }\n        int[] out = new int[row.length];\n        int pos = 0;\n        for (int s : c.values()) {\n            out[pos++] = s;\n        }\n        return out;\n}"
+    },
+    {
+     "description": "RepeatedMerge: keeps merging adjacent equal tiles until none remain",
+     "code": "static int[] slideLeft(int[] row) {\n        List<Integer> l = new ArrayList<>();\n        for (int v : row) {\n            if (v != 0) {\n                l.add(v);\n            }\n        }\n        boolean ch = true;\n        while (ch) {\n            ch = false;\n            for (int i = 0; i + 1 < l.size(); i++) {\n                if (l.get(i).equals(l.get(i + 1))) {\n                    l.set(i, 2 * l.get(i));\n                    l.remove(i + 1);\n                    ch = true;\n                    break;\n                }\n            }\n        }\n        int[] out = new int[row.length];\n        for (int i = 0; i < l.size(); i++) {\n            out[i] = l.get(i);\n        }\n        return out;\n}"
+    },
+    {
+     "description": "MergeCompatible: merges adjacent tiles if equal or one is double the other (sum)",
+     "code": "static int[] slideLeft(int[] row) {\n        int[] t = Arrays.stream(row).filter(x -> x != 0).toArray();\n        int[] out = new int[row.length];\n        int pos = 0;\n        for (int i = 0; i < t.length; i++) {\n            if (i + 1 < t.length && (t[i] == t[i + 1] || t[i] == 2 * t[i + 1] || t[i + 1] == 2 * t[i])) {\n                out[pos++] = t[i] + t[i + 1];\n                i++;\n            } else {\n                out[pos++] = t[i];\n            }\n        }\n        return out;\n}"
+    }
+   ]
+  }
+ ],
+ "fn_tests": [
+  {
+   "tests": [
+    {
+     "args": [
+      "new int[]{2, 2, 2, 0}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{2, 2, 4, 4}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{2, 4, 2, 0}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{2, 4, 0, 0}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{2, 2, 2, 2}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{4, 2, 2, 0}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{0, 2, 0, 2}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{8, 8, 8, 0}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{2, 4, 8, 16}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{0, 0, 0, 0}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{}"
+     ]
+    },
+    {
+     "args": [
+      "new int[]{2, 0, 0, 4}"
+     ]
+    }
+   ]
+  }
+ ],
+ "fn_distinguish": [
+  {
+   "tests": []
+  }
+ ],
+ "fn_assertion": [
+  {
+   "assertion": "true",
+   "explanation": "(sin uso)"
+  }
+ ]
+}
